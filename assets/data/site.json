@@ -1,0 +1,18 @@
+{
+  "name": "Touch and Move",
+  "tagline": "Architects of conscious stillness and transformative motion",
+  "contact": {
+    "email": "hello@touchandmove.com",
+    "phone": "+1 (555) 010-8888",
+    "location": "San Francisco, CA"
+  },
+  "pages": [
+    { "title": "Home", "href": "index.html" },
+    { "title": "About", "href": "about.html" },
+    { "title": "Approach", "href": "Aproch.html" },
+    { "title": "Our Approach", "href": "our-Aproch.html" },
+    { "title": "Services", "href": "services.html" },
+    { "title": "Holistic Journey", "href": "Holistic-Joumcy.html" },
+    { "title": "Contact", "href": "contact.html" }
+  ]
+}

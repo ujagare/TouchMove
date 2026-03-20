@@ -1,0 +1,4 @@
+node_modules/
+.vscode/
+data/contact-submissions.csv
+*.log
