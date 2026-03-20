@@ -113,17 +113,24 @@
     return path === "/" || path.endsWith("/index.html") || path.endsWith("\\index.html");
   }
 
+  function isLocalDevelopment() {
+    var host = (window.location.hostname || "").toLowerCase();
+    return host === "127.0.0.1" || host === "localhost";
+  }
+
   function initPageLoader() {
     if (!isHomePage()) return;
     if (document.body.dataset.loaderReady === "true") return;
 
-    try {
-      if (window.sessionStorage.getItem("tm-home-loader-shown") === "true") {
-        return;
+    if (!isLocalDevelopment()) {
+      try {
+        if (window.sessionStorage.getItem("tm-home-loader-shown") === "true") {
+          return;
+        }
+        window.sessionStorage.setItem("tm-home-loader-shown", "true");
+      } catch (error) {
+        // Ignore storage errors and fall back to per-page protection.
       }
-      window.sessionStorage.setItem("tm-home-loader-shown", "true");
-    } catch (error) {
-      // Ignore storage errors and fall back to per-page protection.
     }
 
     document.body.dataset.loaderReady = "true";
