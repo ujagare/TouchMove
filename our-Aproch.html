@@ -1,291 +1,623 @@
-<!DOCTYPE html>
+<!doctype html>
 
-<html class="light" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;family=Playfair+Display:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#8b0000",
-                        "background-light": "#f6f6f8",
-                        "background-dark": "#121320",
-                        "charcoal": "#1a1a1a",
-                    },
-                    fontFamily: {
-                        "display": ["Inter", "sans-serif"],
-                        "serif": ["Playfair Display", "serif"]
-                    },
-                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
-                },
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;family=Playfair+Display:ital,wght@0,400;0,700;1,400&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#8b0000",
+              "background-light": "#f6f6f8",
+              "background-dark": "#121320",
+              charcoal: "#1a1a1a",
             },
-        }
+            fontFamily: {
+              display: ["Inter", "sans-serif"],
+              serif: ["Playfair Display", "serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
     </script>
-<style>
-        .serif-text { font-family: 'Playfair Display', serif; }
-        .accent-crimson { color: #8b0000; }
-        .bg-charcoal-deep { background-color: #0f0f0f; }
-        .text-glow { text-shadow: 0 0 20px rgba(139, 0, 0, 0.2); }
-    </style>
-  <link rel="stylesheet" href="./assets/css/mobile.css">
-</head>
-<body class="bg-charcoal-deep text-slate-100 font-display selection:bg-primary/30">
-<div class="relative flex h-auto min-h-screen w-full flex-col bg-charcoal-deep group/design-root overflow-x-hidden">
-<div class="layout-container flex h-full grow flex-col">
-<!-- Navigation -->
-<style>
-  @keyframes slideNavDown {
-    0% { transform: translateY(-100%); opacity: 0; }
-    100% { transform: translateY(0); opacity: 1; }
-  }
-</style>
-<header id="navbar" class="fixed top-0 left-0 w-full backdrop-blur-md bg-black/40 border-b border-white/10" style="animation: slideNavDown 1s cubic-bezier(0.16, 1, 0.3, 1) forwards; z-index: 9999; transition: transform 0.4s ease, background-color 0.4s ease;">
-  <div class="w-full px-6 md:px-12 py-6 flex items-center justify-between">
-    <!-- Logo -->
-    <a href="index.html" class="flex items-center gap-3 z-50 relative">
-      <img src="assets/image/Touch And Move_PNG Logo.png" alt="Touch & Move Logo" class="object-contain" style="height: 64px; width: auto; max-width: 200px;">
-      <h1 class="text-white tracking-widest font-semibold uppercase" style="font-size: 1.125rem;">
-        Touch & Move
-      </h1>
-    </a>
-
-    <div class="flex items-center justify-end" style="gap: 16px;">
-      <!-- Fullscreen Menu Toggle (=) -->
-      <button id="menuToggle" class="flex flex-col justify-center items-end z-50 relative focus:outline-none cursor-pointer" style="width: 44px; height: 44px; gap: 8px;">
-        <span id="line1" class="block bg-white rounded-full origin-center" style="width: 32px; height: 2px; transition: transform 0.4s ease;"></span>
-        <span id="line2" class="block bg-white rounded-full origin-center" style="width: 32px; height: 2px; transition: transform 0.4s ease;"></span>
-      </button>
-
-      <!-- Book Now Button -->
-      <a href="contact.html" class="inline-block text-white uppercase font-semibold hover:opacity-80 transition-all z-50 relative" style="background-color: #a30000; padding: 10px 24px; font-size: 10px; letter-spacing: 2px;">
-        Book Now
-      </a>
-    </div>
-  </div>
-
-</header>
-
-  <!-- Mobile Menu -->
-  <div id="mobileMenu" class="hidden" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(0, 0, 0, 0.95); backdrop-filter: blur(16px); flex-direction: column; align-items: center; justify-content: center; z-index: 9998; transition: transform 0.6s cubic-bezier(0.76, 0, 0.24, 1); transform: translateY(-100%);">
-    <div style="display: flex; flex-direction: column; gap: 32px; text-align: center;">
-      <a href="index.html" class="text-white/90 hover:text-white transition uppercase tracking-widest hover:scale-105 duration-200" style="font-size: 22px;">Home</a>
-      <a href="about.html" class="text-white/90 hover:text-white transition uppercase tracking-widest hover:scale-105 duration-200" style="font-size: 22px;">Our Journey</a>
-      <a href="services.html" class="text-white/90 hover:text-white transition uppercase tracking-widest hover:scale-105 duration-200" style="font-size: 22px;">Guidance & Services</a>
-        <a href="why-clients-work-with-us.html" class="text-white/90 hover:text-white transition uppercase tracking-widest hover:scale-105 duration-200" style="font-size: 22px">Tarot with Harshaa</a>
-      <a href="Aproch.html" class="text-white/90 hover:text-white transition uppercase tracking-widest hover:scale-105 duration-200" style="font-size: 22px;">Our Approach & Philosophy</a>
-      
-      
-      <a href="our-Aproch.html" class="text-white/90 hover:text-white transition uppercase tracking-widest hover:scale-105 duration-200" style="font-size: 22px;">Who This Work Is For</a>
-      <a href="client-intake.html" class="text-white/90 hover:text-white transition uppercase tracking-widest hover:scale-105 duration-200" style="font-size: 22px;">Client Intake Form</a>
-      <a href="contact.html" class="px-10 py-5 text-center mt-6 rounded-lg bg-primary text-white hover:bg-white/10 transition uppercase tracking-widest hover:scale-105 duration-200 border border-white/40" style="font-size: 16px; margin-top: 24px; font-weight: 600;">Contact</a>
-    </div>
-  </div>
-
-<script>
-  // Mobile menu toggle
-  const menuToggle = document.getElementById('menuToggle');
-  const mobileMenu = document.getElementById('mobileMenu');
-  let isMenuOpen = false;
-
-  const line1 = document.getElementById('line1');
-  const line2 = document.getElementById('line2');
-
-  menuToggle.addEventListener('click', () => {
-    isMenuOpen = !isMenuOpen;
-    if(isMenuOpen) {
-      mobileMenu.classList.remove('hidden');
-      mobileMenu.style.display = 'flex';
-      setTimeout(() => {
-        mobileMenu.style.transform = 'translateY(0)';
-        if (line1 && line2) {
-          line1.style.transform = 'translateY(5px) rotate(45deg)';
-          line2.style.transform = 'translateY(-5px) rotate(-45deg)';
-        }
-      }, 10);
-    } else {
-      mobileMenu.style.transform = 'translateY(-100%)';
-      if (line1 && line2) {
-        line1.style.transform = 'translateY(0) rotate(0)';
-        line2.style.transform = 'translateY(0) rotate(0)';
+    <style>
+      .serif-text {
+        font-family: "Playfair Display", serif;
       }
-      setTimeout(() => {
-        mobileMenu.classList.add('hidden');
-        mobileMenu.style.display = 'none';
-      }, 500);
-    }
-  });
+      .accent-crimson {
+        color: #8b0000;
+      }
+      .bg-charcoal-deep {
+        background-color: #0f0f0f;
+      }
+      .text-glow {
+        text-shadow: 0 0 20px rgba(139, 0, 0, 0.2);
+      }
+    </style>
+    <link rel="stylesheet" href="./assets/css/mobile.css" />
+  </head>
+  <body
+    class="bg-charcoal-deep text-slate-100 font-display selection:bg-primary/30"
+  >
+    <div
+      class="relative flex h-auto min-h-screen w-full flex-col bg-charcoal-deep group/design-root overflow-x-hidden"
+    >
+      <div class="layout-container flex h-full grow flex-col">
+        <!-- Navigation -->
+        <style>
+          @keyframes slideNavDown {
+            0% {
+              transform: translateY(-100%);
+              opacity: 0;
+            }
+            100% {
+              transform: translateY(0);
+              opacity: 1;
+            }
+          }
+        </style>
+        <header
+          id="navbar"
+          class="fixed top-0 left-0 w-full backdrop-blur-md bg-black/40 border-b border-white/10"
+          style="
+            animation: slideNavDown 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            z-index: 9999;
+            transition:
+              transform 0.4s ease,
+              background-color 0.4s ease;
+          "
+        >
+          <div
+            class="w-full px-6 md:px-12 py-6 flex items-center justify-between"
+          >
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center gap-3 z-50 relative">
+              <img
+                src="assets/image/Touch And Move_PNG Logo.png"
+                alt="Touch & Move Logo"
+                class="object-contain"
+                style="height: 64px; width: auto; max-width: 200px"
+              />
+              <h1
+                class="text-white tracking-widest font-semibold uppercase"
+                style="font-size: 1.125rem"
+              >
+                Touch & Move
+              </h1>
+            </a>
 
-  // Scroll effect for navbar
-  let lastScrollY = window.scrollY;
-  window.addEventListener('scroll', () => {
-    const navbar = document.getElementById('navbar');
-    
-    // Background blur and shadow toggle
-    if (window.scrollY > 50) {
-      navbar.classList.add('bg-black/80', 'shadow-2xl', 'backdrop-blur-xl');
-      navbar.classList.remove('bg-black/40', 'backdrop-blur-md');
-    } else {
-      navbar.classList.remove('bg-black/80', 'shadow-2xl', 'backdrop-blur-xl');
-      navbar.classList.add('bg-black/40', 'backdrop-blur-md');
-    }
+            <div class="flex items-center justify-end" style="gap: 16px">
+              <!-- Fullscreen Menu Toggle (=) -->
+              <button
+                id="menuToggle"
+                class="flex flex-col justify-center items-end z-50 relative focus:outline-none cursor-pointer"
+                style="width: 44px; height: 44px; gap: 8px"
+              >
+                <span
+                  id="line1"
+                  class="block bg-white rounded-full origin-center"
+                  style="
+                    width: 32px;
+                    height: 2px;
+                    transition: transform 0.4s ease;
+                  "
+                ></span>
+                <span
+                  id="line2"
+                  class="block bg-white rounded-full origin-center"
+                  style="
+                    width: 32px;
+                    height: 2px;
+                    transition: transform 0.4s ease;
+                  "
+                ></span>
+              </button>
 
-    // Hide navbar smoothly on scroll down (similar to Two Good Co)
-    if (window.scrollY > lastScrollY && window.scrollY > 150 && !isMenuOpen) {
-      navbar.style.transform = 'translateY(-100%)';
-    } else {
-      navbar.style.transform = 'translateY(0)';
-    }
-    lastScrollY = window.scrollY;
-  });
-</script>
-<main class="flex flex-col">
-<section class="relative w-full px-6 md:px-20 py-20 lg:py-32 flex flex-col lg:flex-row items-center gap-16 overflow-hidden">
-<div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-primary/5 to-transparent pointer-events-none"></div>
-<div class="relative z-10 flex flex-col gap-8 lg:w-1/2">
-<div class="space-y-4">
-<span class="text-primary font-semibold tracking-[0.4em] uppercase text-xs">A Sanctuary for Movement</span>
-<h1 class="text-white text-6xl md:text-8xl font-light serif-text leading-tight">
-                                The <span class="italic">Container</span>
-</h1>
-</div>
-<div class="flex flex-col gap-6 max-w-xl">
-<p class="text-slate-400 text-lg md:text-xl font-light leading-relaxed">
-                                Touch and Move is a sanctuary for those navigating the complexities of the human experience through movement and somatic awareness. A space for deep inquiry and somatic release.
-                            </p>
-</div>
-<div class="flex flex-col sm:flex-row gap-4 pt-4">
-<button class="bg-primary text-white px-10 py-5 text-sm font-bold uppercase tracking-widest hover:bg-primary/90 transition-all flex items-center justify-center gap-3">
-                                Explore the Work
-                                <span class="material-symbols-outlined text-sm">arrow_forward</span>
-</button>
-</div>
-</div>
-<div class="lg:w-1/2 w-full">
-<div class="relative aspect-[4/5] w-full max-w-xl mx-auto overflow-hidden shadow-2xl group">
-<div class="absolute inset-0 bg-charcoal-deep/20 mix-blend-overlay z-10"></div>
-<div class="w-full h-full bg-center bg-cover transform transition-transform duration-700 group-hover:scale-105" data-alt="Peaceful person in a moody somatic movement pose" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBU720HOXPR_eZZ36iG5VeZxkFVfLU_bjGNtEMPaF5YRNySWLi_lYCw0xMgXBwRbc3eJzVh7GDYeqN6Ezu3TIYGxTt2gNe8lUMLkVuMbzzDZ2Z2xaiq72vc-ZbtGYRwUWMsxdM07iOw0q0C4fxWMCTk4Hdl_u4PAciOfmIJRGtTEmpBBx-sfFh0lAK8bxby7nou_23Dv-IJJO3Xp_ydK5zAfDQhXDP7maL1CWdfl30KCgp1PqAnAAP8pCKbIT08hCQWtEJeWB1bNWDT");'>
-</div>
-<div class="absolute bottom-0 left-0 p-8 z-20">
-<p class="text-white/40 text-xs tracking-widest uppercase">Movement as Medicine</p>
-</div>
-</div>
-</div>
-</section>
-<!-- Redesigned Core Audience Section -->
-<section class="px-6 md:px-20 py-32 bg-charcoal-deep relative overflow-hidden">
-<div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
-<div class="flex flex-col md:flex-row md:items-end justify-between mb-24 gap-8">
-<div class="space-y-4">
-<span class="text-primary font-semibold tracking-[0.4em] uppercase text-[10px]">Your Somatic Path</span>
-<h2 class="text-white text-5xl md:text-6xl font-light serif-text leading-tight">Core <span class="italic text-glow">Audience</span></h2>
-</div>
-<div class="md:max-w-md">
-<p class="text-slate-500 text-sm leading-relaxed tracking-wide">We specialize in facilitating profound shifts for individuals ready to engage with their internal landscape as a source of wisdom and healing.</p>
-</div>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-16 lg:gap-24">
-<!-- Seekers of Clarity -->
-<div class="flex flex-col group relative">
-<div class="relative mb-10">
-<div class="aspect-[4/5] overflow-hidden grayscale hover:grayscale-0 transition-all duration-1000 shadow-[20px_20px_60px_rgba(0,0,0,0.5)] border border-white/5">
-<div class="w-full h-full bg-center bg-cover transform group-hover:scale-105 transition-transform duration-[2000ms]" data-alt="Person standing at a misty, high-contrast forest crossroads" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBBhSxkAU5z1eWndoh4ov1zD3HFBixExAoa5XZqeUVHEqMJcqcJDk-n5R5ZHoFDHdm_YAvnJnX06Vs0Zm6wx9huCc6cfal9dsqVPaffjS8T9mWUOYKCDHg6J-JLAOLbl9T41BGfp7o0wnbT5ctRgA7a7vMXLMxClt4K8FvRDXm_vcuYI_5Mp_6Oq6yd_G_ZNFBg602QmNKe97Kin8RhOW2n6tzvI_dX6z1zb5vR11Q6oR3NRJ0E1gDido-6M23bxt4WJecdZBlh5QH9");'></div>
-</div>
-<div class="absolute -bottom-4 -left-4 w-12 h-12 border-l-2 border-b-2 border-primary/40 group-hover:border-primary transition-colors duration-500"></div>
-<span class="absolute top-4 right-4 text-white/20 text-4xl font-light serif-text italic">01</span>
-</div>
-<div class="space-y-4">
-<h3 class="text-white text-2xl font-light serif-text tracking-tight group-hover:text-primary transition-colors duration-500">Seekers of Clarity</h3>
-<div class="w-8 h-px bg-primary/40 group-hover:w-16 transition-all duration-500"></div>
-<p class="text-slate-400 text-sm leading-relaxed tracking-wide font-light">For those at a crossroads, navigating life's major transitions and searching for an authentic path forward.</p>
-</div>
-</div>
-<!-- Emotional Resilience -->
-<div class="flex flex-col group relative md:translate-y-12">
-<div class="relative mb-10">
-<div class="aspect-[4/5] overflow-hidden grayscale hover:grayscale-0 transition-all duration-1000 shadow-[20px_20px_60px_rgba(0,0,0,0.5)] border border-white/5">
-<div class="w-full h-full bg-center bg-cover transform group-hover:scale-105 transition-transform duration-[2000ms]" data-alt="Detail of gentle hands submerged in calm dark water, reflecting balance" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBqiwyuGstuHgrwDgIAQfFyABMr9rYNSiTphrMCtEa8KITV7-15dx37_T8qUPiM7as_kDeC41-6PXsB2_biNBZb3mDvQHxCe6o3ra3LBfykcZMIKf29_j_V2pSEX8qpjTr5P8vmeI_PoB0LzMaWrPX7lGeUAqgXACkjA1kpSn1XWLNbr_fODYTdQ606kdG0PgHk9bkJFpMNX8zT6OL8suVDSHteWXdmlP-BN6NfQTTqAV7h8U9Jcr0naM9GPG4dwqq5ksmmZONPdXR_");'></div>
-</div>
-<div class="absolute -bottom-4 -left-4 w-12 h-12 border-l-2 border-b-2 border-primary/40 group-hover:border-primary transition-colors duration-500"></div>
-<span class="absolute top-4 right-4 text-white/20 text-4xl font-light serif-text italic">02</span>
-</div>
-<div class="space-y-4">
-<h3 class="text-white text-2xl font-light serif-text tracking-tight group-hover:text-primary transition-colors duration-500">Emotional Resilience</h3>
-<div class="w-8 h-px bg-primary/40 group-hover:w-16 transition-all duration-500"></div>
-<p class="text-slate-400 text-sm leading-relaxed tracking-wide font-light">Gentle support for processing emotional blocks, chronic stress, and building a compassionate relationship with self.</p>
-</div>
-</div>
-<!-- The Creatives & Leaders -->
-<div class="flex flex-col group relative">
-<div class="relative mb-10">
-<div class="aspect-[4/5] overflow-hidden grayscale hover:grayscale-0 transition-all duration-1000 shadow-[20px_20px_60px_rgba(0,0,0,0.5)] border border-white/5">
-<div class="w-full h-full bg-center bg-cover transform group-hover:scale-105 transition-transform duration-[2000ms]" data-alt="Minimalist architectural space with dramatic lighting, representing leadership and vision" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCZOZJbRYtUEqmyQZwDdxS8YJRWrlsrPJseH53P1c--rlm0mTFlEeX_JO6wZUaWi-VYOXxOfmsMbZn0lccKcImxF14RHIltFoV1qJG325ehm2bnKHII4-Eu_kfudJoul1asUUYXifUvNoQ_7L9LW-S0w6iNWWs_RuVUsqcLapSym5ZZmXR7VvG-5X7Xcw57PBlgxiVj9SaTGoNaBuEKIEqrbvNAG5nM5_2DP2wJnJJrNnDtcbSDmOtx5TA_mKbZSj_ks84kRQehurtm");'></div>
-</div>
-<div class="absolute -bottom-4 -left-4 w-12 h-12 border-l-2 border-b-2 border-primary/40 group-hover:border-primary transition-colors duration-500"></div>
-<span class="absolute top-4 right-4 text-white/20 text-4xl font-light serif-text italic">03</span>
-</div>
-<div class="space-y-4">
-<h3 class="text-white text-2xl font-light serif-text tracking-tight group-hover:text-primary transition-colors duration-500">The Creatives &amp; Leaders</h3>
-<div class="w-8 h-px bg-primary/40 group-hover:w-16 transition-all duration-500"></div>
-<p class="text-slate-400 text-sm leading-relaxed tracking-wide font-light">Empowering entrepreneurs and artists to deepen intuition and lead from a place of somatic grounding and embodied vision.</p>
-</div>
-</div>
-</div>
-</section>
-<section class="px-6 md:px-20 py-24 flex flex-col md:flex-row items-center gap-16">
-<div class="md:w-1/2">
-<h3 class="text-white text-3xl md:text-4xl font-light serif-text mb-12 leading-snug">
-                            You may find this work <br/>
-<span class="italic text-primary">supportive</span> if you are...
-                        </h3>
-<div class="grid grid-cols-1 gap-8">
-<div class="flex items-start gap-4">
-<span class="material-symbols-outlined text-primary mt-1">check_circle</span>
-<p class="text-slate-300 text-base font-light">Navigating a significant life transition or period of uncertainty.</p>
-</div>
-<div class="flex items-start gap-4">
-<span class="material-symbols-outlined text-primary mt-1">check_circle</span>
-<p class="text-slate-300 text-base font-light">Seeking to release stored tension or chronic physical discomfort.</p>
-</div>
-<div class="flex items-start gap-4">
-<span class="material-symbols-outlined text-primary mt-1">check_circle</span>
-<p class="text-slate-300 text-base font-light">Looking for deeper connection between your body and intuition.</p>
-</div>
-<div class="flex items-start gap-4">
-<span class="material-symbols-outlined text-primary mt-1">check_circle</span>
-<p class="text-slate-300 text-base font-light">Ready to explore emotional depths in a safe, held container.</p>
-</div>
-<div class="flex items-start gap-4">
-<span class="material-symbols-outlined text-primary mt-1">check_circle</span>
-<p class="text-slate-300 text-base font-light">An artist or leader feeling disconnected from your creative source.</p>
-</div>
-<div class="flex items-start gap-4">
-<span class="material-symbols-outlined text-primary mt-1">check_circle</span>
-<p class="text-slate-300 text-base font-light">Seeking high-level therapeutic movement and somatic mentorship.</p>
-</div>
-</div>
-</div>
-<div class="md:w-1/2 w-full relative">
-<div class="absolute -top-4 -left-4 w-24 h-24 border-t border-l border-primary/40"></div>
-<div class="bg-primary/5 p-12 backdrop-blur-sm border border-white/5 text-center space-y-8">
-<h4 class="text-white text-3xl font-light serif-text italic">Start Your Journey Today</h4>
-<p class="text-slate-400 text-sm max-w-xs mx-auto">Free 15-minute consultation available for new seekers to explore if this path resonates.</p>
-<button class="w-full bg-primary text-white py-5 px-8 font-bold uppercase tracking-[0.2em] hover:bg-white hover:text-charcoal transition-all duration-500">
-                                Book Consultation
-                            </button>
-<p class="text-white/20 text-[10px] uppercase tracking-widest pt-4">Inquiry ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ Somatic ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ Release</p>
-</div>
-<div class="absolute -bottom-4 -right-4 w-24 h-24 border-b border-r border-primary/40"></div>
-</div>
-</section>
-</main>
-      <!-- Footer -->
-      <footer class="bg-black border-t border-white/5 py-24 md:py-28">
+              <!-- Book Now Button -->
+              <a
+                href="contact.html"
+                class="inline-block text-white uppercase font-semibold hover:opacity-80 transition-all z-50 relative"
+                style="
+                  background-color: #a30000;
+                  padding: 10px 24px;
+                  font-size: 10px;
+                  letter-spacing: 2px;
+                "
+              >
+                Book Now
+              </a>
+            </div>
+          </div>
+        </header>
+
+        <!-- Mobile Menu -->
+        <div
+          id="mobileMenu"
+          class="hidden"
+          style="
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(16px);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9998;
+            transition: transform 0.6s cubic-bezier(0.76, 0, 0.24, 1);
+            transform: translateY(-100%);
+          "
+        >
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              gap: 32px;
+              text-align: center;
+            "
+          >
+            <a
+              href="index.html"
+              class="text-white/90 hover:text-white transition uppercase tracking-widest hover:scale-105 duration-200"
+              style="font-size: 22px"
+              >Home</a
+            >
+            <a
+              href="about.html"
+              class="text-white/90 hover:text-white transition uppercase tracking-widest hover:scale-105 duration-200"
+              style="font-size: 22px"
+              >Our Journey</a
+            >
+            <a
+              href="services.html"
+              class="text-white/90 hover:text-white transition uppercase tracking-widest hover:scale-105 duration-200"
+              style="font-size: 22px"
+              >Guidance & Services</a
+            >
+            <a
+              href="why-clients-work-with-us.html"
+              class="text-white/90 hover:text-white transition uppercase tracking-widest hover:scale-105 duration-200"
+              style="font-size: 22px"
+              >Tarot with Harshaa</a
+            >
+            <a
+              href="Aproch.html"
+              class="text-white/90 hover:text-white transition uppercase tracking-widest hover:scale-105 duration-200"
+              style="font-size: 22px"
+              >Our Approach & Philosophy</a
+            >
+
+            <a
+              href="our-Aproch.html"
+              class="text-white/90 hover:text-white transition uppercase tracking-widest hover:scale-105 duration-200"
+              style="font-size: 22px"
+              >Who This Work Is For</a
+            >
+            <a
+              href="client-intake.html"
+              class="text-white/90 hover:text-white transition uppercase tracking-widest hover:scale-105 duration-200"
+              style="font-size: 22px"
+              >Client Intake Form</a
+            >
+            <a
+              href="contact.html"
+              class="px-10 py-5 text-center mt-6 rounded-lg bg-primary text-white hover:bg-white/10 transition uppercase tracking-widest hover:scale-105 duration-200 border border-white/40"
+              style="font-size: 16px; margin-top: 24px; font-weight: 600"
+              >Contact</a
+            >
+          </div>
+        </div>
+
+        <script>
+          // Mobile menu toggle
+          const menuToggle = document.getElementById("menuToggle");
+          const mobileMenu = document.getElementById("mobileMenu");
+          let isMenuOpen = false;
+
+          const line1 = document.getElementById("line1");
+          const line2 = document.getElementById("line2");
+
+          menuToggle.addEventListener("click", () => {
+            isMenuOpen = !isMenuOpen;
+            if (isMenuOpen) {
+              mobileMenu.classList.remove("hidden");
+              mobileMenu.style.display = "flex";
+              setTimeout(() => {
+                mobileMenu.style.transform = "translateY(0)";
+                if (line1 && line2) {
+                  line1.style.transform = "translateY(5px) rotate(45deg)";
+                  line2.style.transform = "translateY(-5px) rotate(-45deg)";
+                }
+              }, 10);
+            } else {
+              mobileMenu.style.transform = "translateY(-100%)";
+              if (line1 && line2) {
+                line1.style.transform = "translateY(0) rotate(0)";
+                line2.style.transform = "translateY(0) rotate(0)";
+              }
+              setTimeout(() => {
+                mobileMenu.classList.add("hidden");
+                mobileMenu.style.display = "none";
+              }, 500);
+            }
+          });
+
+          // Scroll effect for navbar
+          let lastScrollY = window.scrollY;
+          window.addEventListener("scroll", () => {
+            const navbar = document.getElementById("navbar");
+
+            // Background blur and shadow toggle
+            if (window.scrollY > 50) {
+              navbar.classList.add(
+                "bg-black/80",
+                "shadow-2xl",
+                "backdrop-blur-xl",
+              );
+              navbar.classList.remove("bg-black/40", "backdrop-blur-md");
+            } else {
+              navbar.classList.remove(
+                "bg-black/80",
+                "shadow-2xl",
+                "backdrop-blur-xl",
+              );
+              navbar.classList.add("bg-black/40", "backdrop-blur-md");
+            }
+
+            // Hide navbar smoothly on scroll down (similar to Two Good Co)
+            if (
+              window.scrollY > lastScrollY &&
+              window.scrollY > 150 &&
+              !isMenuOpen
+            ) {
+              navbar.style.transform = "translateY(-100%)";
+            } else {
+              navbar.style.transform = "translateY(0)";
+            }
+            lastScrollY = window.scrollY;
+          });
+        </script>
+        <main class="flex flex-col">
+          <section
+            class="relative w-full px-6 md:px-20 py-20 lg:py-32 flex flex-col lg:flex-row items-center gap-16 overflow-hidden"
+          >
+            <div
+              class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-primary/5 to-transparent pointer-events-none"
+            ></div>
+            <div class="relative z-10 flex flex-col gap-8 lg:w-1/2">
+              <div class="space-y-4">
+                <span
+                  class="text-primary font-semibold tracking-[0.4em] uppercase text-xs"
+                  >A Sanctuary for Movement</span
+                >
+                <h1
+                  class="text-white text-6xl md:text-8xl font-light serif-text leading-tight"
+                >
+                  The <span class="italic">Container</span>
+                </h1>
+              </div>
+              <div class="flex flex-col gap-6 max-w-xl">
+                <p
+                  class="text-slate-400 text-lg md:text-xl font-light leading-relaxed"
+                >
+                  Touch and Move is a sanctuary for those navigating the
+                  complexities of the human experience through movement and
+                  somatic awareness. A space for deep inquiry and somatic
+                  release.
+                </p>
+              </div>
+              <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                <a
+                  href="services.html"
+                  class="bg-primary text-white px-10 py-5 text-sm font-bold uppercase tracking-widest hover:bg-primary/90 transition-all flex items-center justify-center gap-3"
+                >
+                  Explore the Work
+                  <span class="material-symbols-outlined text-sm"
+                    >arrow_forward</span
+                  >
+                </a>
+              </div>
+            </div>
+            <div class="lg:w-1/2 w-full">
+              <div
+                class="relative aspect-[4/5] w-full max-w-xl mx-auto overflow-hidden shadow-2xl group"
+              >
+                <div
+                  class="absolute inset-0 bg-charcoal-deep/20 mix-blend-overlay z-10"
+                ></div>
+                <div
+                  class="w-full h-full bg-center bg-cover transform transition-transform duration-700 group-hover:scale-105"
+                  data-alt="Peaceful person in a moody somatic movement pose"
+                  style="
+                    background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuBU720HOXPR_eZZ36iG5VeZxkFVfLU_bjGNtEMPaF5YRNySWLi_lYCw0xMgXBwRbc3eJzVh7GDYeqN6Ezu3TIYGxTt2gNe8lUMLkVuMbzzDZ2Z2xaiq72vc-ZbtGYRwUWMsxdM07iOw0q0C4fxWMCTk4Hdl_u4PAciOfmIJRGtTEmpBBx-sfFh0lAK8bxby7nou_23Dv-IJJO3Xp_ydK5zAfDQhXDP7maL1CWdfl30KCgp1PqAnAAP8pCKbIT08hCQWtEJeWB1bNWDT&quot;);
+                  "
+                ></div>
+                <div class="absolute bottom-0 left-0 p-8 z-20">
+                  <p class="text-white/40 text-xs tracking-widest uppercase">
+                    Movement as Medicine
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- Redesigned Core Audience Section -->
+          <section
+            class="px-6 md:px-20 py-32 bg-charcoal-deep relative overflow-hidden"
+          >
+            <div
+              class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"
+            ></div>
+            <div
+              class="flex flex-col md:flex-row md:items-end justify-between mb-24 gap-8"
+            >
+              <div class="space-y-4">
+                <span
+                  class="text-primary font-semibold tracking-[0.4em] uppercase text-[10px]"
+                  >Your Somatic Path</span
+                >
+                <h2
+                  class="text-white text-5xl md:text-6xl font-light serif-text leading-tight"
+                >
+                  Core <span class="italic text-glow">Audience</span>
+                </h2>
+              </div>
+              <div class="md:max-w-md">
+                <p class="text-slate-500 text-sm leading-relaxed tracking-wide">
+                  We specialize in facilitating profound shifts for individuals
+                  ready to engage with their internal landscape as a source of
+                  wisdom and healing.
+                </p>
+              </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-16 lg:gap-24">
+              <!-- Seekers of Clarity -->
+              <div class="flex flex-col group relative">
+                <div class="relative mb-10">
+                  <div
+                    class="aspect-[4/5] overflow-hidden grayscale hover:grayscale-0 transition-all duration-1000 shadow-[20px_20px_60px_rgba(0,0,0,0.5)] border border-white/5"
+                  >
+                    <div
+                      class="w-full h-full bg-center bg-cover transform group-hover:scale-105 transition-transform duration-[2000ms]"
+                      data-alt="Person standing at a misty, high-contrast forest crossroads"
+                      style="
+                        background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuBBhSxkAU5z1eWndoh4ov1zD3HFBixExAoa5XZqeUVHEqMJcqcJDk-n5R5ZHoFDHdm_YAvnJnX06Vs0Zm6wx9huCc6cfal9dsqVPaffjS8T9mWUOYKCDHg6J-JLAOLbl9T41BGfp7o0wnbT5ctRgA7a7vMXLMxClt4K8FvRDXm_vcuYI_5Mp_6Oq6yd_G_ZNFBg602QmNKe97Kin8RhOW2n6tzvI_dX6z1zb5vR11Q6oR3NRJ0E1gDido-6M23bxt4WJecdZBlh5QH9&quot;);
+                      "
+                    ></div>
+                  </div>
+                  <div
+                    class="absolute -bottom-4 -left-4 w-12 h-12 border-l-2 border-b-2 border-primary/40 group-hover:border-primary transition-colors duration-500"
+                  ></div>
+                  <span
+                    class="absolute top-4 right-4 text-white/20 text-4xl font-light serif-text italic"
+                    >01</span
+                  >
+                </div>
+                <div class="space-y-4">
+                  <h3
+                    class="text-white text-2xl font-light serif-text tracking-tight group-hover:text-primary transition-colors duration-500"
+                  >
+                    Seekers of Clarity
+                  </h3>
+                  <div
+                    class="w-8 h-px bg-primary/40 group-hover:w-16 transition-all duration-500"
+                  ></div>
+                  <p
+                    class="text-slate-400 text-sm leading-relaxed tracking-wide font-light"
+                  >
+                    For those at a crossroads, navigating life's major
+                    transitions and searching for an authentic path forward.
+                  </p>
+                </div>
+              </div>
+              <!-- Emotional Resilience -->
+              <div class="flex flex-col group relative md:translate-y-12">
+                <div class="relative mb-10">
+                  <div
+                    class="aspect-[4/5] overflow-hidden grayscale hover:grayscale-0 transition-all duration-1000 shadow-[20px_20px_60px_rgba(0,0,0,0.5)] border border-white/5"
+                  >
+                    <div
+                      class="w-full h-full bg-center bg-cover transform group-hover:scale-105 transition-transform duration-[2000ms]"
+                      data-alt="Detail of gentle hands submerged in calm dark water, reflecting balance"
+                      style="
+                        background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuBqiwyuGstuHgrwDgIAQfFyABMr9rYNSiTphrMCtEa8KITV7-15dx37_T8qUPiM7as_kDeC41-6PXsB2_biNBZb3mDvQHxCe6o3ra3LBfykcZMIKf29_j_V2pSEX8qpjTr5P8vmeI_PoB0LzMaWrPX7lGeUAqgXACkjA1kpSn1XWLNbr_fODYTdQ606kdG0PgHk9bkJFpMNX8zT6OL8suVDSHteWXdmlP-BN6NfQTTqAV7h8U9Jcr0naM9GPG4dwqq5ksmmZONPdXR_&quot;);
+                      "
+                    ></div>
+                  </div>
+                  <div
+                    class="absolute -bottom-4 -left-4 w-12 h-12 border-l-2 border-b-2 border-primary/40 group-hover:border-primary transition-colors duration-500"
+                  ></div>
+                  <span
+                    class="absolute top-4 right-4 text-white/20 text-4xl font-light serif-text italic"
+                    >02</span
+                  >
+                </div>
+                <div class="space-y-4">
+                  <h3
+                    class="text-white text-2xl font-light serif-text tracking-tight group-hover:text-primary transition-colors duration-500"
+                  >
+                    Emotional Resilience
+                  </h3>
+                  <div
+                    class="w-8 h-px bg-primary/40 group-hover:w-16 transition-all duration-500"
+                  ></div>
+                  <p
+                    class="text-slate-400 text-sm leading-relaxed tracking-wide font-light"
+                  >
+                    Gentle support for processing emotional blocks, chronic
+                    stress, and building a compassionate relationship with self.
+                  </p>
+                </div>
+              </div>
+              <!-- The Creatives & Leaders -->
+              <div class="flex flex-col group relative">
+                <div class="relative mb-10">
+                  <div
+                    class="aspect-[4/5] overflow-hidden grayscale hover:grayscale-0 transition-all duration-1000 shadow-[20px_20px_60px_rgba(0,0,0,0.5)] border border-white/5"
+                  >
+                    <div
+                      class="w-full h-full bg-center bg-cover transform group-hover:scale-105 transition-transform duration-[2000ms]"
+                      data-alt="Minimalist architectural space with dramatic lighting, representing leadership and vision"
+                      style="
+                        background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuCZOZJbRYtUEqmyQZwDdxS8YJRWrlsrPJseH53P1c--rlm0mTFlEeX_JO6wZUaWi-VYOXxOfmsMbZn0lccKcImxF14RHIltFoV1qJG325ehm2bnKHII4-Eu_kfudJoul1asUUYXifUvNoQ_7L9LW-S0w6iNWWs_RuVUsqcLapSym5ZZmXR7VvG-5X7Xcw57PBlgxiVj9SaTGoNaBuEKIEqrbvNAG5nM5_2DP2wJnJJrNnDtcbSDmOtx5TA_mKbZSj_ks84kRQehurtm&quot;);
+                      "
+                    ></div>
+                  </div>
+                  <div
+                    class="absolute -bottom-4 -left-4 w-12 h-12 border-l-2 border-b-2 border-primary/40 group-hover:border-primary transition-colors duration-500"
+                  ></div>
+                  <span
+                    class="absolute top-4 right-4 text-white/20 text-4xl font-light serif-text italic"
+                    >03</span
+                  >
+                </div>
+                <div class="space-y-4">
+                  <h3
+                    class="text-white text-2xl font-light serif-text tracking-tight group-hover:text-primary transition-colors duration-500"
+                  >
+                    The Creatives &amp; Leaders
+                  </h3>
+                  <div
+                    class="w-8 h-px bg-primary/40 group-hover:w-16 transition-all duration-500"
+                  ></div>
+                  <p
+                    class="text-slate-400 text-sm leading-relaxed tracking-wide font-light"
+                  >
+                    Empowering entrepreneurs and artists to deepen intuition and
+                    lead from a place of somatic grounding and embodied vision.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section
+            class="px-6 md:px-20 py-24 flex flex-col md:flex-row items-center gap-16"
+          >
+            <div class="md:w-1/2">
+              <h3
+                class="text-white text-3xl md:text-4xl font-light serif-text mb-12 leading-snug"
+              >
+                You may find this work <br />
+                <span class="italic text-primary">supportive</span> if you
+                are...
+              </h3>
+              <div class="grid grid-cols-1 gap-8">
+                <div class="flex items-start gap-4">
+                  <span class="material-symbols-outlined text-primary mt-1"
+                    >check_circle</span
+                  >
+                  <p class="text-slate-300 text-base font-light">
+                    Navigating a significant life transition or period of
+                    uncertainty.
+                  </p>
+                </div>
+                <div class="flex items-start gap-4">
+                  <span class="material-symbols-outlined text-primary mt-1"
+                    >check_circle</span
+                  >
+                  <p class="text-slate-300 text-base font-light">
+                    Seeking to release stored tension or chronic physical
+                    discomfort.
+                  </p>
+                </div>
+                <div class="flex items-start gap-4">
+                  <span class="material-symbols-outlined text-primary mt-1"
+                    >check_circle</span
+                  >
+                  <p class="text-slate-300 text-base font-light">
+                    Looking for deeper connection between your body and
+                    intuition.
+                  </p>
+                </div>
+                <div class="flex items-start gap-4">
+                  <span class="material-symbols-outlined text-primary mt-1"
+                    >check_circle</span
+                  >
+                  <p class="text-slate-300 text-base font-light">
+                    Ready to explore emotional depths in a safe, held container.
+                  </p>
+                </div>
+                <div class="flex items-start gap-4">
+                  <span class="material-symbols-outlined text-primary mt-1"
+                    >check_circle</span
+                  >
+                  <p class="text-slate-300 text-base font-light">
+                    An artist or leader feeling disconnected from your creative
+                    source.
+                  </p>
+                </div>
+                <div class="flex items-start gap-4">
+                  <span class="material-symbols-outlined text-primary mt-1"
+                    >check_circle</span
+                  >
+                  <p class="text-slate-300 text-base font-light">
+                    Seeking high-level therapeutic movement and somatic
+                    mentorship.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="md:w-1/2 w-full relative">
+              <div
+                class="absolute -top-4 -left-4 w-24 h-24 border-t border-l border-primary/40"
+              ></div>
+              <div
+                class="bg-primary/5 p-12 backdrop-blur-sm border border-white/5 text-center space-y-8"
+              >
+                <h4 class="text-white text-3xl font-light serif-text italic">
+                  Start Your Journey Today
+                </h4>
+                <p class="text-slate-400 text-sm max-w-xs mx-auto">
+                  Free 15-minute consultation available for new seekers to
+                  explore if this path resonates.
+                </p>
+                <a
+                  href="client-intake.html"
+                  class="w-full bg-primary text-white py-5 px-8 font-bold uppercase tracking-[0.2em] hover:bg-white hover:text-charcoal transition-all duration-500 block text-center"
+                >
+                  Book Consultation
+                </a>
+                <p
+                  class="text-white/20 text-[10px] uppercase tracking-widest pt-4"
+                >
+                  Inquiry
+                  ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢
+                  Somatic
+                  ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢
+                  Release
+                </p>
+              </div>
+              <div
+                class="absolute -bottom-4 -right-4 w-24 h-24 border-b border-r border-primary/40"
+              ></div>
+            </div>
+          </section>
+        </main>
+        <!-- Footer -->
+        <footer class="bg-black border-t border-white/5 py-24 md:py-28">
           <div class="max-w-7xl mx-auto px-6">
             <div
               class="grid md:grid-cols-12 gap-14 md:gap-16 mb-20 items-start"
@@ -316,7 +648,9 @@
                 >
                   Pages
                 </h4>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-16 gap-y-3 max-w-2xl">
+                <div
+                  class="grid grid-cols-1 sm:grid-cols-2 gap-x-16 gap-y-3 max-w-2xl"
+                >
                   <div class="space-y-3">
                     <a
                       class="block py-1 text-slate-300 hover:text-white transition-colors text-sm"
@@ -333,7 +667,7 @@
                       href="why-clients-work-with-us.html"
                       >Tarot with Harshaa</a
                     >
-                    
+
                     <a
                       class="block py-1 text-slate-300 hover:text-white transition-colors text-sm"
                       href="our-Aproch.html"
@@ -356,7 +690,7 @@
                       href="Aproch.html"
                       >Approach &amp; Philosophy</a
                     >
-                    
+
                     <a
                       class="block py-1 text-slate-300 hover:text-white transition-colors text-sm"
                       href="client-intake.html"
@@ -394,35 +728,128 @@
                   </li>
                   <li>Online (Worldwide) | In-person (Pune, India)</li>
                 </ul>
-            <div class="flex items-center gap-4 pt-2">
-              <a
-                class="inline-flex items-center justify-center rounded-full border border-white/10 text-white transition-all hover:border-primary hover:text-white" style="width: 44px; height: 44px; flex-shrink: 0; display: inline-flex; align-items: center; justify-content: center; line-height: 0; background: linear-gradient(135deg, #050505 0%, #1a0505 52%, #4a0000 100%);"
-                href="https://wa.me/919511246401"
-                aria-label="WhatsApp"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <svg viewBox="0 0 24 24" class="fill-current" style="width: 20px; height: 20px; display: block; color: #ffffff; flex-shrink: 0;" aria-hidden="true">
-                  <path fill="#ffffff" d="M19.05 4.91A9.82 9.82 0 0 0 12.06 2C6.65 2 2.25 6.4 2.25 11.81c0 1.73.45 3.42 1.31 4.91L2 22l5.43-1.5a9.73 9.73 0 0 0 4.63 1.18h.01c5.41 0 9.81-4.4 9.81-9.81 0-2.62-1.02-5.08-2.83-6.96ZM12.07 20a8.1 8.1 0 0 1-4.13-1.13l-.3-.18-3.22.89.86-3.14-.2-.32a8.12 8.12 0 0 1-1.24-4.31 8.23 8.23 0 0 1 8.22-8.22 8.14 8.14 0 0 1 5.83 2.42 8.16 8.16 0 0 1 2.39 5.8A8.23 8.23 0 0 1 12.07 20Zm4.5-6.12c-.25-.12-1.47-.72-1.7-.8-.22-.08-.39-.12-.55.12-.16.25-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-2-1.25-.74-.66-1.24-1.48-1.39-1.73-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.16.04-.31-.02-.43-.06-.12-.55-1.33-.76-1.82-.2-.48-.4-.41-.55-.42l-.47-.01c-.16 0-.43.06-.66.31-.22.25-.85.83-.85 2.02 0 1.19.87 2.33.99 2.49.12.16 1.7 2.59 4.11 3.63.57.25 1.02.4 1.37.51.58.18 1.1.15 1.51.09.46-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.05-.1-.21-.16-.45-.27Z"/>
-                </svg>
-              </a>
-              <a
-                class="inline-flex items-center justify-center rounded-full border border-white/10 text-white transition-all hover:border-primary hover:text-white" style="width: 44px; height: 44px; flex-shrink: 0; display: inline-flex; align-items: center; justify-content: center; line-height: 0; background: linear-gradient(135deg, #050505 0%, #1a0505 52%, #4a0000 100%);"
-                href="https://www.facebook.com/touchandmove" aria-label="Facebook" target="_blank" rel="noopener noreferrer"
-              >
-                <svg viewBox="0 0 24 24" class="fill-current" style="width: 20px; height: 20px; display: block; color: #ffffff; flex-shrink: 0;" aria-hidden="true">
-                  <path fill="#ffffff" d="M13.5 21v-7h2.35l.35-2.73H13.5V9.53c0-.79.22-1.33 1.35-1.33h1.44V5.78c-.25-.03-1.1-.1-2.08-.1-2.06 0-3.46 1.25-3.46 3.56v2.03H8.5V14h2.25v7h2.75Z"/>
-                </svg>
-              </a>
-              <a
-                class="inline-flex items-center justify-center rounded-full border border-white/10 text-white transition-all hover:border-primary hover:text-white" style="width: 44px; height: 44px; flex-shrink: 0; display: inline-flex; align-items: center; justify-content: center; line-height: 0; background: linear-gradient(135deg, #050505 0%, #1a0505 52%, #4a0000 100%);"
-                href="https://www.instagram.com/touchandmove" aria-label="Instagram" target="_blank" rel="noopener noreferrer"
-              >
-                <svg viewBox="0 0 24 24" class="fill-current" style="width: 20px; height: 20px; display: block; color: #ffffff; flex-shrink: 0;" aria-hidden="true">
-                  <path fill="#ffffff" d="M7.75 2h8.5A5.76 5.76 0 0 1 22 7.75v8.5A5.76 5.76 0 0 1 16.25 22h-8.5A5.76 5.76 0 0 1 2 16.25v-8.5A5.76 5.76 0 0 1 7.75 2Zm-.18 1.94A3.63 3.63 0 0 0 3.94 7.57v8.86a3.63 3.63 0 0 0 3.63 3.63h8.86a3.63 3.63 0 0 0 3.63-3.63V7.57a3.63 3.63 0 0 0-3.63-3.63H7.57Zm9.36 1.45a1.3 1.3 0 1 1 0 2.6 1.3 1.3 0 0 1 0-2.6ZM12 7.23A4.77 4.77 0 1 1 7.23 12 4.77 4.77 0 0 1 12 7.23Zm0 1.94A2.83 2.83 0 1 0 14.83 12 2.83 2.83 0 0 0 12 9.17Z"/>
-                </svg>
-              </a>
-            </div>
+                <div class="flex items-center gap-4 pt-2">
+                  <a
+                    class="inline-flex items-center justify-center rounded-full border border-white/10 text-white transition-all hover:border-primary hover:text-white"
+                    style="
+                      width: 44px;
+                      height: 44px;
+                      flex-shrink: 0;
+                      display: inline-flex;
+                      align-items: center;
+                      justify-content: center;
+                      line-height: 0;
+                      background: linear-gradient(
+                        135deg,
+                        #050505 0%,
+                        #1a0505 52%,
+                        #4a0000 100%
+                      );
+                    "
+                    href="https://wa.me/919511246401"
+                    aria-label="WhatsApp"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      class="fill-current"
+                      style="
+                        width: 20px;
+                        height: 20px;
+                        display: block;
+                        color: #ffffff;
+                        flex-shrink: 0;
+                      "
+                      aria-hidden="true"
+                    >
+                      <path
+                        fill="#ffffff"
+                        d="M19.05 4.91A9.82 9.82 0 0 0 12.06 2C6.65 2 2.25 6.4 2.25 11.81c0 1.73.45 3.42 1.31 4.91L2 22l5.43-1.5a9.73 9.73 0 0 0 4.63 1.18h.01c5.41 0 9.81-4.4 9.81-9.81 0-2.62-1.02-5.08-2.83-6.96ZM12.07 20a8.1 8.1 0 0 1-4.13-1.13l-.3-.18-3.22.89.86-3.14-.2-.32a8.12 8.12 0 0 1-1.24-4.31 8.23 8.23 0 0 1 8.22-8.22 8.14 8.14 0 0 1 5.83 2.42 8.16 8.16 0 0 1 2.39 5.8A8.23 8.23 0 0 1 12.07 20Zm4.5-6.12c-.25-.12-1.47-.72-1.7-.8-.22-.08-.39-.12-.55.12-.16.25-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-2-1.25-.74-.66-1.24-1.48-1.39-1.73-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.16.04-.31-.02-.43-.06-.12-.55-1.33-.76-1.82-.2-.48-.4-.41-.55-.42l-.47-.01c-.16 0-.43.06-.66.31-.22.25-.85.83-.85 2.02 0 1.19.87 2.33.99 2.49.12.16 1.7 2.59 4.11 3.63.57.25 1.02.4 1.37.51.58.18 1.1.15 1.51.09.46-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.05-.1-.21-.16-.45-.27Z"
+                      />
+                    </svg>
+                  </a>
+                  <a
+                    class="inline-flex items-center justify-center rounded-full border border-white/10 text-white transition-all hover:border-primary hover:text-white"
+                    style="
+                      width: 44px;
+                      height: 44px;
+                      flex-shrink: 0;
+                      display: inline-flex;
+                      align-items: center;
+                      justify-content: center;
+                      line-height: 0;
+                      background: linear-gradient(
+                        135deg,
+                        #050505 0%,
+                        #1a0505 52%,
+                        #4a0000 100%
+                      );
+                    "
+                    href="https://www.facebook.com/touchandmove"
+                    aria-label="Facebook"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      class="fill-current"
+                      style="
+                        width: 20px;
+                        height: 20px;
+                        display: block;
+                        color: #ffffff;
+                        flex-shrink: 0;
+                      "
+                      aria-hidden="true"
+                    >
+                      <path
+                        fill="#ffffff"
+                        d="M13.5 21v-7h2.35l.35-2.73H13.5V9.53c0-.79.22-1.33 1.35-1.33h1.44V5.78c-.25-.03-1.1-.1-2.08-.1-2.06 0-3.46 1.25-3.46 3.56v2.03H8.5V14h2.25v7h2.75Z"
+                      />
+                    </svg>
+                  </a>
+                  <a
+                    class="inline-flex items-center justify-center rounded-full border border-white/10 text-white transition-all hover:border-primary hover:text-white"
+                    style="
+                      width: 44px;
+                      height: 44px;
+                      flex-shrink: 0;
+                      display: inline-flex;
+                      align-items: center;
+                      justify-content: center;
+                      line-height: 0;
+                      background: linear-gradient(
+                        135deg,
+                        #050505 0%,
+                        #1a0505 52%,
+                        #4a0000 100%
+                      );
+                    "
+                    href="https://www.instagram.com/touchandmove"
+                    aria-label="Instagram"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      class="fill-current"
+                      style="
+                        width: 20px;
+                        height: 20px;
+                        display: block;
+                        color: #ffffff;
+                        flex-shrink: 0;
+                      "
+                      aria-hidden="true"
+                    >
+                      <path
+                        fill="#ffffff"
+                        d="M7.75 2h8.5A5.76 5.76 0 0 1 22 7.75v8.5A5.76 5.76 0 0 1 16.25 22h-8.5A5.76 5.76 0 0 1 2 16.25v-8.5A5.76 5.76 0 0 1 7.75 2Zm-.18 1.94A3.63 3.63 0 0 0 3.94 7.57v8.86a3.63 3.63 0 0 0 3.63 3.63h8.86a3.63 3.63 0 0 0 3.63-3.63V7.57a3.63 3.63 0 0 0-3.63-3.63H7.57Zm9.36 1.45a1.3 1.3 0 1 1 0 2.6 1.3 1.3 0 0 1 0-2.6ZM12 7.23A4.77 4.77 0 1 1 7.23 12 4.77 4.77 0 0 1 12 7.23Zm0 1.94A2.83 2.83 0 1 0 14.83 12 2.83 2.83 0 0 0 12 9.17Z"
+                      />
+                    </svg>
+                  </a>
+                </div>
               </div>
             </div>
             <div
@@ -444,24 +871,9 @@
             </div>
           </div>
         </footer>
-</div>
-</div>
-<script src="https://unpkg.com/lenis@1.1.16/dist/lenis.min.js"></script>
-<script src="./assets/js/main.js?v=19"></script>
-</body></html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+      </div>
+    </div>
+    <script src="https://unpkg.com/lenis@1.1.16/dist/lenis.min.js"></script>
+    <script src="./assets/js/main.js?v=19"></script>
+  </body>
+</html>
