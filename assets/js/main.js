@@ -19,7 +19,7 @@
             existing.dataset.loaded = "true";
             resolve();
           },
-          { once: true }
+          { once: true },
         );
         existing.addEventListener("error", reject, { once: true });
         return;
@@ -34,7 +34,7 @@
           script.dataset.loaded = "true";
           resolve();
         },
-        { once: true }
+        { once: true },
       );
       script.addEventListener("error", reject, { once: true });
       document.head.appendChild(script);
@@ -50,10 +50,12 @@
       return gsapLoader;
     }
 
-    gsapLoader = loadScript("https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js")
+    gsapLoader = loadScript(
+      "https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js",
+    )
       .then(function () {
         return loadScript(
-          "https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"
+          "https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js",
         );
       })
       .then(function () {
@@ -69,7 +71,9 @@
   }
 
   function isInsideUiChrome(element) {
-    return !!element.closest("header, footer, #mobileMenu, script, style, noscript");
+    return !!element.closest(
+      "header, footer, #mobileMenu, script, style, noscript",
+    );
   }
 
   function uniqueElements(elements) {
@@ -110,7 +114,11 @@
 
   function isHomePage() {
     var path = (window.location.pathname || "").toLowerCase();
-    return path === "/" || path.endsWith("/index.html") || path.endsWith("\\index.html");
+    return (
+      path === "/" ||
+      path.endsWith("/index.html") ||
+      path.endsWith("\\index.html")
+    );
   }
 
   function isLocalDevelopment() {
@@ -121,17 +129,6 @@
   function initPageLoader() {
     if (!isHomePage()) return;
     if (document.body.dataset.loaderReady === "true") return;
-
-    if (!isLocalDevelopment()) {
-      try {
-        if (window.sessionStorage.getItem("tm-home-loader-shown") === "true") {
-          return;
-        }
-        window.sessionStorage.setItem("tm-home-loader-shown", "true");
-      } catch (error) {
-        // Ignore storage errors and fall back to per-page protection.
-      }
-    }
 
     document.body.dataset.loaderReady = "true";
 
@@ -253,14 +250,16 @@
       "  main [class*='text-9xl'], main [class*='text-8xl'], main [class*='text-7xl'] { font-size: clamp(2.4rem, 12vw, 4rem) !important; }",
       "  main [class*='text-6xl'], main [class*='text-5xl'] { font-size: clamp(1.95rem, 9vw, 3rem) !important; }",
       "  main [class*='h-96'], main [class*='h-80'], main [class*='h-72'], main [class*='h-[500px]'], main [class*='h-[650px]'], main [class*='h-[800px]'] { height: min(72vw, 300px) !important; }",
-      "}"
+      "}",
     ].join("\n");
 
     document.head.appendChild(style);
   }
 
   function initButtonRouting() {
-    var buttons = Array.prototype.slice.call(document.querySelectorAll("button"));
+    var buttons = Array.prototype.slice.call(
+      document.querySelectorAll("button"),
+    );
 
     buttons.forEach(function (button) {
       if (
@@ -299,7 +298,9 @@
     var menuToggle = document.getElementById("menuToggle");
     var line1 = document.getElementById("line1");
     var line2 = document.getElementById("line2");
-    var bookNowLink = controls ? controls.querySelector("a[href='contact.html']") : null;
+    var bookNowLink = controls
+      ? controls.querySelector("a[href='contact.html']")
+      : null;
     var mobileMenu = document.getElementById("mobileMenu");
     var menuInner = mobileMenu ? mobileMenu.firstElementChild : null;
     var menuLinks = mobileMenu
@@ -377,7 +378,11 @@
   }
 
   function initGsapEffects() {
-    if (!window.gsap || !window.ScrollTrigger || document.body.dataset.gsapReady === "true") {
+    if (
+      !window.gsap ||
+      !window.ScrollTrigger ||
+      document.body.dataset.gsapReady === "true"
+    ) {
       return;
     }
 
@@ -387,13 +392,15 @@
     var ScrollTrigger = window.ScrollTrigger;
 
     var textTargets = uniqueElements(
-      Array.prototype.slice.call(
-        document.querySelectorAll(
-          "section h1, section h2, section h3, section h4, section p, section li, section blockquote"
+      Array.prototype.slice
+        .call(
+          document.querySelectorAll(
+            "section h1, section h2, section h3, section h4, section p, section li, section blockquote",
+          ),
         )
-      ).filter(function (element) {
-        return !isInsideUiChrome(element);
-      })
+        .filter(function (element) {
+          return !isInsideUiChrome(element);
+        }),
     );
 
     textTargets.forEach(function (element, index) {
@@ -429,11 +436,11 @@
     });
 
     var imageTargets = uniqueElements(
-      Array.prototype.slice.call(document.querySelectorAll("section img, [data-hero-slider] img")).filter(
-        function (image) {
+      Array.prototype.slice
+        .call(document.querySelectorAll("section img, [data-hero-slider] img"))
+        .filter(function (image) {
           return !isInsideUiChrome(image) && !image.closest("header");
-        }
-      )
+        }),
     );
 
     imageTargets.forEach(function (image) {
@@ -471,11 +478,15 @@
     });
 
     var hoverTargets = uniqueElements(
-      Array.prototype.slice.call(
-        document.querySelectorAll("a, button, section article, section .premium-blur, section [class*='rounded-']")
-      ).filter(function (element) {
-        return !isInsideUiChrome(element);
-      })
+      Array.prototype.slice
+        .call(
+          document.querySelectorAll(
+            "a, button, section article, section .premium-blur, section [class*='rounded-']",
+          ),
+        )
+        .filter(function (element) {
+          return !isInsideUiChrome(element);
+        }),
     );
 
     hoverTargets.forEach(function (element) {
@@ -512,8 +523,12 @@
     var heroSlider = document.querySelector("[data-hero-slider]");
     if (!heroSlider || heroSlider.dataset.sliderReady === "true") return;
 
-    var slides = Array.prototype.slice.call(heroSlider.querySelectorAll("[data-hero-slide]"));
-    var dots = Array.prototype.slice.call(heroSlider.querySelectorAll("[data-hero-dot]"));
+    var slides = Array.prototype.slice.call(
+      heroSlider.querySelectorAll("[data-hero-slide]"),
+    );
+    var dots = Array.prototype.slice.call(
+      heroSlider.querySelectorAll("[data-hero-dot]"),
+    );
     var count = heroSlider.querySelector("[data-hero-slider-count]");
     var nextButton = heroSlider.querySelector("[data-hero-slider-next]");
     var activeIndex = 0;
@@ -599,8 +614,14 @@
     initResponsivePolish();
     initPageLoader();
 
-    if (typeof window !== "undefined" && typeof window.Lenis === "function" && !window.lenis) {
-      var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (
+      typeof window !== "undefined" &&
+      typeof window.Lenis === "function" &&
+      !window.lenis
+    ) {
+      var prefersReducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      ).matches;
 
       if (!prefersReducedMotion) {
         var lenis = new window.Lenis({
@@ -622,7 +643,9 @@
     document.addEventListener("submit", function (e) {
       var form = e.target;
       if (!(form instanceof HTMLFormElement)) return;
-      var submit = form.querySelector("button[type='submit'], input[type='submit']");
+      var submit = form.querySelector(
+        "button[type='submit'], input[type='submit']",
+      );
       if (submit) {
         submit.setAttribute("disabled", "disabled");
         submit.setAttribute("aria-disabled", "true");
@@ -639,11 +662,20 @@
 
       e.preventDefault();
 
-      var prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      if (!prefersReduced && window.lenis && typeof window.lenis.scrollTo === "function") {
+      var prefersReduced = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      ).matches;
+      if (
+        !prefersReduced &&
+        window.lenis &&
+        typeof window.lenis.scrollTo === "function"
+      ) {
         window.lenis.scrollTo(target, { offset: 0 });
       } else {
-        target.scrollIntoView({ behavior: prefersReduced ? "auto" : "smooth", block: "start" });
+        target.scrollIntoView({
+          behavior: prefersReduced ? "auto" : "smooth",
+          block: "start",
+        });
       }
       history.pushState(null, "", hash);
     });
