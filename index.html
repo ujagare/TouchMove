@@ -106,86 +106,11 @@
           transform: translateX(-50%);
         }
       }
-      /* Loader Styles */
-      .loader-container {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          135deg,
-          #0a0a0a 0%,
-          #1a0000 50%,
-          #3a0000 100%
-        );
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 10000;
-        opacity: 1;
-        visibility: visible;
-        transition:
-          opacity 0.6s ease,
-          visibility 0.6s ease;
-      }
-      .loader-container.hidden {
-        opacity: 0;
-        visibility: hidden;
-      }
-      .loader {
-        position: relative;
-        width: 80px;
-        height: 80px;
-      }
-      .loader::before,
-      .loader::after {
-        content: "";
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        border: 3px solid transparent;
-        border-top-color: #a30000;
-        border-right-color: #d4af37;
-        border-radius: 50%;
-        animation: spin 1.5s linear infinite;
-      }
-      .loader::after {
-        border-top-color: #d4af37;
-        border-right-color: #a30000;
-        animation: spin 1.5s linear infinite reverse;
-        width: 60px;
-        height: 60px;
-        top: 10px;
-        left: 10px;
-      }
-      @keyframes spin {
-        to {
-          transform: rotate(360deg);
-        }
-      }
-      .loader-text {
-        position: absolute;
-        bottom: 20%;
-        left: 50%;
-        transform: translateX(-50%);
-        color: #d4af37;
-        font-size: 14px;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        font-weight: 300;
-      }
     </style>
     <link rel="stylesheet" href="./assets/css/style.css?v=1" />
     <link rel="stylesheet" href="./assets/css/mobile.css" />
   </head>
   <body class="bg-background-dark text-slate-200 selection:bg-primary/30">
-    <!-- Loader -->
-    <div id="loader" class="loader-container">
-      <div class="loader"></div>
-      <div class="loader-text">Loading...</div>
-    </div>
-
     <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
       <div class="layout-container flex h-full grow flex-col">
         <!-- Navigation -->
@@ -1479,27 +1404,6 @@
     </div>
     <script src="https://unpkg.com/lenis@1.1.16/dist/lenis.min.js"></script>
     <script src="./assets/js/main.js?v=19"></script>
-
-    <!-- Loader Script -->
-    <script>
-      // Hide loader when page loads
-      window.addEventListener("load", function () {
-        const loader = document.getElementById("loader");
-        if (loader) {
-          setTimeout(function () {
-            loader.classList.add("hidden");
-          }, 500);
-        }
-      });
-
-      // Also hide loader after 3 seconds max (in case load event doesn't fire)
-      setTimeout(function () {
-        const loader = document.getElementById("loader");
-        if (loader) {
-          loader.classList.add("hidden");
-        }
-      }, 3000);
-    </script>
   </body>
 </html>
 
