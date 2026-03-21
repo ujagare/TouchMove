@@ -67,6 +67,53 @@
           rgba(10, 10, 10, 0.9)
         );
       }
+      .why-hero-media {
+        filter: brightness(0.62) saturate(0.88);
+      }
+      .why-hero-actions a {
+        min-width: 220px;
+      }
+      @media (max-width: 767px) {
+        .why-hero {
+          min-height: 100svh;
+          padding-top: 7rem;
+          padding-bottom: 2.5rem;
+        }
+        .why-hero-media {
+          filter: brightness(0.46) saturate(0.8);
+        }
+        .why-hero-glass {
+          margin-left: 1rem !important;
+          margin-right: 1rem !important;
+          padding: 1.5rem 1.25rem !important;
+          border-radius: 1.5rem !important;
+          background: rgba(18, 16, 13, 0.5) !important;
+          border: 1px solid rgba(255, 255, 255, 0.16) !important;
+          box-shadow: 0 24px 60px rgba(0, 0, 0, 0.3) !important;
+          backdrop-filter: blur(14px);
+          -webkit-backdrop-filter: blur(14px);
+        }
+        .why-hero-title {
+          font-size: clamp(2.8rem, 14vw, 4rem) !important;
+          line-height: 0.95 !important;
+          margin-bottom: 1rem !important;
+        }
+        .why-hero-copy {
+          font-size: 1rem !important;
+          line-height: 1.7 !important;
+          max-width: 100% !important;
+        }
+        .why-hero-actions {
+          margin-top: 1.5rem !important;
+          gap: 0.85rem !important;
+        }
+        .why-hero-actions a {
+          width: 100%;
+          min-width: 0;
+          padding: 0.95rem 1.25rem !important;
+          font-size: 1rem !important;
+        }
+      }
           /* shared-navbar-footer */
       body.tm-warm-theme {
         background: #f5f1eb;
@@ -140,6 +187,10 @@
       body.tm-warm-theme #mobileMenu .mobile-contact-link {
         background: #9e8976 !important;
         border-color: #9e8976 !important;
+        color: #fff !important;
+      }
+      body.tm-warm-theme #mobileMenu .mobile-contact-link:hover,
+      body.tm-warm-theme #navbar .book-now-btn:hover {
         color: #fff !important;
       }
       body.tm-warm-theme #homeFooter {
@@ -218,11 +269,26 @@
         );
       }
       body.tm-warm-theme .why-hero-glass {
-        background: rgba(251, 248, 241, 0.2);
+        background: rgba(251, 248, 241, 0.28);
         border: 1px solid rgba(255, 255, 255, 0.28);
         box-shadow: 0 24px 50px rgba(80, 67, 56, 0.14);
         backdrop-filter: blur(16px);
         -webkit-backdrop-filter: blur(16px);
+      }
+      body.tm-warm-theme .why-hero-media {
+        filter: brightness(0.58) saturate(0.82);
+      }
+      @media (max-width: 767px) {
+        body.tm-warm-theme .why-hero-glass {
+          background: rgba(245, 241, 235, 0.74) !important;
+          border-color: rgba(158, 137, 118, 0.18) !important;
+          box-shadow:
+            0 24px 60px rgba(86, 72, 60, 0.14),
+            inset 0 1px 0 rgba(255, 255, 255, 0.38) !important;
+        }
+        body.tm-warm-theme .why-hero-copy {
+          color: #4c463f !important;
+        }
       }
       body.tm-warm-theme main section.bg-charcoal,
       body.tm-warm-theme main section.bg-background-dark,
@@ -587,11 +653,11 @@
         <main class='flex-1'>
       <!-- Hero Section -->
       <section
-        class="relative h-screen min-h-[700px] flex items-center justify-center pt-20 overflow-hidden bg-charcoal"
+        class="why-hero relative h-screen min-h-[700px] flex items-center justify-center pt-20 overflow-hidden bg-charcoal"
       >
         <div class="absolute inset-0">
           <div
-            class="absolute inset-0 bg-cover bg-center"
+            class="why-hero-media absolute inset-0 bg-cover bg-center"
             data-alt="Moody image of vintage tarot cards on a velvet cloth"
             style="
               background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuDFJ77iKTUsv9ZSEP-gQzFFIKn1CWDq7ci3Uhhk-SeZwHmpQqKuj5CaZq3XQwEJKhDFja1YadmcnG427RyzhyqBG9l3acYjTNBrA4IiD6vkLbWsvKCmm22lx78OybTyhIQTAz8lUPQ4QUZnDvYlsV74nRUlD0gXhoioIi6Km01pW5rpjtDWvrhpF5iCMYrZsR29baryHsqdZAk79RN69fJ6SPzgfq4wSuV3FF3fpZiOQEsTbwDlUi8-kc2liSzap7WsjgjZvBzwst97&quot;);
@@ -602,17 +668,17 @@
           class="why-hero-glass relative z-10 mx-4 max-w-4xl rounded-[2rem] px-6 py-10 text-center md:px-10 md:py-14"
         >
           <h1
-            class="serif-font text-5xl md:text-7xl text-white mb-6 leading-tight"
+            class="why-hero-title serif-font text-5xl md:text-7xl text-white mb-6 leading-tight"
           >
             Tarot with Harshaa
           </h1>
           <p
-            class="text-white text-lg md:text-xl font-light leading-relaxed max-w-2xl mx-auto italic"
+            class="why-hero-copy text-white text-lg md:text-xl font-light leading-relaxed max-w-2xl mx-auto italic"
           >
             "Tarot is a powerful symbolic language that helps illuminate the
             deeper patterns shaping our lives."
           </p>
-          <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+          <div class="why-hero-actions mt-10 flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="client-intake.html"
               class="bg-primary text-white px-10 py-4 rounded-lg font-serif text-lg hover:bg-accent transition-all shadow-xl shadow-primary/20 text-center"
@@ -904,15 +970,15 @@
       </main>
       <!-- Footer -->
         <footer id="homeFooter" class="py-20 md:py-24">
-          <div class="max-w-7xl mx-auto px-6">
+          <div class="max-w-fit mx-auto px-[15vh]">
             <div
-              class="tm-footer-shell rounded-[2rem] px-6 py-10 md:px-10 md:py-14 lg:px-12"
+              class="tm-footer-shell  px-6 py-10 md:px-10 md:py-14 lg:px-12"
             >
               <div
                 class="grid gap-7 border-b pb-10 md:grid-cols-12 md:items-start md:gap-8 md:pb-12 tm-footer-divider"
               >
                 <div class="md:col-span-5">
-                  <div class="tm-footer-card rounded-[1.5rem] p-6 md:p-7">
+                  <div class="tm-footer-card  p-6 md:p-7">
                     <div class="flex items-center gap-3">
                       <img
                         alt="Harshaa Tarot Logo"
@@ -947,7 +1013,7 @@
                   </div>
                 </div>
                 <div class="md:col-span-4">
-                  <div class="tm-footer-card rounded-[1.5rem] p-6 md:p-7">
+                  <div class="tm-footer-card  p-6 md:p-7">
                     <h4
                       class="font-bold mb-5 text-white uppercase text-[11px] tracking-[0.3em]"
                     >
@@ -1000,7 +1066,7 @@
                   </div>
                 </div>
                 <div class="md:col-span-3">
-                  <div class="tm-footer-card rounded-[1.5rem] p-6 md:p-7">
+                  <div class="tm-footer-card  p-6 md:p-7">
                     <h4
                       class="font-bold mb-5 text-white uppercase text-[11px] tracking-[0.3em]"
                     >

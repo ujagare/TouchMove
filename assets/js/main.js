@@ -112,23 +112,24 @@
     return null;
   }
 
-  function isHomePage() {
-    var path = (window.location.pathname || "").toLowerCase();
-    return (
-      path === "/" ||
-      path.endsWith("/index.html") ||
-      path.endsWith("\\index.html")
-    );
-  }
-
   function isLocalDevelopment() {
     var host = (window.location.hostname || "").toLowerCase();
     return host === "127.0.0.1" || host === "localhost";
   }
 
   function initPageLoader() {
-    if (!isHomePage()) return;
     if (document.body.dataset.loaderReady === "true") return;
+
+    var loaderSessionKey = "tm-first-visit-loader-shown";
+    var shouldShowLoader = true;
+
+    try {
+      shouldShowLoader = !window.sessionStorage.getItem(loaderSessionKey);
+    } catch (error) {
+      shouldShowLoader = true;
+    }
+
+    if (!shouldShowLoader) return;
 
     document.body.dataset.loaderReady = "true";
 
@@ -204,6 +205,12 @@
           }
         }, 950);
       }, 280);
+    }
+
+    try {
+      window.sessionStorage.setItem(loaderSessionKey, "true");
+    } catch (error) {
+      // Ignore storage failures and continue showing the loader.
     }
 
     document.body.style.overflow = "hidden";

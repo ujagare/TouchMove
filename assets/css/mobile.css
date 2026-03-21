@@ -150,12 +150,12 @@
   }
 
   .tm-explore-icon {
-    height: 3rem !important;
-    width: 3rem !important;
+    height: 3.5rem !important;
+    width: 3.5rem !important;
   }
 
   .tm-explore-icon span {
-    font-size: 20px !important;
+    font-size: 24px !important;
   }
 
   .tm-explore-card h3 {
@@ -453,4 +453,238 @@ footer img[alt="Harshaa Tarot Logo"] {
   height: 1.5rem !important;
   width: auto !important;
   max-width: 92px !important;
+}
+
+/* ── Sacred Support Section (services.html) - Mobile Responsive ── */
+@media (max-width: 768px) {
+  /* Section spacing */
+  .mt-32.md\:mt-40.pt-10.md\:pt-14 {
+    margin-top: 2rem !important;
+    padding-top: 1.5rem !important;
+  }
+
+  /* Container padding */
+  .max-w-6xl.mx-auto.px-6.md\:px-8 {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  /* Glass container */
+  .backdrop-blur-xl.bg-gradient-to-br.rounded-\[3rem\].p-12.md\:p-20 {
+    padding: 1.5rem !important;
+    border-radius: 1.5rem !important;
+  }
+
+  /* Decorative corners - smaller on mobile */
+  .absolute.top-0.left-0.w-32.h-32 {
+    width: 4rem !important;
+    height: 4rem !important;
+    border-radius: 1.5rem 0 0 0 !important;
+  }
+
+  .absolute.bottom-0.right-0.w-32.h-32 {
+    width: 4rem !important;
+    height: 4rem !important;
+    border-radius: 0 0 1.5rem 0 !important;
+  }
+
+  /* Animated gradient orb - smaller */
+  .absolute.top-1\/2.left-1\/2.-translate-x-1\/2.-translate-y-1\/2.w-\[600px\].h-\[600px\] {
+    width: 300px !important;
+    height: 300px !important;
+  }
+
+  /* Content container gaps */
+  .relative.z-10.text-center.flex.flex-col.items-center.gap-8.md\:gap-10 {
+    gap: 1.5rem !important;
+  }
+
+  /* Kicker badge */
+  .inline-flex.items-center.gap-3.px-6.py-3 {
+    gap: 0.5rem !important;
+    padding: 0.5rem 1rem !important;
+  }
+
+  .inline-flex.items-center.gap-3.px-6.py-3 span.text-sm {
+    font-size: 0.7rem !important;
+    letter-spacing: 0.15em !important;
+  }
+
+  .inline-flex.items-center.gap-3.px-6.py-3 span.w-2.h-2 {
+    width: 0.375rem !important;
+    height: 0.375rem !important;
+  }
+
+  /* Main heading */
+  h2.text-5xl.md\:text-7xl {
+    font-size: 2rem !important;
+    line-height: 1.2 !important;
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+  }
+
+  h2.text-5xl.md\:text-7xl span.block.mt-2 {
+    margin-top: 0.5rem !important;
+    font-size: 2rem !important;
+  }
+
+  /* Description text */
+  p.text-xl.md\:text-2xl.text-white {
+    font-size: 0.95rem !important;
+    padding: 1rem !important;
+    border-radius: 1rem !important;
+    line-height: 1.6 !important;
+  }
+
+  /* CTA Button */
+  .mt-6.md\:mt-8 {
+    margin-top: 1rem !important;
+    width: 100% !important;
+  }
+
+  .group.relative.inline-flex.items-center.gap-4.px-14.py-6 {
+    gap: 0.75rem !important;
+    padding: 1rem 2rem !important;
+    font-size: 0.7rem !important;
+    letter-spacing: 0.15em !important;
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  .group.relative.inline-flex.items-center.gap-4.px-14.py-6
+    span.material-symbols-outlined {
+    font-size: 1.25rem !important;
+  }
+
+  /* Decorative line */
+  .mt-8.w-24.h-1 {
+    margin-top: 1.5rem !important;
+    width: 4rem !important;
+    height: 2px !important;
+  }
+
+  /* Background decorative elements */
+  .absolute.top-0.left-1\/4.w-96.h-96 {
+    width: 12rem !important;
+    height: 12rem !important;
+  }
+
+  .absolute.bottom-0.right-1\/4.w-96.h-96 {
+    width: 12rem !important;
+    height: 12rem !important;
+  }
+}
+
+/* Extra small phones */
+@media (max-width: 480px) {
+  h2.text-5xl.md\:text-7xl {
+    font-size: 1.75rem !important;
+  }
+
+  h2.text-5xl.md\:text-7xl span.block.mt-2 {
+    font-size: 1.75rem !important;
+  }
+
+  p.text-xl.md\:text-2xl.text-white {
+    font-size: 0.875rem !important;
+  }
+
+  .group.relative.inline-flex.items-center.gap-4.px-14.py-6 {
+    padding: 0.875rem 1.5rem !important;
+    font-size: 0.65rem !important;
+  }
+}
+
+/* Services consultation section: final scoped override */
+@media (max-width: 768px) {
+  #servicesConsultationSection {
+    margin-top: 2rem !important;
+    padding-top: 1.5rem !important;
+  }
+
+  #servicesConsultationSection .tm-consultation-container {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  #servicesConsultationSection #servicesConsultationShell {
+    padding: 1.5rem 1rem !important;
+    border-radius: 1.5rem !important;
+  }
+
+  #servicesConsultationSection .tm-consultation-corner {
+    display: none !important;
+  }
+
+  #servicesConsultationSection .tm-consultation-bg {
+    width: 10rem !important;
+    height: 10rem !important;
+  }
+
+  #servicesConsultationSection .tm-consultation-orb {
+    width: 16rem !important;
+    height: 16rem !important;
+  }
+
+  #servicesConsultationSection #servicesConsultationContent {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 1.5rem !important;
+    width: 100% !important;
+  }
+
+  #servicesConsultationSection .tm-consultation-title {
+    width: 100% !important;
+    max-width: 100% !important;
+    font-size: 2rem !important;
+    line-height: 1.08 !important;
+    text-align: center !important;
+  }
+
+  #servicesConsultationSection .tm-consultation-title-accent {
+    font-size: inherit !important;
+  }
+
+  #servicesConsultationSection .tm-consultation-description {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 1rem !important;
+    font-size: 0.95rem !important;
+    line-height: 1.55 !important;
+    text-align: center !important;
+  }
+
+  #servicesConsultationSection .tm-consultation-cta-wrap {
+    width: 100% !important;
+    max-width: 26rem !important;
+  }
+
+  #servicesConsultationSection .tm-consultation-cta {
+    display: inline-flex !important;
+    width: 100% !important;
+    justify-content: center !important;
+    white-space: normal !important;
+    text-align: center !important;
+    padding: 1rem 1.25rem !important;
+    font-size: 0.7rem !important;
+    line-height: 1.35 !important;
+    letter-spacing: 0.14em !important;
+  }
+}
+
+@media (max-width: 480px) {
+  #servicesConsultationSection .tm-consultation-title {
+    font-size: 1.75rem !important;
+  }
+
+  #servicesConsultationSection .tm-consultation-description {
+    font-size: 0.875rem !important;
+  }
+
+  #servicesConsultationSection .tm-consultation-cta {
+    font-size: 0.65rem !important;
+    padding: 0.875rem 1rem !important;
+  }
 }
