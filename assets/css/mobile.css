@@ -5,7 +5,8 @@
 
 /* ── Global ── */
 @media (max-width: 768px) {
-  html, body {
+  html,
+  body {
     overflow-x: hidden;
     width: 100%;
   }
@@ -112,18 +113,67 @@
 
   section#explore h2 {
     font-size: 1.75rem !important;
+    line-height: 1.2 !important;
+  }
+
+  section#explore p {
+    font-size: 0.95rem !important;
+  }
+
+  /* Explore header section */
+  .tm-explore-panel {
+    margin-top: 2rem !important;
+    padding: 1.5rem !important;
+  }
+
+  .tm-explore-meta {
+    font-size: 9px !important;
+  }
+
+  .tm-explore-panel p:last-child {
+    font-size: 0.9rem !important;
   }
 
   /* Cards grid: 1 column on mobile */
-  .grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-4 {
+  .tm-explore-grid {
     grid-template-columns: 1fr !important;
-    gap: 1rem !important;
+    gap: 1.25rem !important;
   }
 
-  /* Card padding */
-  .group.flex.flex-col.gap-8.rounded-xl.p-10 {
+  /* Explore cards */
+  .tm-explore-card {
     padding: 1.5rem !important;
     gap: 1rem !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 0.75rem !important;
+    background: rgba(255, 255, 255, 0.02) !important;
+  }
+
+  .tm-explore-icon {
+    height: 3rem !important;
+    width: 3rem !important;
+  }
+
+  .tm-explore-icon span {
+    font-size: 20px !important;
+  }
+
+  .tm-explore-card h3 {
+    font-size: 1.4rem !important;
+    line-height: 1.2 !important;
+  }
+
+  .tm-explore-copy {
+    font-size: 0.9rem !important;
+    line-height: 1.6 !important;
+  }
+
+  .tm-explore-number {
+    font-size: 9px !important;
+  }
+
+  .tm-explore-footer {
+    font-size: 9px !important;
   }
 
   /* ── Session Format Section (index.html) ── */
@@ -297,7 +347,9 @@
   }
 
   /* Form inputs */
-  input, textarea, select {
+  input,
+  textarea,
+  select {
     font-size: 16px !important; /* prevents iOS zoom */
   }
 
@@ -314,16 +366,32 @@
   }
 
   /* ── Spacing helpers ── */
-  .gap-20 { gap: 1.5rem !important; }
-  .gap-24 { gap: 1.5rem !important; }
-  .gap-16 { gap: 1.25rem !important; }
+  .gap-20 {
+    gap: 1.5rem !important;
+  }
+  .gap-24 {
+    gap: 1.5rem !important;
+  }
+  .gap-16 {
+    gap: 1.25rem !important;
+  }
 
-  .mb-20 { margin-bottom: 1.5rem !important; }
-  .mb-24 { margin-bottom: 1.5rem !important; }
-  .mb-16 { margin-bottom: 1.25rem !important; }
+  .mb-20 {
+    margin-bottom: 1.5rem !important;
+  }
+  .mb-24 {
+    margin-bottom: 1.5rem !important;
+  }
+  .mb-16 {
+    margin-bottom: 1.25rem !important;
+  }
 
-  .mt-32 { margin-top: 2rem !important; }
-  .mt-40 { margin-top: 2rem !important; }
+  .mt-32 {
+    margin-top: 2rem !important;
+  }
+  .mt-40 {
+    margin-top: 2rem !important;
+  }
 
   /* ── Overflow fix for decorative blobs ── */
   .blur-\[160px\],

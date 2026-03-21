@@ -141,8 +141,7 @@
     loader.style.display = "flex";
     loader.style.alignItems = "center";
     loader.style.justifyContent = "center";
-    loader.style.background =
-      "linear-gradient(180deg, #050505 0%, #120707 38%, #2a0909 100%)";
+    loader.style.background = "#8F7B6B";
     loader.style.transition =
       "transform 0.9s cubic-bezier(0.76, 0, 0.24, 1), opacity 0.45s ease, visibility 0.45s ease";
     loader.style.transform = "translateY(0)";
