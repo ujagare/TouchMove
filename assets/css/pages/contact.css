@@ -7,6 +7,17 @@ body {
         font-family: "Playfair Display", serif;
       }
       .material-symbols-outlined {
+        font-family: "Material Symbols Outlined";
+        font-style: normal;
+        font-weight: normal;
+        line-height: 1;
+        letter-spacing: normal;
+        text-transform: none;
+        white-space: nowrap;
+        word-wrap: normal;
+        direction: ltr;
+        display: inline-block;
+        -webkit-font-smoothing: antialiased;
         font-variation-settings:
           "FILL" 0,
           "wght" 200,
@@ -105,7 +116,12 @@ body {
         color: #3f3b34 !important;
       }
       body.tm-warm-theme .text-white,
+      body.tm-warm-theme .text-white\/85,
       body.tm-warm-theme .text-white\/80,
+      body.tm-warm-theme .text-white\/70,
+      body.tm-warm-theme .text-white\/60,
+      body.tm-warm-theme .text-white\/40,
+      body.tm-warm-theme .text-white\/10,
       body.tm-warm-theme .text-slate-300,
       body.tm-warm-theme .text-slate-400,
       body.tm-warm-theme .text-slate-500 {
@@ -121,6 +137,7 @@ body {
         color: #9e8976 !important;
       }
       body.tm-warm-theme .bg-black,
+      body.tm-warm-theme .bg-white\/\[0\.02\],
       body.tm-warm-theme .bg-black\/35,
       body.tm-warm-theme .bg-black\/45 {
         background: #fbf8f1 !important;
