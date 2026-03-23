@@ -1,18 +1,20 @@
 {
+  "baseUrl": "",
   "name": "Touch and Move",
   "tagline": "Architects of conscious stillness and transformative motion",
   "contact": {
-    "email": "hello@touchandmove.com",
-    "phone": "+1 (555) 010-8888",
-    "location": "San Francisco, CA"
+    "email": "touchandmove.69@gmail.com",
+    "phone": "+91 9511246401",
+    "location": "Pune, India"
   },
   "pages": [
     { "title": "Home", "href": "index.html" },
     { "title": "About", "href": "about.html" },
     { "title": "Approach", "href": "Aproch.html" },
-    { "title": "Our Approach", "href": "our-Aproch.html" },
+    { "title": "Who This Work Is For", "href": "our-Aproch.html" },
     { "title": "Services", "href": "services.html" },
-    { "title": "Holistic Journey", "href": "Holistic-Joumcy.html" },
+    { "title": "Tarot with Harshaa", "href": "why-clients-work-with-us.html" },
+    { "title": "Client Intake", "href": "client-intake.html" },
     { "title": "Contact", "href": "contact.html" }
   ]
 }

@@ -1,0 +1,180 @@
+/* our-Aproch.html */
+.serif-text {
+        font-family: "Playfair Display", serif;
+      }
+      .accent-crimson {
+        color: #9e8976;
+      }
+      .bg-charcoal-deep {
+        background-color: #f5f1eb;
+      }
+      .text-glow {
+        text-shadow: 0 0 20px rgba(158, 137, 118, 0.12);
+      }
+      /* shared-navbar-footer */
+      body.tm-warm-theme {
+        background: #f5f1eb;
+        color: #3f3b34;
+      }
+      body.tm-warm-theme #navbar {
+        background: rgba(251, 249, 246, 0.82) !important;
+        border-color: rgba(158, 137, 118, 0.18) !important;
+        box-shadow: 0 10px 30px rgba(158, 137, 118, 0.08);
+      }
+      body.tm-warm-theme #navbar .brand-wordmark,
+      body.tm-warm-theme #line1,
+      body.tm-warm-theme #line2 {
+        color: #3f3b34 !important;
+        background-color: #3f3b34 !important;
+      }
+      body.tm-warm-theme #navbar .book-now-btn {
+        background: #9e8976 !important;
+        color: #fff !important;
+      }
+      body.tm-warm-theme #navbar .book-now-btn:hover {
+        background: #7d6b5d !important;
+      }
+      body.tm-warm-theme .brand-lockup {
+        gap: 0.9rem;
+        min-width: 0;
+      }
+      body.tm-warm-theme .brand-mark-wrap {
+        width: 2.75rem;
+        height: 2.75rem;
+        overflow: hidden;
+        flex-shrink: 0;
+        border-radius: 9999px;
+        background: transparent;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding-left: 0;
+      }
+      body.tm-warm-theme .brand-mark {
+        height: 2.3rem !important;
+        width: auto;
+        max-width: none !important;
+      }
+      body.tm-warm-theme .brand-wordmark {
+        color: #7d6b5d !important;
+        display: inline-block;
+        opacity: 1 !important;
+        text-shadow: none;
+        line-height: 1;
+        letter-spacing: 0.18em;
+        font-size: 1rem !important;
+        font-weight: 700;
+        white-space: nowrap;
+        background: transparent !important;
+      }
+      body.tm-warm-theme #mobileMenu {
+        background: rgba(245, 241, 232, 0.96) !important;
+      }
+      body.tm-warm-theme #mobileMenu a {
+        color: #3f3b34 !important;
+      }
+      body.tm-warm-theme #mobileMenu a:hover {
+        color: #9e8976 !important;
+      }
+      body.tm-warm-theme #mobileMenu .mobile-contact-link {
+        background: #9e8976 !important;
+        border-color: #9e8976 !important;
+        color: #fff !important;
+      }
+@media (max-width: 767px) {
+        body.tm-warm-theme .brand-wordmark {
+          font-size: 0.82rem !important;
+          letter-spacing: 0.12em;
+        }
+      }
+      body.tm-warm-theme #navbar .brand-wordmark {
+        color: #7d6b5d !important;
+        background: transparent !important;
+        background-color: transparent !important;
+      }
+      body.tm-warm-theme #line1,
+      body.tm-warm-theme #line2 {
+        background-color: #3f3b34 !important;
+      }
+      body.tm-warm-theme .brand-wordmark {
+        font-family: "Newsreader", serif !important;
+      }
+      body.tm-warm-theme main,
+      body.tm-warm-theme main section {
+        color: #3f3b34 !important;
+      }
+      body.tm-warm-theme .bg-charcoal-deep,
+      body.tm-warm-theme .bg-background-dark,
+      body.tm-warm-theme .bg-background-light,
+      body.tm-warm-theme .bg-charcoal {
+        background: #f5f1eb !important;
+      }
+      body.tm-warm-theme .from-primary\/5 {
+        --tw-gradient-from: rgba(158, 137, 118, 0.08)
+          var(--tw-gradient-from-position) !important;
+      }
+      body.tm-warm-theme .via-primary\/30 {
+        --tw-gradient-stops: rgba(158, 137, 118, 0.08)
+          var(--tw-gradient-from-position) !important,
+          rgba(158, 137, 118, 0.24) var(--tw-gradient-via-position),
+          var(--tw-gradient-to) !important;
+      }
+      body.tm-warm-theme .text-white,
+      body.tm-warm-theme h1,
+      body.tm-warm-theme h2,
+      body.tm-warm-theme h3,
+      body.tm-warm-theme h4 {
+        color: #3f3b34 !important;
+      }
+      body.tm-warm-theme .text-slate-100,
+      body.tm-warm-theme .text-slate-300,
+      body.tm-warm-theme .text-slate-400,
+      body.tm-warm-theme .text-slate-500 {
+        color: #716a61 !important;
+      }
+      body.tm-warm-theme .text-primary {
+        color: #9e8976 !important;
+      }
+      body.tm-warm-theme .border-primary\/30,
+      body.tm-warm-theme .via-primary\/30,
+      body.tm-warm-theme .border-white\/10,
+      body.tm-warm-theme .border-white\/5 {
+        border-color: rgba(158, 137, 118, 0.18) !important;
+      }
+      body.tm-warm-theme .group {
+        border-color: rgba(158, 137, 118, 0.18);
+      }
+      body.tm-warm-theme .group:hover h3,
+      body.tm-warm-theme .group:hover .group-hover\:text-primary {
+        color: #9e8976 !important;
+      }
+      body.tm-warm-theme .bg-primary {
+        background: #9e8976 !important;
+      }
+      body.tm-warm-theme a.bg-primary,
+      body.tm-warm-theme .book-now-btn,
+      body.tm-warm-theme .mobile-contact-link {
+        color: #fff !important;
+      }
+      body.tm-warm-theme .book-now-btn:hover,
+      body.tm-warm-theme .mobile-contact-link:hover {
+        color: #fff !important;
+      }
+      body.tm-warm-theme .hover\:bg-white\/10:hover,
+      body.tm-warm-theme .hover\:bg-primary\/5:hover {
+        background: rgba(158, 137, 118, 0.08) !important;
+      }
+
+/* our-Aproch.html */
+@keyframes slideNavDown {
+            0% {
+              transform: translateY(-100%);
+              opacity: 0;
+            }
+            100% {
+              transform: translateY(0);
+              opacity: 1;
+            }
+          }
+

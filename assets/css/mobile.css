@@ -26,7 +26,7 @@
   }
 
   /* Logo text hidden on very small screens */
-  header#navbar h1 {
+  header#navbar .brand-wordmark {
     font-size: 0.75rem !important;
     letter-spacing: 0.1em !important;
   }
@@ -412,7 +412,7 @@
 
 /* ── Extra small phones (max 480px) ── */
 @media (max-width: 480px) {
-  header#navbar h1 {
+  header#navbar .brand-wordmark {
     display: none !important;
   }
 

@@ -1,0 +1,278 @@
+/* why-clients-work-with-us.html */
+.serif-font {
+        font-family: "Playfair Display", serif;
+      }
+      .premium-blur {
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }
+      .gradient-overlay {
+        background: linear-gradient(
+          to bottom,
+          rgba(10, 10, 10, 0.4),
+          rgba(10, 10, 10, 0.9)
+        );
+      }
+      .why-hero-media {
+        filter: brightness(0.62) saturate(0.88);
+      }
+      .why-reading-portrait-frame {
+        aspect-ratio: 4 / 5;
+        min-height: clamp(28rem, 58vw, 42rem);
+        background: linear-gradient(180deg, #ead9c5 0%, #f6efe6 100%);
+      }
+      .why-reading-portrait-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center top;
+      }
+      .why-hero-actions a {
+        min-width: 220px;
+      }
+      @media (max-width: 767px) {
+        .why-reading-portrait-frame {
+          aspect-ratio: 4 / 5 !important;
+          min-height: min(34rem, 78vw);
+        }
+        .why-reading-portrait-image {
+          object-position: center 18%;
+        }
+        .why-hero {
+          min-height: 100svh;
+          padding-top: 7rem;
+          padding-bottom: 2.5rem;
+        }
+        .why-hero-media {
+          filter: brightness(0.46) saturate(0.8);
+        }
+        .why-hero-glass {
+          margin-left: 1rem !important;
+          margin-right: 1rem !important;
+          padding: 1.5rem 1.25rem !important;
+          border-radius: 1.5rem !important;
+          background: rgba(18, 16, 13, 0.5) !important;
+          border: 1px solid rgba(255, 255, 255, 0.16) !important;
+          box-shadow: 0 24px 60px rgba(0, 0, 0, 0.3) !important;
+          backdrop-filter: blur(14px);
+          -webkit-backdrop-filter: blur(14px);
+        }
+        .why-hero-title {
+          font-size: clamp(2.8rem, 14vw, 4rem) !important;
+          line-height: 0.95 !important;
+          margin-bottom: 1rem !important;
+        }
+        .why-hero-copy {
+          font-size: 1rem !important;
+          line-height: 1.7 !important;
+          max-width: 100% !important;
+        }
+        .why-hero-actions {
+          margin-top: 1.5rem !important;
+          gap: 0.85rem !important;
+        }
+        .why-hero-actions a {
+          width: 100%;
+          min-width: 0;
+          padding: 0.95rem 1.25rem !important;
+          font-size: 1rem !important;
+        }
+      }
+          /* shared-navbar-footer */
+      body.tm-warm-theme {
+        background: #f5f1eb;
+        color: #3f3b34;
+      }
+      body.tm-warm-theme #navbar {
+        background: rgba(251, 249, 246, 0.82) !important;
+        border-color: rgba(158, 137, 118, 0.18) !important;
+        box-shadow: 0 10px 30px rgba(158, 137, 118, 0.08);
+      }
+      body.tm-warm-theme #navbar .brand-wordmark {
+        color: #7d6b5d !important;
+        background: transparent !important;
+        background-color: transparent !important;
+      }
+      body.tm-warm-theme #line1,
+      body.tm-warm-theme #line2 {
+        background-color: #3f3b34 !important;
+      }
+      body.tm-warm-theme #navbar .book-now-btn {
+        background: #9e8976 !important;
+        color: #fff !important;
+      }
+      body.tm-warm-theme #navbar .book-now-btn:hover {
+        background: #7d6b5d !important;
+      }
+      body.tm-warm-theme .brand-lockup {
+        gap: 0.9rem;
+        min-width: 0;
+      }
+      body.tm-warm-theme .brand-mark-wrap {
+        width: 2.75rem;
+        height: 2.75rem;
+        overflow: hidden;
+        flex-shrink: 0;
+        border-radius: 9999px;
+        background: transparent;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding-left: 0;
+      }
+      body.tm-warm-theme .brand-mark {
+        height: 2.3rem !important;
+        width: auto;
+        max-width: none !important;
+      }
+      body.tm-warm-theme .brand-wordmark {
+        font-family: "Newsreader", serif !important;
+        color: #7d6b5d !important;
+        display: inline-block;
+        opacity: 1 !important;
+        text-shadow: none;
+        line-height: 1;
+        letter-spacing: 0.18em;
+        font-size: 1rem !important;
+        font-weight: 700;
+        white-space: nowrap;
+        background: transparent !important;
+      }
+      body.tm-warm-theme #mobileMenu {
+        background: rgba(245, 241, 232, 0.96) !important;
+      }
+      body.tm-warm-theme #mobileMenu a {
+        color: #3f3b34 !important;
+      }
+      body.tm-warm-theme #mobileMenu a:hover {
+        color: #9e8976 !important;
+      }
+      body.tm-warm-theme #mobileMenu .mobile-contact-link {
+        background: #9e8976 !important;
+        border-color: #9e8976 !important;
+        color: #fff !important;
+      }
+      body.tm-warm-theme #mobileMenu .mobile-contact-link:hover,
+      body.tm-warm-theme #navbar .book-now-btn:hover {
+        color: #fff !important;
+      }
+@media (max-width: 767px) {
+        body.tm-warm-theme .brand-wordmark {
+          font-size: 0.82rem !important;
+          letter-spacing: 0.12em;
+        }
+      }
+      body.tm-warm-theme main {
+        color: #3f3b34;
+      }
+      body.tm-warm-theme .gradient-overlay {
+        background: linear-gradient(
+          to bottom,
+          rgba(63, 59, 52, 0.12),
+          rgba(63, 59, 52, 0.46)
+        );
+      }
+      body.tm-warm-theme .why-hero-glass {
+        background: rgba(251, 248, 241, 0.28);
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        box-shadow: 0 24px 50px rgba(80, 67, 56, 0.14);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+      }
+      body.tm-warm-theme .why-hero-media {
+        filter: brightness(0.58) saturate(0.82);
+      }
+      @media (max-width: 767px) {
+        body.tm-warm-theme .why-hero-glass {
+          background: rgba(245, 241, 235, 0.74) !important;
+          border-color: rgba(158, 137, 118, 0.18) !important;
+          box-shadow:
+            0 24px 60px rgba(86, 72, 60, 0.14),
+            inset 0 1px 0 rgba(255, 255, 255, 0.38) !important;
+        }
+      }
+      body.tm-warm-theme main section.bg-charcoal,
+      body.tm-warm-theme main section.bg-background-dark,
+      body.tm-warm-theme main section.bg-background-light {
+        background: #f5f1eb !important;
+        color: #3f3b34 !important;
+      }
+      body.tm-warm-theme main section.border-y {
+        border-color: rgba(158, 137, 118, 0.18) !important;
+      }
+      body.tm-warm-theme main h1,
+      body.tm-warm-theme main h2,
+      body.tm-warm-theme main h3,
+      body.tm-warm-theme main h4,
+      body.tm-warm-theme main .text-white,
+      body.tm-warm-theme main .dark\:text-white {
+        color: #3f3b34 !important;
+      }
+      body.tm-warm-theme main .text-slate-300,
+      body.tm-warm-theme main .text-slate-400,
+      body.tm-warm-theme main .text-slate-500,
+      body.tm-warm-theme main .text-slate-600,
+      body.tm-warm-theme main .dark\:text-slate-300,
+      body.tm-warm-theme main .dark\:text-slate-400,
+      body.tm-warm-theme main .dark\:text-slate-100,
+      body.tm-warm-theme main .dark\:text-slate-900 {
+        color: #716a61 !important;
+      }
+      body.tm-warm-theme main .text-primary {
+        color: #9e8976 !important;
+      }
+      body.tm-warm-theme main .bg-primary,
+      body.tm-warm-theme main .ring-primary {
+        background-color: #9e8976 !important;
+        border-color: #9e8976 !important;
+        --tw-ring-color: rgba(158, 137, 118, 0.42) !important;
+      }
+      body.tm-warm-theme main a.bg-primary,
+      body.tm-warm-theme main .bg-primary .text-white,
+      body.tm-warm-theme main .bg-primary.text-white,
+      body.tm-warm-theme main a.bg-primary.text-white {
+        color: #fff !important;
+      }
+      body.tm-warm-theme main .bg-primary\/10 {
+        background-color: rgba(158, 137, 118, 0.1) !important;
+      }
+      body.tm-warm-theme main .bg-white\/5 {
+        background: rgba(255, 255, 255, 0.55) !important;
+      }
+      body.tm-warm-theme main .border-white\/10,
+      body.tm-warm-theme main .border-white\/30,
+      body.tm-warm-theme main .border-primary\/20 {
+        border-color: rgba(158, 137, 118, 0.18) !important;
+      }
+      body.tm-warm-theme main .hover\:bg-primary\/20:hover {
+        background: rgba(158, 137, 118, 0.12) !important;
+      }
+      body.tm-warm-theme main .hover\:bg-accent:hover {
+        background: #7d6b5d !important;
+      }
+      body.tm-warm-theme main .hover\:bg-white\/10:hover {
+        background: rgba(158, 137, 118, 0.08) !important;
+      }
+      body.tm-warm-theme main .why-hero .why-hero-title,
+      body.tm-warm-theme main .why-hero .why-hero-copy,
+      body.tm-warm-theme main .why-hero .text-white {
+        color: #fff !important;
+      }
+      body.tm-warm-theme main .shadow-primary\/20 {
+        --tw-shadow-color: rgba(125, 107, 93, 0.2) !important;
+        --tw-shadow: 0 20px 40px rgba(125, 107, 93, 0.16) !important;
+      }
+
+/* why-clients-work-with-us.html */
+@keyframes slideNavDown {
+            0% {
+              transform: translateY(-100%);
+              opacity: 0;
+            }
+            100% {
+              transform: translateY(0);
+              opacity: 1;
+            }
+          }
+

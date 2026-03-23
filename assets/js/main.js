@@ -297,7 +297,7 @@
     var navRow = navbar.querySelector("div.w-full");
     var logoLink = navbar.querySelector("a[href='index.html']");
     var logoImage = logoLink ? logoLink.querySelector("img") : null;
-    var logoTitle = logoLink ? logoLink.querySelector("h1") : null;
+    var logoTitle = logoLink ? logoLink.querySelector(".brand-wordmark") : null;
     var controls = navbar.querySelector("button#menuToggle")
       ? navbar.querySelector("button#menuToggle").parentElement
       : null;

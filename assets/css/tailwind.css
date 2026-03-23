@@ -1,3 +1,5 @@
 @config "../../tailwind.config.js";
 @source "../../*.html";
 @import "tailwindcss";
+@import "./shared.css";
+@import "./mobile.css";

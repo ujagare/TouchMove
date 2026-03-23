@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build:css": "node ./node_modules/@tailwindcss/cli/dist/index.mjs -i assets/css/tailwind.css -o assets/css/style.css --minify"
+    "build:css": "node ./node_modules/@tailwindcss/cli/dist/index.mjs -i assets/css/tailwind.css -o assets/css/style.css --minify",
+    "build:seo": "node ./scripts/generate-seo.mjs",
+    "build": "npm run build:css && npm run build:seo"
   },
   "devDependencies": {
     "@tailwindcss/cli": "^4.2.1",

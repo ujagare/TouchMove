@@ -1,0 +1,410 @@
+/* services.html */
+/* shared-navbar-footer */
+      body.tm-warm-theme {
+        background: #f5f1eb;
+        color: #3f3b34;
+      }
+      body.tm-warm-theme #navbar {
+        background: rgba(251, 249, 246, 0.82) !important;
+        border-color: rgba(158, 137, 118, 0.18) !important;
+        box-shadow: 0 10px 30px rgba(158, 137, 118, 0.08);
+      }
+      body.tm-warm-theme #navbar .brand-wordmark {
+        color: #7d6b5d !important;
+        background: transparent !important;
+        background-color: transparent !important;
+      }
+      body.tm-warm-theme #line1,
+      body.tm-warm-theme #line2 {
+        background-color: #3f3b34 !important;
+      }
+      body.tm-warm-theme #navbar .book-now-btn {
+        background: #9e8976 !important;
+        color: #fff !important;
+      }
+      body.tm-warm-theme #navbar .book-now-btn:hover {
+        background: #7d6b5d !important;
+      }
+      body.tm-warm-theme .brand-lockup {
+        gap: 0.9rem;
+        min-width: 0;
+      }
+      body.tm-warm-theme .brand-mark-wrap {
+        width: 2.75rem;
+        height: 2.75rem;
+        overflow: hidden;
+        flex-shrink: 0;
+        border-radius: 9999px;
+        background: transparent;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding-left: 0;
+      }
+      body.tm-warm-theme .brand-mark {
+        height: 2.3rem !important;
+        width: auto;
+        max-width: none !important;
+      }
+      body.tm-warm-theme .brand-wordmark {
+        color: #7d6b5d !important;
+        display: inline-block;
+        opacity: 1 !important;
+        text-shadow: none;
+        line-height: 1;
+        letter-spacing: 0.18em;
+        font-size: 1rem !important;
+        font-weight: 700;
+        white-space: nowrap;
+        background: transparent !important;
+      }
+      body.tm-warm-theme main {
+        color: #3f3b34;
+      }
+      body.tm-warm-theme main .text-primary\/80,
+      body.tm-warm-theme main .text-primary\/60,
+      body.tm-warm-theme main .text-primary {
+        color: #9e8976 !important;
+      }
+      body.tm-warm-theme main .bg-primary\/40,
+      body.tm-warm-theme main .border-primary {
+        border-color: rgba(158, 137, 118, 0.48) !important;
+        background-color: rgba(158, 137, 118, 0.48) !important;
+      }
+      body.tm-warm-theme main .text-stone-50,
+      body.tm-warm-theme main .text-stone-100 {
+        color: #3f3b34 !important;
+      }
+      body.tm-warm-theme main .text-stone-400 {
+        color: #716a61 !important;
+      }
+      body.tm-warm-theme main h1,
+      body.tm-warm-theme main h2,
+      body.tm-warm-theme main h3 {
+        color: #3f3b34 !important;
+      }
+      body.tm-warm-theme main .group > .relative.h-96 + .flex h3 {
+        color: #a79584 !important;
+        font-weight: 600 !important;
+      }
+      body.tm-warm-theme main a.group\/btn,
+      body.tm-warm-theme main a.group\/btn .material-symbols-outlined {
+        color: #7d6b5d !important;
+      }
+      body.tm-warm-theme main a.group\/btn {
+        background: transparent !important;
+        border-bottom-color: rgba(158, 137, 118, 0.38) !important;
+        padding-bottom: 0.35rem;
+      }
+      body.tm-warm-theme main a.group\/btn:hover {
+        color: #9e8976 !important;
+        border-bottom-color: #9e8976 !important;
+      }
+      body.tm-warm-theme main a.group\/btn:hover .material-symbols-outlined {
+        color: #9e8976 !important;
+      }
+      body.tm-warm-theme main .mt-40 .group.relative {
+        background: #9e8976 !important;
+        color: #fff !important;
+        box-shadow: 0 22px 40px rgba(125, 107, 93, 0.18);
+      }
+      body.tm-warm-theme main .mt-40 .group.relative:hover {
+        background: #7d6b5d !important;
+      }
+      body.tm-warm-theme main .mt-40 .group.relative .material-symbols-outlined,
+      body.tm-warm-theme main .mt-40 .group.relative span {
+        color: #fff !important;
+      }
+      body.tm-warm-theme .services-consultation-shell {
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(158, 137, 118, 0.16);
+        border-radius: 2rem;
+        background:
+          radial-gradient(
+            circle at top left,
+            rgba(212, 199, 184, 0.35),
+            transparent 34%
+          ),
+          linear-gradient(180deg, rgba(251, 248, 241, 0.96), rgba(245, 241, 235, 0.98));
+        box-shadow: 0 28px 60px rgba(125, 107, 93, 0.12);
+      }
+      body.tm-warm-theme .services-consultation-shell::before {
+        content: "";
+        position: absolute;
+        inset: auto -8% -28% auto;
+        width: 16rem;
+        height: 16rem;
+        border-radius: 9999px;
+        background: radial-gradient(circle, rgba(158, 137, 118, 0.14), transparent 70%);
+        pointer-events: none;
+      }
+      body.tm-warm-theme .services-consultation-kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.7rem 1.2rem;
+        border: 1px solid rgba(158, 137, 118, 0.18);
+        border-radius: 9999px;
+        background: rgba(255, 255, 255, 0.62);
+        color: #7d6b5d;
+        font-size: 0.72rem;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+      }
+      body.tm-warm-theme .services-consultation-kicker::before {
+        content: "";
+        width: 0.45rem;
+        height: 0.45rem;
+        border-radius: 9999px;
+        background: #9e8976;
+        box-shadow: 0 0 0 0.3rem rgba(158, 137, 118, 0.12);
+      }
+      body.tm-warm-theme .services-consultation-copy {
+        max-width: 40rem;
+      }
+      @media (max-width: 767px) {
+        body.tm-warm-theme .services-consultation-shell {
+          border-radius: 1.5rem;
+        }
+      }
+      body.tm-warm-theme #mobileMenu {
+        background: rgba(245, 241, 232, 0.96) !important;
+      }
+      body.tm-warm-theme #mobileMenu a {
+        color: #3f3b34 !important;
+      }
+      body.tm-warm-theme #mobileMenu a:hover {
+        color: #9e8976 !important;
+      }
+      body.tm-warm-theme #mobileMenu .mobile-contact-link {
+        background: #9e8976 !important;
+        border-color: #9e8976 !important;
+        color: #fff !important;
+      }
+      body.tm-warm-theme #mobileMenu .mobile-contact-link:hover,
+      body.tm-warm-theme #navbar .book-now-btn:hover {
+        color: #fff !important;
+      }
+@media (max-width: 767px) {
+        body.tm-warm-theme .brand-wordmark {
+          font-size: 0.82rem !important;
+          letter-spacing: 0.12em;
+        }
+      }
+
+/* services.html */
+@keyframes slideNavDown {
+            0% {
+              transform: translateY(-100%);
+              opacity: 0;
+            }
+            100% {
+              transform: translateY(0);
+              opacity: 1;
+            }
+          }
+
+/* services.html */
+@keyframes gradient {
+                0%, 100% { background-position: 0% 50%; }
+                50% { background-position: 100% 50%; }
+              }
+
+              /* Mobile Responsive Styles for Sacred Support Section */
+              @media (max-width: 768px) {
+                .tm-consultation-section {
+                  margin-top: 4rem !important;
+                  padding-top: 2rem !important;
+                }
+
+                .tm-consultation-container {
+                  padding-left: 1rem !important;
+                  padding-right: 1rem !important;
+                }
+
+                .tm-consultation-shell {
+                  padding: 2.5rem 1.5rem !important;
+                  border-radius: 1.5rem !important;
+                }
+
+                .tm-consultation-corner {
+                  display: none !important;
+                }
+
+                .tm-consultation-orb {
+                  width: 14rem !important;
+                  height: 14rem !important;
+                  opacity: 0.2 !important;
+                }
+
+                .tm-consultation-content {
+                  gap: 1.75rem !important;
+                }
+
+                .tm-consultation-badge {
+                  gap: 0.5rem !important;
+                  padding: 0.6rem 1.2rem !important;
+                }
+
+                .tm-consultation-badge span.text-sm {
+                  font-size: 0.7rem !important;
+                  letter-spacing: 0.2em !important;
+                }
+
+                .tm-consultation-title {
+                  font-size: clamp(2.25rem, 8vw, 2.75rem) !important;
+                  line-height: 1.1 !important;
+                }
+                
+                .tm-consultation-title-accent {
+                  font-size: clamp(2.25rem, 8vw, 2.75rem) !important;
+                }
+
+                .tm-consultation-description {
+                  font-size: 1.05rem !important;
+                  padding: 1.25rem 1.1rem !important;
+                  border-radius: 1rem !important;
+                  max-width: 95% !important;
+                  margin-left: auto !important;
+                  margin-right: auto !important;
+                }
+
+                .tm-consultation-cta-wrap {
+                  margin-top: 1rem !important;
+                  width: 100% !important;
+                  max-width: 20rem !important;
+                }
+
+                .tm-consultation-cta {
+                  padding: 1.2rem 1rem !important;
+                  font-size: 0.75rem !important;
+                }
+
+                .tm-consultation-line {
+                  margin-top: 1.5rem !important;
+                }
+              }
+
+              /* Extra small phones */
+              @media (max-width: 480px) {
+                .tm-consultation-shell {
+                  padding: 2rem 1rem !important;
+                }
+                
+                .tm-consultation-title,
+                .tm-consultation-title-accent {
+                  font-size: 2rem !important;
+                }
+
+                .tm-consultation-description {
+                  font-size: 1rem !important;
+                  padding: 1rem !important;
+                }
+
+                .tm-consultation-cta {
+                  padding: 1.1rem 1rem !important;
+                  font-size: 0.7rem !important;
+                }
+              }
+
+              @media (max-width: 768px) {
+                #servicesConsultationSection {
+                  margin-top: 2.5rem !important;
+                  padding-top: 1.5rem !important;
+                }
+
+                #servicesConsultationSection .tm-consultation-container {
+                  padding-left: 1rem !important;
+                  padding-right: 1rem !important;
+                }
+
+                #servicesConsultationSection #servicesConsultationShell {
+                  padding: 1.5rem 1rem !important;
+                  border-radius: 1.5rem !important;
+                }
+
+                #servicesConsultationSection .tm-consultation-bg,
+                #servicesConsultationSection .tm-consultation-corner {
+                  display: none !important;
+                }
+
+                #servicesConsultationSection .tm-consultation-orb {
+                  width: min(14rem, 70vw) !important;
+                  height: min(14rem, 70vw) !important;
+                  opacity: 0.16 !important;
+                }
+
+                #servicesConsultationSection #servicesConsultationContent {
+                  gap: 1.25rem !important;
+                }
+
+                #servicesConsultationSection .tm-consultation-title {
+                  width: 100% !important;
+                  max-width: 100% !important;
+                  font-size: clamp(1.85rem, 8.5vw, 2.4rem) !important;
+                  line-height: 1.15 !important;
+                  letter-spacing: -0.015em !important;
+                  text-wrap: balance;
+                }
+
+                #servicesConsultationSection .tm-consultation-title-accent {
+                  margin-top: 0.25rem !important;
+                }
+
+                #servicesConsultationSection .tm-consultation-description {
+                  width: 100% !important;
+                  max-width: 100% !important;
+                  padding: 1rem !important;
+                  font-size: 0.98rem !important;
+                  line-height: 1.6 !important;
+                  border-radius: 1rem !important;
+                }
+
+                #servicesConsultationSection .tm-consultation-cta-wrap {
+                  width: 100% !important;
+                  max-width: 100% !important;
+                  margin-top: 0.25rem !important;
+                }
+
+                #servicesConsultationSection .tm-consultation-cta {
+                  width: 100% !important;
+                  justify-content: center !important;
+                  gap: 0.65rem !important;
+                  padding: 0.95rem 1rem !important;
+                  font-size: 0.68rem !important;
+                  line-height: 1.4 !important;
+                  letter-spacing: 0.12em !important;
+                }
+
+                #servicesConsultationSection .tm-consultation-cta .material-symbols-outlined {
+                  font-size: 1.2rem !important;
+                }
+
+                #servicesConsultationSection .tm-consultation-line {
+                  margin-top: 1.25rem !important;
+                }
+              }
+
+              @media (max-width: 480px) {
+                #servicesConsultationSection #servicesConsultationShell {
+                  padding: 1.25rem 0.9rem !important;
+                }
+
+                #servicesConsultationSection .tm-consultation-title {
+                  font-size: 1.65rem !important;
+                }
+
+                #servicesConsultationSection .tm-consultation-description {
+                  font-size: 0.9rem !important;
+                  padding: 0.9rem !important;
+                }
+
+                #servicesConsultationSection .tm-consultation-cta {
+                  padding: 0.9rem 0.95rem !important;
+                  font-size: 0.62rem !important;
+                  letter-spacing: 0.1em !important;
+                }
+              }
+
