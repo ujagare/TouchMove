@@ -11,6 +11,16 @@ const MAX_FORM_AGE_MS = 1000 * 60 * 60 * 2;
 const GENERIC_ERROR_MESSAGE =
   "We could not process your request right now. Please try again.";
 
+function firstEnv() {
+  for (const key of arguments) {
+    const value = process.env[key];
+    if (typeof value === "string" && value.trim()) {
+      return value.trim();
+    }
+  }
+  return "";
+}
+
 function sanitize(value, maxLength = 2000) {
   return String(value ?? "")
     .replace(/[\x00-\x1F\x7F]+/g, " ")
@@ -124,14 +134,27 @@ exports.handler = async (event) => {
     return response(403, { ok: false, message: GENERIC_ERROR_MESSAGE });
   }
 
-  const resendApiKey = process.env.RESEND_API_KEY;
-  const toEmail = process.env.CONTACT_TO_EMAIL || "touchandmove.69@gmail.com";
-  const fromEmail = process.env.CONTACT_FROM_EMAIL;
+  const resendApiKey = firstEnv("RESEND_API_KEY", "API_KEY", "RESEND_KEY");
+  const toEmail =
+    firstEnv("CONTACT_TO_EMAIL", "TO_EMAIL", "RESEND_TO_EMAIL") ||
+    "touchandmove.69@gmail.com";
+  const fromEmail = firstEnv(
+    "CONTACT_FROM_EMAIL",
+    "FROM_EMAIL",
+    "RESEND_FROM_EMAIL",
+  );
 
   if (!resendApiKey || !fromEmail) {
+    console.error("Missing email configuration", {
+      hasResendApiKey: Boolean(resendApiKey),
+      hasFromEmail: Boolean(fromEmail),
+      envKeys: Object.keys(process.env).filter(function (key) {
+        return /EMAIL|RESEND|API_KEY/i.test(key);
+      }),
+    });
     return response(500, {
       ok: false,
-      message: GENERIC_ERROR_MESSAGE,
+      message: "Email service is not configured correctly on the server.",
     });
   }
 
@@ -217,7 +240,10 @@ exports.handler = async (event) => {
       }),
       signal: controller.signal,
     });
-  } catch {
+  } catch (error) {
+    console.error("Resend request failed", {
+      message: error && error.message ? error.message : "unknown fetch error",
+    });
     clearTimeout(timeout);
     return response(502, {
       ok: false,
@@ -228,6 +254,18 @@ exports.handler = async (event) => {
   clearTimeout(timeout);
 
   if (!resendResponse.ok) {
+    let resendBody = "";
+    try {
+      resendBody = await resendResponse.text();
+    } catch {
+      resendBody = "";
+    }
+
+    console.error("Resend API returned non-OK response", {
+      status: resendResponse.status,
+      body: resendBody.slice(0, 500),
+    });
+
     return response(502, {
       ok: false,
       message: GENERIC_ERROR_MESSAGE,

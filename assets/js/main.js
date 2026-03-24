@@ -50,13 +50,9 @@
       return gsapLoader;
     }
 
-    gsapLoader = loadScript(
-      "https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js",
-    )
+    gsapLoader = loadScript("./assets/vendor/gsap.min.js")
       .then(function () {
-        return loadScript(
-          "https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js",
-        );
+        return loadScript("./assets/vendor/ScrollTrigger.min.js");
       })
       .then(function () {
         if (window.gsap && window.ScrollTrigger) {
@@ -762,6 +758,8 @@
   }
 
   function initSite() {
+    document.documentElement.style.scrollBehavior = "smooth";
+
     initResponsivePolish();
     initPageLoader();
 
