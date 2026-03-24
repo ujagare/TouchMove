@@ -558,6 +558,72 @@ body {
       .tm-format-card {
         border: 2px solid #9e8976 !important;
       }
+      .tm-explore-card,
+      .tm-format-card,
+      .tm-review-card,
+      #homeFaq details,
+      .tm-footer-card {
+        position: relative;
+        transform: translate3d(0, 0, 0);
+        will-change: transform, box-shadow;
+        transition:
+          transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+          box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+          border-color 0.35s ease,
+          background-color 0.35s ease;
+      }
+      .tm-explore-card::after,
+      .tm-format-card::after,
+      .tm-review-card::after,
+      #homeFaq details::after,
+      .tm-footer-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        border-radius: inherit;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.22),
+          transparent 38%,
+          rgba(158, 137, 118, 0.14)
+        );
+        opacity: 0;
+        transition: opacity 0.45s ease;
+      }
+      .tm-explore-card:hover,
+      .tm-format-card:hover,
+      .tm-review-card:hover,
+      #homeFaq details:hover,
+      .tm-footer-card:hover {
+        transform: translate3d(0, -10px, 0);
+        box-shadow: 0 28px 54px rgba(92, 74, 61, 0.16);
+      }
+      .tm-explore-card:hover::after,
+      .tm-format-card:hover::after,
+      .tm-review-card:hover::after,
+      #homeFaq details:hover::after,
+      .tm-footer-card:hover::after {
+        opacity: 1;
+      }
+      .tm-format-card img,
+      .tm-explore-card .tm-explore-icon,
+      .tm-review-card .tm-review-avatar {
+        transition:
+          transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+          box-shadow 0.45s ease,
+          filter 0.45s ease;
+      }
+      .tm-format-card:hover img {
+        transform: scale(1.06);
+      }
+      .tm-explore-card:hover .tm-explore-icon {
+        transform: translate3d(0, -4px, 0) scale(1.08);
+        box-shadow: 0 20px 36px rgba(158, 137, 118, 0.22);
+      }
+      .tm-review-card:hover .tm-review-avatar {
+        transform: scale(1.08);
+      }
       .tm-review-avatar {
         width: 32px;
         height: 32px;

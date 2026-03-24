@@ -688,3 +688,71 @@ footer img[alt="Harshaa Tarot Logo"] {
     padding: 0.875rem 1rem !important;
   }
 }
+
+/* Footer contact card: mobile cleanup */
+@media (max-width: 768px) {
+  footer .tm-footer-shell {
+    padding: 1.25rem !important;
+    border-radius: 1.5rem !important;
+  }
+
+  footer .tm-footer-card {
+    padding: 1.25rem !important;
+    border-radius: 1.25rem !important;
+  }
+
+  footer .tm-footer-card ul.space-y-4 {
+    gap: 0.9rem !important;
+  }
+
+  footer .tm-footer-card ul.space-y-4 li {
+    line-height: 1.75 !important;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  footer .tm-footer-card ul.space-y-4 li a {
+    display: inline !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  footer .tm-footer-card ul.space-y-4 li:last-child {
+    max-width: 16rem;
+  }
+
+  footer .tm-footer-card .flex.items-center.gap-4.pt-5 {
+    justify-content: flex-start !important;
+    gap: 0.75rem !important;
+    padding-top: 1rem !important;
+    flex-wrap: wrap;
+  }
+
+  footer .tm-footer-social {
+    width: 42px !important;
+    height: 42px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  footer .tm-footer-shell {
+    padding: 1rem !important;
+  }
+
+  footer .tm-footer-card {
+    padding: 1rem !important;
+  }
+
+  footer .tm-footer-card ul.space-y-4 {
+    font-size: 0.95rem !important;
+  }
+
+  footer .tm-footer-card ul.space-y-4 li:last-child {
+    max-width: 14rem;
+  }
+
+  footer .tm-footer-card .flex.items-center.gap-4.pt-5 {
+    gap: 0.65rem !important;
+  }
+}

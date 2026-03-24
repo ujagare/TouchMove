@@ -82,6 +82,51 @@
     });
   }
 
+  function splitElementWords(element) {
+    if (!element || element.dataset.wordsSplit === "true") {
+      return Array.prototype.slice.call(
+        element ? element.querySelectorAll("[data-split-word]") : [],
+      );
+    }
+
+    var text = element.textContent;
+    if (!text || !text.trim()) return [];
+
+    var words = text.trim().split(/\s+/);
+    if (!words.length) return [];
+
+    element.textContent = "";
+    element.dataset.wordsSplit = "true";
+
+    var fragment = document.createDocumentFragment();
+
+    words.forEach(function (word, index) {
+      var wordWrap = document.createElement("span");
+      wordWrap.style.display = "inline-block";
+      wordWrap.style.overflow = "hidden";
+      wordWrap.style.verticalAlign = "top";
+
+      var wordInner = document.createElement("span");
+      wordInner.setAttribute("data-split-word", "true");
+      wordInner.textContent = word;
+      wordInner.style.display = "inline-block";
+      wordInner.style.willChange = "transform, opacity, filter";
+
+      wordWrap.appendChild(wordInner);
+      fragment.appendChild(wordWrap);
+
+      if (index < words.length - 1) {
+        fragment.appendChild(document.createTextNode(" "));
+      }
+    });
+
+    element.appendChild(fragment);
+
+    return Array.prototype.slice.call(
+      element.querySelectorAll("[data-split-word]"),
+    );
+  }
+
   function normalizeButtonText(text) {
     return (text || "").replace(/\s+/g, " ").trim().toLowerCase();
   }
@@ -225,6 +270,9 @@
     style.textContent = [
       "html, body { overflow-x: hidden; }",
       "img, video { max-width: 100%; height: auto; }",
+      "#navbar a[href='index.html'] { display: flex; align-items: center; min-width: 0; }",
+      "#navbar a[href='index.html'] img { width: auto !important; object-fit: contain; flex-shrink: 0; }",
+      "#navbar a[href='index.html'] .brand-wordmark { white-space: nowrap; line-height: 1; }",
       "@media (max-width: 767px) {",
       "  main, section, footer, header { max-width: 100%; }",
       "  main section, footer { overflow: hidden; }",
@@ -250,12 +298,16 @@
       "  footer .grid { grid-template-columns: 1fr !important; }",
       "  footer [class*='gap-14'], footer [class*='gap-16'] { gap: 2rem !important; }",
       "  footer [class*='pt-10'] { padding-top: 2rem !important; }",
+      "  #navbar a[href='index.html'] { max-width: calc(100% - 128px) !important; gap: 10px !important; }",
+      "  #navbar a[href='index.html'] img { height: 44px !important; max-width: 136px !important; }",
+      "  #navbar a[href='index.html'] .brand-wordmark { font-size: 0.8rem !important; letter-spacing: 0.14em !important; }",
       "}",
       "@media (max-width: 480px) {",
       "  main section, footer .max-w-7xl { padding-left: 14px !important; padding-right: 14px !important; }",
       "  main [class*='text-9xl'], main [class*='text-8xl'], main [class*='text-7xl'] { font-size: clamp(2.4rem, 12vw, 4rem) !important; }",
       "  main [class*='text-6xl'], main [class*='text-5xl'] { font-size: clamp(1.95rem, 9vw, 3rem) !important; }",
       "  main [class*='h-96'], main [class*='h-80'], main [class*='h-72'], main [class*='h-[500px]'], main [class*='h-[650px]'], main [class*='h-[800px]'] { height: min(72vw, 300px) !important; }",
+      "  #navbar a[href='index.html'] .brand-wordmark { display: none !important; }",
       "}",
     ].join("\n");
 
@@ -318,24 +370,36 @@
       var isNarrow = window.innerWidth <= 380;
 
       if (navRow) {
-        navRow.style.padding = isMobile ? "14px 16px" : "";
+        navRow.style.padding = isMobile ? "14px 16px" : "24px 24px";
+        navRow.style.alignItems = "center";
       }
 
       if (logoLink) {
-        logoLink.style.gap = isMobile ? "10px" : "";
-        logoLink.style.maxWidth = isMobile ? "calc(100% - 128px)" : "";
+        logoLink.style.display = "flex";
+        logoLink.style.alignItems = "center";
+        logoLink.style.gap = isMobile ? "10px" : "12px";
+        logoLink.style.maxWidth = isMobile ? "calc(100% - 128px)" : "calc(100% - 180px)";
+        logoLink.style.minWidth = "0";
+        logoLink.style.flex = "0 1 auto";
       }
 
       if (logoImage) {
-        logoImage.style.height = isMobile ? "42px" : "64px";
-        logoImage.style.maxWidth = isMobile ? "132px" : "200px";
+        logoImage.style.display = "block";
+        logoImage.style.width = "auto";
+        logoImage.style.height = isMobile ? "44px" : "56px";
+        logoImage.style.maxWidth = isMobile ? "136px" : "172px";
+        logoImage.style.objectFit = "contain";
+        logoImage.style.flexShrink = "0";
       }
 
       if (logoTitle) {
-        logoTitle.style.fontSize = isMobile ? "0.82rem" : "1.125rem";
-        logoTitle.style.letterSpacing = isMobile ? "0.22em" : "";
+        logoTitle.style.fontSize = isMobile ? "0.8rem" : "0.98rem";
+        logoTitle.style.letterSpacing = isMobile ? "0.14em" : "0.18em";
         logoTitle.style.display = isNarrow ? "none" : "";
         logoTitle.style.whiteSpace = "nowrap";
+        logoTitle.style.lineHeight = "1";
+        logoTitle.style.flex = "0 1 auto";
+        logoTitle.style.minWidth = "0";
       }
 
       if (controls) {
@@ -397,6 +461,15 @@
     var gsap = window.gsap;
     var ScrollTrigger = window.ScrollTrigger;
 
+    if (window.lenis && !window.lenisScrollTriggerBound) {
+      window.lenis.on("scroll", ScrollTrigger.update);
+      gsap.ticker.add(function (time) {
+        window.lenis.raf(time * 1000);
+      });
+      gsap.ticker.lagSmoothing(0);
+      window.lenisScrollTriggerBound = true;
+    }
+
     var textTargets = uniqueElements(
       Array.prototype.slice
         .call(
@@ -412,18 +485,94 @@
     textTargets.forEach(function (element, index) {
       var isAlreadyVisible =
         element.getBoundingClientRect().top < window.innerHeight * 0.9;
+      var isHeadingLike = /^(H1|H2|H3|H4|BLOCKQUOTE)$/.test(element.tagName);
+      var hasComplexMarkup = !!element.querySelector("br, em, strong, a, span");
+      var isPremiumText = isHeadingLike && !hasComplexMarkup;
+
+      if (isPremiumText) {
+        var words = splitElementWords(element);
+
+        if (words.length) {
+          gsap.set(words, {
+            opacity: 0,
+            yPercent: 115,
+            force3D: true,
+          });
+
+          var premiumConfig = {
+            opacity: 1,
+            yPercent: 0,
+            duration: 1.1,
+            stagger: 0.045,
+            delay: Math.min(index * 0.018, 0.14),
+            ease: "power4.out",
+            force3D: true,
+          };
+
+          if (isAlreadyVisible) {
+            premiumConfig.delay = 0.04;
+            gsap.to(words, premiumConfig);
+            return;
+          }
+
+          premiumConfig.scrollTrigger = {
+            trigger: element,
+            start: "top 86%",
+            once: true,
+          };
+
+          gsap.to(words, premiumConfig);
+          return;
+        }
+      }
+
+      if (isHeadingLike) {
+        gsap.set(element, {
+          opacity: 0,
+          y: 54,
+          willChange: "transform, opacity",
+          force3D: true,
+        });
+
+        var headingConfig = {
+          opacity: 1,
+          y: 0,
+          duration: 1.05,
+          delay: Math.min(index * 0.018, 0.12),
+          ease: "power4.out",
+          force3D: true,
+        };
+
+        if (isAlreadyVisible) {
+          headingConfig.delay = 0.04;
+          gsap.to(element, headingConfig);
+          return;
+        }
+
+        headingConfig.scrollTrigger = {
+          trigger: element,
+          start: "top 88%",
+          once: true,
+        };
+
+        gsap.to(element, headingConfig);
+        return;
+      }
 
       gsap.set(element, {
         opacity: 0,
-        y: 28,
+        y: 30,
+        willChange: "transform, opacity",
+        force3D: true,
       });
 
       var animationConfig = {
         opacity: 1,
         y: 0,
-        duration: 0.9,
-        delay: Math.min(index * 0.02, 0.18),
+        duration: 1,
+        delay: Math.min(index * 0.02, 0.16),
         ease: "power3.out",
+        force3D: true,
       };
 
       if (isAlreadyVisible) {
@@ -450,37 +599,33 @@
     );
 
     imageTargets.forEach(function (image) {
+      image.style.willChange = "transform, opacity";
+      image.style.backfaceVisibility = "hidden";
+      image.style.transform = "translateZ(0)";
+
       if (!image.closest("[data-hero-slider]")) {
         gsap.set(image, {
           opacity: 0,
-          y: 30,
-          scale: 1.06,
+          y: 24,
+          scale: 1.03,
+          force3D: true,
         });
 
         gsap.to(image, {
           opacity: 1,
           y: 0,
           scale: 1,
-          duration: 1.15,
+          duration: 1,
           ease: "power3.out",
+          force3D: true,
           scrollTrigger: {
             trigger: image,
-            start: "top 88%",
+            start: "top 90%",
             once: true,
           },
         });
       }
 
-      gsap.to(image, {
-        yPercent: image.closest("[data-hero-slider]") ? -4 : -10,
-        ease: "none",
-        scrollTrigger: {
-          trigger: image.closest("section") || image.parentElement || image,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
     });
 
     var hoverTargets = uniqueElements(
@@ -635,13 +780,6 @@
           smoothWheel: true,
           smoothTouch: false,
         });
-
-        function raf(time) {
-          lenis.raf(time);
-          window.requestAnimationFrame(raf);
-        }
-
-        window.requestAnimationFrame(raf);
         window.lenis = lenis;
       }
     }
