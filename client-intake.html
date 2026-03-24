@@ -37,7 +37,7 @@
       property="og:description"
       content="Share what is alive in you through the Touch and Move client intake form so we can guide you with greater clarity, care, and alignment."
     />
-    <meta property="og:image" content="assets/webp%20images/site-image-09.webp" />
+    <meta property="og:image" content="https://ujagare.github.io/TouchMove/assets/webp%20images/site-image-09.webp" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
@@ -47,7 +47,7 @@
       name="twitter:description"
       content="Share what is alive in you through the Touch and Move client intake form so we can guide you with greater clarity, care, and alignment."
     />
-    <meta name="twitter:image" content="assets/webp%20images/site-image-09.webp" />
+    <meta name="twitter:image" content="https://ujagare.github.io/TouchMove/assets/webp%20images/site-image-09.webp" />
     <link
       href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap"
       rel="stylesheet"
@@ -297,6 +297,19 @@
           const homeScrollToggle = document.getElementById("homeScrollToggle");
           const homeScrollIcon = document.getElementById("homeScrollIcon");
           const homeNextSection = document.getElementById("explore");
+          const intakeSuccessMessage = document.getElementById("intakeSuccessMessage");
+          const url = new URL(window.location.href);
+
+          if (intakeSuccessMessage && url.searchParams.get("submitted") === "1") {
+            intakeSuccessMessage.classList.remove("hidden");
+            intakeSuccessMessage.scrollIntoView({ behavior: "smooth", block: "center" });
+            url.searchParams.delete("submitted");
+            window.history.replaceState(
+              {},
+              document.title,
+              url.pathname + (url.search ? url.search : "") + url.hash,
+            );
+          }
 
           if (!homeScrollToggle || !homeScrollIcon || !homeNextSection) return;
 
@@ -405,11 +418,36 @@
             session or combination of modalities.
           </p>
 
-          <form action="contact.php" class="grid gap-6" method="post" accept-charset="UTF-8">
+          <div
+            id="intakeSuccessMessage"
+            class="hidden mb-6 rounded-2xl border border-primary/25 bg-primary/10 px-5 py-4 text-sm leading-relaxed text-slate-200"
+            role="status"
+            aria-live="polite"
+          >
+            Your intake form has been submitted successfully. We will review it and reach out to you soon.
+          </div>
+          <div
+            id="intakeErrorMessage"
+            class="hidden mb-6 rounded-2xl border border-red-400/25 bg-red-500/10 px-5 py-4 text-sm leading-relaxed text-red-200"
+            role="alert"
+            aria-live="polite"
+          >
+            We could not submit your intake form right now. Please try again.
+          </div>
+
+          <form
+            id="intakeForm"
+            class="grid gap-6"
+            accept-charset="UTF-8"
+            method="post"
+            novalidate
+          >
             <div class="hidden" aria-hidden="true">
-              <label for="intake-website">Website</label>
-              <input id="intake-website" name="website" type="text" tabindex="-1" autocomplete="off" />
+              <label for="intake-bot-field">Website</label>
+              <input id="intake-bot-field" name="botField" type="text" tabindex="-1" autocomplete="off" />
             </div>
+            <input type="hidden" name="formType" value="intake" />
+            <input type="hidden" name="formStartedAt" value="" />
             <div class="grid gap-6 md:grid-cols-2">
               <input
                 class="w-full rounded-lg border border-white/10 bg-white/[0.02] px-4 py-4 text-white placeholder:text-white/40 focus:border-primary focus:outline-none"
@@ -437,6 +475,9 @@
                 name="phone"
                 placeholder="Phone / WhatsApp"
                 autocomplete="tel"
+                inputmode="tel"
+                pattern="^[0-9+\-\s()]{7,20}$"
+                title="Please enter a valid phone number."
                 maxlength="40"
                 type="tel"
               />
@@ -465,6 +506,7 @@
               required
             ></textarea>
             <button
+              id="intakeSubmitButton"
               class="flex min-w-[220px] cursor-pointer items-center justify-center rounded-lg h-14 px-8 bg-primary text-white text-xs font-bold uppercase tracking-widest transition-all hover:bg-primary/90"
               type="submit"
             >
@@ -479,6 +521,74 @@
 
     <script src="https://unpkg.com/lenis@1.1.16/dist/lenis.min.js" defer></script>
     <script src="./assets/js/main.js?v=19" defer></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const intakeForm = document.getElementById("intakeForm");
+        const successMessage = document.getElementById("intakeSuccessMessage");
+        const errorMessage = document.getElementById("intakeErrorMessage");
+        const submitButton = document.getElementById("intakeSubmitButton");
+        const startedAtField = intakeForm?.querySelector('input[name="formStartedAt"]');
+
+        if (!intakeForm) return;
+
+        if (startedAtField) {
+          startedAtField.value = String(Date.now());
+        }
+
+        intakeForm.addEventListener("submit", async (event) => {
+          event.preventDefault();
+
+          if (!intakeForm.reportValidity()) return;
+
+          if (successMessage) successMessage.classList.add("hidden");
+          if (errorMessage) errorMessage.classList.add("hidden");
+
+          const payload = Object.fromEntries(new FormData(intakeForm).entries());
+          const originalButtonText = submitButton ? submitButton.innerHTML : "";
+
+          if (submitButton) {
+            submitButton.disabled = true;
+            submitButton.innerHTML = "Submitting...";
+          }
+
+          try {
+            const response = await fetch("/api/contact", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(payload),
+            });
+
+            const result = await response.json();
+
+            if (!response.ok || !result.ok) {
+              throw new Error(result.message || "Unable to submit intake form.");
+            }
+
+            intakeForm.reset();
+            if (successMessage) {
+              successMessage.textContent =
+                result.message ||
+                "Your intake form has been submitted successfully. We will review it and reach out to you soon.";
+              successMessage.classList.remove("hidden");
+              successMessage.scrollIntoView({ behavior: "smooth", block: "center" });
+            }
+          } catch (error) {
+            if (errorMessage) {
+              errorMessage.textContent =
+                error.message ||
+                "We could not submit your intake form right now. Please try again.";
+              errorMessage.classList.remove("hidden");
+              errorMessage.scrollIntoView({ behavior: "smooth", block: "center" });
+            }
+          } finally {
+            if (submitButton) {
+              submitButton.disabled = false;
+              submitButton.innerHTML = originalButtonText;
+            }
+          }
+        });
+      });
+    </script>
   </body>
 </html>
 
