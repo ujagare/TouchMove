@@ -629,7 +629,7 @@
                   name="phone"
                   autocomplete="tel"
                   inputmode="tel"
-                  pattern="[-0-9()+\s]{7,20}"
+                  pattern="[0-9+\-\s()]{7,20}"
                   title="Please enter a valid phone number."
                   maxlength="40"
                   required
@@ -689,6 +689,7 @@
             style="filter: saturate(1.05) contrast(1.02) brightness(1)"
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
+            sandbox="allow-scripts allow-same-origin"
           ></iframe>
           <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/35 via-black/10 to-transparent"></div>
           <div class="pointer-events-none absolute inset-0 flex items-center justify-center">
