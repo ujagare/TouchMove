@@ -3,6 +3,7 @@
   Header always set X-Frame-Options "SAMEORIGIN"
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
   Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; frame-src 'self' https://www.google.com https://www.googletagmanager.com https://www.openstreetmap.org; connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://api.resend.com; object-src 'none'; base-uri 'self'; form-action 'self';"
 
   <FilesMatch "\.(css|js|png|jpg|jpeg|webp|svg|ico)$">
     Header set Cache-Control "public, max-age=31536000, immutable"
