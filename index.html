@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 
 <html class="dark" lang="en">
   <head>
@@ -45,6 +45,15 @@
       content="Explore Touch and Move for embodied healing, soul-led guidance, movement, and conscious transformation."
     />
     <meta name="twitter:image" content="https://ujagare.github.io/TouchMove/assets/webp%20images/site-image-28.webp" />
+    <meta name="author" content="Touch and Move" />
+    <meta
+      property="og:url"
+      content="https://ujagare.github.io/TouchMove/index.html"
+    />
+    <link
+      rel="canonical"
+      href="https://ujagare.github.io/TouchMove/index.html"
+    />
     <link
       href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;display=swap"
       rel="stylesheet"
@@ -59,7 +68,8 @@
       type="image/x-icon"
     />
     <title>Touch and Move | Home</title>
-        <link rel="stylesheet" href="./assets/css/style.css?v=3" />
+    <link rel="stylesheet" href="./assets/css/style.css?v=3" />
+    <link rel="stylesheet" href="./assets/css/shared.css?v=2" />
     <link rel="stylesheet" href="./assets/css/pages/index.css?v=3" />
   </head>
   <body
@@ -212,6 +222,12 @@
               >Who This Work Is For</a
             >
             <a
+              href="blog.html"
+              class="text-white/90 hover:text-white transition uppercase tracking-widest hover:scale-105 duration-200"
+              style="font-size: 22px"
+              >Journal</a
+            >
+            <a
               href="client-intake.html"
               class="text-white/90 hover:text-white transition uppercase tracking-widest hover:scale-105 duration-200"
               style="font-size: 22px"
@@ -321,12 +337,23 @@
 
             homeScrollToggle.addEventListener("click", () => {
               if (getIsBelowHero()) {
-                window.scrollTo({ top: 0, behavior: "smooth" });
+                if (typeof window.tmSmoothScrollTo === "function") {
+                  window.tmSmoothScrollTo(0);
+                } else {
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }
               } else {
-                homeNextSection.scrollIntoView({
-                  behavior: "smooth",
-                  block: "start",
-                });
+                if (typeof window.tmSmoothScrollTo === "function") {
+                  window.tmSmoothScrollTo(homeNextSection, {
+                    offset: 0,
+                    block: "start",
+                  });
+                } else {
+                  homeNextSection.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                  });
+                }
               }
             });
 
@@ -487,7 +514,7 @@
 
             <div class="w-full px-0 relative z-10">
               <div
-                class="tm-explore-shell mx-auto max-w-[1400px] rounded-[2rem] px-6 py-12 sm:px-8 md:rounded-[2.5rem] md:px-16 md:py-16 lg:px-20 xl:px-24 backdrop-blur-sm bg-black/20 border border-white/5 shadow-2xl"
+                class="tm-explore-shell mx-auto max-w-350 rounded-4xl px-6 py-12 sm:px-8 md:rounded-[2.5rem] md:px-16 md:py-16 lg:px-20 xl:px-24 backdrop-blur-sm bg-black/20 border border-white/5 shadow-2xl"
               >
                 <!-- Centered Header -->
                 <div class="text-center mb-16 lg:mb-20">
@@ -512,18 +539,18 @@
                   class="tm-explore-grid grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4 xl:gap-7"
                 >
                   <article
-                    class="tm-explore-card group relative flex h-full flex-col gap-7 p-10 rounded-2xl bg-gradient-to-br from-charcoal/40 to-black/40 border border-white/10 backdrop-blur-md hover:border-primary/40 transition-all duration-700 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2 overflow-hidden"
+                    class="tm-explore-card group relative flex h-full flex-col gap-7 p-10 rounded-2xl bg-linear-to-br from-charcoal/40 to-black/40 border border-white/10 backdrop-blur-md hover:border-primary/40 transition-all duration-700 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2 overflow-hidden"
                   >
                     <!-- Hover Glow Effect -->
                     <div
-                      class="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-transparent transition-all duration-700 pointer-events-none"
+                      class="absolute inset-0 bg-linear-to-br from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-transparent transition-all duration-700 pointer-events-none"
                     ></div>
 
                     <div
                       class="flex items-start justify-between gap-5 relative z-10 mb-4"
                     >
                       <div
-                        class="tm-explore-icon flex h-28 w-28 items-center justify-center rounded-2xl border-2 border-primary/30 bg-gradient-to-br from-primary/20 to-primary/5 text-primary transition-all duration-700 group-hover:bg-gradient-to-br group-hover:from-primary group-hover:to-primary/80 group-hover:text-white group-hover:scale-110 group-hover:rotate-6 shadow-xl group-hover:shadow-2xl group-hover:shadow-primary/40 animate-pulse"
+                        class="tm-explore-icon flex h-28 w-28 items-center justify-center rounded-2xl border-2 border-primary/30 bg-linear-to-br from-primary/20 to-primary/5 text-primary transition-all duration-700 group-hover:bg-linear-to-br group-hover:from-primary group-hover:to-primary/80 group-hover:text-white group-hover:scale-110 group-hover:rotate-6 shadow-xl group-hover:shadow-2xl group-hover:shadow-primary/40 animate-pulse"
                         style="animation-duration: 3s"
                       >
                         <span
@@ -541,14 +568,14 @@
                         Career Clarity
                       </h3>
                       <p
-                        class="tm-explore-copy max-w-[32rem] text-[15.5px] leading-[1.9] text-slate-400 group-hover:text-slate-300 transition-colors duration-500"
+                        class="tm-explore-copy max-w-128 text-[15.5px] leading-[1.9] text-slate-400 group-hover:text-slate-300 transition-colors duration-500"
                       >
                         Navigate professional crossroads and uncover the path
                         that feels aligned, meaningful, and sustainable.
                       </p>
                     </div>
                     <div
-                      class="tm-explore-divider h-px w-full bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:via-primary/40 transition-all duration-500 relative z-10"
+                      class="tm-explore-divider h-px w-full bg-linear-to-r from-transparent via-white/20 to-transparent group-hover:via-primary/40 transition-all duration-500 relative z-10"
                     ></div>
                     <div
                       class="tm-explore-footer text-[11px] uppercase tracking-[0.26em] text-slate-500 group-hover:text-slate-400 transition-colors duration-500 font-medium relative z-10"
@@ -557,17 +584,17 @@
                     </div>
                   </article>
                   <article
-                    class="tm-explore-card group relative flex h-full flex-col gap-7 p-10 rounded-2xl bg-gradient-to-br from-charcoal/40 to-black/40 border border-white/10 backdrop-blur-md hover:border-primary/40 transition-all duration-700 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2 overflow-hidden"
+                    class="tm-explore-card group relative flex h-full flex-col gap-7 p-10 rounded-2xl bg-linear-to-br from-charcoal/40 to-black/40 border border-white/10 backdrop-blur-md hover:border-primary/40 transition-all duration-700 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2 overflow-hidden"
                   >
                     <div
-                      class="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-transparent transition-all duration-700 pointer-events-none"
+                      class="absolute inset-0 bg-linear-to-br from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-transparent transition-all duration-700 pointer-events-none"
                     ></div>
 
                     <div
                       class="flex items-start justify-between gap-5 relative z-10 mb-4"
                     >
                       <div
-                        class="tm-explore-icon flex h-28 w-28 items-center justify-center rounded-2xl border-2 border-primary/30 bg-gradient-to-br from-primary/20 to-primary/5 text-primary transition-all duration-700 group-hover:bg-gradient-to-br group-hover:from-primary group-hover:to-primary/80 group-hover:text-white group-hover:scale-110 group-hover:rotate-6 shadow-xl group-hover:shadow-2xl group-hover:shadow-primary/40 animate-pulse"
+                        class="tm-explore-icon flex h-28 w-28 items-center justify-center rounded-2xl border-2 border-primary/30 bg-linear-to-br from-primary/20 to-primary/5 text-primary transition-all duration-700 group-hover:bg-linear-to-br group-hover:from-primary group-hover:to-primary/80 group-hover:text-white group-hover:scale-110 group-hover:rotate-6 shadow-xl group-hover:shadow-2xl group-hover:shadow-primary/40 animate-pulse"
                         style="animation-duration: 3s; animation-delay: 0.5s"
                       >
                         <span
@@ -585,14 +612,14 @@
                         Relationships
                       </h3>
                       <p
-                        class="tm-explore-copy max-w-[32rem] text-[15.5px] leading-[1.9] text-slate-400 group-hover:text-slate-300 transition-colors duration-500"
+                        class="tm-explore-copy max-w-128 text-[15.5px] leading-[1.9] text-slate-400 group-hover:text-slate-300 transition-colors duration-500"
                       >
                         Understand the energy within your connections and bring
                         more honesty, softness, and awareness into them.
                       </p>
                     </div>
                     <div
-                      class="tm-explore-divider h-px w-full bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:via-primary/40 transition-all duration-500 relative z-10"
+                      class="tm-explore-divider h-px w-full bg-linear-to-r from-transparent via-white/20 to-transparent group-hover:via-primary/40 transition-all duration-500 relative z-10"
                     ></div>
                     <div
                       class="tm-explore-footer text-[11px] uppercase tracking-[0.26em] text-slate-500 group-hover:text-slate-400 transition-colors duration-500 font-medium relative z-10"
@@ -601,17 +628,17 @@
                     </div>
                   </article>
                   <article
-                    class="tm-explore-card group relative flex h-full flex-col gap-7 p-10 rounded-2xl bg-gradient-to-br from-charcoal/40 to-black/40 border border-white/10 backdrop-blur-md hover:border-primary/40 transition-all duration-700 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2 overflow-hidden"
+                    class="tm-explore-card group relative flex h-full flex-col gap-7 p-10 rounded-2xl bg-linear-to-br from-charcoal/40 to-black/40 border border-white/10 backdrop-blur-md hover:border-primary/40 transition-all duration-700 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2 overflow-hidden"
                   >
                     <div
-                      class="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-transparent transition-all duration-700 pointer-events-none"
+                      class="absolute inset-0 bg-linear-to-br from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-transparent transition-all duration-700 pointer-events-none"
                     ></div>
 
                     <div
                       class="flex items-start justify-between gap-5 relative z-10 mb-4"
                     >
                       <div
-                        class="tm-explore-icon flex h-28 w-28 items-center justify-center rounded-2xl border-2 border-primary/30 bg-gradient-to-br from-primary/20 to-primary/5 text-primary transition-all duration-700 group-hover:bg-gradient-to-br group-hover:from-primary group-hover:to-primary/80 group-hover:text-white group-hover:scale-110 group-hover:rotate-6 shadow-xl group-hover:shadow-2xl group-hover:shadow-primary/40 animate-pulse"
+                        class="tm-explore-icon flex h-28 w-28 items-center justify-center rounded-2xl border-2 border-primary/30 bg-linear-to-br from-primary/20 to-primary/5 text-primary transition-all duration-700 group-hover:bg-linear-to-br group-hover:from-primary group-hover:to-primary/80 group-hover:text-white group-hover:scale-110 group-hover:rotate-6 shadow-xl group-hover:shadow-2xl group-hover:shadow-primary/40 animate-pulse"
                         style="animation-duration: 3s; animation-delay: 1s"
                       >
                         <span
@@ -629,14 +656,14 @@
                         Personal Growth
                       </h3>
                       <p
-                        class="tm-explore-copy max-w-[32rem] text-[15.5px] leading-[1.9] text-slate-400 group-hover:text-slate-300 transition-colors duration-500"
+                        class="tm-explore-copy max-w-128 text-[15.5px] leading-[1.9] text-slate-400 group-hover:text-slate-300 transition-colors duration-500"
                       >
                         Notice the patterns beneath the surface and move toward
                         a steadier, more authentic version of yourself.
                       </p>
                     </div>
                     <div
-                      class="tm-explore-divider h-px w-full bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:via-primary/40 transition-all duration-500 relative z-10"
+                      class="tm-explore-divider h-px w-full bg-linear-to-r from-transparent via-white/20 to-transparent group-hover:via-primary/40 transition-all duration-500 relative z-10"
                     ></div>
                     <div
                       class="tm-explore-footer text-[11px] uppercase tracking-[0.26em] text-slate-500 group-hover:text-slate-400 transition-colors duration-500 font-medium relative z-10"
@@ -645,17 +672,17 @@
                     </div>
                   </article>
                   <article
-                    class="tm-explore-card group relative flex h-full flex-col gap-7 p-10 rounded-2xl bg-gradient-to-br from-charcoal/40 to-black/40 border border-white/10 backdrop-blur-md hover:border-primary/40 transition-all duration-700 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2 overflow-hidden"
+                    class="tm-explore-card group relative flex h-full flex-col gap-7 p-10 rounded-2xl bg-linear-to-br from-charcoal/40 to-black/40 border border-white/10 backdrop-blur-md hover:border-primary/40 transition-all duration-700 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2 overflow-hidden"
                   >
                     <div
-                      class="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-transparent transition-all duration-700 pointer-events-none"
+                      class="absolute inset-0 bg-linear-to-br from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-transparent transition-all duration-700 pointer-events-none"
                     ></div>
 
                     <div
                       class="flex items-start justify-between gap-5 relative z-10 mb-4"
                     >
                       <div
-                        class="tm-explore-icon flex h-28 w-28 items-center justify-center rounded-2xl border-2 border-primary/30 bg-gradient-to-br from-primary/20 to-primary/5 text-primary transition-all duration-700 group-hover:bg-gradient-to-br group-hover:from-primary group-hover:to-primary/80 group-hover:text-white group-hover:scale-110 group-hover:rotate-6 shadow-xl group-hover:shadow-2xl group-hover:shadow-primary/40 animate-pulse"
+                        class="tm-explore-icon flex h-28 w-28 items-center justify-center rounded-2xl border-2 border-primary/30 bg-linear-to-br from-primary/20 to-primary/5 text-primary transition-all duration-700 group-hover:bg-linear-to-br group-hover:from-primary group-hover:to-primary/80 group-hover:text-white group-hover:scale-110 group-hover:rotate-6 shadow-xl group-hover:shadow-2xl group-hover:shadow-primary/40 animate-pulse"
                         style="animation-duration: 3s; animation-delay: 1.5s"
                       >
                         <span
@@ -673,14 +700,14 @@
                         Spiritual Path
                       </h3>
                       <p
-                        class="tm-explore-copy max-w-[32rem] text-[15.5px] leading-[1.9] text-slate-400 group-hover:text-slate-300 transition-colors duration-500"
+                        class="tm-explore-copy max-w-128 text-[15.5px] leading-[1.9] text-slate-400 group-hover:text-slate-300 transition-colors duration-500"
                       >
                         Reconnect with your higher purpose and listen more
                         clearly to the wisdom already present within you.
                       </p>
                     </div>
                     <div
-                      class="tm-explore-divider h-px w-full bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:via-primary/40 transition-all duration-500 relative z-10"
+                      class="tm-explore-divider h-px w-full bg-linear-to-r from-transparent via-white/20 to-transparent group-hover:via-primary/40 transition-all duration-500 relative z-10"
                     ></div>
                     <div
                       class="tm-explore-footer text-[11px] uppercase tracking-[0.26em] text-slate-500 group-hover:text-slate-400 transition-colors duration-500 font-medium relative z-10"
@@ -843,16 +870,17 @@
                         <img decoding="async" loading="lazy"
                           class="tm-review-avatar"
                           alt=""
-                          src="assets/images/site-image-01.png"
+                          src="assets/images/testomonials/testimonial-01.png"
                         />
                         <div>
-                          <p class="text-sm font-semibold text-white">Jack</p>
-                          <p class="text-xs text-white/50">@jack</p>
+                          <p class="text-sm font-semibold text-white">Aanya</p>
+                          <p class="text-xs text-white/50">@pune.client</p>
                         </div>
                       </div>
                       <p class="text-sm text-slate-300">
-                        I've never seen anything like this before. It's amazing.
-                        I love it.
+                        I finally left my session with clarity instead of
+                        confusion. The reading felt grounded, honest, and deeply
+                        personal.
                       </p>
                     </article>
                     <article class="tm-review-card">
@@ -860,16 +888,17 @@
                         <img decoding="async" loading="lazy"
                           class="tm-review-avatar"
                           alt=""
-                          src="assets/images/site-image-05.png"
+                          src="assets/images/testomonials/testimonial-02.png"
                         />
                         <div>
-                          <p class="text-sm font-semibold text-white">Jill</p>
-                          <p class="text-xs text-white/50">@jill</p>
+                          <p class="text-sm font-semibold text-white">Meera</p>
+                          <p class="text-xs text-white/50">@online.client</p>
                         </div>
                       </div>
                       <p class="text-sm text-slate-300">
-                        I don't know what to say. I'm speechless. This is
-                        amazing.
+                        I booked online from another city and still felt
+                        completely held. The guidance was calm, practical, and
+                        surprisingly accurate.
                       </p>
                     </article>
                     <article class="tm-review-card">
@@ -877,15 +906,17 @@
                         <img decoding="async" loading="lazy"
                           class="tm-review-avatar"
                           alt=""
-                          src="assets/images/site-image-06.png"
+                          src="assets/images/testomonials/testimonial-03.png"
                         />
                         <div>
-                          <p class="text-sm font-semibold text-white">John</p>
-                          <p class="text-xs text-white/50">@john</p>
+                          <p class="text-sm font-semibold text-white">Rohit</p>
+                          <p class="text-xs text-white/50">@returning.client</p>
                         </div>
                       </div>
                       <p class="text-sm text-slate-300">
-                        I'm at a loss for words. This is amazing. I love it.
+                        This session helped me slow down and trust my next
+                        step. I came in overwhelmed and left feeling steady
+                        again.
                       </p>
                     </article>
                     <article class="tm-review-card">
@@ -893,16 +924,17 @@
                         <img decoding="async" loading="lazy"
                           class="tm-review-avatar"
                           alt=""
-                          src="assets/images/site-image-01.png"
+                          src="assets/images/testomonials/testimonial-01.png"
                         />
                         <div>
-                          <p class="text-sm font-semibold text-white">Jack</p>
-                          <p class="text-xs text-white/50">@jack</p>
+                          <p class="text-sm font-semibold text-white">Aanya</p>
+                          <p class="text-xs text-white/50">@pune.client</p>
                         </div>
                       </div>
                       <p class="text-sm text-slate-300">
-                        I've never seen anything like this before. It's amazing.
-                        I love it.
+                        I finally left my session with clarity instead of
+                        confusion. The reading felt grounded, honest, and deeply
+                        personal.
                       </p>
                     </article>
                     <article class="tm-review-card">
@@ -910,16 +942,17 @@
                         <img decoding="async" loading="lazy"
                           class="tm-review-avatar"
                           alt=""
-                          src="assets/images/site-image-05.png"
+                          src="assets/images/testomonials/testimonial-02.png"
                         />
                         <div>
-                          <p class="text-sm font-semibold text-white">Jill</p>
-                          <p class="text-xs text-white/50">@jill</p>
+                          <p class="text-sm font-semibold text-white">Meera</p>
+                          <p class="text-xs text-white/50">@online.client</p>
                         </div>
                       </div>
                       <p class="text-sm text-slate-300">
-                        I don't know what to say. I'm speechless. This is
-                        amazing.
+                        I booked online from another city and still felt
+                        completely held. The guidance was calm, practical, and
+                        surprisingly accurate.
                       </p>
                     </article>
                     <article class="tm-review-card">
@@ -927,15 +960,17 @@
                         <img decoding="async" loading="lazy"
                           class="tm-review-avatar"
                           alt=""
-                          src="assets/images/site-image-06.png"
+                          src="assets/images/testomonials/testimonial-03.png"
                         />
                         <div>
-                          <p class="text-sm font-semibold text-white">John</p>
-                          <p class="text-xs text-white/50">@john</p>
+                          <p class="text-sm font-semibold text-white">Rohit</p>
+                          <p class="text-xs text-white/50">@returning.client</p>
                         </div>
                       </div>
                       <p class="text-sm text-slate-300">
-                        I'm at a loss for words. This is amazing. I love it.
+                        This session helped me slow down and trust my next
+                        step. I came in overwhelmed and left feeling steady
+                        again.
                       </p>
                     </article>
                     <article class="tm-review-card">
@@ -943,16 +978,17 @@
                         <img decoding="async" loading="lazy"
                           class="tm-review-avatar"
                           alt=""
-                          src="assets/images/site-image-01.png"
+                          src="assets/images/testomonials/testimonial-01.png"
                         />
                         <div>
-                          <p class="text-sm font-semibold text-white">Jack</p>
-                          <p class="text-xs text-white/50">@jack</p>
+                          <p class="text-sm font-semibold text-white">Aanya</p>
+                          <p class="text-xs text-white/50">@pune.client</p>
                         </div>
                       </div>
                       <p class="text-sm text-slate-300">
-                        I've never seen anything like this before. It's amazing.
-                        I love it.
+                        I finally left my session with clarity instead of
+                        confusion. The reading felt grounded, honest, and deeply
+                        personal.
                       </p>
                     </article>
                     <article class="tm-review-card">
@@ -960,16 +996,17 @@
                         <img decoding="async" loading="lazy"
                           class="tm-review-avatar"
                           alt=""
-                          src="assets/images/site-image-05.png"
+                          src="assets/images/testomonials/testimonial-02.png"
                         />
                         <div>
-                          <p class="text-sm font-semibold text-white">Jill</p>
-                          <p class="text-xs text-white/50">@jill</p>
+                          <p class="text-sm font-semibold text-white">Meera</p>
+                          <p class="text-xs text-white/50">@online.client</p>
                         </div>
                       </div>
                       <p class="text-sm text-slate-300">
-                        I don't know what to say. I'm speechless. This is
-                        amazing.
+                        I booked online from another city and still felt
+                        completely held. The guidance was calm, practical, and
+                        surprisingly accurate.
                       </p>
                     </article>
                     <article class="tm-review-card">
@@ -977,15 +1014,17 @@
                         <img decoding="async" loading="lazy"
                           class="tm-review-avatar"
                           alt=""
-                          src="assets/images/site-image-06.png"
+                          src="assets/images/testomonials/testimonial-03.png"
                         />
                         <div>
-                          <p class="text-sm font-semibold text-white">John</p>
-                          <p class="text-xs text-white/50">@john</p>
+                          <p class="text-sm font-semibold text-white">Rohit</p>
+                          <p class="text-xs text-white/50">@returning.client</p>
                         </div>
                       </div>
                       <p class="text-sm text-slate-300">
-                        I'm at a loss for words. This is amazing. I love it.
+                        This session helped me slow down and trust my next
+                        step. I came in overwhelmed and left feeling steady
+                        again.
                       </p>
                     </article>
                     <article class="tm-review-card">
@@ -993,16 +1032,17 @@
                         <img decoding="async" loading="lazy"
                           class="tm-review-avatar"
                           alt=""
-                          src="assets/images/site-image-01.png"
+                          src="assets/images/testomonials/testimonial-01.png"
                         />
                         <div>
-                          <p class="text-sm font-semibold text-white">Jack</p>
-                          <p class="text-xs text-white/50">@jack</p>
+                          <p class="text-sm font-semibold text-white">Aanya</p>
+                          <p class="text-xs text-white/50">@pune.client</p>
                         </div>
                       </div>
                       <p class="text-sm text-slate-300">
-                        I've never seen anything like this before. It's amazing.
-                        I love it.
+                        I finally left my session with clarity instead of
+                        confusion. The reading felt grounded, honest, and deeply
+                        personal.
                       </p>
                     </article>
                     <article class="tm-review-card">
@@ -1010,16 +1050,17 @@
                         <img decoding="async" loading="lazy"
                           class="tm-review-avatar"
                           alt=""
-                          src="assets/images/site-image-05.png"
+                          src="assets/images/testomonials/testimonial-02.png"
                         />
                         <div>
-                          <p class="text-sm font-semibold text-white">Jill</p>
-                          <p class="text-xs text-white/50">@jill</p>
+                          <p class="text-sm font-semibold text-white">Meera</p>
+                          <p class="text-xs text-white/50">@online.client</p>
                         </div>
                       </div>
                       <p class="text-sm text-slate-300">
-                        I don't know what to say. I'm speechless. This is
-                        amazing.
+                        I booked online from another city and still felt
+                        completely held. The guidance was calm, practical, and
+                        surprisingly accurate.
                       </p>
                     </article>
                     <article class="tm-review-card">
@@ -1027,15 +1068,17 @@
                         <img decoding="async" loading="lazy"
                           class="tm-review-avatar"
                           alt=""
-                          src="assets/images/site-image-06.png"
+                          src="assets/images/testomonials/testimonial-03.png"
                         />
                         <div>
-                          <p class="text-sm font-semibold text-white">John</p>
-                          <p class="text-xs text-white/50">@john</p>
+                          <p class="text-sm font-semibold text-white">Rohit</p>
+                          <p class="text-xs text-white/50">@returning.client</p>
                         </div>
                       </div>
                       <p class="text-sm text-slate-300">
-                        I'm at a loss for words. This is amazing. I love it.
+                        This session helped me slow down and trust my next
+                        step. I came in overwhelmed and left feeling steady
+                        again.
                       </p>
                     </article>
                   </div>
@@ -1048,15 +1091,17 @@
                         <img decoding="async" loading="lazy"
                           class="tm-review-avatar"
                           alt=""
-                          src="assets/images/site-image-03.png"
+                          src="assets/images/testomonials/testimonial-04.png"
                         />
                         <div>
-                          <p class="text-sm font-semibold text-white">Jane</p>
-                          <p class="text-xs text-white/50">@jane</p>
+                          <p class="text-sm font-semibold text-white">Nisha</p>
+                          <p class="text-xs text-white/50">@clarity.work</p>
                         </div>
                       </div>
                       <p class="text-sm text-slate-300">
-                        I'm at a loss for words. This is amazing. I love it.
+                        What stayed with me was how safe the space felt. I could
+                        talk openly, and the insights kept unfolding even days
+                        later.
                       </p>
                     </article>
                     <article class="tm-review-card">
@@ -1064,15 +1109,17 @@
                         <img decoding="async" loading="lazy"
                           class="tm-review-avatar"
                           alt=""
-                          src="assets/images/site-image-04.png"
+                          src="assets/images/testomonials/testimonial-05.png"
                         />
                         <div>
-                          <p class="text-sm font-semibold text-white">Jenny</p>
-                          <p class="text-xs text-white/50">@jenny</p>
+                          <p class="text-sm font-semibold text-white">Kavya</p>
+                          <p class="text-xs text-white/50">@healing.journey</p>
                         </div>
                       </div>
                       <p class="text-sm text-slate-300">
-                        I'm at a loss for words. This is amazing. I love it.
+                        The reading reflected patterns I had been avoiding for
+                        months. It gave me language, direction, and a lot of
+                        relief.
                       </p>
                     </article>
                     <article class="tm-review-card">
@@ -1080,15 +1127,17 @@
                         <img decoding="async" loading="lazy"
                           class="tm-review-avatar"
                           alt=""
-                          src="assets/images/site-image-02.png"
+                          src="assets/images/testomonials/testimonial-06.png"
                         />
                         <div>
-                          <p class="text-sm font-semibold text-white">James</p>
-                          <p class="text-xs text-white/50">@james</p>
+                          <p class="text-sm font-semibold text-white">Arjun</p>
+                          <p class="text-xs text-white/50">@inner.reset</p>
                         </div>
                       </div>
                       <p class="text-sm text-slate-300">
-                        I'm at a loss for words. This is amazing. I love it.
+                        I expected a general session, but it was incredibly
+                        precise and compassionate. It genuinely helped me move
+                        forward.
                       </p>
                     </article>
                     <article class="tm-review-card">
@@ -1096,15 +1145,17 @@
                         <img decoding="async" loading="lazy"
                           class="tm-review-avatar"
                           alt=""
-                          src="assets/images/site-image-03.png"
+                          src="assets/images/testomonials/testimonial-04.png"
                         />
                         <div>
-                          <p class="text-sm font-semibold text-white">Jane</p>
-                          <p class="text-xs text-white/50">@jane</p>
+                          <p class="text-sm font-semibold text-white">Nisha</p>
+                          <p class="text-xs text-white/50">@clarity.work</p>
                         </div>
                       </div>
                       <p class="text-sm text-slate-300">
-                        I'm at a loss for words. This is amazing. I love it.
+                        What stayed with me was how safe the space felt. I could
+                        talk openly, and the insights kept unfolding even days
+                        later.
                       </p>
                     </article>
                     <article class="tm-review-card">
@@ -1112,15 +1163,17 @@
                         <img decoding="async" loading="lazy"
                           class="tm-review-avatar"
                           alt=""
-                          src="assets/images/site-image-04.png"
+                          src="assets/images/testomonials/testimonial-05.png"
                         />
                         <div>
-                          <p class="text-sm font-semibold text-white">Jenny</p>
-                          <p class="text-xs text-white/50">@jenny</p>
+                          <p class="text-sm font-semibold text-white">Kavya</p>
+                          <p class="text-xs text-white/50">@healing.journey</p>
                         </div>
                       </div>
                       <p class="text-sm text-slate-300">
-                        I'm at a loss for words. This is amazing. I love it.
+                        The reading reflected patterns I had been avoiding for
+                        months. It gave me language, direction, and a lot of
+                        relief.
                       </p>
                     </article>
                     <article class="tm-review-card">
@@ -1128,15 +1181,17 @@
                         <img decoding="async" loading="lazy"
                           class="tm-review-avatar"
                           alt=""
-                          src="assets/images/site-image-02.png"
+                          src="assets/images/testomonials/testimonial-06.png"
                         />
                         <div>
-                          <p class="text-sm font-semibold text-white">James</p>
-                          <p class="text-xs text-white/50">@james</p>
+                          <p class="text-sm font-semibold text-white">Arjun</p>
+                          <p class="text-xs text-white/50">@inner.reset</p>
                         </div>
                       </div>
                       <p class="text-sm text-slate-300">
-                        I'm at a loss for words. This is amazing. I love it.
+                        I expected a general session, but it was incredibly
+                        precise and compassionate. It genuinely helped me move
+                        forward.
                       </p>
                     </article>
                     <article class="tm-review-card">
@@ -1144,15 +1199,17 @@
                         <img decoding="async" loading="lazy"
                           class="tm-review-avatar"
                           alt=""
-                          src="assets/images/site-image-03.png"
+                          src="assets/images/testomonials/testimonial-04.png"
                         />
                         <div>
-                          <p class="text-sm font-semibold text-white">Jane</p>
-                          <p class="text-xs text-white/50">@jane</p>
+                          <p class="text-sm font-semibold text-white">Nisha</p>
+                          <p class="text-xs text-white/50">@clarity.work</p>
                         </div>
                       </div>
                       <p class="text-sm text-slate-300">
-                        I'm at a loss for words. This is amazing. I love it.
+                        What stayed with me was how safe the space felt. I could
+                        talk openly, and the insights kept unfolding even days
+                        later.
                       </p>
                     </article>
                     <article class="tm-review-card">
@@ -1160,15 +1217,17 @@
                         <img decoding="async" loading="lazy"
                           class="tm-review-avatar"
                           alt=""
-                          src="assets/images/site-image-04.png"
+                          src="assets/images/testomonials/testimonial-05.png"
                         />
                         <div>
-                          <p class="text-sm font-semibold text-white">Jenny</p>
-                          <p class="text-xs text-white/50">@jenny</p>
+                          <p class="text-sm font-semibold text-white">Kavya</p>
+                          <p class="text-xs text-white/50">@healing.journey</p>
                         </div>
                       </div>
                       <p class="text-sm text-slate-300">
-                        I'm at a loss for words. This is amazing. I love it.
+                        The reading reflected patterns I had been avoiding for
+                        months. It gave me language, direction, and a lot of
+                        relief.
                       </p>
                     </article>
                     <article class="tm-review-card">
@@ -1176,15 +1235,17 @@
                         <img decoding="async" loading="lazy"
                           class="tm-review-avatar"
                           alt=""
-                          src="assets/images/site-image-02.png"
+                          src="assets/images/testomonials/testimonial-06.png"
                         />
                         <div>
-                          <p class="text-sm font-semibold text-white">James</p>
-                          <p class="text-xs text-white/50">@james</p>
+                          <p class="text-sm font-semibold text-white">Arjun</p>
+                          <p class="text-xs text-white/50">@inner.reset</p>
                         </div>
                       </div>
                       <p class="text-sm text-slate-300">
-                        I'm at a loss for words. This is amazing. I love it.
+                        I expected a general session, but it was incredibly
+                        precise and compassionate. It genuinely helped me move
+                        forward.
                       </p>
                     </article>
                     <article class="tm-review-card">
@@ -1192,15 +1253,17 @@
                         <img decoding="async" loading="lazy"
                           class="tm-review-avatar"
                           alt=""
-                          src="assets/images/site-image-03.png"
+                          src="assets/images/testomonials/testimonial-04.png"
                         />
                         <div>
-                          <p class="text-sm font-semibold text-white">Jane</p>
-                          <p class="text-xs text-white/50">@jane</p>
+                          <p class="text-sm font-semibold text-white">Nisha</p>
+                          <p class="text-xs text-white/50">@clarity.work</p>
                         </div>
                       </div>
                       <p class="text-sm text-slate-300">
-                        I'm at a loss for words. This is amazing. I love it.
+                        What stayed with me was how safe the space felt. I could
+                        talk openly, and the insights kept unfolding even days
+                        later.
                       </p>
                     </article>
                     <article class="tm-review-card">
@@ -1208,15 +1271,17 @@
                         <img decoding="async" loading="lazy"
                           class="tm-review-avatar"
                           alt=""
-                          src="assets/images/site-image-04.png"
+                          src="assets/images/testomonials/testimonial-05.png"
                         />
                         <div>
-                          <p class="text-sm font-semibold text-white">Jenny</p>
-                          <p class="text-xs text-white/50">@jenny</p>
+                          <p class="text-sm font-semibold text-white">Kavya</p>
+                          <p class="text-xs text-white/50">@healing.journey</p>
                         </div>
                       </div>
                       <p class="text-sm text-slate-300">
-                        I'm at a loss for words. This is amazing. I love it.
+                        The reading reflected patterns I had been avoiding for
+                        months. It gave me language, direction, and a lot of
+                        relief.
                       </p>
                     </article>
                     <article class="tm-review-card">
@@ -1224,15 +1289,17 @@
                         <img decoding="async" loading="lazy"
                           class="tm-review-avatar"
                           alt=""
-                          src="assets/images/site-image-02.png"
+                          src="assets/images/testomonials/testimonial-06.png"
                         />
                         <div>
-                          <p class="text-sm font-semibold text-white">James</p>
-                          <p class="text-xs text-white/50">@james</p>
+                          <p class="text-sm font-semibold text-white">Arjun</p>
+                          <p class="text-xs text-white/50">@inner.reset</p>
                         </div>
                       </div>
                       <p class="text-sm text-slate-300">
-                        I'm at a loss for words. This is amazing. I love it.
+                        I expected a general session, but it was incredibly
+                        precise and compassionate. It genuinely helped me move
+                        forward.
                       </p>
                     </article>
                   </div>
@@ -1245,7 +1312,7 @@
           </section>
           <section
             id="homeMantra"
-            class="w-full bg-gradient-to-b from-charcoal-deep to-black py-16 md:py-20"
+            class="w-full bg-linear-to-b from-charcoal-deep to-black py-16 md:py-20"
           >
             <div class="w-full px-6 md:px-12 lg:px-20">
               <div class="max-w-7xl mx-auto">
@@ -1253,13 +1320,13 @@
                 <div class="text-center mb-12">
                   <div class="inline-flex items-center gap-3 mb-6">
                     <div
-                      class="h-px w-12 bg-gradient-to-r from-transparent to-primary/50"
+                      class="h-px w-12 bg-linear-to-r from-transparent to-primary/50"
                     ></div>
                     <span
                       class="text-[10px] uppercase tracking-[0.4em] font-bold text-primary"
                       >Our Location</span>
                     <div
-                      class="h-px w-12 bg-gradient-to-l from-transparent to-primary/50"
+                      class="h-px w-12 bg-linear-to-l from-transparent to-primary/50"
                     ></div>
                   </div>
                   <h2
@@ -1273,28 +1340,33 @@
                   </p>
                 </div>
 
-                <div
-                  class="relative overflow-hidden rounded-3xl border-2 border-white/10 shadow-2xl"
-                  style="min-height: 280px; height: clamp(280px, 40vw, 420px)"
-                >
+                <div class="px-4 md:px-6 lg:px-8">
+                  <div
+                    class="relative overflow-hidden rounded-3xl border-[3px] shadow-2xl"
+                    style="
+                      min-height: 280px;
+                      height: clamp(280px, 40vw, 420px);
+                      border-color: #d1d5db;
+                    "
+                  >
                   <!-- Map iframe -->
                   <iframe
-                    title="Pune, India map"
-                    src="https://www.openstreetmap.org/export/embed.html?bbox=73.74%2C18.45%2C73.98%2C18.62&layer=mapnik&marker=18.5204%2C73.8567"
+                    title="Touch and Move studio map"
+                    src="https://maps.google.com/maps?q=18.556227,73.807884&z=17&output=embed"
                     class="absolute inset-0 h-full w-full border-0"
-                    style="filter: grayscale(1) contrast(1.1) brightness(0.7)"
+                    style="filter: saturate(1.05) contrast(1.02) brightness(1)"
                     loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade"
                   ></iframe>
 
                   <!-- Gradient Overlay -->
                   <div
-                    class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-10"
+                    class="absolute inset-0 bg-linear-to-t from-black/35 via-black/10 to-transparent z-10"
                   ></div>
 
                   <!-- Animated Glow -->
                   <div
-                    class="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-primary/5 animate-pulse z-10"
+                    class="absolute inset-0 bg-linear-to-br from-primary/10 via-transparent to-primary/5 animate-pulse z-10"
                     style="animation-duration: 4s"
                   ></div>
 
@@ -1302,24 +1374,39 @@
                   <div
                     class="absolute inset-0 flex items-center justify-center px-6 z-20"
                   >
-                    <!-- Large Colorful Location Icon -->
                     <div
-                      class="inline-flex items-center justify-center w-32 h-32 rounded-full bg-gradient-to-br from-primary via-red-600 to-primary shadow-2xl animate-pulse hover:scale-110 transition-all duration-500"
+                      class="flex items-center justify-center animate-pulse hover:scale-110 transition-all duration-500"
                       style="
                         animation-duration: 3s;
-                        box-shadow:
-                          0 0 60px rgba(139, 0, 0, 0.6),
-                          0 0 100px rgba(139, 0, 0, 0.3);
+                        width: 110px;
+                        height: 110px;
+                        filter: drop-shadow(0 18px 22px rgba(0, 0, 0, 0.28));
                       "
                     >
-                      <span
-                        class="material-symbols-outlined text-white text-[64px] drop-shadow-2xl"
-                        style="
-                          filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
-                        "
-                        >location_on</span>
+                      <svg
+                        viewBox="0 0 64 64"
+                        aria-hidden="true"
+                        style="width: 110px; height: 110px; display: block"
+                      >
+                        <defs>
+                          <linearGradient id="indexMapPin" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#ff8a8a" />
+                            <stop offset="45%" stop-color="#d92d20" />
+                            <stop offset="100%" stop-color="#7a0f0f" />
+                          </linearGradient>
+                        </defs>
+                        <path
+                          d="M32 60C32 60 50 42.6 50 27.5C50 17.8 41.9 10 32 10C22.1 10 14 17.8 14 27.5C14 42.6 32 60 32 60Z"
+                          fill="url(#indexMapPin)"
+                          stroke="#fff7ed"
+                          stroke-width="2.5"
+                        />
+                        <circle cx="32" cy="28" r="9.5" fill="#fffaf5" />
+                        <circle cx="32" cy="28" r="4.5" fill="#d92d20" />
+                      </svg>
                     </div>
                   </div>
+                </div>
                 </div>
               </div>
             </div>
@@ -1440,7 +1527,7 @@
           </section>
         </main>
         <!-- Footer -->
-        <footer id="homeFooter" class="py-20 md:py-24">           <div class="max-w-[1680px] mx-auto px-4 md:px-6 lg:px-8">             <div               class="tm-footer-shell rounded-[2rem] px-6 py-10 md:px-10 md:py-14 lg:px-12"             >               <div                 class="grid gap-7 border-b pb-10 md:grid-cols-12 md:items-start md:gap-8 md:pb-12 tm-footer-divider"               >                 <div class="md:col-span-5">                   <div class="tm-footer-card rounded-[1.5rem] p-6 md:p-7">                     <div class="flex items-center gap-3">                       <img decoding="async" loading="lazy"                         alt="Harshaa Tarot Logo"                         class="h-4 w-auto"                         src="assets/images/logo-touch-and-move.png"                       />                       <h2                         class="text-white uppercase text-xs tracking-[0.3em] font-bold"                       >                         Touch and Move                       </h2>                     </div>                     <p                       class="mt-5 max-w-md text-base font-light italic leading-loose text-slate-400"                     >                       Architects of conscious stillness and transformative                       motion. Offering grounded, intuitive guidance for seekers                       across the world.                     </p>                     <div class="mt-6 flex flex-wrap gap-3">                       <span                         class="tm-footer-kicker rounded-full border border-primary/10 bg-white/50 px-4 py-2 text-[10px] uppercase tracking-[0.26em]"                       >                         Online Worldwide                       </span>                       <span                         class="tm-footer-kicker rounded-full border border-primary/10 bg-white/50 px-4 py-2 text-[10px] uppercase tracking-[0.26em]"                       >                         In-Person Pune                       </span>                     </div>                   </div>                 </div>                 <div class="md:col-span-4">                   <div class="tm-footer-card rounded-[1.5rem] p-6 md:p-7">                     <h4                       class="font-bold mb-5 text-white uppercase text-[11px] tracking-[0.3em]"                     >                       Explore                     </h4>                     <div                       class="grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-2"                     >                       <a                         class="tm-footer-link block py-1 text-xs uppercase tracking-[0.18em] transition-colors"                         href="index.html"                         >Home</a                       >                       <a                         class="tm-footer-link block py-1 text-xs uppercase tracking-[0.18em] transition-colors"                         href="about.html"                         >Our Journey</a                       >                       <a                         class="tm-footer-link block py-1 text-xs uppercase tracking-[0.18em] transition-colors"                         href="services.html"                         >Guidance & Services</a                       >                       <a                         class="tm-footer-link block py-1 text-xs uppercase tracking-[0.18em] transition-colors"                         href="why-clients-work-with-us.html"                         >Tarot with Harshaa</a                       >                       <a                         class="tm-footer-link block py-1 text-xs uppercase tracking-[0.18em] transition-colors"                         href="Aproch.html"                         >Approach & Philosophy</a                       >                       <a                         class="tm-footer-link block py-1 text-xs uppercase tracking-[0.18em] transition-colors"                         href="our-Aproch.html"                         >Who This Work Is For</a                       >                       <a                         class="tm-footer-link block py-1 text-xs uppercase tracking-[0.18em] transition-colors"                         href="client-intake.html"                         >Client Intake Form</a                       >                       <a                         class="tm-footer-link block py-1 text-xs uppercase tracking-[0.18em] transition-colors"                         href="contact.html"                         >Contact</a                       >                     </div>                   </div>                 </div>                 <div class="md:col-span-3">                   <div class="tm-footer-card rounded-[1.5rem] p-6 md:p-7">                     <h4                       class="font-bold mb-5 text-white uppercase text-[11px] tracking-[0.3em]"                     >                       Connect                     </h4>                     <ul class="space-y-4 text-base leading-loose">                       <li>                         <a                           class="tm-footer-link transition-colors"                           href="mailto:touchandmove.69@gmail.com"                           >touchandmove.69@gmail.com</a                         >                       </li>                       <li>                         <a                           class="tm-footer-link transition-colors"                           href="tel:+918698304955"                           >8698304955 (Harshaa)</a                         >                         /                         <a                           class="tm-footer-link transition-colors"                           href="tel:+919511246401"                           >+91 9511246401</a                         >                       </li>                       <li class="text-slate-400">                         Online (Worldwide) | In-person (Pune, India)                       </li>                     </ul>                     <div class="flex items-center gap-4 pt-5">                       <a                         class="tm-footer-social inline-flex items-center justify-center rounded-full border transition-all"                         style="                           width: 44px;                           height: 44px;                           flex-shrink: 0;                           display: inline-flex;                           align-items: center;                           justify-content: center;                           line-height: 0;                         "                         href="https://wa.me/919511246401"                         aria-label="WhatsApp"                         target="_blank"                         rel="noopener noreferrer"                       >                         <svg                           viewBox="0 0 24 24"                           class="fill-current"                           style="                             width: 20px;                             height: 20px;                             display: block;                             color: #ffffff;                             flex-shrink: 0;                           "                           aria-hidden="true"                         >                           <path                             fill="#ffffff"                             d="M19.05 4.91A9.82 9.82 0 0 0 12.06 2C6.65 2 2.25 6.4 2.25 11.81c0 1.73.45 3.42 1.31 4.91L2 22l5.43-1.5a9.73 9.73 0 0 0 4.63 1.18h.01c5.41 0 9.81-4.4 9.81-9.81 0-2.62-1.02-5.08-2.83-6.96ZM12.07 20a8.1 8.1 0 0 1-4.13-1.13l-.3-.18-3.22.89.86-3.14-.2-.32a8.12 8.12 0 0 1-1.24-4.31 8.23 8.23 0 0 1 8.22-8.22 8.14 8.14 0 0 1 5.83 2.42 8.16 8.16 0 0 1 2.39 5.8A8.23 8.23 0 0 1 12.07 20Zm4.5-6.12c-.25-.12-1.47-.72-1.7-.8-.22-.08-.39-.12-.55.12-.16.25-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-2-1.25-.74-.66-1.24-1.48-1.39-1.73-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.16.04-.31-.02-.43-.06-.12-.55-1.33-.76-1.82-.2-.48-.4-.41-.55-.42l-.47-.01c-.16 0-.43.06-.66.31-.22.25-.85.83-.85 2.02 0 1.19.87 2.33.99 2.49.12.16 1.7 2.59 4.11 3.63.57.25 1.02.4 1.37.51.58.18 1.1.15 1.51.09.46-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.05-.1-.21-.16-.45-.27Z"                           />                         </svg>                       </a>                       <a                         class="tm-footer-social inline-flex items-center justify-center rounded-full border transition-all"                         style="                           width: 44px;                           height: 44px;                           flex-shrink: 0;                           display: inline-flex;                           align-items: center;                           justify-content: center;                           line-height: 0;                         "                         href="https://www.facebook.com/touchandmove"                         aria-label="Facebook"                         target="_blank"                         rel="noopener noreferrer"                       >                         <svg                           viewBox="0 0 24 24"                           class="fill-current"                           style="                             width: 20px;                             height: 20px;                             display: block;                             color: #ffffff;                             flex-shrink: 0;                           "                           aria-hidden="true"                         >                           <path                             fill="#ffffff"                             d="M13.5 21v-7h2.35l.35-2.73H13.5V9.53c0-.79.22-1.33 1.35-1.33h1.44V5.78c-.25-.03-1.1-.1-2.08-.1-2.06 0-3.46 1.25-3.46 3.56v2.03H8.5V14h2.25v7h2.75Z"                           />                         </svg>                       </a>                       <a                         class="tm-footer-social inline-flex items-center justify-center rounded-full border transition-all"                         style="                           width: 44px;                           height: 44px;                           flex-shrink: 0;                           display: inline-flex;                           align-items: center;                           justify-content: center;                           line-height: 0;                         "                         href="https://www.instagram.com/touchandmove"                         aria-label="Instagram"                         target="_blank"                         rel="noopener noreferrer"                       >                         <svg                           viewBox="0 0 24 24"                           class="fill-current"                           style="                             width: 20px;                             height: 20px;                             display: block;                             color: #ffffff;                             flex-shrink: 0;                           "                           aria-hidden="true"                         >                           <path                             fill="#ffffff"                             d="M7.75 2h8.5A5.76 5.76 0 0 1 22 7.75v8.5A5.76 5.76 0 0 1 16.25 22h-8.5A5.76 5.76 0 0 1 2 16.25v-8.5A5.76 5.76 0 0 1 7.75 2Zm-.18 1.94A3.63 3.63 0 0 0 3.94 7.57v8.86a3.63 3.63 0 0 0 3.63 3.63h8.86a3.63 3.63 0 0 0 3.63-3.63V7.57a3.63 3.63 0 0 0-3.63-3.63H7.57Zm9.36 1.45a1.3 1.3 0 1 1 0 2.6 1.3 1.3 0 0 1 0-2.6ZM12 7.23A4.77 4.77 0 1 1 7.23 12 4.77 4.77 0 0 1 12 7.23Zm0 1.94A2.83 2.83 0 1 0 14.83 12 2.83 2.83 0 0 0 12 9.17Z"                           />                         </svg>                       </a>                     </div>                   </div>                 </div>               </div>               <div                 class="mt-8 flex flex-col items-center justify-between gap-4 pt-6 text-center md:flex-row"               >                 <p>&copy; 2026 Touch and Move</p>                 <div                   class="flex items-center gap-6 text-slate-500 text-[11px] uppercase tracking-[0.24em]"                 >                   <a class="tm-footer-link transition-colors" href="sitemap.xml"                     >Sitemap</a                   >                   <a class="tm-footer-link transition-colors" href="robots.txt"                     >Robots</a                   >                 </div>               </div>             </div>           </div>         </footer>
+        <footer id="homeFooter" class="py-20 md:py-24">           <div class="max-w-420 mx-auto px-4 md:px-6 lg:px-8">             <div               class="tm-footer-shell rounded-4xl px-6 py-10 md:px-10 md:py-14 lg:px-12"             >               <div                 class="grid gap-7 border-b pb-10 md:grid-cols-12 md:items-start md:gap-8 md:pb-12 tm-footer-divider"               >                 <div class="md:col-span-5">                   <div class="tm-footer-card rounded-3xl p-6 md:p-7">                     <div class="flex items-center gap-3">                       <img decoding="async" loading="lazy"                         alt="Harshaa Tarot Logo"                         class="h-4 w-auto"                         src="assets/images/logo-touch-and-move.png"                       />                       <h2                         class="text-white uppercase text-xs tracking-[0.3em] font-bold"                       >                         Touch and Move                       </h2>                     </div>                     <p                       class="mt-5 max-w-md text-base font-light italic leading-loose text-slate-400"                     >                       Architects of conscious stillness and transformative                       motion. Offering grounded, intuitive guidance for seekers                       across the world.                     </p>                     <div class="mt-6 flex flex-wrap gap-3">                       <span                         class="tm-footer-kicker rounded-full border border-primary/10 bg-white/50 px-4 py-2 text-[10px] uppercase tracking-[0.26em]"                       >                         Online Worldwide                       </span>                       <span                         class="tm-footer-kicker rounded-full border border-primary/10 bg-white/50 px-4 py-2 text-[10px] uppercase tracking-[0.26em]"                       >                         In-Person Pune                       </span>                     </div>                   </div>                 </div>                 <div class="md:col-span-4">                   <div class="tm-footer-card rounded-3xl p-6 md:p-7">                     <h4                       class="font-bold mb-5 text-white uppercase text-[11px] tracking-[0.3em]"                     >                       Explore                     </h4>                     <div                       class="grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-2"                     >                       <a                         class="tm-footer-link block py-1 text-xs uppercase tracking-[0.18em] transition-colors"                         href="index.html"                         >Home</a                       >                       <a                         class="tm-footer-link block py-1 text-xs uppercase tracking-[0.18em] transition-colors"                         href="about.html"                         >Our Journey</a                       >                       <a                         class="tm-footer-link block py-1 text-xs uppercase tracking-[0.18em] transition-colors"                         href="services.html"                         >Guidance & Services</a                       >                       <a                         class="tm-footer-link block py-1 text-xs uppercase tracking-[0.18em] transition-colors"                         href="why-clients-work-with-us.html"                         >Tarot with Harshaa</a                       >                       <a                         class="tm-footer-link block py-1 text-xs uppercase tracking-[0.18em] transition-colors"                         href="Aproch.html"                         >Approach & Philosophy</a                       >                       <a                         class="tm-footer-link block py-1 text-xs uppercase tracking-[0.18em] transition-colors"                         href="our-Aproch.html"                         >Who This Work Is For</a                       >                       <a                         class="tm-footer-link block py-1 text-xs uppercase tracking-[0.18em] transition-colors"                         href="client-intake.html"                         >Client Intake Form</a                       >                       <a                         class="tm-footer-link block py-1 text-xs uppercase tracking-[0.18em] transition-colors"                         href="contact.html"                         >Contact</a                       >                     </div>                   </div>                 </div>                 <div class="md:col-span-3">                   <div class="tm-footer-card rounded-3xl p-6 md:p-7">                     <h4                       class="font-bold mb-5 text-white uppercase text-[11px] tracking-[0.3em]"                     >                       Connect                     </h4>                     <ul class="space-y-4 text-base leading-loose">                       <li>                         <a                           class="tm-footer-link transition-colors"                           href="mailto:touchandmove.69@gmail.com"                           >touchandmove.69@gmail.com</a                         >                       </li>                       <li>                         <a                           class="tm-footer-link transition-colors"                           href="tel:+918698304955"                           >8698304955 (Harshaa)</a                         >                         /                         <a                           class="tm-footer-link transition-colors"                           href="tel:+919511246401"                           >+91 9511246401</a                         >                       </li>                       <li class="text-slate-400">                         Online (Worldwide) | In-person (Pune, India)                       </li>                     </ul>                     <div class="flex items-center gap-4 pt-5">                       <a                         class="tm-footer-social inline-flex items-center justify-center rounded-full border transition-all"                         style="                           width: 44px;                           height: 44px;                           flex-shrink: 0;                           display: inline-flex;                           align-items: center;                           justify-content: center;                           line-height: 0;                         "                         href="https://wa.me/919511246401"                         aria-label="WhatsApp"                         target="_blank"                         rel="noopener noreferrer"                       >                         <svg                           viewBox="0 0 24 24"                           class="fill-current"                           style="                             width: 20px;                             height: 20px;                             display: block;                             color: #ffffff;                             flex-shrink: 0;                           "                           aria-hidden="true"                         >                           <path                             fill="#ffffff"                             d="M19.05 4.91A9.82 9.82 0 0 0 12.06 2C6.65 2 2.25 6.4 2.25 11.81c0 1.73.45 3.42 1.31 4.91L2 22l5.43-1.5a9.73 9.73 0 0 0 4.63 1.18h.01c5.41 0 9.81-4.4 9.81-9.81 0-2.62-1.02-5.08-2.83-6.96ZM12.07 20a8.1 8.1 0 0 1-4.13-1.13l-.3-.18-3.22.89.86-3.14-.2-.32a8.12 8.12 0 0 1-1.24-4.31 8.23 8.23 0 0 1 8.22-8.22 8.14 8.14 0 0 1 5.83 2.42 8.16 8.16 0 0 1 2.39 5.8A8.23 8.23 0 0 1 12.07 20Zm4.5-6.12c-.25-.12-1.47-.72-1.7-.8-.22-.08-.39-.12-.55.12-.16.25-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-2-1.25-.74-.66-1.24-1.48-1.39-1.73-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.16.04-.31-.02-.43-.06-.12-.55-1.33-.76-1.82-.2-.48-.4-.41-.55-.42l-.47-.01c-.16 0-.43.06-.66.31-.22.25-.85.83-.85 2.02 0 1.19.87 2.33.99 2.49.12.16 1.7 2.59 4.11 3.63.57.25 1.02.4 1.37.51.58.18 1.1.15 1.51.09.46-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.05-.1-.21-.16-.45-.27Z"                           />                         </svg>                       </a>                       <a                         class="tm-footer-social inline-flex items-center justify-center rounded-full border transition-all"                         style="                           width: 44px;                           height: 44px;                           flex-shrink: 0;                           display: inline-flex;                           align-items: center;                           justify-content: center;                           line-height: 0;                         "                         href="https://www.facebook.com/touchandmove"                         aria-label="Facebook"                         target="_blank"                         rel="noopener noreferrer"                       >                         <svg                           viewBox="0 0 24 24"                           class="fill-current"                           style="                             width: 20px;                             height: 20px;                             display: block;                             color: #ffffff;                             flex-shrink: 0;                           "                           aria-hidden="true"                         >                           <path                             fill="#ffffff"                             d="M13.5 21v-7h2.35l.35-2.73H13.5V9.53c0-.79.22-1.33 1.35-1.33h1.44V5.78c-.25-.03-1.1-.1-2.08-.1-2.06 0-3.46 1.25-3.46 3.56v2.03H8.5V14h2.25v7h2.75Z"                           />                         </svg>                       </a>                       <a                         class="tm-footer-social inline-flex items-center justify-center rounded-full border transition-all"                         style="                           width: 44px;                           height: 44px;                           flex-shrink: 0;                           display: inline-flex;                           align-items: center;                           justify-content: center;                           line-height: 0;                         "                         href="https://www.instagram.com/touchandmove"                         aria-label="Instagram"                         target="_blank"                         rel="noopener noreferrer"                       >                         <svg                           viewBox="0 0 24 24"                           class="fill-current"                           style="                             width: 20px;                             height: 20px;                             display: block;                             color: #ffffff;                             flex-shrink: 0;                           "                           aria-hidden="true"                         >                           <path                             fill="#ffffff"                             d="M7.75 2h8.5A5.76 5.76 0 0 1 22 7.75v8.5A5.76 5.76 0 0 1 16.25 22h-8.5A5.76 5.76 0 0 1 2 16.25v-8.5A5.76 5.76 0 0 1 7.75 2Zm-.18 1.94A3.63 3.63 0 0 0 3.94 7.57v8.86a3.63 3.63 0 0 0 3.63 3.63h8.86a3.63 3.63 0 0 0 3.63-3.63V7.57a3.63 3.63 0 0 0-3.63-3.63H7.57Zm9.36 1.45a1.3 1.3 0 1 1 0 2.6 1.3 1.3 0 0 1 0-2.6ZM12 7.23A4.77 4.77 0 1 1 7.23 12 4.77 4.77 0 0 1 12 7.23Zm0 1.94A2.83 2.83 0 1 0 14.83 12 2.83 2.83 0 0 0 12 9.17Z"                           />                         </svg>                       </a>                     </div>                   </div>                 </div>               </div>               <div                 class="mt-8 flex flex-col items-center justify-between gap-4 pt-6 text-center md:flex-row"               >                 <p>&copy; 2026 Touch and Move</p>                 <div                   class="flex items-center gap-6 text-slate-500 text-[11px] tracking-[0.24em]"                 >                   <a class="tm-footer-link transition-colors text-primary normal-case" href="https://codesunny.in" target="_blank" rel="noopener noreferrer"                     >codesunny.in</a                   >                 </div>               </div>             </div>           </div>         </footer>
       </div>
     </div>
     <script src="./assets/vendor/lenis.min.js" defer></script>
@@ -1449,6 +1536,9 @@
 </html>
 
 <!-- http://127.0.0.1:5500/why-clients-work-with-us.html http://127.0.0.1:5500/our-Aproch.html ye dono page ka footer same home page jesa kijiye plz -->
+
+
+
 
 
 

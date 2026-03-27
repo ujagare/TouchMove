@@ -3,10 +3,15 @@ import path from "node:path";
 
 const root = process.cwd();
 const siteConfigPath = path.join(root, "assets", "data", "site.json");
+const blogPostsPath = path.join(root, "data", "blog-posts.json");
 const site = JSON.parse(fs.readFileSync(siteConfigPath, "utf8"));
+const blogPostsData = fs.existsSync(blogPostsPath)
+  ? JSON.parse(fs.readFileSync(blogPostsPath, "utf8"))
+  : { posts: [] };
 const configuredBaseUrl = process.env.SITE_BASE_URL || site.baseUrl || "";
 const baseUrl = configuredBaseUrl.replace(/\/+$/, "");
 const pages = Array.isArray(site.pages) ? site.pages : [];
+const blogPosts = Array.isArray(blogPostsData.posts) ? blogPostsData.posts : [];
 
 function isValidProductionUrl(value) {
   if (!value) return false;
@@ -33,10 +38,20 @@ if (!isValidProductionUrl(baseUrl)) {
   process.exit(1);
 }
 
+const pageUrls = pages.map((page) => `${baseUrl}/${page.href}`);
+const blogUrls = blogPosts
+  .filter((post) => typeof post?.slug === "string" && post.slug.trim())
+  .map(
+    (post) =>
+      `${baseUrl}/blogdetail.html?slug=${encodeURIComponent(post.slug.trim())}`,
+  );
+
+const uniqueUrls = Array.from(new Set([...pageUrls, ...blogUrls]));
+
 const urlset = [
   '<?xml version="1.0" encoding="UTF-8"?>',
   '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
-  ...pages.map((page) => `  <url><loc>${baseUrl}/${page.href}</loc></url>`),
+  ...uniqueUrls.map((url) => `  <url><loc>${url}</loc></url>`),
   "</urlset>",
   "",
 ].join("\n");

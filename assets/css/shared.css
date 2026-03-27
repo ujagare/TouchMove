@@ -1,4 +1,64 @@
 @layer base {
+  :root {
+    --tm-scroll-track: rgba(125, 107, 93, 0.12);
+    --tm-scroll-thumb: linear-gradient(
+      180deg,
+      rgba(158, 137, 118, 0.96) 0%,
+      rgba(125, 107, 93, 0.92) 100%
+    );
+    --tm-scroll-thumb-hover: linear-gradient(
+      180deg,
+      rgba(180, 158, 138, 0.98) 0%,
+      rgba(109, 90, 76, 0.96) 100%
+    );
+  }
+
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(125, 107, 93, 0.88) rgba(125, 107, 93, 0.12);
+  }
+
+  body::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  body::-webkit-scrollbar-track {
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.42), rgba(245, 241, 235, 0.18)),
+      var(--tm-scroll-track);
+    border-left: 1px solid rgba(158, 137, 118, 0.1);
+  }
+
+  body::-webkit-scrollbar-thumb {
+    background: var(--tm-scroll-thumb);
+    border-radius: 999px;
+    border: 2px solid rgba(245, 241, 235, 0.82);
+    box-shadow:
+      0 8px 20px rgba(125, 107, 93, 0.16),
+      inset 0 1px 1px rgba(255, 255, 255, 0.3);
+  }
+
+  body::-webkit-scrollbar-thumb:hover {
+    background: var(--tm-scroll-thumb-hover);
+  }
+
+  body::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+
   body.tm-warm-theme {
     background: #f5f1eb;
     color: #3f3b34;
@@ -25,16 +85,69 @@
 }
 
 @layer components {
+  .tm-scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    z-index: 80;
+    pointer-events: none;
+    overflow: hidden;
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(158, 137, 118, 0.08) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+  }
+
+  .tm-scroll-progress__bar {
+    position: absolute;
+    inset: 0;
+    transform-origin: left center;
+    transform: scaleX(0);
+    background: linear-gradient(
+      90deg,
+      rgba(212, 183, 157, 0.92) 0%,
+      rgba(158, 137, 118, 0.98) 38%,
+      rgba(125, 107, 93, 0.98) 100%
+    );
+    box-shadow:
+      0 0 24px rgba(158, 137, 118, 0.34),
+      0 0 8px rgba(125, 107, 93, 0.24);
+  }
+
+  .tm-scroll-progress__glow {
+    position: absolute;
+    top: 50%;
+    left: -10%;
+    width: 22%;
+    height: 18px;
+    opacity: 0;
+    filter: blur(12px);
+    transform: translateY(-50%);
+    background: radial-gradient(
+      circle,
+      rgba(212, 183, 157, 0.55) 0%,
+      rgba(212, 183, 157, 0) 72%
+    );
+    transition: opacity 200ms ease;
+  }
+
   #navbar {
-    @apply fixed inset-x-0 top-0 z-50;
+    position: fixed;
+    inset-inline: 0;
+    top: 0;
+    z-index: 50;
   }
 
   #mobileMenu {
-    @apply z-40;
+    z-index: 40;
   }
 
   .premium-blur {
-    @apply backdrop-blur-md;
+    backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
   }
 
@@ -45,9 +158,9 @@
   }
 
   body.tm-warm-theme #navbar {
-    @apply border shadow-warm;
+    border: 1px solid rgba(158, 137, 118, 0.18);
+    box-shadow: 0 10px 30px rgba(158, 137, 118, 0.08);
     background: rgba(251, 249, 246, 0.82);
-    border-color: rgba(158, 137, 118, 0.18);
   }
 
   body.tm-warm-theme #navbar .brand-wordmark,
@@ -59,7 +172,13 @@
 
   body.tm-warm-theme .book-now-btn,
   body.tm-warm-theme .mobile-contact-link {
-    @apply border-primary bg-primary text-white transition-colors;
+    background-color: #9e8976;
+    border-color: #9e8976;
+    color: #fff;
+    transition:
+      color 150ms cubic-bezier(0.4, 0, 0.2, 1),
+      background-color 150ms cubic-bezier(0.4, 0, 0.2, 1),
+      border-color 150ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   body.tm-warm-theme .book-now-btn:hover,
@@ -70,13 +189,19 @@
   }
 
   body.tm-warm-theme .brand-lockup {
-    @apply flex items-center gap-3;
+    display: flex;
+    align-items: center;
     gap: 0.9rem;
     min-width: 0;
   }
 
   body.tm-warm-theme .brand-mark-wrap {
-    @apply flex shrink-0 items-center justify-start overflow-hidden rounded-full;
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden;
+    border-radius: 9999px;
     width: 2.75rem;
     height: 2.75rem;
     background: transparent;
@@ -91,7 +216,11 @@
   }
 
   body.tm-warm-theme .brand-wordmark {
-    @apply inline-block whitespace-nowrap bg-transparent font-semibold uppercase;
+    display: inline-block;
+    white-space: nowrap;
+    background: transparent;
+    font-weight: 600;
+    text-transform: uppercase;
     color: #7d6b5d;
     opacity: 1;
     text-shadow: none;
@@ -156,6 +285,12 @@
     color: #9e8976;
   }
 
+  /* Keep footer section headings visible even when utility classes set white text */
+  #homeFooter h4 {
+    color: #9e8976 !important;
+    opacity: 1;
+  }
+
   body.tm-warm-theme #homeFooter p,
   body.tm-warm-theme #homeFooter li,
   body.tm-warm-theme #homeFooter a,
@@ -201,5 +336,82 @@
 
   body.tm-warm-theme #homeFooter .tm-footer-shell > .mt-8 {
     border-top: none;
+  }
+}
+
+@media (max-width: 768px) {
+  #homeFooter .tm-footer-shell {
+    padding: 1.25rem !important;
+    border-radius: 1.75rem !important;
+  }
+
+  #homeFooter .tm-footer-card {
+    padding: 1.35rem !important;
+    border-radius: 1.5rem !important;
+  }
+
+  #homeFooter .tm-footer-card ul {
+    font-size: 0.95rem !important;
+    line-height: 1.65 !important;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+  }
+
+  #homeFooter .tm-footer-card li {
+    margin: 0 !important;
+  }
+
+  #homeFooter .tm-footer-card li + li {
+    margin-top: 0.9rem !important;
+  }
+
+  #homeFooter .tm-footer-card li a {
+    display: inline !important;
+    white-space: normal !important;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+  }
+
+  #homeFooter .tm-footer-card li:last-child {
+    max-width: none !important;
+  }
+
+  #homeFooter .tm-footer-social {
+    width: 42px !important;
+    height: 42px !important;
+  }
+
+  #homeFooter .tm-footer-card .flex.items-center.gap-4.pt-5 {
+    gap: 0.85rem !important;
+    padding-top: 1.1rem !important;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 480px) {
+  #homeFooter .tm-footer-shell {
+    padding: 1rem !important;
+  }
+
+  #homeFooter .tm-footer-card {
+    padding: 1rem !important;
+  }
+
+  #homeFooter .tm-footer-card h4 {
+    margin-bottom: 1rem !important;
+  }
+
+  #homeFooter .tm-footer-card ul {
+    font-size: 0.86rem !important;
+    line-height: 1.55 !important;
+  }
+
+  #homeFooter .tm-footer-card li + li {
+    margin-top: 0.8rem !important;
+  }
+
+  #homeFooter .tm-footer-card .flex.items-center.gap-4.pt-5 {
+    justify-content: flex-start !important;
+    gap: 0.7rem !important;
   }
 }

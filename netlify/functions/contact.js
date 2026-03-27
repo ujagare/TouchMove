@@ -21,6 +21,18 @@ function firstEnv() {
   return "";
 }
 
+function extractEmailAddress(value) {
+  const raw = String(value || "").trim();
+  if (!raw) return "";
+
+  const angleMatch = raw.match(/<([^<>@\s]+@[^<>@\s]+)>/);
+  if (angleMatch && angleMatch[1]) {
+    return angleMatch[1].trim();
+  }
+
+  return raw;
+}
+
 function sanitize(value, maxLength = 2000) {
   return String(value ?? "")
     .replace(/[\x00-\x1F\x7F]+/g, " ")
@@ -135,18 +147,25 @@ exports.handler = async (event) => {
   }
 
   const resendApiKey = firstEnv("RESEND_API_KEY", "API_KEY", "RESEND_KEY");
-  const toEmail =
-    firstEnv("CONTACT_TO_EMAIL", "TO_EMAIL", "RESEND_TO_EMAIL") ||
-    "touchandmove.69@gmail.com";
-  const fromEmail = firstEnv(
+  const toEmailRaw =
+    firstEnv(
+      "CONTACT_TO_EMAIL",
+      "CONTACT_RECIPIENT_EMAIL",
+      "TO_EMAIL",
+      "RESEND_TO_EMAIL",
+    ) || "touchandmove.69@gmail.com";
+  const fromEmailRaw = firstEnv(
     "CONTACT_FROM_EMAIL",
     "FROM_EMAIL",
     "RESEND_FROM_EMAIL",
   );
+  const toEmail = extractEmailAddress(toEmailRaw);
+  const fromEmail = extractEmailAddress(fromEmailRaw);
 
-  if (!resendApiKey || !fromEmail) {
+  if (!resendApiKey || !fromEmail || !toEmail) {
     console.error("Missing email configuration", {
       hasResendApiKey: Boolean(resendApiKey),
+      hasToEmail: Boolean(toEmail),
       hasFromEmail: Boolean(fromEmail),
       envKeys: Object.keys(process.env).filter(function (key) {
         return /EMAIL|RESEND|API_KEY/i.test(key);

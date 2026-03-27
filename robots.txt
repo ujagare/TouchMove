@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://ujagare.github.io/TouchMove/sitemap.xml

@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 
 <html class="dark" lang="en">
   <head>
@@ -46,6 +46,15 @@
       content="Discover the philosophy, founders, and vision behind Touch and Move's approach to healing, awareness, and personal transformation."
     />
     <meta name="twitter:image" content="https://ujagare.github.io/TouchMove/assets/webp%20images/site-image-10.webp" />
+    <meta name="author" content="Touch and Move" />
+    <meta
+      property="og:url"
+      content="https://ujagare.github.io/TouchMove/about.html"
+    />
+    <link
+      rel="canonical"
+      href="https://ujagare.github.io/TouchMove/about.html"
+    />
     <link
       href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;display=swap"
       rel="stylesheet"
@@ -60,6 +69,7 @@
       type="image/x-icon"
     />
     <link rel="stylesheet" href="./assets/css/style.css?v=3" />
+    <link rel="stylesheet" href="./assets/css/shared.css?v=2" />
     <link rel="stylesheet" href="./assets/css/pages/about.css?v=3" />
   </head>
   <body
@@ -205,6 +215,12 @@
           >Who This Work Is For</a
         >
         <a
+          href="blog.html"
+          class="text-white/90 hover:text-white transition uppercase tracking-widest hover:scale-105 duration-200"
+          style="font-size: 22px"
+          >Journal</a
+        >
+        <a
           href="client-intake.html"
           class="text-white/90 hover:text-white transition uppercase tracking-widest hover:scale-105 duration-200"
           style="font-size: 22px"
@@ -339,12 +355,23 @@
 
         heroScrollToggle.addEventListener("click", () => {
           if (getIsBelowHero()) {
-            window.scrollTo({ top: 0, behavior: "smooth" });
+            if (typeof window.tmSmoothScrollTo === "function") {
+              window.tmSmoothScrollTo(0);
+            } else {
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }
           } else {
-            aboutNextSection.scrollIntoView({
-              behavior: "smooth",
-              block: "start",
-            });
+            if (typeof window.tmSmoothScrollTo === "function") {
+              window.tmSmoothScrollTo(aboutNextSection, {
+                offset: 0,
+                block: "start",
+              });
+            } else {
+              aboutNextSection.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+              });
+            }
           }
         });
 
@@ -441,9 +468,9 @@
                 <img
                   decoding="async"
                   loading="lazy"
-                  alt="Portrait of Sarvesh"
+                  alt="Portrait of Sarvesh, Co-founder of Touch and Move"
                   class="about-founder-portrait about-founder-sarvesh brightness-90"
-                  src="assets/webp%20images/site-image-13.webp"
+                  src="assets/images/Sarvesh.jpg"
                 />
               </div>
             </div>
@@ -458,21 +485,30 @@
               <p
                 class="text-slate-500 font-light tracking-widest uppercase text-sm inline-block"
               >
-                Finance / Psychology / Awareness
+                Chartered Accountant / Trading Mentor / Inner Alignment
               </p>
               <div
                 class="space-y-6 text-slate-400 text-lg md:text-xl font-extralight leading-relaxed"
               >
                 <p>
-                  Emerging from the analytical world of high-stakes finance,
-                  Sarvesh brought a sharp precision to the exploration of the
-                  self. He recognized that true prosperity requires a balanced
-                  internal ledger.
+                  Sarvesh Mopkar is a Chartered Accountant, experienced
+                  trend-following trader, and mentor with more than 15 years of
+                  experience in the financial markets. His work brings together
+                  structure, long-range thinking, and a deeply grounded
+                  understanding of human behaviour.
                 </p>
                 <p>
-                  His transition from managing capital to cultivating
-                  consciousness infuses Touch and Move with a grounded, rigorous
-                  framework for spiritual and mental growth.
+                  Beyond trading, he helps people develop psychological mastery
+                  over money by cultivating consistency, discipline, emotional
+                  intelligence, and an abundance mindset. He also explores the
+                  connection between inner alignment and outer results through
+                  sound healing, energy work, astrology, and self-awareness.
+                </p>
+                <p>
+                  Through his mentorship and writing, Sarvesh empowers people to
+                  move beyond fear and impulsive behaviour, and to discover the
+                  invisible edge that comes from patience, clarity, and
+                  disciplined execution.
                 </p>
               </div>
             </div>
@@ -482,7 +518,7 @@
             <div class="space-y-8">
               <span
                 class="text-primary text-xs font-bold tracking-[0.5em] uppercase"
-                >The Alchemist</span
+                >Partner / Co-owner</span
               >
               <h3 class="text-6xl font-extralight text-white italic">
                 Harshaa
@@ -490,20 +526,22 @@
               <p
                 class="text-slate-500 font-light tracking-widest uppercase text-sm inline-block"
               >
-                Healing / Movement / Intuition
+                Emotional Healing / Embodied Awareness / Tarot
               </p>
               <div
                 class="space-y-6 text-slate-400 text-lg md:text-xl font-extralight leading-relaxed"
               >
                 <p>
-                  Guided by the rhythm of the soul, Harshaa's approach is fluid
-                  and deeply nurturing. As an intuitive healer, she translates
-                  the subtle language of the body into transformative action.
+                  Harshaa's path has been centred more directly on emotional
+                  healing and embodied awareness. Her work supports people in
+                  reconnecting with their feelings, their bodies, and their
+                  natural liveliness with gentleness and care.
                 </p>
                 <p>
-                  She integrates ancient wisdom with somatic release, ensuring
-                  that movement becomes a sacred dialogue between the physical
-                  and the infinite.
+                  Through practices such as movement, energy work, and Tarot,
+                  she creates spaces where emotional blocks can soften, inner
+                  truth can surface, and a deeper sense of ease can be
+                  rediscovered from within.
                 </p>
               </div>
             </div>
@@ -514,9 +552,9 @@
                 <img
                   decoding="async"
                   loading="lazy"
-                  alt="Portrait of Harshaa"
+                  alt="Portrait of Harshaa, Partner and Co-owner of Touch and Move"
                   class="about-founder-portrait about-founder-harshaa brightness-90"
-                  src="assets/webp%20images/site-image-19.webp"
+                  src="assets/images/harsha.jpg"
                 />
               </div>
             </div>
@@ -598,16 +636,16 @@
                       loading="lazy"
                       class="tm-review-avatar"
                       alt=""
-                      src="assets/images/site-image-01.png"
+                      src="assets/images/testomonials/testimonial-01.png"
                     />
                     <div>
-                      <p class="text-sm font-semibold text-white">Jack</p>
-                      <p class="text-xs text-white/50">@jack</p>
+                      <p class="text-sm font-semibold text-white">Aanya</p>
+                      <p class="text-xs text-white/50">@pune.client</p>
                     </div>
                   </div>
                   <p class="text-sm text-slate-300">
-                    I've never seen anything like this before. It's amazing. I
-                    love it.
+                    I finally left my session with clarity instead of confusion.
+                    The reading felt grounded, honest, and deeply personal.
                   </p>
                 </article>
                 <article class="tm-review-card">
@@ -617,15 +655,17 @@
                       loading="lazy"
                       class="tm-review-avatar"
                       alt=""
-                      src="assets/images/site-image-05.png"
+                      src="assets/images/testomonials/testimonial-02.png"
                     />
                     <div>
-                      <p class="text-sm font-semibold text-white">Jill</p>
-                      <p class="text-xs text-white/50">@jill</p>
+                      <p class="text-sm font-semibold text-white">Meera</p>
+                      <p class="text-xs text-white/50">@online.client</p>
                     </div>
                   </div>
                   <p class="text-sm text-slate-300">
-                    I don't know what to say. I'm speechless. This is amazing.
+                    I booked online from another city and still felt completely
+                    held. The guidance was calm, practical, and surprisingly
+                    accurate.
                   </p>
                 </article>
                 <article class="tm-review-card">
@@ -635,15 +675,16 @@
                       loading="lazy"
                       class="tm-review-avatar"
                       alt=""
-                      src="assets/images/site-image-06.png"
+                      src="assets/images/testomonials/testimonial-03.png"
                     />
                     <div>
-                      <p class="text-sm font-semibold text-white">John</p>
-                      <p class="text-xs text-white/50">@john</p>
+                      <p class="text-sm font-semibold text-white">Rohit</p>
+                      <p class="text-xs text-white/50">@returning.client</p>
                     </div>
                   </div>
                   <p class="text-sm text-slate-300">
-                    I'm at a loss for words. This is amazing. I love it.
+                    This session helped me slow down and trust my next step. I
+                    came in overwhelmed and left feeling steady again.
                   </p>
                 </article>
                 <article class="tm-review-card">
@@ -653,16 +694,16 @@
                       loading="lazy"
                       class="tm-review-avatar"
                       alt=""
-                      src="assets/images/site-image-01.png"
+                      src="assets/images/testomonials/testimonial-01.png"
                     />
                     <div>
-                      <p class="text-sm font-semibold text-white">Jack</p>
-                      <p class="text-xs text-white/50">@jack</p>
+                      <p class="text-sm font-semibold text-white">Aanya</p>
+                      <p class="text-xs text-white/50">@pune.client</p>
                     </div>
                   </div>
                   <p class="text-sm text-slate-300">
-                    I've never seen anything like this before. It's amazing. I
-                    love it.
+                    I finally left my session with clarity instead of confusion.
+                    The reading felt grounded, honest, and deeply personal.
                   </p>
                 </article>
                 <article class="tm-review-card">
@@ -672,15 +713,17 @@
                       loading="lazy"
                       class="tm-review-avatar"
                       alt=""
-                      src="assets/images/site-image-05.png"
+                      src="assets/images/testomonials/testimonial-02.png"
                     />
                     <div>
-                      <p class="text-sm font-semibold text-white">Jill</p>
-                      <p class="text-xs text-white/50">@jill</p>
+                      <p class="text-sm font-semibold text-white">Meera</p>
+                      <p class="text-xs text-white/50">@online.client</p>
                     </div>
                   </div>
                   <p class="text-sm text-slate-300">
-                    I don't know what to say. I'm speechless. This is amazing.
+                    I booked online from another city and still felt completely
+                    held. The guidance was calm, practical, and surprisingly
+                    accurate.
                   </p>
                 </article>
                 <article class="tm-review-card">
@@ -690,15 +733,16 @@
                       loading="lazy"
                       class="tm-review-avatar"
                       alt=""
-                      src="assets/images/site-image-06.png"
+                      src="assets/images/testomonials/testimonial-03.png"
                     />
                     <div>
-                      <p class="text-sm font-semibold text-white">John</p>
-                      <p class="text-xs text-white/50">@john</p>
+                      <p class="text-sm font-semibold text-white">Rohit</p>
+                      <p class="text-xs text-white/50">@returning.client</p>
                     </div>
                   </div>
                   <p class="text-sm text-slate-300">
-                    I'm at a loss for words. This is amazing. I love it.
+                    This session helped me slow down and trust my next step. I
+                    came in overwhelmed and left feeling steady again.
                   </p>
                 </article>
                 <article class="tm-review-card">
@@ -708,16 +752,16 @@
                       loading="lazy"
                       class="tm-review-avatar"
                       alt=""
-                      src="assets/images/site-image-01.png"
+                      src="assets/images/testomonials/testimonial-01.png"
                     />
                     <div>
-                      <p class="text-sm font-semibold text-white">Jack</p>
-                      <p class="text-xs text-white/50">@jack</p>
+                      <p class="text-sm font-semibold text-white">Aanya</p>
+                      <p class="text-xs text-white/50">@pune.client</p>
                     </div>
                   </div>
                   <p class="text-sm text-slate-300">
-                    I've never seen anything like this before. It's amazing. I
-                    love it.
+                    I finally left my session with clarity instead of confusion.
+                    The reading felt grounded, honest, and deeply personal.
                   </p>
                 </article>
                 <article class="tm-review-card">
@@ -727,15 +771,17 @@
                       loading="lazy"
                       class="tm-review-avatar"
                       alt=""
-                      src="assets/images/site-image-05.png"
+                      src="assets/images/testomonials/testimonial-02.png"
                     />
                     <div>
-                      <p class="text-sm font-semibold text-white">Jill</p>
-                      <p class="text-xs text-white/50">@jill</p>
+                      <p class="text-sm font-semibold text-white">Meera</p>
+                      <p class="text-xs text-white/50">@online.client</p>
                     </div>
                   </div>
                   <p class="text-sm text-slate-300">
-                    I don't know what to say. I'm speechless. This is amazing.
+                    I booked online from another city and still felt completely
+                    held. The guidance was calm, practical, and surprisingly
+                    accurate.
                   </p>
                 </article>
                 <article class="tm-review-card">
@@ -745,15 +791,16 @@
                       loading="lazy"
                       class="tm-review-avatar"
                       alt=""
-                      src="assets/images/site-image-06.png"
+                      src="assets/images/testomonials/testimonial-03.png"
                     />
                     <div>
-                      <p class="text-sm font-semibold text-white">John</p>
-                      <p class="text-xs text-white/50">@john</p>
+                      <p class="text-sm font-semibold text-white">Rohit</p>
+                      <p class="text-xs text-white/50">@returning.client</p>
                     </div>
                   </div>
                   <p class="text-sm text-slate-300">
-                    I'm at a loss for words. This is amazing. I love it.
+                    This session helped me slow down and trust my next step. I
+                    came in overwhelmed and left feeling steady again.
                   </p>
                 </article>
                 <article class="tm-review-card">
@@ -763,16 +810,16 @@
                       loading="lazy"
                       class="tm-review-avatar"
                       alt=""
-                      src="assets/images/site-image-01.png"
+                      src="assets/images/testomonials/testimonial-01.png"
                     />
                     <div>
-                      <p class="text-sm font-semibold text-white">Jack</p>
-                      <p class="text-xs text-white/50">@jack</p>
+                      <p class="text-sm font-semibold text-white">Aanya</p>
+                      <p class="text-xs text-white/50">@pune.client</p>
                     </div>
                   </div>
                   <p class="text-sm text-slate-300">
-                    I've never seen anything like this before. It's amazing. I
-                    love it.
+                    I finally left my session with clarity instead of confusion.
+                    The reading felt grounded, honest, and deeply personal.
                   </p>
                 </article>
                 <article class="tm-review-card">
@@ -782,15 +829,17 @@
                       loading="lazy"
                       class="tm-review-avatar"
                       alt=""
-                      src="assets/images/site-image-05.png"
+                      src="assets/images/testomonials/testimonial-02.png"
                     />
                     <div>
-                      <p class="text-sm font-semibold text-white">Jill</p>
-                      <p class="text-xs text-white/50">@jill</p>
+                      <p class="text-sm font-semibold text-white">Meera</p>
+                      <p class="text-xs text-white/50">@online.client</p>
                     </div>
                   </div>
                   <p class="text-sm text-slate-300">
-                    I don't know what to say. I'm speechless. This is amazing.
+                    I booked online from another city and still felt completely
+                    held. The guidance was calm, practical, and surprisingly
+                    accurate.
                   </p>
                 </article>
                 <article class="tm-review-card">
@@ -800,15 +849,16 @@
                       loading="lazy"
                       class="tm-review-avatar"
                       alt=""
-                      src="assets/images/site-image-06.png"
+                      src="assets/images/testomonials/testimonial-03.png"
                     />
                     <div>
-                      <p class="text-sm font-semibold text-white">John</p>
-                      <p class="text-xs text-white/50">@john</p>
+                      <p class="text-sm font-semibold text-white">Rohit</p>
+                      <p class="text-xs text-white/50">@returning.client</p>
                     </div>
                   </div>
                   <p class="text-sm text-slate-300">
-                    I'm at a loss for words. This is amazing. I love it.
+                    This session helped me slow down and trust my next step. I
+                    came in overwhelmed and left feeling steady again.
                   </p>
                 </article>
               </div>
@@ -823,15 +873,17 @@
                       loading="lazy"
                       class="tm-review-avatar"
                       alt=""
-                      src="assets/images/site-image-03.png"
+                      src="assets/images/testomonials/testimonial-04.png"
                     />
                     <div>
-                      <p class="text-sm font-semibold text-white">Jane</p>
-                      <p class="text-xs text-white/50">@jane</p>
+                      <p class="text-sm font-semibold text-white">Nisha</p>
+                      <p class="text-xs text-white/50">@clarity.work</p>
                     </div>
                   </div>
                   <p class="text-sm text-slate-300">
-                    I'm at a loss for words. This is amazing. I love it.
+                    What stayed with me was how safe the space felt. I could
+                    talk openly, and the insights kept unfolding even days
+                    later.
                   </p>
                 </article>
                 <article class="tm-review-card">
@@ -841,15 +893,17 @@
                       loading="lazy"
                       class="tm-review-avatar"
                       alt=""
-                      src="assets/images/site-image-04.png"
+                      src="assets/images/testomonials/testimonial-05.png"
                     />
                     <div>
-                      <p class="text-sm font-semibold text-white">Jenny</p>
-                      <p class="text-xs text-white/50">@jenny</p>
+                      <p class="text-sm font-semibold text-white">Kavya</p>
+                      <p class="text-xs text-white/50">@healing.journey</p>
                     </div>
                   </div>
                   <p class="text-sm text-slate-300">
-                    I'm at a loss for words. This is amazing. I love it.
+                    The reading reflected patterns I had been avoiding for
+                    months. It gave me language, direction, and a lot of
+                    relief.
                   </p>
                 </article>
                 <article class="tm-review-card">
@@ -859,15 +913,16 @@
                       loading="lazy"
                       class="tm-review-avatar"
                       alt=""
-                      src="assets/images/site-image-02.png"
+                      src="assets/images/testomonials/testimonial-06.png"
                     />
                     <div>
-                      <p class="text-sm font-semibold text-white">James</p>
-                      <p class="text-xs text-white/50">@james</p>
+                      <p class="text-sm font-semibold text-white">Arjun</p>
+                      <p class="text-xs text-white/50">@inner.reset</p>
                     </div>
                   </div>
                   <p class="text-sm text-slate-300">
-                    I'm at a loss for words. This is amazing. I love it.
+                    I expected a general session, but it was incredibly precise
+                    and compassionate. It genuinely helped me move forward.
                   </p>
                 </article>
                 <article class="tm-review-card">
@@ -877,15 +932,17 @@
                       loading="lazy"
                       class="tm-review-avatar"
                       alt=""
-                      src="assets/images/site-image-03.png"
+                      src="assets/images/testomonials/testimonial-04.png"
                     />
                     <div>
-                      <p class="text-sm font-semibold text-white">Jane</p>
-                      <p class="text-xs text-white/50">@jane</p>
+                      <p class="text-sm font-semibold text-white">Nisha</p>
+                      <p class="text-xs text-white/50">@clarity.work</p>
                     </div>
                   </div>
                   <p class="text-sm text-slate-300">
-                    I'm at a loss for words. This is amazing. I love it.
+                    What stayed with me was how safe the space felt. I could
+                    talk openly, and the insights kept unfolding even days
+                    later.
                   </p>
                 </article>
                 <article class="tm-review-card">
@@ -895,15 +952,17 @@
                       loading="lazy"
                       class="tm-review-avatar"
                       alt=""
-                      src="assets/images/site-image-04.png"
+                      src="assets/images/testomonials/testimonial-05.png"
                     />
                     <div>
-                      <p class="text-sm font-semibold text-white">Jenny</p>
-                      <p class="text-xs text-white/50">@jenny</p>
+                      <p class="text-sm font-semibold text-white">Kavya</p>
+                      <p class="text-xs text-white/50">@healing.journey</p>
                     </div>
                   </div>
                   <p class="text-sm text-slate-300">
-                    I'm at a loss for words. This is amazing. I love it.
+                    The reading reflected patterns I had been avoiding for
+                    months. It gave me language, direction, and a lot of
+                    relief.
                   </p>
                 </article>
                 <article class="tm-review-card">
@@ -913,15 +972,16 @@
                       loading="lazy"
                       class="tm-review-avatar"
                       alt=""
-                      src="assets/images/site-image-02.png"
+                      src="assets/images/testomonials/testimonial-06.png"
                     />
                     <div>
-                      <p class="text-sm font-semibold text-white">James</p>
-                      <p class="text-xs text-white/50">@james</p>
+                      <p class="text-sm font-semibold text-white">Arjun</p>
+                      <p class="text-xs text-white/50">@inner.reset</p>
                     </div>
                   </div>
                   <p class="text-sm text-slate-300">
-                    I'm at a loss for words. This is amazing. I love it.
+                    I expected a general session, but it was incredibly precise
+                    and compassionate. It genuinely helped me move forward.
                   </p>
                 </article>
                 <article class="tm-review-card">
@@ -931,15 +991,17 @@
                       loading="lazy"
                       class="tm-review-avatar"
                       alt=""
-                      src="assets/images/site-image-03.png"
+                      src="assets/images/testomonials/testimonial-04.png"
                     />
                     <div>
-                      <p class="text-sm font-semibold text-white">Jane</p>
-                      <p class="text-xs text-white/50">@jane</p>
+                      <p class="text-sm font-semibold text-white">Nisha</p>
+                      <p class="text-xs text-white/50">@clarity.work</p>
                     </div>
                   </div>
                   <p class="text-sm text-slate-300">
-                    I'm at a loss for words. This is amazing. I love it.
+                    What stayed with me was how safe the space felt. I could
+                    talk openly, and the insights kept unfolding even days
+                    later.
                   </p>
                 </article>
                 <article class="tm-review-card">
@@ -949,15 +1011,17 @@
                       loading="lazy"
                       class="tm-review-avatar"
                       alt=""
-                      src="assets/images/site-image-04.png"
+                      src="assets/images/testomonials/testimonial-05.png"
                     />
                     <div>
-                      <p class="text-sm font-semibold text-white">Jenny</p>
-                      <p class="text-xs text-white/50">@jenny</p>
+                      <p class="text-sm font-semibold text-white">Kavya</p>
+                      <p class="text-xs text-white/50">@healing.journey</p>
                     </div>
                   </div>
                   <p class="text-sm text-slate-300">
-                    I'm at a loss for words. This is amazing. I love it.
+                    The reading reflected patterns I had been avoiding for
+                    months. It gave me language, direction, and a lot of
+                    relief.
                   </p>
                 </article>
                 <article class="tm-review-card">
@@ -967,15 +1031,16 @@
                       loading="lazy"
                       class="tm-review-avatar"
                       alt=""
-                      src="assets/images/site-image-02.png"
+                      src="assets/images/testomonials/testimonial-06.png"
                     />
                     <div>
-                      <p class="text-sm font-semibold text-white">James</p>
-                      <p class="text-xs text-white/50">@james</p>
+                      <p class="text-sm font-semibold text-white">Arjun</p>
+                      <p class="text-xs text-white/50">@inner.reset</p>
                     </div>
                   </div>
                   <p class="text-sm text-slate-300">
-                    I'm at a loss for words. This is amazing. I love it.
+                    I expected a general session, but it was incredibly precise
+                    and compassionate. It genuinely helped me move forward.
                   </p>
                 </article>
                 <article class="tm-review-card">
@@ -985,15 +1050,17 @@
                       loading="lazy"
                       class="tm-review-avatar"
                       alt=""
-                      src="assets/images/site-image-03.png"
+                      src="assets/images/testomonials/testimonial-04.png"
                     />
                     <div>
-                      <p class="text-sm font-semibold text-white">Jane</p>
-                      <p class="text-xs text-white/50">@jane</p>
+                      <p class="text-sm font-semibold text-white">Nisha</p>
+                      <p class="text-xs text-white/50">@clarity.work</p>
                     </div>
                   </div>
                   <p class="text-sm text-slate-300">
-                    I'm at a loss for words. This is amazing. I love it.
+                    What stayed with me was how safe the space felt. I could
+                    talk openly, and the insights kept unfolding even days
+                    later.
                   </p>
                 </article>
                 <article class="tm-review-card">
@@ -1003,15 +1070,17 @@
                       loading="lazy"
                       class="tm-review-avatar"
                       alt=""
-                      src="assets/images/site-image-04.png"
+                      src="assets/images/testomonials/testimonial-05.png"
                     />
                     <div>
-                      <p class="text-sm font-semibold text-white">Jenny</p>
-                      <p class="text-xs text-white/50">@jenny</p>
+                      <p class="text-sm font-semibold text-white">Kavya</p>
+                      <p class="text-xs text-white/50">@healing.journey</p>
                     </div>
                   </div>
                   <p class="text-sm text-slate-300">
-                    I'm at a loss for words. This is amazing. I love it.
+                    The reading reflected patterns I had been avoiding for
+                    months. It gave me language, direction, and a lot of
+                    relief.
                   </p>
                 </article>
                 <article class="tm-review-card">
@@ -1021,15 +1090,16 @@
                       loading="lazy"
                       class="tm-review-avatar"
                       alt=""
-                      src="assets/images/site-image-02.png"
+                      src="assets/images/testomonials/testimonial-06.png"
                     />
                     <div>
-                      <p class="text-sm font-semibold text-white">James</p>
-                      <p class="text-xs text-white/50">@james</p>
+                      <p class="text-sm font-semibold text-white">Arjun</p>
+                      <p class="text-xs text-white/50">@inner.reset</p>
                     </div>
                   </div>
                   <p class="text-sm text-slate-300">
-                    I'm at a loss for words. This is amazing. I love it.
+                    I expected a general session, but it was incredibly precise
+                    and compassionate. It genuinely helped me move forward.
                   </p>
                 </article>
               </div>
@@ -1043,15 +1113,15 @@
     </main>
     <!-- Footer -->
     <footer id="homeFooter" class="py-20 md:py-24">
-      <div class="max-w-[1680px] mx-auto px-4 md:px-6 lg:px-8">
+      <div class="max-w-420 mx-auto px-4 md:px-6 lg:px-8">
         <div
-          class="tm-footer-shell rounded-[2rem] px-6 py-10 md:px-10 md:py-14 lg:px-12"
+          class="tm-footer-shell rounded-4xl px-6 py-10 md:px-10 md:py-14 lg:px-12"
         >
           <div
             class="grid gap-7 border-b pb-10 md:grid-cols-12 md:items-start md:gap-8 md:pb-12 tm-footer-divider"
           >
             <div class="md:col-span-5">
-              <div class="tm-footer-card rounded-[1.5rem] p-6 md:p-7">
+              <div class="tm-footer-card rounded-3xl p-6 md:p-7">
                 <div class="flex items-center gap-3">
                   <img
                     decoding="async"
@@ -1088,7 +1158,7 @@
               </div>
             </div>
             <div class="md:col-span-4">
-              <div class="tm-footer-card rounded-[1.5rem] p-6 md:p-7">
+              <div class="tm-footer-card rounded-3xl p-6 md:p-7">
                 <h4
                   class="font-bold mb-5 text-white uppercase text-[11px] tracking-[0.3em]"
                 >
@@ -1139,7 +1209,7 @@
               </div>
             </div>
             <div class="md:col-span-3">
-              <div class="tm-footer-card rounded-[1.5rem] p-6 md:p-7">
+              <div class="tm-footer-card rounded-3xl p-6 md:p-7">
                 <h4
                   class="font-bold mb-5 text-white uppercase text-[11px] tracking-[0.3em]"
                 >
@@ -1281,16 +1351,7 @@
             class="mt-8 flex flex-col items-center justify-between gap-4 pt-6 text-center md:flex-row"
           >
             <p>&copy; 2026 Touch and Move</p>
-            <div
-              class="flex items-center gap-6 text-slate-500 text-[11px] uppercase tracking-[0.24em]"
-            >
-              <a class="tm-footer-link transition-colors" href="sitemap.xml"
-                >Sitemap</a
-              >
-              <a class="tm-footer-link transition-colors" href="robots.txt"
-                >Robots</a
-              >
-            </div>
+            <div class="flex items-center gap-6 text-slate-500 text-[11px] tracking-[0.24em]"><a class="tm-footer-link transition-colors text-primary normal-case" href="https://codesunny.in" target="_blank" rel="noopener noreferrer">codesunny.in</a></div>
           </div>
         </div>
       </div>
@@ -1299,3 +1360,5 @@
     <script src="./assets/js/main.js?v=20" defer></script>
   </body>
 </html>
+
+

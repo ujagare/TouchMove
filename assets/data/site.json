@@ -1,5 +1,5 @@
 {
-  "baseUrl": "",
+  "baseUrl": "https://ujagare.github.io/TouchMove",
   "name": "Touch and Move",
   "tagline": "Architects of conscious stillness and transformative motion",
   "contact": {
@@ -14,6 +14,7 @@
     { "title": "Who This Work Is For", "href": "our-Aproch.html" },
     { "title": "Services", "href": "services.html" },
     { "title": "Tarot with Harshaa", "href": "why-clients-work-with-us.html" },
+    { "title": "Journal", "href": "blog.html" },
     { "title": "Client Intake", "href": "client-intake.html" },
     { "title": "Contact", "href": "contact.html" }
   ]
