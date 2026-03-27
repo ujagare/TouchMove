@@ -1,35 +1,596 @@
-<!doctype html>
+﻿<!doctype html>
 
 <html class="dark" lang="en">
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta name="google-site-verification" content="DQUIdFZAN0yXz-YXVh9KbTCLxUuwwCsRwZI285GDb_g" />
+    <!-- Google Tag Manager -->
+    <script>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-N6MBS5B4');
+    </script>
+    <!-- End Google Tag Manager -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-X5F49C1R7J"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-X5F49C1R7J");
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://unpkg.com" crossorigin />
     <title>Contact Us - Touch and Move</title>
+    <meta
+      name="description"
+      content="Contact Touch and Move for healing sessions, guidance, collaborations, or questions about our services, approach, and transformational work."
+    />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Contact Us - Touch and Move" />
+    <meta
+      property="og:description"
+      content="Reach out to Touch and Move to connect about bookings, services, and personalised support for your next step."
+    />
+    <meta property="og:image" content="https://ujagare.github.io/TouchMove/assets/images/site-image-25.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Contact Us - Touch and Move" />
+    <meta
+      name="twitter:description"
+      content="Reach out to Touch and Move to connect about bookings, services, and personalised support for your next step."
+    />
+    <meta name="twitter:image" content="https://ujagare.github.io/TouchMove/assets/images/site-image-25.png" />
+    <meta name="author" content="Touch and Move" />
+    <meta
+      property="og:url"
+      content="https://ujagare.github.io/TouchMove/contact.html"
+    />
+    <link
+      rel="canonical"
+      href="https://ujagare.github.io/TouchMove/contact.html"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="icon"
+      href="assets/favicon/android-chrome-512x512.png"
+      type="image/x-icon"
+    />
     <link rel="stylesheet" href="./assets/css/style.css?v=3" />
     <link rel="stylesheet" href="./assets/css/shared.css?v=3" />
     <link rel="stylesheet" href="./assets/css/pages/contact.css?v=3" />
   </head>
   <body class="tm-warm-theme bg-black antialiased text-slate-300">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N6MBS5B4"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <!-- Navigation -->
+    <header
+      id="navbar"
+      class="fixed top-0 left-0 w-full backdrop-blur-md bg-black/40 border-b border-white/10"
+      style="
+        animation: slideNavDown 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        z-index: 100000;
+        transition:
+          transform 0.4s ease,
+          background-color 0.4s ease;
+      "
+    >
+      <div class="w-full px-6 md:px-12 py-6 flex items-center justify-between">
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center gap-3 z-50 relative">
+              <img decoding="async" loading="lazy"
+                src="assets/images/logo-touch-and-move.png"
+                alt="Touch & Move Logo"
+                class="object-contain"
+                style="height: 64px; width: auto; max-width: 200px"
+              />
+          <span
+            class="brand-wordmark text-white tracking-widest font-semibold uppercase"
+            style="font-size: 1.125rem"
+          >
+            Touch & Move
+          </span>
+        </a>
+
+        <div class="flex items-center justify-end" style="gap: 16px">
+          <!-- Fullscreen Menu Toggle (=) -->
+          <button
+            id="menuToggle"
+            class="flex flex-col justify-center items-end z-50 relative focus:outline-none cursor-pointer"
+            style="width: 44px; height: 44px; gap: 8px"
+          >
+            <span
+              id="line1"
+              class="block bg-white rounded-full origin-center"
+              style="width: 32px; height: 2px; transition: transform 0.4s ease"
+            ></span>
+            <span
+              id="line2"
+              class="block bg-white rounded-full origin-center"
+              style="width: 32px; height: 2px; transition: transform 0.4s ease"
+            ></span>
+          </button>
+
+          <!-- Book Now Button -->
+          <a
+            href="contact.html"
+            class="book-now-btn inline-block text-white uppercase font-semibold hover:opacity-80 transition-all z-50 relative"
+            style="
+              background-color: #a30000;
+              padding: 10px 24px;
+              font-size: 10px;
+              letter-spacing: 2px;
+            "
+          >
+            Book Now
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div
+      id="mobileMenu"
+      class="hidden"
+      style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.95);
+        backdrop-filter: blur(16px);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 99999;
+        transition: transform 0.6s cubic-bezier(0.76, 0, 0.24, 1);
+        transform: translateY(-100%);
+      "
+    >
+      <div
+        style="
+          display: flex;
+          flex-direction: column;
+          gap: 32px;
+          text-align: center;
+        "
+      >
+        <a
+          href="index.html"
+          class="text-white/90 hover:text-white transition uppercase tracking-widest hover:scale-105 duration-200"
+          style="font-size: 22px"
+          >Home</a
+        >
+        <a
+          href="about.html"
+          class="text-white/90 hover:text-white transition uppercase tracking-widest hover:scale-105 duration-200"
+          style="font-size: 22px"
+          >Our Journey</a
+        >
+        <a
+          href="services.html"
+          class="text-white/90 hover:text-white transition uppercase tracking-widest hover:scale-105 duration-200"
+          style="font-size: 22px"
+          >Guidance & Services</a
+        >
+        <a
+          href="why-clients-work-with-us.html"
+          class="text-white/90 hover:text-white transition uppercase tracking-widest hover:scale-105 duration-200"
+          style="font-size: 22px"
+          >Tarot with Harshaa</a
+        >
+        <a
+          href="Aproch.html"
+          class="text-white/90 hover:text-white transition uppercase tracking-widest hover:scale-105 duration-200"
+          style="font-size: 22px"
+          >Our Approach & Philosophy</a
+        >
+
+        <a
+          href="our-Aproch.html"
+          class="text-white/90 hover:text-white transition uppercase tracking-widest hover:scale-105 duration-200"
+          style="font-size: 22px"
+          >Who This Work Is For</a
+        >
+        <a
+          href="blog.html"
+          class="text-white/90 hover:text-white transition uppercase tracking-widest hover:scale-105 duration-200"
+          style="font-size: 22px"
+          >Journal</a
+        >
+        <a
+          href="client-intake.html"
+          class="text-white/90 hover:text-white transition uppercase tracking-widest hover:scale-105 duration-200"
+          style="font-size: 22px"
+          >Client Intake Form</a
+        >
+        <a
+          href="contact.html"
+          class="mobile-contact-link px-10 py-5 text-center mt-6 rounded-lg bg-primary text-white hover:bg-white/10 transition uppercase tracking-widest hover:scale-105 duration-200 border border-white/40"
+          style="font-size: 16px; margin-top: 24px; font-weight: 600"
+          >Contact</a
+        >
+      </div>
+    </div>
+
+    <script>
+      // Mobile menu toggle
+      const menuToggle = document.getElementById("menuToggle");
+      const mobileMenu = document.getElementById("mobileMenu");
+      const navbar = document.getElementById("navbar");
+      let isMenuOpen = false;
+
+      const line1 = document.getElementById("line1");
+      const line2 = document.getElementById("line2");
+
+      menuToggle.addEventListener("click", () => {
+        isMenuOpen = !isMenuOpen;
+        if (isMenuOpen) {
+          if (navbar) {
+            navbar.style.transform = "translateY(0)";
+          }
+          mobileMenu.classList.remove("hidden");
+          mobileMenu.style.display = "flex";
+          setTimeout(() => {
+            mobileMenu.style.transform = "translateY(0)";
+            if (line1 && line2) {
+              line1.style.transform = "translateY(5px) rotate(45deg)";
+              line2.style.transform = "translateY(-5px) rotate(-45deg)";
+            }
+          }, 10);
+        } else {
+          mobileMenu.style.transform = "translateY(-100%)";
+          if (line1 && line2) {
+            line1.style.transform = "translateY(0) rotate(0)";
+            line2.style.transform = "translateY(0) rotate(0)";
+          }
+          setTimeout(() => {
+            mobileMenu.classList.add("hidden");
+            mobileMenu.style.display = "none";
+          }, 500);
+        }
+      });
+
+      // Scroll effect for navbar
+      let lastScrollY = window.scrollY;
+      window.addEventListener("scroll", () => {
+        const navbar = document.getElementById("navbar");
+
+        // Background blur and shadow toggle
+        if (window.scrollY > 50) {
+          navbar.classList.add("bg-black/80", "shadow-2xl", "backdrop-blur-xl");
+          navbar.classList.remove("bg-black/40", "backdrop-blur-md");
+        } else {
+          navbar.classList.remove(
+            "bg-black/80",
+            "shadow-2xl",
+            "backdrop-blur-xl",
+          );
+          navbar.classList.add("bg-black/40", "backdrop-blur-md");
+        }
+
+        // Hide navbar smoothly on scroll down (similar to Two Good Co)
+        if (
+          window.scrollY > lastScrollY &&
+          window.scrollY > 150 &&
+          !isMenuOpen
+        ) {
+          navbar.style.transform = "translateY(-100%)";
+        } else {
+          navbar.style.transform = "translateY(0)";
+        }
+        lastScrollY = window.scrollY;
+      });
+
+      // Hero arrow scroll toggle
+      document.addEventListener("DOMContentLoaded", () => {
+        const homeScrollToggle = document.getElementById("homeScrollToggle");
+        const homeScrollIcon = document.getElementById("homeScrollIcon");
+        const homeNextSection = document.getElementById("explore");
+        const successMessage = document.getElementById("contactSuccessMessage");
+        const url = new URL(window.location.href);
+
+        if (successMessage && url.searchParams.get("submitted") === "1") {
+          successMessage.classList.remove("hidden");
+          successMessage.scrollIntoView({ behavior: "smooth", block: "center" });
+          url.searchParams.delete("submitted");
+          window.history.replaceState(
+            {},
+            document.title,
+            url.pathname + (url.search ? url.search : "") + url.hash,
+          );
+        }
+
+        if (!homeScrollToggle || !homeScrollIcon || !homeNextSection) return;
+
+        const getIsBelowHero = () =>
+          window.scrollY >= homeNextSection.offsetTop - 140;
+
+        const syncHomeArrowState = () => {
+          const isBelowHero = getIsBelowHero();
+          homeScrollIcon.textContent = isBelowHero
+            ? "keyboard_double_arrow_up"
+            : "keyboard_double_arrow_down";
+          homeScrollToggle.setAttribute(
+            "aria-label",
+            isBelowHero ? "Scroll to top" : "Scroll down",
+          );
+        };
+
+        homeScrollToggle.addEventListener("click", () => {
+          if (getIsBelowHero()) {
+            if (typeof window.tmSmoothScrollTo === "function") {
+              window.tmSmoothScrollTo(0);
+            } else {
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+          } else {
+            if (typeof window.tmSmoothScrollTo === "function") {
+              window.tmSmoothScrollTo(homeNextSection, {
+                offset: 0,
+                block: "start",
+              });
+            } else {
+              homeNextSection.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+              });
+            }
+          }
+        });
+
+        window.addEventListener("scroll", syncHomeArrowState, {
+          passive: true,
+        });
+        window.addEventListener("resize", syncHomeArrowState);
+        syncHomeArrowState();
+      });
+    </script>
     <main>
+      <section class="relative w-full h-[500px] flex items-end overflow-hidden">
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent z-10"
+        ></div>
+        <img decoding="async" loading="lazy"
+          alt="Dark mountain range with water reflection"
+          class="absolute inset-0 w-full h-full object-cover brightness-90"
+          src="assets/images/site-image-25.png"
+        />
+        <div
+          class="relative z-20 max-w-[1680px] mx-auto px-4 md:px-6 lg:px-8 pb-20 w-full text-center"
+        >
+          <p
+            class="text-[10px] uppercase tracking-[0.4em] text-primary font-bold mb-6"
+          >
+            Contact &amp; Inquiry
+          </p>
+          <h1 class="text-6xl md:text-7xl italic serif-heading text-white">
+            Connect with <span class="text-primary not-italic">Us</span>
+          </h1>
+        </div>
+      </section>
       <section class="max-w-[1680px] mx-auto px-4 md:px-6 lg:px-8 py-32 bg-black">
         <div class="grid lg:grid-cols-2 gap-24">
           <div class="space-y-16">
             <div>
-              <h3 class="text-4xl serif-heading mb-6 text-slate-800 italic">Get in Touch</h3>
-              <p class="text-slate-500 font-light leading-relaxed max-w-md">
-                Begin your journey towards holistic movement and spiritual alignment.
+              <p
+                class="text-[10px] uppercase tracking-[0.4em] text-primary font-bold mb-4"
+              >
+                The Gateway
               </p>
+              <h3 class="text-4xl serif-heading mb-6 text-slate-800 italic">
+                Get in Touch
+              </h3>
+              <p class="text-slate-500 font-light leading-relaxed max-w-md">
+                Begin your journey towards holistic movement and spiritual
+                alignment. Our team is here to guide your path through
+                intentional kinetic wisdom.
+              </p>
+            </div>
+            <div class="space-y-10">
+              <div class="flex items-start gap-8 group">
+                <div class="text-primary pt-1">
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 24 24"
+                    class="h-9 w-9"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.86 19.86 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.78.63 2.64a2 2 0 0 1-.45 2.11L8 9.91a16 16 0 0 0 6.09 6.09l1.44-1.29a2 2 0 0 1 2.11-.45c.86.3 1.74.51 2.64.63A2 2 0 0 1 22 16.92Z" />
+                  </svg>
+                </div>
+                <div>
+                  <h4
+                    class="text-[10px] uppercase tracking-[0.2em] font-bold mb-2"
+                  >
+                    Call Us
+                  </h4>
+                  <p
+                    class="text-slate-500 text-sm mb-1 uppercase tracking-wider"
+                  >
+                    Direct support
+                  </p>
+                  <div class="space-y-1">
+                    <a
+                      class="text-slate-700 font-light hover:text-primary transition-colors block"
+                      href="tel:+918698304955"
+                      >+91 8698304955 (Harshaa)</a
+                    >
+                    <a
+                      class="text-slate-700 font-light hover:text-primary transition-colors block"
+                      href="tel:+919511246401"
+                      >+91 9511246401</a
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="flex items-start gap-8 group">
+                <div class="text-primary pt-1">
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 24 24"
+                    class="h-9 w-9"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M12 21s-6-5.33-6-11a6 6 0 1 1 12 0c0 5.67-6 11-6 11Z" />
+                    <circle cx="12" cy="10" r="2.5" />
+                  </svg>
+                </div>
+                <div>
+                  <h4
+                    class="text-[10px] uppercase tracking-[0.2em] font-bold mb-2"
+                  >
+                    Location
+                  </h4>
+                  <p
+                    class="text-slate-500 text-sm mb-1 uppercase tracking-wider"
+                  >
+                    Visit our sanctuary
+                  </p>
+                  <p class="text-slate-700 font-light">
+                    Online (Worldwide) and in-person sessions in Pune, India
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-start gap-8 group">
+                <div class="text-primary pt-1">
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 24 24"
+                    class="h-9 w-9"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <rect x="3" y="5" width="18" height="14" rx="2" />
+                    <path d="m4 7 8 6 8-6" />
+                  </svg>
+                </div>
+                <div>
+                  <h4
+                    class="text-[10px] uppercase tracking-[0.2em] font-bold mb-2"
+                  >
+                    Email
+                  </h4>
+                  <p
+                    class="text-slate-500 text-sm mb-1 uppercase tracking-wider"
+                  >
+                    Write to our team
+                  </p>
+                  <a
+                    class="text-slate-700 font-light hover:text-primary transition-colors block"
+                    href="mailto:touchandmove.69@gmail.com"
+                    >touchandmove.69@gmail.com</a
+                  >
+                </div>
+              </div>
+              <div class="flex items-start gap-8 group">
+                <div class="text-primary pt-1">
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 24 24"
+                    class="h-9 w-9"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M7 18.5A8.5 8.5 0 1 1 10.7 20L4 21l1-5.3" />
+                    <path d="M8.5 10.5h7" />
+                    <path d="M8.5 13.5H13" />
+                  </svg>
+                </div>
+                <div>
+                  <h4
+                    class="text-[10px] uppercase tracking-[0.2em] font-bold mb-2"
+                  >
+                    WhatsApp
+                  </h4>
+                  <p
+                    class="text-slate-500 text-sm mb-1 uppercase tracking-wider"
+                  >
+                    Instant messaging
+                  </p>
+                  <a
+                    class="text-slate-700 font-light hover:text-primary transition-colors block"
+                    href="https://wa.me/919511246401"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >+91 9511246401</a
+                  >
+                </div>
+              </div>
             </div>
           </div>
           <div class="bg-[#fbf8f1] border border-white/10 p-10 md:p-14">
-            <h3 class="text-2xl serif-heading italic mb-10 text-slate-800">Send a Message</h3>
-            <form id="contactForm" class="space-y-8" accept-charset="UTF-8" method="post" novalidate>
+            <h3 class="text-2xl serif-heading italic mb-10 text-slate-800">
+              Send a Message
+            </h3>
+            <div
+              id="contactSuccessMessage"
+              class="tm-toast hidden px-5 py-4 text-sm leading-relaxed"
+              role="status"
+              aria-live="polite"
+            >
+              Your message has been sent successfully. We will get back to you
+              soon.
+            </div>
+            <div
+              id="contactErrorMessage"
+              class="tm-toast tm-toast-error hidden px-5 py-4 text-sm leading-relaxed"
+              role="alert"
+              aria-live="polite"
+            >
+              We could not send your message right now. Please try again.
+            </div>
+            <form
+              id="contactForm"
+              class="space-y-8"
+              accept-charset="UTF-8"
+              method="post"
+              novalidate
+            >
+              <div class="hidden" aria-hidden="true">
+                <label for="contact-bot-field">Website</label>
+                <input id="contact-bot-field" name="botField" type="text" tabindex="-1" autocomplete="off" />
+              </div>
               <input type="hidden" name="formType" value="contact" />
               <input type="hidden" name="formStartedAt" value="" />
-              
               <div class="space-y-3">
-                <label class="text-[10px] font-bold uppercase tracking-widest text-slate-500">Full Name</label>
+                <label
+                  class="text-[10px] font-bold uppercase tracking-widest text-slate-500"
+                  >Full Name</label
+                >
                 <input
                   class="w-full bg-black border border-white/10 px-4 py-4 focus:outline-none focus:border-primary transition-all text-slate-800 font-light placeholder:text-slate-400"
                   placeholder="Your Name"
@@ -41,9 +602,11 @@
                   required
                 />
               </div>
-              
               <div class="space-y-3">
-                <label class="text-[10px] font-bold uppercase tracking-widest text-slate-500">Email Address</label>
+                <label
+                  class="text-[10px] font-bold uppercase tracking-widest text-slate-500"
+                  >Email Address</label
+                >
                 <input
                   class="w-full bg-black border border-white/10 px-4 py-4 focus:outline-none focus:border-primary transition-all text-slate-800 font-light placeholder:text-slate-400"
                   placeholder="email@address.com"
@@ -54,9 +617,11 @@
                   required
                 />
               </div>
-              
               <div class="space-y-3">
-                <label class="text-[10px] font-bold uppercase tracking-widest text-slate-500">Phone Number</label>
+                <label
+                  class="text-[10px] font-bold uppercase tracking-widest text-slate-500"
+                  >Phone Number</label
+                >
                 <input
                   class="w-full bg-black border border-white/10 px-4 py-4 focus:outline-none focus:border-primary transition-all text-slate-800 font-light placeholder:text-slate-400"
                   placeholder="+91 9511246401"
@@ -70,9 +635,11 @@
                   required
                 />
               </div>
-              
               <div class="space-y-3">
-                <label class="text-[10px] font-bold uppercase tracking-widest text-slate-500">Message</label>
+                <label
+                  class="text-[10px] font-bold uppercase tracking-widest text-slate-500"
+                  >Message</label
+                >
                 <textarea
                   class="w-full bg-black border border-white/10 px-4 py-4 focus:outline-none focus:border-primary transition-all text-slate-800 font-light resize-none placeholder:text-slate-400"
                   placeholder="Tell us about your journey..."
@@ -83,113 +650,322 @@
                   required
                 ></textarea>
               </div>
-              
               <button
                 id="contactSubmitButton"
                 class="w-full bg-primary hover:bg-[#A00000] text-white py-5 font-bold uppercase text-[11px] tracking-[0.3em] transition-all flex items-center justify-center gap-3"
                 type="submit"
               >
                 <span>Send Message</span>
+                <svg
+                  aria-hidden="true"
+                  viewBox="0 0 24 24"
+                  class="h-4 w-4"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M22 2 11 13" />
+                  <path d="m22 2-7 20-4-9-9-4Z" />
+                </svg>
               </button>
             </form>
           </div>
         </div>
       </section>
+      <section class="w-full px-4 md:px-6 lg:px-8 py-6 md:py-8">
+        <div
+          class="relative mx-auto h-[400px] max-w-[1680px] overflow-hidden rounded-[2rem] border-[3px]"
+          style="
+            border-color: #d1d5db;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.18);
+          "
+        >
+          <iframe
+            title="Touch and Move studio map"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=73.801884%2C18.550227%2C73.813884%2C18.562227&layer=mapnik&marker=18.556227%2C73.807884"
+            class="h-full w-full border-0"
+            style="filter: saturate(1.05) contrast(1.02) brightness(1)"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            sandbox="allow-scripts allow-same-origin"
+          ></iframe>
+          <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/35 via-black/10 to-transparent"></div>
+          <div class="pointer-events-none absolute inset-0 flex items-center justify-center">
+            <div
+              class="flex items-center justify-center"
+              style="
+                width: 92px;
+                height: 92px;
+                filter: drop-shadow(0 16px 20px rgba(0, 0, 0, 0.28));
+              "
+            >
+              <svg
+                viewBox="0 0 64 64"
+                aria-hidden="true"
+                style="width: 92px; height: 92px; display: block"
+              >
+                <defs>
+                  <linearGradient id="contactMapPin" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#ff8a8a" />
+                    <stop offset="45%" stop-color="#d92d20" />
+                    <stop offset="100%" stop-color="#7a0f0f" />
+                  </linearGradient>
+                </defs>
+                <path
+                  d="M32 60C32 60 50 42.6 50 27.5C50 17.8 41.9 10 32 10C22.1 10 14 17.8 14 27.5C14 42.6 32 60 32 60Z"
+                  fill="url(#contactMapPin)"
+                  stroke="#fff7ed"
+                  stroke-width="2.5"
+                />
+                <circle cx="32" cy="28" r="9.5" fill="#fffaf5" />
+                <circle cx="32" cy="28" r="4.5" fill="#d92d20" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section
+        class="w-full py-24 md:py-28 bg-gradient-to-b from-[#0b0b0b] via-[#120606] to-[#0a0a0a] border-y border-white/10"
+      >
+        <div class="w-full px-6 md:px-12 lg:px-20">
+          <div class="max-w-6xl mx-auto">
+            <p
+              class="text-primary uppercase tracking-[0.3em] text-[10px] font-bold mb-4 text-center"
+            >
+              Frequently Asked Questions
+            </p>
+            <h2
+              class="text-white text-3xl md:text-5xl font-light italic text-center mb-4"
+            >
+              Your Questions, Clearly Answered
+            </h2>
+            <p
+              class="text-slate-400 text-sm md:text-base text-center max-w-2xl mx-auto mb-12"
+            >
+              Everything you need before booking your session.
+            </p>
+            <div
+              class="rounded-3xl border border-white/10 bg-black/35 p-4 md:p-6 space-y-3"
+            >
+              <details
+                class="group rounded-2xl border border-white/10 bg-black/45 px-6 md:px-8 py-6"
+              >
+                <summary
+                  class="list-none cursor-pointer text-white text-base md:text-lg font-medium tracking-[0.02em] flex items-center justify-between gap-4 py-2"
+                >
+                  How do I book a session?
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 24 24"
+                    class="text-white/70 transition-transform duration-300 group-open:rotate-180"
+                    style="width: 20px; height: 20px; min-width: 20px; flex-shrink: 0; display: block;"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </summary>
+                <p
+                  class="mt-5 px-1 pb-1 text-slate-300 leading-relaxed text-sm md:text-base max-w-3xl"
+                >
+                  You can book directly through our Contact page. Share your
+                  intention and preferred timing, and our team will confirm the
+                  best available slot.
+                </p>
+              </details>
+              <details
+                class="group rounded-2xl border border-white/10 bg-black/45 px-6 md:px-8 py-6"
+              >
+                <summary
+                  class="list-none cursor-pointer text-white text-base md:text-lg font-medium tracking-[0.02em] flex items-center justify-between gap-4 py-2"
+                >
+                  Are sessions available online?
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 24 24"
+                    class="text-white/70 transition-transform duration-300 group-open:rotate-180"
+                    style="width: 20px; height: 20px; min-width: 20px; flex-shrink: 0; display: block;"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </summary>
+                <p
+                  class="mt-5 px-1 pb-1 text-slate-300 leading-relaxed text-sm md:text-base max-w-3xl"
+                >
+                  Yes. We offer online sessions worldwide, and in-person
+                  sessions in Pune, India.
+                </p>
+              </details>
+              <details
+                class="group rounded-2xl border border-white/10 bg-black/45 px-6 md:px-8 py-6"
+              >
+                <summary
+                  class="list-none cursor-pointer text-white text-base md:text-lg font-medium tracking-[0.02em] flex items-center justify-between gap-4 py-2"
+                >
+                  What should I prepare before a session?
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 24 24"
+                    class="text-white/70 transition-transform duration-300 group-open:rotate-180"
+                    style="width: 20px; height: 20px; min-width: 20px; flex-shrink: 0; display: block;"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </summary>
+                <p
+                  class="mt-5 px-1 pb-1 text-slate-300 leading-relaxed text-sm md:text-base max-w-3xl"
+                >
+                  Come with a calm space, an open mind, and the key questions or
+                  areas where you want clarity. No special ritual is required.
+                </p>
+              </details>
+              <details
+                class="group rounded-2xl border border-white/10 bg-black/45 px-6 md:px-8 py-6"
+              >
+                <summary
+                  class="list-none cursor-pointer text-white text-base md:text-lg font-medium tracking-[0.02em] flex items-center justify-between gap-4 py-2"
+                >
+                  Can I choose between tarot and movement guidance?
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 24 24"
+                    class="text-white/70 transition-transform duration-300 group-open:rotate-180"
+                    style="width: 20px; height: 20px; min-width: 20px; flex-shrink: 0; display: block;"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </summary>
+                <p
+                  class="mt-5 px-1 pb-1 text-slate-300 leading-relaxed text-sm md:text-base max-w-3xl"
+                >
+                  Absolutely. You can choose one approach or a blended session
+                  based on your current goals and comfort.
+                </p>
+              </details>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
-
+    <!-- Footer -->
+    <footer id="homeFooter" class="py-20 md:py-24">           <div class="max-w-420 mx-auto px-4 md:px-6 lg:px-8">             <div               class="tm-footer-shell rounded-4xl px-6 py-10 md:px-10 md:py-14 lg:px-12"             >               <div                 class="grid gap-7 border-b pb-10 md:grid-cols-12 md:items-start md:gap-8 md:pb-12 tm-footer-divider"               >                 <div class="md:col-span-5">                   <div class="tm-footer-card rounded-3xl p-6 md:p-7">                     <div class="flex items-center gap-3">                       <img decoding="async" loading="lazy"                         alt="Harshaa Tarot Logo"                         class="h-4 w-auto"                         src="assets/images/logo-touch-and-move.png"                       />                       <h2                         class="text-white uppercase text-xs tracking-[0.3em] font-bold"                       >                         Touch and Move                       </h2>                     </div>                     <p                       class="mt-5 max-w-md text-base font-light italic leading-loose text-slate-400"                     >                       Architects of conscious stillness and transformative                       motion. Offering grounded, intuitive guidance for seekers                       across the world.                     </p>                     <div class="mt-6 flex flex-wrap gap-3">                       <span                         class="tm-footer-kicker rounded-full border border-primary/10 bg-white/50 px-4 py-2 text-[10px] uppercase tracking-[0.26em]"                       >                         Online Worldwide                       </span>                       <span                         class="tm-footer-kicker rounded-full border border-primary/10 bg-white/50 px-4 py-2 text-[10px] uppercase tracking-[0.26em]"                       >                         In-Person Pune                       </span>                     </div>                   </div>                 </div>                 <div class="md:col-span-4">                   <div class="tm-footer-card rounded-3xl p-6 md:p-7">                     <h4                       class="font-bold mb-5 text-white uppercase text-[11px] tracking-[0.3em]"                     >                       Explore                     </h4>                     <div                       class="grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-2"                     >                       <a                         class="tm-footer-link block py-1 text-xs uppercase tracking-[0.18em] transition-colors"                         href="index.html"                         >Home</a                       >                       <a                         class="tm-footer-link block py-1 text-xs uppercase tracking-[0.18em] transition-colors"                         href="about.html"                         >Our Journey</a                       >                       <a                         class="tm-footer-link block py-1 text-xs uppercase tracking-[0.18em] transition-colors"                         href="services.html"                         >Guidance & Services</a                       >                       <a                         class="tm-footer-link block py-1 text-xs uppercase tracking-[0.18em] transition-colors"                         href="why-clients-work-with-us.html"                         >Tarot with Harshaa</a                       >                       <a                         class="tm-footer-link block py-1 text-xs uppercase tracking-[0.18em] transition-colors"                         href="Aproch.html"                         >Approach & Philosophy</a                       >                       <a                         class="tm-footer-link block py-1 text-xs uppercase tracking-[0.18em] transition-colors"                         href="our-Aproch.html"                         >Who This Work Is For</a                       >                       <a                         class="tm-footer-link block py-1 text-xs uppercase tracking-[0.18em] transition-colors"                         href="client-intake.html"                         >Client Intake Form</a                       >                       <a                         class="tm-footer-link block py-1 text-xs uppercase tracking-[0.18em] transition-colors"                         href="contact.html"                         >Contact</a                       >                     </div>                   </div>                 </div>                 <div class="md:col-span-3">                   <div class="tm-footer-card rounded-3xl p-6 md:p-7">                     <h4                       class="font-bold mb-5 text-white uppercase text-[11px] tracking-[0.3em]"                     >                       Connect                     </h4>                     <ul class="space-y-4 text-base leading-loose">                       <li>                         <a                           class="tm-footer-link transition-colors"                           href="mailto:touchandmove.69@gmail.com"                           >touchandmove.69@gmail.com</a                         >                       </li>                       <li>                         <a                           class="tm-footer-link transition-colors"                           href="tel:+918698304955"                           >8698304955 (Harshaa)</a                         >                         /                         <a                           class="tm-footer-link transition-colors"                           href="tel:+919511246401"                           >+91 9511246401</a                         >                       </li>                       <li class="text-slate-400">                         Online (Worldwide) | In-person (Pune, India)                       </li>                     </ul>                     <div class="flex items-center gap-4 pt-5">                       <a                         class="tm-footer-social inline-flex items-center justify-center rounded-full border transition-all"                         style="                           width: 44px;                           height: 44px;                           flex-shrink: 0;                           display: inline-flex;                           align-items: center;                           justify-content: center;                           line-height: 0;                         "                         href="https://wa.me/919511246401"                         aria-label="WhatsApp"                         target="_blank"                         rel="noopener noreferrer"                       >                         <svg                           viewBox="0 0 24 24"                           class="fill-current"                           style="                             width: 20px;                             height: 20px;                             display: block;                             color: #ffffff;                             flex-shrink: 0;                           "                           aria-hidden="true"                         >                           <path                             fill="#ffffff"                             d="M19.05 4.91A9.82 9.82 0 0 0 12.06 2C6.65 2 2.25 6.4 2.25 11.81c0 1.73.45 3.42 1.31 4.91L2 22l5.43-1.5a9.73 9.73 0 0 0 4.63 1.18h.01c5.41 0 9.81-4.4 9.81-9.81 0-2.62-1.02-5.08-2.83-6.96ZM12.07 20a8.1 8.1 0 0 1-4.13-1.13l-.3-.18-3.22.89.86-3.14-.2-.32a8.12 8.12 0 0 1-1.24-4.31 8.23 8.23 0 0 1 8.22-8.22 8.14 8.14 0 0 1 5.83 2.42 8.16 8.16 0 0 1 2.39 5.8A8.23 8.23 0 0 1 12.07 20Zm4.5-6.12c-.25-.12-1.47-.72-1.7-.8-.22-.08-.39-.12-.55.12-.16.25-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-2-1.25-.74-.66-1.24-1.48-1.39-1.73-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.16.04-.31-.02-.43-.06-.12-.55-1.33-.76-1.82-.2-.48-.4-.41-.55-.42l-.47-.01c-.16 0-.43.06-.66.31-.22.25-.85.83-.85 2.02 0 1.19.87 2.33.99 2.49.12.16 1.7 2.59 4.11 3.63.57.25 1.02.4 1.37.51.58.18 1.1.15 1.51.09.46-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.05-.1-.21-.16-.45-.27Z"                           />                         </svg>                       </a>                       <a                         class="tm-footer-social inline-flex items-center justify-center rounded-full border transition-all"                         style="                           width: 44px;                           height: 44px;                           flex-shrink: 0;                           display: inline-flex;                           align-items: center;                           justify-content: center;                           line-height: 0;                         "                         href="https://www.facebook.com/touchandmove"                         aria-label="Facebook"                         target="_blank"                         rel="noopener noreferrer"                       >                         <svg                           viewBox="0 0 24 24"                           class="fill-current"                           style="                             width: 20px;                             height: 20px;                             display: block;                             color: #ffffff;                             flex-shrink: 0;                           "                           aria-hidden="true"                         >                           <path                             fill="#ffffff"                             d="M13.5 21v-7h2.35l.35-2.73H13.5V9.53c0-.79.22-1.33 1.35-1.33h1.44V5.78c-.25-.03-1.1-.1-2.08-.1-2.06 0-3.46 1.25-3.46 3.56v2.03H8.5V14h2.25v7h2.75Z"                           />                         </svg>                       </a>                       <a                         class="tm-footer-social inline-flex items-center justify-center rounded-full border transition-all"                         style="                           width: 44px;                           height: 44px;                           flex-shrink: 0;                           display: inline-flex;                           align-items: center;                           justify-content: center;                           line-height: 0;                         "                         href="https://www.instagram.com/touchandmove"                         aria-label="Instagram"                         target="_blank"                         rel="noopener noreferrer"                       >                         <svg                           viewBox="0 0 24 24"                           class="fill-current"                           style="                             width: 20px;                             height: 20px;                             display: block;                             color: #ffffff;                             flex-shrink: 0;                           "                           aria-hidden="true"                         >                           <path                             fill="#ffffff"                             d="M7.75 2h8.5A5.76 5.76 0 0 1 22 7.75v8.5A5.76 5.76 0 0 1 16.25 22h-8.5A5.76 5.76 0 0 1 2 16.25v-8.5A5.76 5.76 0 0 1 7.75 2Zm-.18 1.94A3.63 3.63 0 0 0 3.94 7.57v8.86a3.63 3.63 0 0 0 3.63 3.63h8.86a3.63 3.63 0 0 0 3.63-3.63V7.57a3.63 3.63 0 0 0-3.63-3.63H7.57Zm9.36 1.45a1.3 1.3 0 1 1 0 2.6 1.3 1.3 0 0 1 0-2.6ZM12 7.23A4.77 4.77 0 1 1 7.23 12 4.77 4.77 0 0 1 12 7.23Zm0 1.94A2.83 2.83 0 1 0 14.83 12 2.83 2.83 0 0 0 12 9.17Z"                           />                         </svg>                       </a>                     </div>                   </div>                 </div>               </div>               <div                 class="mt-8 flex flex-col items-center justify-between gap-4 pt-6 text-center md:flex-row"               >                 <p>&copy; 2026 Touch and Move</p>                 <div                   class="flex items-center gap-6 text-slate-500 text-[11px] tracking-[0.24em]"                 >                   <a class="tm-footer-link transition-colors text-primary normal-case" href="https://codesunny.in" target="_blank" rel="noopener noreferrer"                     >codesunny.in</a                   >                 </div>               </div>             </div>           </div>         </footer>
     <script src="./assets/vendor/lenis.min.js" defer></script>
     <script src="./assets/js/main.js?v=20" defer></script>
     <script>
-      function showToastMessage(message, isSuccess = true) {
-        const toast = document.createElement('div');
-        toast.style.cssText = `
-          position: fixed;
-          top: 20px;
-          right: 20px;
-          z-index: 10050;
-          background: ${isSuccess ? '#22c55e' : '#ef4444'};
-          color: white;
-          padding: 16px 24px;
-          border-radius: 12px;
-          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-          font-size: 14px;
-          font-weight: 500;
-          max-width: 350px;
-          word-wrap: break-word;
-          animation: slideIn 0.3s ease-out;
-        `;
-        toast.textContent = message;
-        document.body.appendChild(toast);
-        
-        setTimeout(() => {
-          toast.style.animation = 'slideOut 0.3s ease-out';
-          setTimeout(() => toast.remove(), 300);
-        }, 4000);
-      }
-      
-      const style = document.createElement('style');
-      style.textContent = `
-        @keyframes slideIn {
-          from { transform: translateX(400px); opacity: 0; }
-          to { transform: translateX(0); opacity: 1; }
-        }
-        @keyframes slideOut {
-          from { transform: translateX(0); opacity: 1; }
-          to { transform: translateX(400px); opacity: 0; }
-        }
-        @media (max-width: 640px) {
-          .toast-mobile { top: auto !important; right: 10px !important; bottom: 10px !important; left: 10px !important; }
-        }
-      `;
-      document.head.appendChild(style);
-
-      document.addEventListener('DOMContentLoaded', () => {
-        const contactForm = document.getElementById('contactForm');
-        const submitButton = document.getElementById('contactSubmitButton');
+      document.addEventListener("DOMContentLoaded", () => {
+        const contactForm = document.getElementById("contactForm");
+        const successMessage = document.getElementById("contactSuccessMessage");
+        const errorMessage = document.getElementById("contactErrorMessage");
+        const submitButton = document.getElementById("contactSubmitButton");
         const startedAtField = contactForm?.querySelector('input[name="formStartedAt"]');
+        let toastTimer;
+
+        if (!contactForm) return;
+
+        const hideToast = (element) => {
+          if (!element) return;
+          element.classList.remove("tm-toast-show");
+          window.setTimeout(() => {
+            element.classList.add("hidden");
+          }, 220);
+        };
+
+        const showToast = (element, message) => {
+          if (!element) return;
+          window.clearTimeout(toastTimer);
+          if (successMessage && successMessage !== element) hideToast(successMessage);
+          if (errorMessage && errorMessage !== element) hideToast(errorMessage);
+          element.textContent = message;
+          element.classList.remove("hidden");
+          requestAnimationFrame(() => {
+            element.classList.add("tm-toast-show");
+          });
+          toastTimer = window.setTimeout(() => {
+            hideToast(element);
+          }, 4200);
+        };
 
         if (startedAtField) {
           startedAtField.value = String(Date.now());
         }
 
-        contactForm.addEventListener('submit', async (event) => {
+        contactForm.addEventListener("submit", async (event) => {
           event.preventDefault();
 
           if (!contactForm.reportValidity()) return;
 
-          const payload = Object.fromEntries(new FormData(contactForm).entries());
-          const originalButtonText = submitButton.innerHTML;
+          hideToast(successMessage);
+          hideToast(errorMessage);
 
-          submitButton.disabled = true;
-          submitButton.innerHTML = '<span>Sending...</span>';
+          const payload = Object.fromEntries(new FormData(contactForm).entries());
+          const originalButtonText = submitButton ? submitButton.innerHTML : "";
+
+          if (submitButton) {
+            submitButton.disabled = true;
+            submitButton.innerHTML = "<span>Sending...</span>";
+          }
 
           try {
-            const response = await fetch('/.netlify/functions/contact', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
+            const response = await fetch("/.netlify/functions/contact", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
               body: JSON.stringify(payload),
             });
 
             const result = await response.json();
 
             if (!response.ok || !result.ok) {
-              throw new Error(result.message || 'Unable to send message.');
+              throw new Error(result.message || "Unable to send message.");
             }
 
             contactForm.reset();
             if (startedAtField) {
               startedAtField.value = String(Date.now());
             }
-            
-            showToastMessage('✅ Your message has been sent successfully! We will get back to you soon.', true);
+            showToast(
+              successMessage,
+              result.message ||
+                "Your message has been sent successfully. We will get back to you soon.",
+            );
           } catch (error) {
-            showToastMessage('❌ ' + (error.message || 'We could not send your message right now. Please try again.'), false);
+            showToast(
+              errorMessage,
+              error.message ||
+                "We could not send your message right now. Please try again.",
+            );
           } finally {
-            submitButton.disabled = false;
-            submitButton.innerHTML = originalButtonText;
+            if (submitButton) {
+              submitButton.disabled = false;
+              submitButton.innerHTML = originalButtonText;
+            }
           }
         });
       });
     </script>
   </body>
 </html>
+
+
+
+
+
