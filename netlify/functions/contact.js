@@ -3,6 +3,9 @@ const jsonHeaders = {
   "X-Content-Type-Options": "nosniff",
   "X-Frame-Options": "SAMEORIGIN",
   "Referrer-Policy": "strict-origin-when-cross-origin",
+  "Content-Security-Policy": "default-src 'none'; frame-ancestors 'none';",
+  "X-XSS-Protection": "1; mode=block",
+  "Permissions-Policy": "geolocation=(), microphone=(), camera=()",
 };
 
 const MAX_BODY_BYTES = 25_000;
@@ -10,6 +13,15 @@ const MIN_FORM_FILL_MS = 2_500;
 const MAX_FORM_AGE_MS = 1000 * 60 * 60 * 2;
 const GENERIC_ERROR_MESSAGE =
   "We could not process your request right now. Please try again.";
+
+// Rate limiting configuration
+const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000; // 1 hour
+const MAX_REQUESTS_PER_WINDOW = 5;
+const BLOCK_DURATION_MS = 60 * 60 * 1000; // 1 hour block
+
+// In-memory storage for rate limiting (use Redis/KV in production for multi-instance)
+const requestLog = new Map();
+const blockedIPs = new Map();
 
 function firstEnv() {
   for (const key of arguments) {
@@ -133,8 +145,151 @@ function validStartedAt(value) {
   return age >= MIN_FORM_FILL_MS && age <= MAX_FORM_AGE_MS;
 }
 
+function getClientIP(event) {
+  // Try multiple headers to get real IP (Netlify specific)
+  const ip =
+    event.headers["x-nf-client-connection-ip"] ||
+    event.headers["x-forwarded-for"]?.split(",")[0]?.trim() ||
+    event.headers["x-real-ip"] ||
+    "unknown";
+  return sanitize(ip, 45);
+}
+
+function isIPBlocked(ip) {
+  const blockInfo = blockedIPs.get(ip);
+  if (!blockInfo) return false;
+
+  if (Date.now() - blockInfo.blockedAt < BLOCK_DURATION_MS) {
+    return true;
+  }
+
+  // Unblock after duration
+  blockedIPs.delete(ip);
+  return false;
+}
+
+function checkRateLimit(ip) {
+  const now = Date.now();
+  const requests = requestLog.get(ip) || [];
+
+  // Remove old requests outside the window
+  const recentRequests = requests.filter(
+    (timestamp) => now - timestamp < RATE_LIMIT_WINDOW_MS,
+  );
+
+  if (recentRequests.length >= MAX_REQUESTS_PER_WINDOW) {
+    // Block this IP
+    blockedIPs.set(ip, { blockedAt: now, attempts: recentRequests.length });
+    logSecurityEvent("RATE_LIMIT_EXCEEDED", {
+      ip,
+      attempts: recentRequests.length,
+    });
+    return false;
+  }
+
+  // Add current request
+  recentRequests.push(now);
+  requestLog.set(ip, recentRequests);
+
+  // Cleanup old entries periodically
+  if (requestLog.size > 1000) {
+    cleanupOldEntries();
+  }
+
+  return true;
+}
+
+function cleanupOldEntries() {
+  const now = Date.now();
+  for (const [ip, requests] of requestLog.entries()) {
+    const recentRequests = requests.filter(
+      (timestamp) => now - timestamp < RATE_LIMIT_WINDOW_MS,
+    );
+    if (recentRequests.length === 0) {
+      requestLog.delete(ip);
+    } else {
+      requestLog.set(ip, recentRequests);
+    }
+  }
+
+  for (const [ip, blockInfo] of blockedIPs.entries()) {
+    if (now - blockInfo.blockedAt >= BLOCK_DURATION_MS) {
+      blockedIPs.delete(ip);
+    }
+  }
+}
+
+function logSecurityEvent(eventType, details) {
+  const timestamp = new Date().toISOString();
+  const logEntry = {
+    timestamp,
+    eventType,
+    ...details,
+  };
+
+  // Log to console (in production, send to monitoring service)
+  console.warn("SECURITY_EVENT", JSON.stringify(logEntry));
+
+  // TODO: Send to monitoring service (e.g., Sentry, LogRocket, Datadog)
+  // Example: sendToMonitoring(logEntry);
+}
+
+async function verifyRecaptcha(token) {
+  const recaptchaSecret = firstEnv("RECAPTCHA_SECRET_KEY", "RECAPTCHA_SECRET");
+
+  if (!recaptchaSecret) {
+    console.warn("reCAPTCHA secret not configured, skipping verification");
+    return { success: true, score: 1.0, skipped: true };
+  }
+
+  try {
+    const response = await fetch(
+      "https://www.google.com/recaptcha/api/siteverify",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: `secret=${encodeURIComponent(recaptchaSecret)}&response=${encodeURIComponent(token)}`,
+      },
+    );
+
+    const data = await response.json();
+    return {
+      success: data.success === true,
+      score: data.score || 0,
+      action: data.action,
+      skipped: false,
+    };
+  } catch (error) {
+    console.error("reCAPTCHA verification failed", error);
+    return { success: false, score: 0, error: true };
+  }
+}
+
 exports.handler = async (event) => {
+  const clientIP = getClientIP(event);
+
+  // Check if IP is blocked
+  if (isIPBlocked(clientIP)) {
+    logSecurityEvent("BLOCKED_IP_ATTEMPT", { ip: clientIP });
+    return response(429, {
+      ok: false,
+      message: "Too many requests. Please try again later.",
+    });
+  }
+
+  // Check rate limit
+  if (!checkRateLimit(clientIP)) {
+    return response(429, {
+      ok: false,
+      message: "Too many requests. Please try again in an hour.",
+    });
+  }
+
   if (event.httpMethod !== "POST") {
+    logSecurityEvent("INVALID_METHOD", {
+      ip: clientIP,
+      method: event.httpMethod,
+    });
     return response(405, { ok: false, message: "Method Not Allowed" });
   }
 
@@ -143,14 +298,24 @@ exports.handler = async (event) => {
     200,
   );
   if (!contentType.toLowerCase().includes("application/json")) {
+    logSecurityEvent("INVALID_CONTENT_TYPE", { ip: clientIP, contentType });
     return response(415, { ok: false, message: GENERIC_ERROR_MESSAGE });
   }
 
   if ((event.body || "").length > MAX_BODY_BYTES) {
+    logSecurityEvent("BODY_TOO_LARGE", {
+      ip: clientIP,
+      size: event.body.length,
+    });
     return response(413, { ok: false, message: GENERIC_ERROR_MESSAGE });
   }
 
   if (!requestOriginAllowed(event)) {
+    logSecurityEvent("INVALID_ORIGIN", {
+      ip: clientIP,
+      origin: event.headers?.origin,
+      referer: event.headers?.referer,
+    });
     return response(403, { ok: false, message: GENERIC_ERROR_MESSAGE });
   }
 
@@ -177,6 +342,7 @@ exports.handler = async (event) => {
         return /EMAIL|RESEND|API_KEY/i.test(key);
       }),
     });
+    logSecurityEvent("MISSING_CONFIG", { ip: clientIP });
     return response(500, {
       ok: false,
       message: "Email service is not configured correctly on the server.",
@@ -187,6 +353,7 @@ exports.handler = async (event) => {
   try {
     payload = JSON.parse(event.body || "{}");
   } catch {
+    logSecurityEvent("INVALID_JSON", { ip: clientIP });
     return response(400, { ok: false, message: GENERIC_ERROR_MESSAGE });
   }
 
@@ -199,24 +366,56 @@ exports.handler = async (event) => {
   const message = sanitize(payload.message, 5000);
   const honeypot = sanitize(payload.website || payload.botField, 200);
   const startedAt = sanitize(payload.formStartedAt, 40);
+  const recaptchaToken = sanitize(payload.recaptchaToken, 2000);
 
   if (honeypot) {
+    logSecurityEvent("HONEYPOT_TRIGGERED", { ip: clientIP, honeypot });
     return response(400, { ok: false, message: GENERIC_ERROR_MESSAGE });
   }
 
   if (!validStartedAt(startedAt)) {
+    logSecurityEvent("INVALID_FORM_TIMING", { ip: clientIP, startedAt });
     return response(400, { ok: false, message: GENERIC_ERROR_MESSAGE });
   }
 
+  // Verify reCAPTCHA
+  const recaptchaResult = await verifyRecaptcha(recaptchaToken);
+  if (!recaptchaResult.success && !recaptchaResult.skipped) {
+    logSecurityEvent("RECAPTCHA_FAILED", {
+      ip: clientIP,
+      score: recaptchaResult.score,
+      action: recaptchaResult.action,
+    });
+    return response(400, {
+      ok: false,
+      message: "Security verification failed. Please try again.",
+    });
+  }
+
+  // Check reCAPTCHA score (v3 returns 0.0 to 1.0, lower = more likely bot)
+  if (!recaptchaResult.skipped && recaptchaResult.score < 0.5) {
+    logSecurityEvent("LOW_RECAPTCHA_SCORE", {
+      ip: clientIP,
+      score: recaptchaResult.score,
+    });
+    return response(400, {
+      ok: false,
+      message: "Security verification failed. Please try again.",
+    });
+  }
+
   if (!validName(name)) {
+    logSecurityEvent("INVALID_NAME", { ip: clientIP });
     return response(400, { ok: false, message: "Please enter a valid name." });
   }
 
   if (!validEmail(email)) {
+    logSecurityEvent("INVALID_EMAIL", { ip: clientIP, email });
     return response(400, { ok: false, message: "Please enter a valid email." });
   }
 
   if (!phone || !validPhone(phone)) {
+    logSecurityEvent("INVALID_PHONE", { ip: clientIP });
     return response(400, {
       ok: false,
       message: "Please enter a valid phone number.",
@@ -224,6 +423,7 @@ exports.handler = async (event) => {
   }
 
   if (!validMessage(message)) {
+    logSecurityEvent("INVALID_MESSAGE", { ip: clientIP });
     return response(400, {
       ok: false,
       message: "Please enter at least 10 characters in the message.",
@@ -273,6 +473,10 @@ exports.handler = async (event) => {
     console.error("Resend request failed", {
       message: error && error.message ? error.message : "unknown fetch error",
     });
+    logSecurityEvent("EMAIL_SEND_FAILED", {
+      ip: clientIP,
+      error: error && error.message ? error.message : "unknown",
+    });
     clearTimeout(timeout);
     return response(502, {
       ok: false,
@@ -295,11 +499,23 @@ exports.handler = async (event) => {
       body: resendBody.slice(0, 500),
     });
 
+    logSecurityEvent("RESEND_API_ERROR", {
+      ip: clientIP,
+      status: resendResponse.status,
+    });
+
     return response(502, {
       ok: false,
       message: GENERIC_ERROR_MESSAGE,
     });
   }
+
+  // Log successful submission
+  logSecurityEvent("FORM_SUBMITTED_SUCCESS", {
+    ip: clientIP,
+    formType,
+    recaptchaScore: recaptchaResult.score,
+  });
 
   // Send auto-reply to user
   const autoReplySubject = "Thank you for contacting Touch and Move";
