@@ -75,7 +75,10 @@ function response(statusCode, body) {
 }
 
 function normalizeOrigin(value) {
-  return String(value || "").trim().replace(/\/+$/, "").toLowerCase();
+  return String(value || "")
+    .trim()
+    .replace(/\/+$/, "")
+    .toLowerCase();
 }
 
 function getAllowedOrigins(event) {
@@ -86,7 +89,9 @@ function getAllowedOrigins(event) {
 
   const host = sanitize(event.headers?.host, 255);
   const derivedOrigins = host
-    ? [`https://${host}`, `http://${host}`].map((origin) => normalizeOrigin(origin))
+    ? [`https://${host}`, `http://${host}`].map((origin) =>
+        normalizeOrigin(origin),
+      )
     : [];
 
   return new Set([
@@ -133,7 +138,10 @@ exports.handler = async (event) => {
     return response(405, { ok: false, message: "Method Not Allowed" });
   }
 
-  const contentType = sanitize(event.headers?.["content-type"] || event.headers?.["Content-Type"], 200);
+  const contentType = sanitize(
+    event.headers?.["content-type"] || event.headers?.["Content-Type"],
+    200,
+  );
   if (!contentType.toLowerCase().includes("application/json")) {
     return response(415, { ok: false, message: GENERIC_ERROR_MESSAGE });
   }
@@ -155,11 +163,8 @@ exports.handler = async (event) => {
       "RESEND_TO_EMAIL",
     ) || "touchandmove.69@gmail.com";
   const fromEmailRaw =
-    firstEnv(
-      "CONTACT_FROM_EMAIL",
-      "FROM_EMAIL",
-      "RESEND_FROM_EMAIL",
-    ) || "Touch and Move <onboarding@resend.dev>";
+    firstEnv("CONTACT_FROM_EMAIL", "FROM_EMAIL", "RESEND_FROM_EMAIL") ||
+    "Touch and Move <onboarding@resend.dev>";
   const toEmail = extractEmailAddress(toEmailRaw);
   const fromEmail = extractEmailAddress(fromEmailRaw);
 
@@ -212,7 +217,10 @@ exports.handler = async (event) => {
   }
 
   if (!phone || !validPhone(phone)) {
-    return response(400, { ok: false, message: "Please enter a valid phone number." });
+    return response(400, {
+      ok: false,
+      message: "Please enter a valid phone number.",
+    });
   }
 
   if (!validMessage(message)) {
@@ -222,7 +230,8 @@ exports.handler = async (event) => {
     });
   }
 
-  const subjectPrefix = formType === "intake" ? "Client Intake Form" : "Contact Form";
+  const subjectPrefix =
+    formType === "intake" ? "Client Intake Form" : "Contact Form";
   const subject = `[Touch and Move] ${subjectPrefix} from ${name}`;
 
   const html = `
@@ -290,6 +299,89 @@ exports.handler = async (event) => {
       ok: false,
       message: GENERIC_ERROR_MESSAGE,
     });
+  }
+
+  // Send auto-reply to user
+  const autoReplySubject = "Thank you for contacting Touch and Move";
+  const autoReplyHtml = `
+    <div style="font-family: Arial, sans-serif; line-height: 1.8; color: #111827; max-width: 600px; margin: 0 auto;">
+      <div style="background: linear-gradient(135deg, #9E8976 0%, #8B7355 100%); padding: 30px; text-align: center; border-radius: 12px 12px 0 0;">
+        <h1 style="color: #ffffff; margin: 0; font-size: 28px; font-weight: 300;">Touch and Move</h1>
+      </div>
+      
+      <div style="background: #ffffff; padding: 40px 30px; border: 1px solid #e5e7eb; border-top: none; border-radius: 0 0 12px 12px;">
+        <h2 style="color: #9E8976; margin-top: 0; font-size: 24px;">Thank You, ${htmlEscape(name)}!</h2>
+        
+        <p style="color: #374151; font-size: 16px; margin: 20px 0;">
+          We have received your ${formType === "intake" ? "intake form" : "message"} and truly appreciate you reaching out to us.
+        </p>
+        
+        <p style="color: #374151; font-size: 16px; margin: 20px 0;">
+          Our team will carefully review your submission and get back to you within 24-48 hours. We're excited to connect with you and support you on your journey.
+        </p>
+        
+        <div style="background: #f9fafb; padding: 20px; border-left: 4px solid #9E8976; margin: 30px 0; border-radius: 4px;">
+          <p style="margin: 0; color: #6b7280; font-size: 14px;"><strong>Your Details:</strong></p>
+          <p style="margin: 10px 0 0 0; color: #374151; font-size: 14px;">
+            <strong>Email:</strong> ${htmlEscape(email)}<br>
+            <strong>Phone:</strong> ${htmlEscape(phone)}
+          </p>
+        </div>
+        
+        <p style="color: #374151; font-size: 16px; margin: 20px 0;">
+          In the meantime, feel free to explore our website or follow us on social media to learn more about our services and approach.
+        </p>
+        
+        <div style="text-align: center; margin: 30px 0;">
+          <a href="https://touchandmove.in" style="display: inline-block; background: #9E8976; color: #ffffff; padding: 14px 32px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 16px;">Visit Our Website</a>
+        </div>
+        
+        <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 30px 0;">
+        
+        <p style="color: #6b7280; font-size: 14px; margin: 20px 0;">
+          With gratitude,<br>
+          <strong style="color: #9E8976;">The Touch and Move Team</strong>
+        </p>
+        
+        <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e5e7eb; text-align: center;">
+          <p style="color: #9ca3af; font-size: 12px; margin: 5px 0;">
+            Touch and Move | Holistic Wellness & Guidance<br>
+            <a href="https://touchandmove.in" style="color: #9E8976; text-decoration: none;">touchandmove.in</a> | 
+            <a href="mailto:touchandmove.69@gmail.com" style="color: #9E8976; text-decoration: none;">touchandmove.69@gmail.com</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  `;
+
+  // Send auto-reply email to user
+  try {
+    const autoReplyResponse = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${resendApiKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from: fromEmail,
+        to: [email],
+        subject: autoReplySubject,
+        html: autoReplyHtml,
+      }),
+    });
+
+    if (!autoReplyResponse.ok) {
+      console.error("Auto-reply email failed", {
+        status: autoReplyResponse.status,
+        userEmail: email,
+      });
+      // Don't fail the main request if auto-reply fails
+    }
+  } catch (error) {
+    console.error("Auto-reply request failed", {
+      message: error && error.message ? error.message : "unknown error",
+    });
+    // Don't fail the main request if auto-reply fails
   }
 
   return response(200, {
