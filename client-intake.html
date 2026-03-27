@@ -492,7 +492,7 @@
                 placeholder="Phone / WhatsApp"
                 autocomplete="tel"
                 inputmode="tel"
-                pattern="[-0-9()+\s]{7,20}"
+                pattern="[0-9+\-\s()]{7,20}"
                 title="Please enter a valid phone number."
                 maxlength="40"
                 type="tel"
@@ -592,7 +592,7 @@
           }
 
           try {
-            const response = await fetch("/api/contact", {
+            const response = await fetch("/.netlify/functions/contact", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify(payload),
@@ -605,6 +605,9 @@
             }
 
             intakeForm.reset();
+            if (startedAtField) {
+              startedAtField.value = String(Date.now());
+            }
             showToast(
               successMessage,
               result.message ||
