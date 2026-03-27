@@ -36,8 +36,11 @@
   }
 
   body::-webkit-scrollbar-track {
-    background:
-      linear-gradient(180deg, rgba(255, 255, 255, 0.42), rgba(245, 241, 235, 0.18)),
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.42),
+        rgba(245, 241, 235, 0.18)
+      ),
       var(--tm-scroll-track);
     border-left: 1px solid rgba(158, 137, 118, 0.1);
   }
@@ -254,8 +257,7 @@
 
   body.tm-warm-theme #homeFooter .tm-footer-shell {
     border: 1px solid rgba(158, 137, 118, 0.14);
-    background:
-      radial-gradient(
+    background: radial-gradient(
         circle at top left,
         rgba(212, 199, 184, 0.22),
         transparent 32%
@@ -420,7 +422,7 @@
   position: fixed;
   top: 1.25rem;
   right: 1.25rem;
-  z-index: 10050;
+  z-index: 99999;
   width: min(24rem, calc(100vw - 2rem));
   margin: 0 !important;
   padding: 1rem 1.25rem !important;
