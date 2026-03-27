@@ -83,6 +83,9 @@
     <link rel="stylesheet" href="./assets/css/style.css?v=3" />
     <link rel="stylesheet" href="./assets/css/shared.css?v=5" />
     <link rel="stylesheet" href="./assets/css/pages/client-intake.css?v=3" />
+
+    <!-- Google reCAPTCHA v3 -->
+    <script src="https://www.google.com/recaptcha/api.js?render=6LfVYKsqAAAAAMipetra7sFhN_wXqVvJqLhKKqxXy"></script>
   </head>
   <body
     class="tm-warm-theme bg-background-dark text-slate-200 selection:bg-primary/30"
@@ -921,6 +924,21 @@
           }
 
           try {
+            // Get reCAPTCHA token
+            const recaptchaToken = await new Promise((resolve, reject) => {
+              grecaptcha.ready(() => {
+                grecaptcha
+                  .execute("6LfVYKsqAAAAAMipetra7sFhN_wXqVvJqLhKKqxXy", {
+                    action: "submit",
+                  })
+                  .then(resolve)
+                  .catch(reject);
+              });
+            });
+
+            // Add reCAPTCHA token to payload
+            payload.recaptchaToken = recaptchaToken;
+
             const response = await fetch("/.netlify/functions/contact", {
               method: "POST",
               headers: { "Content-Type": "application/json" },

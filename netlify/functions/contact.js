@@ -1,3 +1,18 @@
+// Sentry monitoring (optional - only if SENTRY_DSN is configured)
+let Sentry = null;
+try {
+  if (process.env.SENTRY_DSN) {
+    Sentry = require("@sentry/node");
+    Sentry.init({
+      dsn: process.env.SENTRY_DSN,
+      environment: process.env.CONTEXT || "production",
+      tracesSampleRate: 1.0,
+    });
+  }
+} catch (error) {
+  console.warn("Sentry not available:", error.message);
+}
+
 const jsonHeaders = {
   "Content-Type": "application/json; charset=utf-8",
   "X-Content-Type-Options": "nosniff",
@@ -230,8 +245,24 @@ function logSecurityEvent(eventType, details) {
   // Log to console (in production, send to monitoring service)
   console.warn("SECURITY_EVENT", JSON.stringify(logEntry));
 
-  // TODO: Send to monitoring service (e.g., Sentry, LogRocket, Datadog)
-  // Example: sendToMonitoring(logEntry);
+  // Send to Sentry if available
+  if (Sentry) {
+    const severity =
+      eventType.includes("FAILED") ||
+      eventType.includes("EXCEEDED") ||
+      eventType.includes("BLOCKED")
+        ? "warning"
+        : "info";
+
+    Sentry.captureMessage(`Security Event: ${eventType}`, {
+      level: severity,
+      extra: details,
+      tags: {
+        eventType,
+        ip: details.ip || "unknown",
+      },
+    });
+  }
 }
 
 async function verifyRecaptcha(token) {
@@ -261,6 +292,11 @@ async function verifyRecaptcha(token) {
     };
   } catch (error) {
     console.error("reCAPTCHA verification failed", error);
+    if (Sentry) {
+      Sentry.captureException(error, {
+        tags: { component: "recaptcha" },
+      });
+    }
     return { success: false, score: 0, error: true };
   }
 }
@@ -477,6 +513,11 @@ exports.handler = async (event) => {
       ip: clientIP,
       error: error && error.message ? error.message : "unknown",
     });
+    if (Sentry) {
+      Sentry.captureException(error, {
+        tags: { component: "email_send", ip: clientIP },
+      });
+    }
     clearTimeout(timeout);
     return response(502, {
       ok: false,

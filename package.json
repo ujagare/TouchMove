@@ -7,6 +7,9 @@
     "build:seo": "node ./scripts/generate-seo.mjs",
     "build": "npm run build:css && npm run build:seo"
   },
+  "dependencies": {
+    "@sentry/node": "^7.100.0"
+  },
   "devDependencies": {
     "@tailwindcss/cli": "^4.2.1",
     "@tailwindcss/container-queries": "^0.1.1",
