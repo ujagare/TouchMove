@@ -558,7 +558,7 @@
             </h3>
             <div
               id="contactSuccessMessage"
-              class="hidden mb-6 rounded-2xl border border-primary/25 bg-primary/10 px-5 py-4 text-sm leading-relaxed text-slate-700"
+              class="tm-toast hidden px-5 py-4 text-sm leading-relaxed"
               role="status"
               aria-live="polite"
             >
@@ -567,7 +567,7 @@
             </div>
             <div
               id="contactErrorMessage"
-              class="hidden mb-6 rounded-2xl border border-red-400/25 bg-red-500/10 px-5 py-4 text-sm leading-relaxed text-red-700"
+              class="tm-toast tm-toast-error hidden px-5 py-4 text-sm leading-relaxed"
               role="alert"
               aria-live="polite"
             >
@@ -877,8 +877,32 @@
         const errorMessage = document.getElementById("contactErrorMessage");
         const submitButton = document.getElementById("contactSubmitButton");
         const startedAtField = contactForm?.querySelector('input[name="formStartedAt"]');
+        let toastTimer;
 
         if (!contactForm) return;
+
+        const hideToast = (element) => {
+          if (!element) return;
+          element.classList.remove("tm-toast-show");
+          window.setTimeout(() => {
+            element.classList.add("hidden");
+          }, 220);
+        };
+
+        const showToast = (element, message) => {
+          if (!element) return;
+          window.clearTimeout(toastTimer);
+          if (successMessage && successMessage !== element) hideToast(successMessage);
+          if (errorMessage && errorMessage !== element) hideToast(errorMessage);
+          element.textContent = message;
+          element.classList.remove("hidden");
+          requestAnimationFrame(() => {
+            element.classList.add("tm-toast-show");
+          });
+          toastTimer = window.setTimeout(() => {
+            hideToast(element);
+          }, 4200);
+        };
 
         if (startedAtField) {
           startedAtField.value = String(Date.now());
@@ -889,8 +913,8 @@
 
           if (!contactForm.reportValidity()) return;
 
-          if (successMessage) successMessage.classList.add("hidden");
-          if (errorMessage) errorMessage.classList.add("hidden");
+          hideToast(successMessage);
+          hideToast(errorMessage);
 
           const payload = Object.fromEntries(new FormData(contactForm).entries());
           const originalButtonText = submitButton ? submitButton.innerHTML : "";
@@ -914,21 +938,17 @@
             }
 
             contactForm.reset();
-            if (successMessage) {
-              successMessage.textContent =
-                result.message ||
-                "Your message has been sent successfully. We will get back to you soon.";
-              successMessage.classList.remove("hidden");
-              successMessage.scrollIntoView({ behavior: "smooth", block: "center" });
-            }
+            showToast(
+              successMessage,
+              result.message ||
+                "Your message has been sent successfully. We will get back to you soon.",
+            );
           } catch (error) {
-            if (errorMessage) {
-              errorMessage.textContent =
-                error.message ||
-                "We could not send your message right now. Please try again.";
-              errorMessage.classList.remove("hidden");
-              errorMessage.scrollIntoView({ behavior: "smooth", block: "center" });
-            }
+            showToast(
+              errorMessage,
+              error.message ||
+                "We could not send your message right now. Please try again.",
+            );
           } finally {
             if (submitButton) {
               submitButton.disabled = false;

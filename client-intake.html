@@ -436,7 +436,7 @@
 
           <div
             id="intakeSuccessMessage"
-            class="hidden mb-6 rounded-2xl border border-primary/25 bg-primary/10 px-5 py-4 text-sm leading-relaxed text-slate-200"
+            class="tm-toast hidden px-5 py-4 text-sm leading-relaxed"
             role="status"
             aria-live="polite"
           >
@@ -444,7 +444,7 @@
           </div>
           <div
             id="intakeErrorMessage"
-            class="hidden mb-6 rounded-2xl border border-red-400/25 bg-red-500/10 px-5 py-4 text-sm leading-relaxed text-red-200"
+            class="tm-toast tm-toast-error hidden px-5 py-4 text-sm leading-relaxed"
             role="alert"
             aria-live="polite"
           >
@@ -544,6 +544,7 @@
         const errorMessage = document.getElementById("intakeErrorMessage");
         const submitButton = document.getElementById("intakeSubmitButton");
         const startedAtField = intakeForm?.querySelector('input[name="formStartedAt"]');
+        let toastTimer;
 
         if (!intakeForm) return;
 
@@ -551,13 +552,36 @@
           startedAtField.value = String(Date.now());
         }
 
+        const hideToast = (element) => {
+          if (!element) return;
+          element.classList.remove("tm-toast-show");
+          window.setTimeout(() => {
+            element.classList.add("hidden");
+          }, 220);
+        };
+
+        const showToast = (element, message) => {
+          if (!element) return;
+          window.clearTimeout(toastTimer);
+          if (successMessage && successMessage !== element) hideToast(successMessage);
+          if (errorMessage && errorMessage !== element) hideToast(errorMessage);
+          element.textContent = message;
+          element.classList.remove("hidden");
+          requestAnimationFrame(() => {
+            element.classList.add("tm-toast-show");
+          });
+          toastTimer = window.setTimeout(() => {
+            hideToast(element);
+          }, 4200);
+        };
+
         intakeForm.addEventListener("submit", async (event) => {
           event.preventDefault();
 
           if (!intakeForm.reportValidity()) return;
 
-          if (successMessage) successMessage.classList.add("hidden");
-          if (errorMessage) errorMessage.classList.add("hidden");
+          hideToast(successMessage);
+          hideToast(errorMessage);
 
           const payload = Object.fromEntries(new FormData(intakeForm).entries());
           const originalButtonText = submitButton ? submitButton.innerHTML : "";
@@ -581,21 +605,17 @@
             }
 
             intakeForm.reset();
-            if (successMessage) {
-              successMessage.textContent =
-                result.message ||
-                "Your intake form has been submitted successfully. We will review it and reach out to you soon.";
-              successMessage.classList.remove("hidden");
-              successMessage.scrollIntoView({ behavior: "smooth", block: "center" });
-            }
+            showToast(
+              successMessage,
+              result.message ||
+                "Your intake form has been submitted successfully. We will review it and reach out to you soon.",
+            );
           } catch (error) {
-            if (errorMessage) {
-              errorMessage.textContent =
-                error.message ||
-                "We could not submit your intake form right now. Please try again.";
-              errorMessage.classList.remove("hidden");
-              errorMessage.scrollIntoView({ behavior: "smooth", block: "center" });
-            }
+            showToast(
+              errorMessage,
+              error.message ||
+                "We could not submit your intake form right now. Please try again.",
+            );
           } finally {
             if (submitButton) {
               submitButton.disabled = false;
