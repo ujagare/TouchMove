@@ -154,11 +154,12 @@ exports.handler = async (event) => {
       "TO_EMAIL",
       "RESEND_TO_EMAIL",
     ) || "touchandmove.69@gmail.com";
-  const fromEmailRaw = firstEnv(
-    "CONTACT_FROM_EMAIL",
-    "FROM_EMAIL",
-    "RESEND_FROM_EMAIL",
-  );
+  const fromEmailRaw =
+    firstEnv(
+      "CONTACT_FROM_EMAIL",
+      "FROM_EMAIL",
+      "RESEND_FROM_EMAIL",
+    ) || "Touch and Move <onboarding@resend.dev>";
   const toEmail = extractEmailAddress(toEmailRaw);
   const fromEmail = extractEmailAddress(fromEmailRaw);
 
