@@ -892,7 +892,7 @@ body {
   line-height: 1.02 !important;
   max-width: 14ch;
   margin-bottom: 1rem !important;
-  color: #3f3b34 !important;
+  color: #ffffff !important;
   opacity: 0;
   transform: translate3d(0, 52px, 0);
   will-change: transform, opacity;
@@ -908,7 +908,7 @@ body {
 }
 
 #homeHero .home-hero-swiper .swiper-slide > .absolute.inset-0 > p {
-  color: #716a61 !important;
+  color: #f5f1eb !important;
   font-size: clamp(0.95rem, 1.45vw, 1.2rem) !important;
   line-height: 1.75 !important;
   letter-spacing: 0.14em !important;
