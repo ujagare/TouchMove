@@ -987,3 +987,7 @@ body.tm-warm-theme #homeDimensions .home-dimensions-featured-card .text-white,
 body.tm-warm-theme #homeDimensions .home-dimensions-featured-card .text-xs {
   color: #ffffff !important;
 }
+
+body.tm-warm-theme #homePath .home-path-heading {
+  color: #9e8976 !important;
+}
