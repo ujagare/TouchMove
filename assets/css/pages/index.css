@@ -840,11 +840,31 @@ body {
   justify-content: center !important;
   text-align: left !important;
   padding-inline: clamp(1.5rem, 6vw, 5rem) !important;
+  z-index: 3;
   opacity: 0;
   visibility: hidden;
   transition:
     opacity 0.45s ease,
     visibility 0.45s ease;
+}
+
+#homeHero .absolute.inset-0.z-0 {
+  isolation: isolate;
+}
+
+#homeHero .home-hero-swiper {
+  position: relative;
+  z-index: 2;
+}
+
+#homeHero .absolute.inset-0.z-0 > .home-hero-swiper + .absolute.inset-0,
+#homeHero
+  .absolute.inset-0.z-0
+  > .home-hero-swiper
+  + .absolute.inset-0
+  + .absolute.inset-0 {
+  pointer-events: none;
+  z-index: 1;
 }
 
 #homeHero .home-hero-swiper .swiper-slide-active > .absolute.inset-0 {
