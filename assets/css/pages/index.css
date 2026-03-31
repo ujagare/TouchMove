@@ -979,3 +979,11 @@ body {
     border-radius: 9999px;
   }
 }
+
+body.tm-warm-theme #homeDimensions .home-dimensions-featured-card h4,
+body.tm-warm-theme #homeDimensions .home-dimensions-featured-card p,
+body.tm-warm-theme #homeDimensions .home-dimensions-featured-card span,
+body.tm-warm-theme #homeDimensions .home-dimensions-featured-card .text-white,
+body.tm-warm-theme #homeDimensions .home-dimensions-featured-card .text-xs {
+  color: #ffffff !important;
+}
