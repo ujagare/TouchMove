@@ -147,7 +147,7 @@
       text.indexOf("request") !== -1 ||
       text.indexOf("consultation") !== -1
     ) {
-      return "client-intake.html";
+      return "contact.html";
     }
 
     return null;
@@ -906,3 +906,4 @@
     initSite();
   }
 })();
+

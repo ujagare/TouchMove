@@ -44,7 +44,7 @@ function allowedRedirect(string $candidate): string
 {
     $allowed = [
         'contact.html?submitted=1',
-        'client-intake.html?submitted=1#intake-form',
+        'contact.html',
     ];
 
     return in_array($candidate, $allowed, true) ? $candidate : 'contact.html?submitted=1';
@@ -185,3 +185,4 @@ if (!$mailSent) {
 
 header('Location: ' . $successUrl, true, 303);
 exit;
+

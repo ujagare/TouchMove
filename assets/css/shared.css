@@ -149,6 +149,21 @@
     z-index: 40;
   }
 
+  #mobileMenu {
+    justify-content: flex-start !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    min-height: 100dvh;
+    padding: 7.5rem 1.5rem 2rem !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  #mobileMenu > div {
+    width: min(100%, 44rem);
+    margin: 0 auto;
+    padding-block: 0.5rem 1.5rem;
+  }
+
   .premium-blur {
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);

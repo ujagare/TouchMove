@@ -127,6 +127,12 @@
       body.tm-warm-theme h4 {
         color: #3f3b34 !important;
       }
+      body.tm-warm-theme main h1,
+      body.tm-warm-theme main h2,
+      body.tm-warm-theme main h3,
+      body.tm-warm-theme main h4 {
+        color: #9e8976 !important;
+      }
       body.tm-warm-theme .text-slate-100,
       body.tm-warm-theme .text-slate-300,
       body.tm-warm-theme .text-slate-400,

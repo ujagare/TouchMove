@@ -76,8 +76,16 @@
       rel="stylesheet"
     />
     <link
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&amp;family=Playfair+Display:ital,wght@0,400;0,700;1,400&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
       rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
     />
     <link
       rel="icon"
@@ -88,6 +96,13 @@
     <link rel="stylesheet" href="./assets/css/style.css?v=3" />
     <link rel="stylesheet" href="./assets/css/shared.css?v=2" />
     <link rel="stylesheet" href="./assets/css/pages/index.css?v=3" />
+    <link
+      rel="preload"
+      as="image"
+      type="image/webp"
+      href="assets/webp%20images/site-image-29.webp"
+      fetchpriority="high"
+    />
   </head>
   <body
     class="tm-warm-theme bg-background-dark text-slate-200 selection:bg-primary/30"
@@ -250,13 +265,7 @@
               href="blog.html"
               class="text-white/90 hover:text-white transition uppercase tracking-widest hover:scale-105 duration-200"
               style="font-size: 22px"
-              >Journal</a
-            >
-            <a
-              href="client-intake.html"
-              class="text-white/90 hover:text-white transition uppercase tracking-widest hover:scale-105 duration-200"
-              style="font-size: 22px"
-              >Client Intake Form</a
+              >BLOG</a
             >
             <a
               href="contact.html"
@@ -391,503 +400,845 @@
         </script>
         <main class="flex-1">
           <!-- Hero Section -->
-          <div
+          <section
             id="homeHero"
-            class="relative max-w-[1440px] mx-auto px-6 md:px-20 py-24 md:py-32"
+            class="relative min-h-screen flex items-center overflow-hidden"
           >
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-              <div class="flex flex-col gap-10 order-2 lg:order-1">
-                <div class="flex flex-col gap-6">
-                  <span
-                    class="text-primary font-bold tracking-[0.3em] uppercase text-[10px] md:text-xs"
-                    >The Art of Intuitive Guidance</span
-                  >
-                  <h1
-                    class="text-5xl md:text-7xl lg:text-8xl font-light leading-[1.1] tracking-tight"
-                  >
-                    Tarot as a <span class="italic font-normal">Mirror</span>
-                    <br /><span class="text-primary font-normal"
-                      >to Your Soul</span
-                    >
-                  </h1>
-                  <p
-                    class="text-slate-400 text-lg md:text-xl max-w-xl leading-relaxed font-light"
-                  >
-                    Harshaa's approach focuses on reflection and clarity rather
-                    than mere prediction. Discover the intuition within and
-                    navigate life's complexities with celestial wisdom.
-                  </p>
-                </div>
-                <div class="flex flex-wrap gap-6 pt-4">
-                  <a
-                    href="client-intake.html"
-                    class="hero-primary-cta flex min-w-[220px] cursor-pointer items-center justify-center rounded-lg h-16 px-10 bg-primary text-white text-sm font-bold uppercase tracking-widest shadow-2xl shadow-primary/20 hover:-translate-y-1 transition-all"
-                  >
-                    Begin Your Journey
-                  </a>
-                  <a
-                    href="services.html"
-                    class="hero-secondary-cta flex min-w-[180px] cursor-pointer items-center justify-center rounded-lg h-16 px-10 border border-white/20 text-white text-sm font-bold uppercase tracking-widest hover:bg-white/5 transition-all"
-                  >
-                    Learn More
-                  </a>
-                </div>
-              </div>
-              <div class="order-1 lg:order-2">
-                <div class="hero-media-shell">
-                  <div
-                    class="relative aspect-[4/5] rounded-xl overflow-hidden border border-white/5 shadow-2xl bg-black"
-                    data-hero-slider
-                  >
+            <div class="absolute inset-0 z-0">
+              <div class="swiper home-hero-swiper w-full h-full">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <picture>
+                      <source
+                        media="(max-width: 767px)"
+                        srcset="assets/images/mobile images/Astro.jpg"
+                      />
+                      <img
+                        decoding="async"
+                        loading="eager"
+                        fetchpriority="high"
+                        class="w-full h-full object-cover"
+                        alt="Tarot and Astro-Numerology"
+                        src="assets/images/Astro-Numerology.jpg"
+                      />
+                    </picture>
                     <div
-                      class="absolute inset-0 z-20 pointer-events-none bg-gradient-to-t from-black/55 via-black/10 to-black/20"
-                    ></div>
-                    <div class="absolute inset-0" data-hero-slider-track>
-                      <article
-                        class="absolute inset-0 transition-opacity duration-700 ease-out opacity-100"
-                        data-hero-slide
-                      >
-                        <img
-                          decoding="async"
-                          loading="lazy"
-                          alt="Tarot cards on a velvet table"
-                          class="hero-slide-image w-full h-full object-cover scale-105"
-                          src="assets/webp%20images/site-image-28.webp"
-                        />
-                      </article>
-                      <article
-                        class="absolute inset-0 transition-opacity duration-700 ease-out opacity-0 pointer-events-none"
-                        data-hero-slide
-                      >
-                        <img
-                          decoding="async"
-                          loading="lazy"
-                          alt="Hands working gently with tarot cards in candlelight"
-                          class="hero-slide-image w-full h-full object-cover scale-105"
-                          src="assets/images/site-image-12.png"
-                        />
-                      </article>
-                      <article
-                        class="absolute inset-0 transition-opacity duration-700 ease-out opacity-0 pointer-events-none"
-                        data-hero-slide
-                      >
-                        <img
-                          decoding="async"
-                          loading="lazy"
-                          alt="Serene tarot reading altar with cards and sacred objects"
-                          class="hero-slide-image w-full h-full object-cover scale-105"
-                          src="assets/webp%20images/site-image-17.webp"
-                        />
-                      </article>
-                    </div>
-                    <div
-                      class="absolute inset-x-0 bottom-0 z-30 flex items-center justify-between p-6 md:p-8"
+                      class="absolute inset-0 bg-black/30 flex flex-col items-center justify-center text-center p-6"
                     >
-                      <div
-                        class="flex items-center gap-3"
-                        data-hero-slider-dots
+                      <h3
+                        class="font-headline text-3xl md:text-5xl text-white mb-4 drop-shadow-lg italic"
                       >
-                        <button
-                          type="button"
-                          class="h-2 w-10 rounded-full bg-white transition-all duration-300"
-                          data-hero-dot="0"
-                          aria-label="Show slide 1"
-                        ></button>
-                        <button
-                          type="button"
-                          class="h-2 w-2 rounded-full bg-white/35 transition-all duration-300"
-                          data-hero-dot="1"
-                          aria-label="Show slide 2"
-                        ></button>
-                        <button
-                          type="button"
-                          class="h-2 w-2 rounded-full bg-white/35 transition-all duration-300"
-                          data-hero-dot="2"
-                          aria-label="Show slide 3"
-                        ></button>
-                      </div>
-                      <button
-                        type="button"
-                        class="flex items-center gap-2 border border-white/15 bg-black/25 px-4 py-2 text-[10px] uppercase tracking-[0.28em] text-white/80 premium-blur hover:bg-black/40 transition"
-                        data-hero-slider-next
+                        Tarot &amp; Astro-Numerology
+                      </h3>
+                      <p
+                        class="text-white font-label tracking-widest uppercase text-xs md:text-sm max-w-lg"
+                        style="color: #ffffff"
                       >
-                        Next
-                        <span class="material-symbols-outlined text-sm"
-                          >arrow_forward</span
+                        Deciphering the cosmic patterns of your soul's blueprint
+                      </p>
+                      <div class="mt-8 flex flex-col sm:flex-row gap-4">
+                        <a
+                          href="contact.html"
+                          class="inline-flex items-center justify-center rounded-full px-8 py-3 text-sm font-medium shadow-lg transition-all"
+                          style="
+                            background-color: #9e8976;
+                            color: #ffffff;
+                            font-family: &quot;Public Sans&quot;, sans-serif;
+                          "
                         >
-                      </button>
+                          Book a Session
+                        </a>
+                        <a
+                          href="about.html"
+                          class="inline-flex items-center justify-center rounded-full border px-8 py-3 text-sm font-medium backdrop-blur-sm transition-all"
+                          style="
+                            border-color: rgba(255, 255, 255, 0.45);
+                            background-color: rgba(0, 0, 0, 0.22);
+                            color: #ffffff;
+                            font-family: &quot;Public Sans&quot;, sans-serif;
+                          "
+                        >
+                          Explore Our Journey
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <picture>
+                      <source
+                        media="(max-width: 767px)"
+                        srcset="assets/images/mobile images/Inner.jpg"
+                      />
+                      <img
+                        decoding="async"
+                        loading="lazy"
+                        class="w-full h-full object-cover"
+                        alt="Inner Transformation Coaching"
+                        src="assets/images/inner transformation.jpg"
+                      />
+                    </picture>
+                    <div
+                      class="absolute inset-0 bg-black/30 flex flex-col items-center justify-center text-center p-6"
+                    >
+                      <h3
+                        class="font-headline text-3xl md:text-5xl text-white mb-4 drop-shadow-lg italic"
+                      >
+                        Inner Transformation Coaching
+                      </h3>
+                      <p
+                        class="text-white font-label tracking-widest uppercase text-xs md:text-sm max-w-lg"
+                        style="color: #ffffff"
+                      >
+                        Cultivating abundance from within through conscious
+                        alignment
+                      </p>
+                      <div class="mt-8 flex flex-col sm:flex-row gap-4">
+                        <a
+                          href="contact.html"
+                          class="inline-flex items-center justify-center rounded-full px-8 py-3 text-sm font-medium shadow-lg transition-all"
+                          style="
+                            background-color: #9e8976;
+                            color: #ffffff;
+                            font-family: &quot;Public Sans&quot;, sans-serif;
+                          "
+                        >
+                          Book a Session
+                        </a>
+                        <a
+                          href="about.html"
+                          class="inline-flex items-center justify-center rounded-full border px-8 py-3 text-sm font-medium backdrop-blur-sm transition-all"
+                          style="
+                            border-color: rgba(255, 255, 255, 0.45);
+                            background-color: rgba(0, 0, 0, 0.22);
+                            color: #ffffff;
+                            font-family: &quot;Public Sans&quot;, sans-serif;
+                          "
+                        >
+                          Explore Our Journey
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <picture>
+                      <source
+                        media="(max-width: 767px)"
+                        srcset="assets/images/mobile images/music.jpg"
+                      />
+                      <img
+                        decoding="async"
+                        loading="lazy"
+                        class="w-full h-full object-cover"
+                        alt="Sound and Energy Healing"
+                        src="assets/images/music theropy.jpg"
+                      />
+                    </picture>
+                    <div
+                      class="absolute inset-0 bg-black/30 flex flex-col items-center justify-center text-center p-6"
+                    >
+                      <h3
+                        class="font-headline text-3xl md:text-5xl text-white mb-4 drop-shadow-lg italic"
+                      >
+                        Sound &amp; Energy Healing
+                      </h3>
+                      <p
+                        class="text-white font-label tracking-widest uppercase text-xs md:text-sm max-w-lg"
+                        style="color: #ffffff"
+                      >
+                        Vibrational medicine to harmonize your bio-energetic
+                        field
+                      </p>
+                      <div class="mt-8 flex flex-col sm:flex-row gap-4">
+                        <a
+                          href="contact.html"
+                          class="inline-flex items-center justify-center rounded-full px-8 py-3 text-sm font-medium shadow-lg transition-all"
+                          style="
+                            background-color: #9e8976;
+                            color: #ffffff;
+                            font-family: &quot;Public Sans&quot;, sans-serif;
+                          "
+                        >
+                          Book a Session
+                        </a>
+                        <a
+                          href="about.html"
+                          class="inline-flex items-center justify-center rounded-full border px-8 py-3 text-sm font-medium backdrop-blur-sm transition-all"
+                          style="
+                            border-color: rgba(255, 255, 255, 0.45);
+                            background-color: rgba(0, 0, 0, 0.22);
+                            color: #ffffff;
+                            font-family: &quot;Public Sans&quot;, sans-serif;
+                          "
+                        >
+                          Explore Our Journey
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <picture>
+                      <source
+                        media="(max-width: 767px)"
+                        srcset="assets/images/mobile images/dance.jpg"
+                      />
+                      <img
+                        decoding="async"
+                        loading="lazy"
+                        class="w-full h-full object-cover"
+                        alt="Dance Movement Therapy"
+                        src="assets/images/Dance.jpg"
+                      />
+                    </picture>
+                    <div
+                      class="absolute inset-0 bg-black/30 flex flex-col items-center justify-center text-center p-6"
+                    >
+                      <h3
+                        class="font-headline text-3xl md:text-5xl text-white mb-4 drop-shadow-lg italic"
+                      >
+                        Dance Movement Therapy
+                      </h3>
+                      <p
+                        class="text-white font-label tracking-widest uppercase text-xs md:text-sm max-w-lg"
+                        style="color: #ffffff"
+                      >
+                        Embodied expression as a gateway to emotional liberation
+                      </p>
+                      <div class="mt-8 flex flex-col sm:flex-row gap-4">
+                        <a
+                          href="contact.html"
+                          class="inline-flex items-center justify-center rounded-full px-8 py-3 text-sm font-medium shadow-lg transition-all"
+                          style="
+                            background-color: #9e8976;
+                            color: #ffffff;
+                            font-family: &quot;Public Sans&quot;, sans-serif;
+                          "
+                        >
+                          Book a Session
+                        </a>
+                        <a
+                          href="about.html"
+                          class="inline-flex items-center justify-center rounded-full border px-8 py-3 text-sm font-medium backdrop-blur-sm transition-all"
+                          style="
+                            border-color: rgba(255, 255, 255, 0.45);
+                            background-color: rgba(0, 0, 0, 0.22);
+                            color: #ffffff;
+                            font-family: &quot;Public Sans&quot;, sans-serif;
+                          "
+                        >
+                          Explore Our Journey
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <picture>
+                      <source
+                        media="(max-width: 767px)"
+                        srcset="assets/images/mobile images/breathing.jpg"
+                      />
+                      <img
+                        decoding="async"
+                        loading="lazy"
+                        class="w-full h-full object-cover"
+                        alt="Breathwork and Awareness"
+                        src="assets/images/mobile images/breathing.jpg"
+                      />
+                    </picture>
+                    <div
+                      class="absolute inset-0 bg-black/30 flex flex-col items-center justify-center text-center p-6"
+                    >
+                      <h3
+                        class="font-headline text-3xl md:text-5xl text-white mb-4 drop-shadow-lg italic"
+                      >
+                        Breathwork &amp; Awareness
+                      </h3>
+                      <p
+                        class="text-white font-label tracking-widest uppercase text-xs md:text-sm max-w-lg"
+                        style="color: #ffffff"
+                      >
+                        Mastering the life force to expand conscious presence
+                      </p>
+                      <div class="mt-8 flex flex-col sm:flex-row gap-4">
+                        <a
+                          href="contact.html"
+                          class="inline-flex items-center justify-center rounded-full px-8 py-3 text-sm font-medium shadow-lg transition-all"
+                          style="
+                            background-color: #9e8976;
+                            color: #ffffff;
+                            font-family: &quot;Public Sans&quot;, sans-serif;
+                          "
+                        >
+                          Book a Session
+                        </a>
+                        <a
+                          href="about.html"
+                          class="inline-flex items-center justify-center rounded-full border px-8 py-3 text-sm font-medium backdrop-blur-sm transition-all"
+                          style="
+                            border-color: rgba(255, 255, 255, 0.45);
+                            background-color: rgba(0, 0, 0, 0.22);
+                            color: #ffffff;
+                            font-family: &quot;Public Sans&quot;, sans-serif;
+                          "
+                        >
+                          Explore Our Journey
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <picture>
+                      <source
+                        media="(max-width: 767px)"
+                        srcset="assets/images/mobile images/Sacred Body.jpg"
+                      />
+                      <img
+                        decoding="async"
+                        loading="lazy"
+                        class="w-full h-full object-cover"
+                        alt="Sacred Body Work"
+                        src="assets/images/Sacred Body Work.jpg"
+                      />
+                    </picture>
+                    <div
+                      class="absolute inset-0 bg-black/30 flex flex-col items-center justify-center text-center p-6"
+                    >
+                      <h3
+                        class="font-headline text-3xl md:text-5xl text-white mb-4 drop-shadow-lg italic"
+                      >
+                        Sacred Body Work
+                      </h3>
+                      <p
+                        class="text-white font-label tracking-widest uppercase text-xs md:text-sm max-w-lg"
+                        style="color: #ffffff"
+                      >
+                        Restorative touch to honor and heal the temple of your
+                        soul
+                      </p>
+                      <div class="mt-8 flex flex-col sm:flex-row gap-4">
+                        <a
+                          href="contact.html"
+                          class="inline-flex items-center justify-center rounded-full px-8 py-3 text-sm font-medium shadow-lg transition-all"
+                          style="
+                            background-color: #9e8976;
+                            color: #ffffff;
+                            font-family: &quot;Public Sans&quot;, sans-serif;
+                          "
+                        >
+                          Book a Session
+                        </a>
+                        <a
+                          href="about.html"
+                          class="inline-flex items-center justify-center rounded-full border px-8 py-3 text-sm font-medium backdrop-blur-sm transition-all"
+                          style="
+                            border-color: rgba(255, 255, 255, 0.45);
+                            background-color: rgba(0, 0, 0, 0.22);
+                            color: #ffffff;
+                            font-family: &quot;Public Sans&quot;, sans-serif;
+                          "
+                        >
+                          Explore Our Journey
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </div>
+                <div class="swiper-pagination home-hero-pagination"></div>
+                <div class="swiper-button-prev home-hero-prev"></div>
+                <div class="swiper-button-next home-hero-next"></div>
               </div>
-            </div>
-            <button
-              id="homeScrollToggle"
-              type="button"
-              aria-label="Scroll down"
-              class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce opacity-40 hover:opacity-80 transition-opacity"
-            >
-              <span
-                id="homeScrollIcon"
-                class="material-symbols-outlined text-3xl"
-                >keyboard_double_arrow_down</span
-              >
-            </button>
-          </div>
-          <!-- Explore Section -->
-          <section
-            class="relative px-6 py-40 sm:px-8 md:px-10 md:py-48 lg:px-14 lg:py-56 xl:px-20 overflow-hidden"
-            id="explore"
-          >
-            <!-- Decorative Elements -->
-            <div
-              class="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[120px] pointer-events-none"
-            ></div>
-            <div
-              class="absolute bottom-0 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[120px] pointer-events-none"
-            ></div>
-
-            <div class="w-full px-0 relative z-10">
               <div
-                class="tm-explore-shell mx-auto max-w-350 rounded-4xl px-6 py-12 sm:px-8 md:rounded-[2.5rem] md:px-16 md:py-16 lg:px-20 xl:px-24 backdrop-blur-sm bg-black/20 border border-white/5 shadow-2xl"
-              >
-                <!-- Centered Header -->
-                <div class="text-center mb-16 lg:mb-20">
-                  <span
-                    class="tm-explore-eyebrow inline-flex items-center rounded-full border border-primary/30 bg-primary/5 px-5 py-2.5 text-[10px] font-bold uppercase tracking-[0.35em] text-primary shadow-lg"
-                    >Avenues of Discovery</span
-                  >
-                  <h2
-                    class="mt-7 mx-auto max-w-3xl text-5xl font-light italic leading-tight md:text-6xl lg:text-[4rem] text-white"
-                    style="text-shadow: 0 0 40px rgba(139, 0, 0, 0.15)"
-                  >
-                    What You Can Explore
-                  </h2>
-                  <p
-                    class="tm-explore-copy mt-6 mx-auto max-w-3xl text-lg leading-loose text-slate-300"
-                  >
-                    Tarot guidance for the questions that feel most personal:
-                    direction, relationships, self-understanding, and the deeper
-                    meaning behind where life is asking you to grow.
+                class="absolute inset-0"
+                style="background-color: rgba(23, 23, 22, 0.25)"
+              ></div>
+              <div
+                class="absolute inset-0 bg-linear-to-r from-[#fcfcfbe6] via-[#fcfcfb66] to-transparent"
+              ></div>
+            </div>
+          </section>
+          <!-- What Touch and Move Means -->
+          <section id="homeMeaning" class="py-24 bg-stone-100">
+            <div class="max-w-7xl mx-auto px-6">
+              <div class="text-center mb-20">
+                <h2 class="font-serif text-4xl text-stone-900 mb-4">
+                  What “Touch and Move” Means
+                </h2>
+                <p class="text-stone-600 text-lg font-light mb-6">
+                  The name reflects two fundamental aspects of human healing and
+                  transformation.
+                </p>
+                <div class="w-20 h-px bg-stone-400 mx-auto"></div>
+              </div>
+              <div class="grid gap-8 md:grid-cols-2 md:gap-x-20 md:gap-y-12">
+                <div
+                  class="bg-white p-12 rounded-2xl shadow-sm border border-stone-200 hover:shadow-md transition-shadow"
+                >
+                  <div class="mb-6">
+                    <span
+                      class="material-symbols-outlined text-4xl text-stone-400"
+                      >energy_savings_leaf</span
+                    >
+                  </div>
+                  <h3 class="font-serif text-3xl mb-4 text-stone-900 italic">
+                    Touch
+                  </h3>
+                  <p class="text-stone-600 leading-relaxed text-lg">
+                    Touch represents presence, connection, and healing. Through
+                    mindful and respectful body-based practices, individuals can
+                    release tension, reconnect with their bodies, and restore a
+                    sense of safety and relaxation. Touch in this context is
+                    intentional, therapeutic, and consent-based, creating a
+                    space where the body can naturally relax and restore
+                    balance.
                   </p>
                 </div>
                 <div
-                  class="tm-explore-grid grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4 xl:gap-7"
+                  class="p-12 rounded-2xl shadow-xl hover:translate-y-[-4px] transition-transform"
+                  style="background-color: #9e8976"
                 >
-                  <article
-                    class="tm-explore-card group relative flex h-full flex-col gap-7 p-10 rounded-2xl bg-linear-to-br from-charcoal/40 to-black/40 border border-white/10 backdrop-blur-md hover:border-primary/40 transition-all duration-700 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2 overflow-hidden"
-                  >
-                    <!-- Hover Glow Effect -->
-                    <div
-                      class="absolute inset-0 bg-linear-to-br from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-transparent transition-all duration-700 pointer-events-none"
-                    ></div>
-
-                    <div
-                      class="flex items-start justify-between gap-5 relative z-10 mb-4"
+                  <div class="mb-6">
+                    <span
+                      class="material-symbols-outlined text-4xl text-stone-200"
+                      >air</span
                     >
-                      <div
-                        class="tm-explore-icon flex h-28 w-28 items-center justify-center rounded-2xl border-2 border-primary/30 bg-linear-to-br from-primary/20 to-primary/5 text-primary transition-all duration-700 group-hover:bg-linear-to-br group-hover:from-primary group-hover:to-primary/80 group-hover:text-white group-hover:scale-110 group-hover:rotate-6 shadow-xl group-hover:shadow-2xl group-hover:shadow-primary/40 animate-pulse"
-                        style="animation-duration: 3s"
-                      >
-                        <span
-                          class="material-symbols-outlined text-[48px] font-light"
-                          >work</span
-                        >
-                      </div>
-                      <span
-                        class="tm-explore-number text-[11px] uppercase tracking-[0.3em] text-slate-500 group-hover:text-primary transition-colors duration-500 font-bold"
-                        >01</span
-                      >
-                    </div>
-                    <div class="flex flex-1 flex-col gap-5 relative z-10">
-                      <h3
-                        class="text-[2.1rem] font-light leading-tight text-white group-hover:text-primary transition-colors duration-500"
-                      >
-                        Career Clarity
-                      </h3>
-                      <p
-                        class="tm-explore-copy max-w-128 text-[15.5px] leading-[1.9] text-slate-400 group-hover:text-slate-300 transition-colors duration-500"
-                      >
-                        Navigate professional crossroads and uncover the path
-                        that feels aligned, meaningful, and sustainable.
-                      </p>
-                    </div>
-                    <div
-                      class="tm-explore-divider h-px w-full bg-linear-to-r from-transparent via-white/20 to-transparent group-hover:via-primary/40 transition-all duration-500 relative z-10"
-                    ></div>
-                    <div
-                      class="tm-explore-footer text-[11px] uppercase tracking-[0.26em] text-slate-500 group-hover:text-slate-400 transition-colors duration-500 font-medium relative z-10"
-                    >
-                      Purpose &bull; Direction &bull; Timing
-                    </div>
-                  </article>
-                  <article
-                    class="tm-explore-card group relative flex h-full flex-col gap-7 p-10 rounded-2xl bg-linear-to-br from-charcoal/40 to-black/40 border border-white/10 backdrop-blur-md hover:border-primary/40 transition-all duration-700 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2 overflow-hidden"
-                  >
-                    <div
-                      class="absolute inset-0 bg-linear-to-br from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-transparent transition-all duration-700 pointer-events-none"
-                    ></div>
-
-                    <div
-                      class="flex items-start justify-between gap-5 relative z-10 mb-4"
-                    >
-                      <div
-                        class="tm-explore-icon flex h-28 w-28 items-center justify-center rounded-2xl border-2 border-primary/30 bg-linear-to-br from-primary/20 to-primary/5 text-primary transition-all duration-700 group-hover:bg-linear-to-br group-hover:from-primary group-hover:to-primary/80 group-hover:text-white group-hover:scale-110 group-hover:rotate-6 shadow-xl group-hover:shadow-2xl group-hover:shadow-primary/40 animate-pulse"
-                        style="animation-duration: 3s; animation-delay: 0.5s"
-                      >
-                        <span
-                          class="material-symbols-outlined text-[48px] font-light"
-                          >favorite</span
-                        >
-                      </div>
-                      <span
-                        class="tm-explore-number text-[11px] uppercase tracking-[0.3em] text-slate-500 group-hover:text-primary transition-colors duration-500 font-bold"
-                        >02</span
-                      >
-                    </div>
-                    <div class="flex flex-1 flex-col gap-5 relative z-10">
-                      <h3
-                        class="text-[2.1rem] font-light leading-tight text-white group-hover:text-primary transition-colors duration-500"
-                      >
-                        Relationships
-                      </h3>
-                      <p
-                        class="tm-explore-copy max-w-128 text-[15.5px] leading-[1.9] text-slate-400 group-hover:text-slate-300 transition-colors duration-500"
-                      >
-                        Understand the energy within your connections and bring
-                        more honesty, softness, and awareness into them.
-                      </p>
-                    </div>
-                    <div
-                      class="tm-explore-divider h-px w-full bg-linear-to-r from-transparent via-white/20 to-transparent group-hover:via-primary/40 transition-all duration-500 relative z-10"
-                    ></div>
-                    <div
-                      class="tm-explore-footer text-[11px] uppercase tracking-[0.26em] text-slate-500 group-hover:text-slate-400 transition-colors duration-500 font-medium relative z-10"
-                    >
-                      Bonds &bull; Healing &bull; Harmony
-                    </div>
-                  </article>
-                  <article
-                    class="tm-explore-card group relative flex h-full flex-col gap-7 p-10 rounded-2xl bg-linear-to-br from-charcoal/40 to-black/40 border border-white/10 backdrop-blur-md hover:border-primary/40 transition-all duration-700 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2 overflow-hidden"
-                  >
-                    <div
-                      class="absolute inset-0 bg-linear-to-br from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-transparent transition-all duration-700 pointer-events-none"
-                    ></div>
-
-                    <div
-                      class="flex items-start justify-between gap-5 relative z-10 mb-4"
-                    >
-                      <div
-                        class="tm-explore-icon flex h-28 w-28 items-center justify-center rounded-2xl border-2 border-primary/30 bg-linear-to-br from-primary/20 to-primary/5 text-primary transition-all duration-700 group-hover:bg-linear-to-br group-hover:from-primary group-hover:to-primary/80 group-hover:text-white group-hover:scale-110 group-hover:rotate-6 shadow-xl group-hover:shadow-2xl group-hover:shadow-primary/40 animate-pulse"
-                        style="animation-duration: 3s; animation-delay: 1s"
-                      >
-                        <span
-                          class="material-symbols-outlined text-[48px] font-light"
-                          >psychology</span
-                        >
-                      </div>
-                      <span
-                        class="tm-explore-number text-[11px] uppercase tracking-[0.3em] text-slate-500 group-hover:text-primary transition-colors duration-500 font-bold"
-                        >03</span
-                      >
-                    </div>
-                    <div class="flex flex-1 flex-col gap-5 relative z-10">
-                      <h3
-                        class="text-[2.1rem] font-light leading-tight text-white group-hover:text-primary transition-colors duration-500"
-                      >
-                        Personal Growth
-                      </h3>
-                      <p
-                        class="tm-explore-copy max-w-128 text-[15.5px] leading-[1.9] text-slate-400 group-hover:text-slate-300 transition-colors duration-500"
-                      >
-                        Notice the patterns beneath the surface and move toward
-                        a steadier, more authentic version of yourself.
-                      </p>
-                    </div>
-                    <div
-                      class="tm-explore-divider h-px w-full bg-linear-to-r from-transparent via-white/20 to-transparent group-hover:via-primary/40 transition-all duration-500 relative z-10"
-                    ></div>
-                    <div
-                      class="tm-explore-footer text-[11px] uppercase tracking-[0.26em] text-slate-500 group-hover:text-slate-400 transition-colors duration-500 font-medium relative z-10"
-                    >
-                      Insight &bull; Release &bull; Expansion
-                    </div>
-                  </article>
-                  <article
-                    class="tm-explore-card group relative flex h-full flex-col gap-7 p-10 rounded-2xl bg-linear-to-br from-charcoal/40 to-black/40 border border-white/10 backdrop-blur-md hover:border-primary/40 transition-all duration-700 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2 overflow-hidden"
-                  >
-                    <div
-                      class="absolute inset-0 bg-linear-to-br from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-transparent transition-all duration-700 pointer-events-none"
-                    ></div>
-
-                    <div
-                      class="flex items-start justify-between gap-5 relative z-10 mb-4"
-                    >
-                      <div
-                        class="tm-explore-icon flex h-28 w-28 items-center justify-center rounded-2xl border-2 border-primary/30 bg-linear-to-br from-primary/20 to-primary/5 text-primary transition-all duration-700 group-hover:bg-linear-to-br group-hover:from-primary group-hover:to-primary/80 group-hover:text-white group-hover:scale-110 group-hover:rotate-6 shadow-xl group-hover:shadow-2xl group-hover:shadow-primary/40 animate-pulse"
-                        style="animation-duration: 3s; animation-delay: 1.5s"
-                      >
-                        <span
-                          class="material-symbols-outlined text-[48px] font-light"
-                          >bedtime</span
-                        >
-                      </div>
-                      <span
-                        class="tm-explore-number text-[11px] uppercase tracking-[0.3em] text-slate-500 group-hover:text-primary transition-colors duration-500 font-bold"
-                        >04</span
-                      >
-                    </div>
-                    <div class="flex flex-1 flex-col gap-5 relative z-10">
-                      <h3
-                        class="text-[2.1rem] font-light leading-tight text-white group-hover:text-primary transition-colors duration-500"
-                      >
-                        Spiritual Path
-                      </h3>
-                      <p
-                        class="tm-explore-copy max-w-128 text-[15.5px] leading-[1.9] text-slate-400 group-hover:text-slate-300 transition-colors duration-500"
-                      >
-                        Reconnect with your higher purpose and listen more
-                        clearly to the wisdom already present within you.
-                      </p>
-                    </div>
-                    <div
-                      class="tm-explore-divider h-px w-full bg-linear-to-r from-transparent via-white/20 to-transparent group-hover:via-primary/40 transition-all duration-500 relative z-10"
-                    ></div>
-                    <div
-                      class="tm-explore-footer text-[11px] uppercase tracking-[0.26em] text-slate-500 group-hover:text-slate-400 transition-colors duration-500 font-medium relative z-10"
-                    >
-                      Intuition &bull; Meaning &bull; Alignment
-                    </div>
-                  </article>
+                  </div>
+                  <h3 class="font-serif text-3xl mb-4 text-stone-50 italic">
+                    Move
+                  </h3>
+                  <p class="text-stone-300 leading-relaxed text-lg">
+                    Movement represents life, flow, and emotional expression.
+                    Through practices such as dance movement therapy,
+                    breathwork, and embodied awareness, individuals overcome
+                    their emotional patterns and reconnect with their natural
+                    vitality. Movement allows the body to express and integrate
+                    experiences that are often difficult to process through
+                    thinking alone.
+                  </p>
                 </div>
               </div>
             </div>
           </section>
-          <!-- Session Format Section -->
-          <section class="py-32" id="format">
-            <div class="max-w-[1440px] mx-auto px-6 md:px-20">
-              <div class="text-center mb-24">
-                <h2 class="text-4xl md:text-5xl font-light mb-6 italic">
-                  Choose Your Session Format
-                </h2>
-                <p class="text-slate-400 uppercase tracking-[0.2em] text-xs">
-                  Global Online Consultation &bull; Private Pune Studio
+          <!-- Integrated Modalities -->
+          <section
+            id="homeModalities"
+            class="py-24 bg-stone-50 overflow-hidden"
+          >
+            <div class="max-w-7xl mx-auto px-6">
+              <div
+                class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6"
+              >
+                <div>
+                  <span
+                    class="uppercase tracking-widest text-xs font-semibold text-stone-400 mb-2 block"
+                    >Our Services</span
+                  >
+                  <h2 class="font-serif text-4xl md:text-5xl text-stone-900">
+                    Integrated Modalities
+                  </h2>
+                </div>
+                <p class="max-w-md text-stone-600 font-light italic">
+                  A holistic ecosystem designed to address your being at every
+                  layer, from the cosmic to the cellular.
                 </p>
               </div>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
-                <!-- Format 1 -->
+              <div
+                class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-20"
+              >
                 <div
-                  class="tm-format-card relative overflow-hidden group bg-charcoal/20 border-4 border-zinc-900 rounded-xl hover:border-primary/50 transition-all duration-500 shadow-xl"
+                  class="group tm-home-modality-card flex flex-col bg-transparent"
                 >
-                  <div class="h-80 overflow-hidden">
+                  <div class="relative h-96 overflow-hidden mb-8 rounded-xl">
                     <img
-                      decoding="async"
-                      loading="lazy"
-                      alt="Laptop and tarot cards"
-                      class="w-full h-full object-cover opacity-100 transition-all duration-1000"
-                      src="assets/images/site-image-24.png"
+                      class="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
+                      alt="Hand placing a Tarot card on a rustic wooden table next to a crystal cluster and dried lavender bundle"
+                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgaB6Yi_Bd8xhKvLyjX_1NnNUlI18Gew6CnZ2d3ntAmNFx2nCUBKSThUkNl19_sgpS9gMvWz4V430TZp0ZMC2HtDFhfGe3Xg4Cd_c-RbxxBPOktWxc_XK3lp4D_XFmSM8p0ySGrMziOnxtQTjhJ0vn49ycKmSupKa6BFwgxcK3xjwgoPIbi1XhNxpCTaW8vIlFYMZ-xcdCk5wP1necZ8wS71hc3TgT7kSX8ze1wtDNCAvTOpAebyuSmrzkw0rhYdfZmgtna87GX7BX"
                     />
                   </div>
-                  <div class="p-12">
-                    <div class="flex justify-between items-center mb-8">
-                      <h3 class="text-3xl font-light italic">Online Reading</h3>
+                  <div class="flex flex-col grow">
+                    <div class="flex justify-between items-baseline mb-4 gap-4">
+                      <h4 class="text-2xl font-light italic tracking-wide">
+                        Tarot &amp; Astro-Numerology
+                      </h4>
                       <span
-                        class="px-4 py-1.5 border border-primary/30 text-primary text-[10px] font-bold tracking-widest rounded-full uppercase"
-                        >Global</span
+                        class="text-xs uppercase tracking-widest text-primary/60"
                       >
+                        Insight
+                      </span>
                     </div>
-                    <p class="text-slate-400 mb-10 leading-loose font-light">
-                      Experience the magic from the comfort of your home.
-                      High-quality video sessions designed to be as intimate as
-                      being there.
+                    <p class="text-base font-light leading-relaxed mb-8 grow">
+                      Divine guidance using cosmic alignments and archetypal
+                      wisdom to illuminate your unique life path and soul's
+                      purpose.
                     </p>
-                    <ul class="space-y-4 mb-12 text-sm text-slate-300">
-                      <li class="flex items-center gap-4">
-                        <span
-                          class="material-symbols-outlined text-primary text-xl font-light"
-                          >circle</span
-                        >
-                        60 or 90 minute sessions via Zoom
-                      </li>
-                      <li class="flex items-center gap-4">
-                        <span
-                          class="material-symbols-outlined text-primary text-xl font-light"
-                          >circle</span
-                        >
-                        HD video for crystal clear card views
-                      </li>
-                      <li class="flex items-center gap-4">
-                        <span
-                          class="material-symbols-outlined text-primary text-xl font-light"
-                          >circle</span
-                        >
-                        Recorded for your future reference
-                      </li>
-                    </ul>
                     <a
-                      href="client-intake.html"
-                      class="w-full py-5 bg-white text-background-dark text-xs font-bold uppercase tracking-[0.2em] rounded-lg hover:bg-primary hover:text-white transition-all text-center block"
+                      href="contact.html"
+                      class="w-fit text-sm uppercase tracking-[0.2em] font-semibold border-b border-primary pb-1 transition-all flex items-center gap-4 group/btn"
                     >
-                      Book Virtual Session
+                      <span>Book Session</span>
+                      <span
+                        class="material-symbols-outlined text-lg transition-transform group-hover/btn:translate-x-1"
+                        >north_east</span
+                      >
                     </a>
                   </div>
                 </div>
-                <!-- Format 2 -->
                 <div
-                  class="tm-format-card relative overflow-hidden group bg-charcoal/20 border-4 border-zinc-900 rounded-xl hover:border-primary/50 transition-all duration-500 shadow-xl"
+                  class="group tm-home-modality-card flex flex-col bg-transparent"
                 >
-                  <div class="h-80 overflow-hidden">
+                  <div class="relative h-96 overflow-hidden mb-8 rounded-xl">
                     <img
-                      decoding="async"
-                      loading="lazy"
-                      alt="Cozy cafe in Pune"
-                      class="w-full h-full object-cover opacity-100 transition-all duration-1000"
-                      src="assets/webp%20images/site-image-11.webp"
+                      class="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
+                      alt="Person sitting in meditation with a golden singing bowl in their lap, warm sunlight streaming across a calm space"
+                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfPV0J2lrpG_VNKpJA-QBMss5IecBoKB3Tg5OWipacmbPqtcxSiw6hv0_3qfjSguDjyCXCItbo3hjOKPrg10FgH1mqQiUxsg5O5hhv14JYaPELWcRhGa1nsEU3XRw5X4hcC99FWOx61e9rNf8DkwKXWqyl2H-jN5eR0f_m7DlE2U-AgirOSnlPfiPHGimbGUqk10fCw6YcxwE4makbdl19cjEhlrCanlXk7w8MBdJCQ7623t1NSJmAzm7WZthb9tpg3JMBTahcNslX"
                     />
                   </div>
-                  <div class="p-12">
-                    <div class="flex justify-between items-center mb-8">
-                      <h3 class="text-3xl font-light italic">
-                        In-Person (Pune)
-                      </h3>
+                  <div class="flex flex-col grow">
+                    <div class="flex justify-between items-baseline mb-4 gap-4">
+                      <h4 class="text-2xl font-light italic tracking-wide">
+                        Sound &amp; Energy Healing
+                      </h4>
                       <span
-                        class="px-4 py-1.5 border border-primary/30 text-primary text-[10px] font-bold tracking-widest rounded-full uppercase"
-                        >Local</span
+                        class="text-xs uppercase tracking-widest text-primary/60"
                       >
+                        Vibration
+                      </span>
                     </div>
-                    <p class="text-slate-400 mb-10 leading-loose font-light">
-                      Visit Harshaa's private studio in the heart of Pune for a
-                      deeply grounded and sensory tarot experience.
+                    <p class="text-base font-light leading-relaxed mb-8 grow">
+                      Restoring your vibrational frequency through resonance and
+                      energy movement to clear blockages and induce deep
+                      cellular peace.
                     </p>
-                    <ul class="space-y-4 mb-12 text-sm text-slate-300">
-                      <li class="flex items-center gap-4">
-                        <span
-                          class="material-symbols-outlined text-primary text-xl font-light"
-                          >location_on</span
-                        >
-                        Koregaon Park / Baner, Pune
-                      </li>
-                      <li class="flex items-center gap-4">
-                        <span
-                          class="material-symbols-outlined text-primary text-xl font-light"
-                          >circle</span
-                        >
-                        Includes ceremonial herbal tea
-                      </li>
-                      <li class="flex items-center gap-4">
-                        <span
-                          class="material-symbols-outlined text-primary text-xl font-light"
-                          >circle</span
-                        >
-                        Private, sacred studio environment
-                      </li>
-                    </ul>
                     <a
-                      href="client-intake.html"
-                      class="w-full py-5 bg-white text-background-dark text-xs font-bold uppercase tracking-[0.2em] rounded-lg hover:bg-primary hover:text-white transition-all text-center block"
+                      href="contact.html"
+                      class="w-fit text-sm uppercase tracking-[0.2em] font-semibold border-b border-primary pb-1 transition-all flex items-center gap-4 group/btn"
                     >
-                      Request Studio Session
+                      <span>Book Session</span>
+                      <span
+                        class="material-symbols-outlined text-lg transition-transform group-hover/btn:translate-x-1"
+                        >north_east</span
+                      >
                     </a>
+                  </div>
+                </div>
+                <div
+                  class="group tm-home-modality-card flex flex-col bg-transparent"
+                >
+                  <div class="relative h-96 overflow-hidden mb-8 rounded-xl">
+                    <img
+                      class="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
+                      alt="Elegant silhouette of a person performing a slow, expressive dance movement in a studio with soft, atmospheric lighting"
+                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_FzPhysN9m_TMjLNaBgij6JPA2PvNmBxorT1mPYIdQ--yc3T7ItyNz2BEaFNTTvO52_tlF5rLS2H3HXsct0iqL7IUILscrr2G9iILemV6HmX61g-IiX7Wn7DY-ubxnBn2LnwWxs-e71OV4RsXCu9DgTg98qGtyE33j7Sm1DVWV_6OC_Ncgc2M-FLtyRl4KjWVw0kf6UXX1qKHbwQzkX6SBK6LSvz4f5lnSZLnT153zsHU5ltBh0gIiEqrGA1PQu77rRFvrDXfr4q_"
+                    />
+                  </div>
+                  <div class="flex flex-col grow">
+                    <div class="flex justify-between items-baseline mb-4 gap-4">
+                      <h4 class="text-2xl font-light italic tracking-wide">
+                        Dance Movement Therapy
+                      </h4>
+                      <span
+                        class="text-xs uppercase tracking-widest text-primary/60"
+                      >
+                        Expression
+                      </span>
+                    </div>
+                    <p class="text-base font-light leading-relaxed mb-8 grow">
+                      Embodied expression to release stored trauma and reconnect
+                      with the body's natural wisdom and joyous movement.
+                    </p>
+                    <a
+                      href="contact.html"
+                      class="w-fit text-sm uppercase tracking-[0.2em] font-semibold border-b border-primary pb-1 transition-all flex items-center gap-4 group/btn"
+                    >
+                      <span>Book Session</span>
+                      <span
+                        class="material-symbols-outlined text-lg transition-transform group-hover/btn:translate-x-1"
+                        >north_east</span
+                      >
+                    </a>
+                  </div>
+                </div>
+                <div
+                  class="group tm-home-modality-card flex flex-col bg-transparent"
+                >
+                  <div class="relative h-96 overflow-hidden mb-8 rounded-xl">
+                    <img
+                      class="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
+                      alt="Close up of a person's hands resting on their chest in a gesture of mindful breathing, wearing soft earth-toned linen"
+                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZRmmPwRzXd-qId3uyHWKg_vPJwCaiRVlDQSDmxD7sQ-IRVsp23T0_kNLYfgMluufytJuE3qAFtwCsN8wEzQ3GLpgHi-bCbMCuCSyhtLEBFZwetFItBj7NwBC-rP5KIsdXhFx3Y-7SAoKm9RQeMCKeIisqTuITYBnUJomnJ32p1YWiQGGkvPTv7OmlVihfzzHc3vJF5AQW9l-4J2dDJomAJUYGs5d4YVznI7Ru6FTvU3n4EQ2I7WeUxXElR-i4dumfKqmPWJ9IIC4p"
+                    />
+                  </div>
+                  <div class="flex flex-col grow">
+                    <div class="flex justify-between items-baseline mb-4 gap-4">
+                      <h4 class="text-2xl font-light italic tracking-wide">
+                        Breathwork &amp; Coaching
+                      </h4>
+                      <span
+                        class="text-xs uppercase tracking-widest text-primary/60"
+                      >
+                        Alignment
+                      </span>
+                    </div>
+                    <p class="text-base font-light leading-relaxed mb-8 grow">
+                      Conscious breathing techniques and focused coaching to
+                      rewrite subconscious patterns and unlock your highest
+                      potential.
+                    </p>
+                    <a
+                      href="contact.html"
+                      class="w-fit text-sm uppercase tracking-[0.2em] font-semibold border-b border-primary pb-1 transition-all flex items-center gap-4 group/btn"
+                    >
+                      <span>Book Session</span>
+                      <span
+                        class="material-symbols-outlined text-lg transition-transform group-hover/btn:translate-x-1"
+                        >north_east</span
+                      >
+                    </a>
+                  </div>
+                </div>
+                <div
+                  class="group tm-home-modality-card flex flex-col bg-transparent"
+                >
+                  <div class="relative h-96 overflow-hidden mb-8 rounded-xl">
+                    <img
+                      class="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
+                      alt="Serene spa setting with basalt stones and a white lotus flower on a wooden surface with soft focus candles"
+                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtDn8Nl2nMzty2El4FCGwwR_ltxUx7TR9sbhUcYHDn_tQCNoRjVq5oGSH_VZrswCUGPQ4XmHVHyF-t_Q4FOV8HLzTxGQnuoAGxoy0AOwZEnD69XkhjwCJOAUdiQB1PGhDiHl0Eya1Ou9WSyGKijWhlaIZTGs5zO6EAliqi7_GGG5Czfhqp9P0dHZnD3XLN4SQsHldG8wEhtD0SdTvqNNHCI5ICMOGH4eO7qd2ZafwvvGA3_FJWUJuD4R7k0pmNMhvMNC-U6TjVQdCL"
+                    />
+                  </div>
+                  <div class="flex flex-col grow">
+                    <div class="flex justify-between items-baseline mb-4 gap-4">
+                      <h4 class="text-2xl font-light italic tracking-wide">
+                        Sacred Body Work
+                      </h4>
+                      <span
+                        class="text-xs uppercase tracking-widest text-primary/60"
+                      >
+                        Healing
+                      </span>
+                    </div>
+                    <p class="text-base font-light leading-relaxed mb-8 grow">
+                      Therapeutic touch designed to harmonize the nervous system
+                      and release physical tension held within the connective
+                      tissues.
+                    </p>
+                    <a
+                      href="contact.html"
+                      class="w-fit text-sm uppercase tracking-[0.2em] font-semibold border-b border-primary pb-1 transition-all flex items-center gap-4 group/btn"
+                    >
+                      <span>Book Session</span>
+                      <span
+                        class="material-symbols-outlined text-lg transition-transform group-hover/btn:translate-x-1"
+                        >north_east</span
+                      >
+                    </a>
+                  </div>
+                </div>
+                <div
+                  class="group tm-home-modality-card flex flex-col bg-transparent"
+                >
+                  <div class="relative h-96 overflow-hidden mb-8 rounded-xl">
+                    <img
+                      class="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
+                      alt="Abstract golden patterns of light reflecting on moving water, symbolizing abundance and prosperity flow"
+                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQXapduGdN0hZgFgCcSian-u_fyf0HvAwg_IvzUleg5p1FfSzUgdR-IEHAaXRHPNQ1yO5_uKk9XNoH4bdff90Wzvs-THsBMJY-ad7xzM6aveUpno8xHhIMjzHLje3bQeuF53kseM4xjJ5bQSuNDXMcgXkBHZ2WOAPt7XAmx2jDAVRBhCo_OqMtZXXJrMc9sSjIEqfNUtoJuo7QDfS4qZEpfP6pqI9NI3KLO3QV1WZI7feWm4C5q0r_Lecqaw0YgiaYoogcS7azpK5D"
+                    />
+                  </div>
+                  <div class="flex flex-col grow">
+                    <div class="flex justify-between items-baseline mb-4 gap-4">
+                      <h4 class="text-2xl font-light italic tracking-wide">
+                        Abundance Coaching
+                      </h4>
+                      <span
+                        class="text-xs uppercase tracking-widest text-primary/60"
+                      >
+                        Transformation
+                      </span>
+                    </div>
+                    <p class="text-base font-light leading-relaxed mb-8 grow">
+                      Strategic energetic alignment to remove scarcity mindsets
+                      and open your life to the natural flow of prosperity and
+                      success.
+                    </p>
+                    <a
+                      href="contact.html"
+                      class="w-fit text-sm uppercase tracking-[0.2em] font-semibold border-b border-primary pb-1 transition-all flex items-center gap-4 group/btn"
+                    >
+                      <span>Book Session</span>
+                      <span
+                        class="material-symbols-outlined text-lg transition-transform group-hover/btn:translate-x-1"
+                        >north_east</span
+                      >
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- The Three Dimensions of Healing -->
+          <section id="homeDimensions" class="py-24 bg-stone-50">
+            <div class="max-w-7xl mx-auto px-6">
+              <h2 class="font-serif text-4xl text-stone-900 mb-16 text-center">
+                The Three Dimensions of Healing
+              </h2>
+              <div
+                class="grid grid-cols-1 md:grid-cols-12 gap-6 h-auto md:h-[600px]"
+              >
+                <div
+                  class="md:col-span-4 bg-stone-100 p-8 rounded-2xl flex flex-col justify-between border border-stone-200"
+                >
+                  <div>
+                    <span
+                      class="text-stone-400 text-5xl font-serif italic mb-6 block"
+                      >01</span
+                    >
+                    <h4
+                      class="font-serif text-2xl text-white mb-4"
+                      style="color: #ffffff"
+                    >
+                      Conscious Awareness
+                    </h4>
+                    <p class="text-stone-600">
+                      The gateway to transformation begins with clarity. We use
+                      Tarot and Astro-Numerology to map your current landscape
+                      and illuminate the path ahead.
+                    </p>
+                  </div>
+                  <div class="mt-8 pt-8 border-t border-stone-200">
+                    <span
+                      class="text-xs uppercase tracking-widest font-bold text-stone-800"
+                      >Tarot • Numerology</span
+                    >
+                  </div>
+                </div>
+                <div
+                  class="md:col-span-4 p-8 rounded-2xl flex flex-col justify-between overflow-hidden relative group"
+                  style="background-color: #9e8976"
+                >
+                  <div class="relative z-10">
+                    <span
+                      class="text-white text-5xl font-serif italic mb-6 block"
+                      style="color: #ffffff"
+                      >02</span
+                    >
+                    <h4
+                      class="font-serif text-2xl text-white mb-4"
+                      style="color: #ffffff"
+                    >
+                      Subconscious Patterns
+                    </h4>
+                    <p class="text-white" style="color: #ffffff">
+                      We dive beneath the surface to identify and rewrite the
+                      stories that no longer serve you, utilizing intensive
+                      Breathwork and strategic Life Coaching.
+                    </p>
+                  </div>
+                  <div
+                    class="relative z-10 mt-8 pt-8 border-t border-stone-400/30"
+                  >
+                    <span
+                      class="text-xs uppercase tracking-widest font-bold text-white"
+                      style="color: #ffffff"
+                      >Breathwork • Coaching</span
+                    >
+                  </div>
+                </div>
+                <div
+                  class="md:col-span-4 bg-stone-800 p-8 rounded-2xl flex flex-col justify-between text-stone-50"
+                >
+                  <div>
+                    <span
+                      class="text-white text-5xl font-serif italic mb-6 block"
+                      style="color: #ffffff"
+                      >03</span
+                    >
+                    <h4 class="font-serif text-2xl text-stone-50 mb-4">
+                      Energetic &amp; Embodied
+                    </h4>
+                    <p class="text-stone-300">
+                      True healing is integrated when it reaches the body. Our
+                      energy work and dance therapy ensure that your
+                      transformation is felt in every cell.
+                    </p>
+                  </div>
+                  <div class="mt-8 pt-8 border-t border-stone-700">
+                    <span
+                      class="text-xs uppercase tracking-widest font-bold text-stone-100"
+                      >Energy Healing • Dance Therapy</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- A Path for Seekers, Professionals, and Creatives -->
+          <section
+            id="homePath"
+            class="py-24 bg-white border-y border-stone-200"
+          >
+            <div
+              class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center gap-16"
+            >
+              <div class="w-full md:w-1/2">
+                <h2 class="font-serif text-4xl text-stone-900 mb-8">
+                  A Path for Seekers, Professionals, and Creatives
+                </h2>
+                <p class="text-stone-600 text-lg mb-10 leading-relaxed">
+                  Whether you are navigating a high-pressure career or a
+                  profound personal transition, our space is designed for those
+                  ready to move beyond survival into vibrant presence.
+                </p>
+                <ul class="space-y-6">
+                  <li class="flex items-start gap-4">
+                    <div class="mt-1 w-2 h-2 rounded-full bg-stone-900"></div>
+                    <span class="text-stone-800 font-medium"
+                      >Seeking clarity in personal or professional
+                      crossroads</span
+                    >
+                  </li>
+                  <li class="flex items-start gap-4">
+                    <div class="mt-1 w-2 h-2 rounded-full bg-stone-900"></div>
+                    <span class="text-stone-800 font-medium"
+                      >Releasing chronic blocks and emotional stagnation</span
+                    >
+                  </li>
+                  <li class="flex items-start gap-4">
+                    <div class="mt-1 w-2 h-2 rounded-full bg-stone-900"></div>
+                    <span class="text-stone-800 font-medium"
+                      >Reconnecting with dormant intuition and body wisdom</span
+                    >
+                  </li>
+                  <li class="flex items-start gap-4">
+                    <div class="mt-1 w-2 h-2 rounded-full bg-stone-900"></div>
+                    <span class="text-stone-800 font-medium"
+                      >Navigating significant life transitions with grace</span
+                    >
+                  </li>
+                </ul>
+              </div>
+              <div class="w-full md:w-1/2">
+                <div class="grid grid-cols-2 gap-4">
+                  <div class="space-y-4">
+                    <img
+                      class="rounded-lg shadow-sm"
+                      alt="Sunbeams cutting through morning mist in a quiet forest, symbolizing clarity and pathfinding"
+                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMT0AD33538EkOg8CNBpXGKTuRTxejvN3gJJreGEkP751tSkTI31v5lPiorAjnBQ3AOze9dTzUxxrdq2fHVX4Drlx-neQlS0CHF5u7G2pDrPXHH6drg4f4SrGdyflFKBGT8RD9dvRG9a5-NJ6EI2aSnUEmBUlcXgXj3ZXTUlZw-VJaNMTqp1fNtN6txMbtIza1khMkIm1Y8fskE7oFf9BGoEvFoCk64O9aKRAm0ECZrk9w3rjoSnfzyqvSrxpjKvTyKqG77LyovRi3"
+                    />
+                    <img
+                      class="rounded-lg shadow-sm"
+                      alt="Dense green woodland with a winding pathway leading into the distance"
+                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeA5pUgRKcFvDa-OtWeVReu-BNY5x7m0U03gpY_jN9nntMc088TknR5X-VERuPOylKCEG1yy0EJxMs7pXTy6eWt7tvGnTweaoqa4Kt9Alm2DQxvOK70s42U0CwgzqxW8t_u03jchDNH3KtG39ClZEkgBN9vXONbgbc-p4AZ_bzbKk36fyQJqIvao3OtsTcLBukKV5eHI2cUcjpH852IsjlMq6p8-n4RJGXS1zwfZOqp76NSmJXZKtXoWhniHP3piweaW0El1DeHrEZ"
+                    />
+                  </div>
+                  <div class="pt-12 space-y-4">
+                    <img
+                      class="rounded-lg shadow-sm"
+                      alt="Peaceful beach shore with gentle waves at sunrise, suggesting emotional release and renewal"
+                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLEFyhdYp6SVjCALjQU0nGWRICAhMttgW8gZC442766feIzRv35BwB4-gVDgjlrGo0faPUfOoR_cnKPMZQuGref7aPegVxuEWPFbyQW0Ye3jZY0Q3LSfEdjwBQPnhX6cXOPUhsOM2DNgyn7mWyT6BVhQUnlZ-5bdCzOi51PsUX1sfNrU8hQ06Bt_klElU4fYq2OJkTg_ubLqCWQP0cxz9QI3vjWujyJtskxUdz0_I2wKXJypSdy-5hastNtin_1tN_0GYCuglCU_BK"
+                    />
+                    <img
+                      class="rounded-lg shadow-sm"
+                      alt="Panoramic view of a calm mountain lake reflecting a clear blue sky"
+                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuAan91BsrF6fszs7zVr2mujQ4WBDR2g5g8NUFei7wn7w-vHC4jLpavmGz9bIwoZzI-U6BfS3cPx8sz-sZox-QGO51s-QQvdIb-z8GpBzal3UtXp9LqSOFZwzFyDcvc29x2nZcXCBlnUYtmv_rBTqN8bMSG4KWit78-UPgYcGRLlRlRjbqDZEpWfjImrXzvE5YoTB752qTs1u6VmYxO0vfLhaKRwCcMCrqwe2KIulVlN1GVcsTAF0bbglcIg7WPBrXjPZwVcFlN-X9_-"
+                    />
                   </div>
                 </div>
               </div>
@@ -1416,7 +1767,6 @@
           >
             <div class="w-full px-6 md:px-12 lg:px-20">
               <div class="max-w-7xl mx-auto">
-                <!-- Section Header -->
                 <div class="text-center mb-12">
                   <div class="inline-flex items-center gap-3 mb-6">
                     <div
@@ -1450,31 +1800,42 @@
                       border-color: #d1d5db;
                     "
                   >
-                    <!-- Map iframe -->
                     <iframe
+                      id="tmMapIframe"
                       title="Touch and Move studio map"
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.2547800949457!2d73.80588431489795!3d18.556227087382615!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTjCsDMzJzIyLjQiTiA3M8KwNDgnMjguNCJF!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin"
+                      data-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.2547800949457!2d73.80588431489795!3d18.556227087382615!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTjCsDMzJzIyLjQiTiA3M8KwNDgnMjguNCJF!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin"
                       class="absolute inset-0 h-full w-full border-0"
                       style="
                         filter: saturate(1.05) contrast(1.02) brightness(1);
                       "
-                      loading="lazy"
                       allowfullscreen=""
                       referrerpolicy="no-referrer-when-downgrade"
                     ></iframe>
+                    <script>
+                      (function () {
+                        var f = document.getElementById("tmMapIframe");
+                        if (!f || !f.dataset.src) return;
+                        var o = new IntersectionObserver(
+                          function (e) {
+                            if (e[0].isIntersecting) {
+                              f.src = f.dataset.src;
+                              o.disconnect();
+                            }
+                          },
+                          { rootMargin: "200px" },
+                        );
+                        o.observe(f);
+                      })();
+                    </script>
 
-                    <!-- Gradient Overlay -->
                     <div
                       class="absolute inset-0 bg-linear-to-t from-black/35 via-black/10 to-transparent z-10"
                     ></div>
-
-                    <!-- Animated Glow -->
                     <div
                       class="absolute inset-0 bg-linear-to-br from-primary/10 via-transparent to-primary/5 animate-pulse z-10"
                       style="animation-duration: 4s"
                     ></div>
 
-                    <!-- Content Card -->
                     <div
                       class="absolute inset-0 flex items-center justify-center px-6 z-20"
                     >
@@ -1693,7 +2054,8 @@
                     >
                       Explore
                     </h4>
-                    <div
+                    <nav
+                      aria-label="Footer Explore"
                       class="grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-2"
                     >
                       <a
@@ -1728,15 +2090,17 @@
                       >
                       <a
                         class="tm-footer-link block py-1 text-xs uppercase tracking-[0.18em] transition-colors"
-                        href="client-intake.html"
-                        >Client Intake Form</a
+                        href="contact.html"
+                        >Contact</a
                       >
                       <a
                         class="tm-footer-link block py-1 text-xs uppercase tracking-[0.18em] transition-colors"
                         href="contact.html"
+                        aria-hidden="true"
+                        tabindex="-1"
                         >Contact</a
                       >
-                    </div>
+                    </nav>
                   </div>
                 </div>
                 <div class="md:col-span-3">
@@ -1900,9 +2264,33 @@
       </div>
     </div>
     <script src="./assets/vendor/lenis.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const heroSwiperEl = document.querySelector(".home-hero-swiper");
+        if (!heroSwiperEl || typeof Swiper === "undefined") return;
+
+        new Swiper(heroSwiperEl, {
+          loop: true,
+          effect: "fade",
+          speed: 900,
+          autoplay: {
+            delay: 3500,
+            disableOnInteraction: false,
+          },
+          pagination: {
+            el: ".home-hero-pagination",
+            clickable: true,
+          },
+          navigation: {
+            nextEl: ".home-hero-next",
+            prevEl: ".home-hero-prev",
+          },
+        });
+      });
+    </script>
     <script src="./assets/js/main.js?v=20" defer></script>
   </body>
 </html>
 
 <!-- http://127.0.0.1:5500/why-clients-work-with-us.html http://127.0.0.1:5500/our-Aproch.html ye dono page ka footer same home page jesa kijiye plz -->
-

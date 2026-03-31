@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TOUCH &amp; MOVE | Holistic Guidance &amp; Tarot</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&amp;family=Manrope:wght@300;400;600;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "error": "#ba1a1a",
+                        "primary-container": "#a68e74",
+                        "primary-fixed": "#fadec0",
+                        "surface-variant": "#e5e2dd",
+                        "on-background": "#1c1c19",
+                        "on-primary-fixed-variant": "#56432e",
+                        "surface-container": "#f0ede9",
+                        "on-secondary-fixed": "#221a11",
+                        "on-tertiary-fixed-variant": "#484745",
+                        "inverse-primary": "#ddc2a6",
+                        "on-tertiary": "#ffffff",
+                        "tertiary": "#605e5c",
+                        "primary-fixed-dim": "#ddc2a6",
+                        "inverse-surface": "#31302d",
+                        "tertiary-container": "#94928f",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed-dim": "#c9c6c3",
+                        "on-error": "#ffffff",
+                        "on-primary-container": "#382814",
+                        "secondary-fixed-dim": "#d2c4b6",
+                        "error-container": "#ffdad6",
+                        "surface-bright": "#fcf9f4",
+                        "surface-dim": "#dcdad5",
+                        "on-secondary-container": "#6d6357",
+                        "background": "#fcf9f4",
+                        "surface-container-low": "#f6f3ee",
+                        "outline": "#7f756c",
+                        "on-surface": "#1c1c19",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#e5e2df",
+                        "surface": "#fcf9f4",
+                        "inverse-on-surface": "#f3f0eb",
+                        "on-primary-fixed": "#271907",
+                        "secondary": "#675d51",
+                        "secondary-fixed": "#efe0d1",
+                        "on-tertiary-fixed": "#1c1b1a",
+                        "on-error-container": "#93000a",
+                        "secondary-container": "#efe0d1",
+                        "primary": "#6f5b44",
+                        "surface-tint": "#6f5b44",
+                        "outline-variant": "#d1c4b9",
+                        "surface-container-highest": "#e5e2dd",
+                        "surface-container-high": "#ebe8e3",
+                        "on-surface-variant": "#4e453d",
+                        "on-secondary-fixed-variant": "#4f453a",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-container": "#2c2b29"
+                    },
+                    fontFamily: {
+                        "headline": ["Noto Serif"],
+                        "body": ["Manrope"],
+                        "label": ["Noto Serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .hero-gradient {
+            background: linear-gradient(rgba(252, 249, 244, 0.4), rgba(252, 249, 244, 0.4)), url('https://images.unsplash.com/photo-1518191766482-825ed935813e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .modality-slide {
+            transition: opacity 0.8s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body antialiased">
+<!-- TopNavBar -->
+<header class="sticky top-0 z-50 bg-[#fcf9f4]/80 backdrop-blur-md">
+<nav class="flex justify-between items-center px-6 md:px-10 py-6 w-full max-w-screen-2xl mx-auto">
+<div class="text-2xl font-serif italic text-[#6f5b44] dark:text-[#f6f3ee]">TOUCH &amp; MOVE</div>
+<div class="hidden lg:flex items-center space-x-8">
+<a class="text-[#6f5b44] border-b border-[#6f5b44]/30 pb-1 font-label tracking-wider text-sm transition-colors duration-300" href="#">Home</a>
+<a class="text-[#7f756c] hover:text-[#6f5b44] font-label tracking-wider text-sm transition-colors duration-300" href="#">Our Journey</a>
+<a class="text-[#7f756c] hover:text-[#6f5b44] font-label tracking-wider text-sm transition-colors duration-300" href="#">Guidance &amp; Services</a>
+<a class="text-[#7f756c] hover:text-[#6f5b44] font-label tracking-wider text-sm transition-colors duration-300" href="#">Our Approach</a>
+<a class="text-[#7f756c] hover:text-[#6f5b44] font-label tracking-wider text-sm transition-colors duration-300" href="#">Tarot with Harshaa</a>
+<a class="text-[#7f756c] hover:text-[#6f5b44] font-label tracking-wider text-sm transition-colors duration-300" href="#">Contact</a>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2.5 text-[0.7rem] font-bold tracking-widest hover:bg-on-primary-fixed-variant transition-all duration-200 active:scale-95">
+                BOOK NOW
+            </button>
+</nav>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative min-h-[921px] flex items-center px-6 md:px-20 overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover opacity-60" data-alt="serene morning sunlight filtering through minimalist studio window with soft shadows on cream walls and dried botanicals" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2xZ9VXb3se-SP_xndgNPWjUVT9QEZjLfqjHVDE4wrxKETXvgTPMyfDZrcT2rp8OuuUNfvKGTVL9G2okWKYiKW8Hsqy2qxpimvuQVG-dDsYY4J7fjNMr-ujSVuF5WuFI8SjwWSUEoFjH63xcYBMw9R_bNmr9tn2wPF0mAEXxuWkjZaKPnm0QqNvTSwBc-XwBeSMKRkSv9YD9ApwLNw8M5VfJywqH7ZyeOWEgCHPBCiAL0K4tIw6TWWXPQhN4Ur4pZBZM1ashGmOg3A"/>
+<div class="absolute inset-0 bg-gradient-to-r from-background via-background/40 to-transparent"></div>
+</div>
+<div class="relative z-10 max-w-3xl">
+<span class="font-label italic text-primary tracking-widest text-lg mb-4 block">Holistic Wellness &amp; Spiritual Guidance</span>
+<h1 class="font-headline text-5xl md:text-7xl leading-tight text-on-background mb-8">
+                    Discover the <span class="italic">Essence</span> of Your Inner Journey
+                </h1>
+<p class="text-lg text-on-surface-variant max-w-xl mb-10 leading-relaxed">
+                    A curated sanctuary where ancient wisdom meets modern therapeutic modalities. Experience transformative tarot, breathwork, and emotional release.
+                </p>
+<div class="flex flex-col sm:flex-row gap-4">
+<button class="bg-primary text-on-primary px-8 py-4 text-xs font-bold tracking-widest hover:bg-on-primary-fixed-variant transition-all">
+                        START YOUR JOURNEY
+                    </button>
+<button class="border border-outline/30 text-primary px-8 py-4 text-xs font-headline hover:bg-surface-container-low transition-all">
+                        Explore Our Services
+                    </button>
+</div>
+</div>
+</section>
+<!-- Modalities Image Slider -->
+<section class="py-24 bg-background overflow-hidden relative" id="modalities-slider">
+<div class="max-w-screen-2xl mx-auto px-6 md:px-20">
+<div class="text-center mb-16">
+<h2 class="font-headline text-4xl md:text-5xl mb-4">Explore Our <span class="italic text-primary">Modalities</span></h2>
+<p class="font-label text-outline tracking-wider uppercase text-sm">Deepening the connection with self</p>
+</div>
+<div class="relative aspect-[16/9] md:aspect-[21/9] w-full group">
+<!-- Slider Container -->
+<div class="relative h-full w-full overflow-hidden shadow-2xl">
+<!-- Slide 1 -->
+<div class="modality-slide absolute inset-0 opacity-100 z-10" id="slide-0">
+<img alt="Tarot &amp; Astro-Numerology" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCh89UAJw2UBW7-NaUie8BaraojrpsNqvXbQdFLVRhrcWF9qbVpoZZutGkXcOCOxg1l2Pe2ql-xndWHmf5cAzARajT8R0HayMliw4S2ZRZlyEk0tIjHoCiEaAu2LIvpt7CY1TB5Qimau8Jyx9m5y7jxXih_KGHfSCNJ-1nd54xboAKQlt93ariZS2ls-oS0mxbM4h5-vje38zRVjPrZr62sMeHMe9v0yC6ozm7uYxZHlHmuAPeoiLnLRkEcmNAIRcZjGEG8ZHBLHtXf"/>
+<div class="absolute inset-0 bg-black/30 flex flex-col items-center justify-center text-center p-6">
+<h3 class="font-headline text-3xl md:text-5xl text-white mb-4 drop-shadow-lg italic">Tarot &amp; Astro-Numerology</h3>
+<p class="text-white/90 font-label tracking-widest uppercase text-xs md:text-sm max-w-lg">Deciphering the cosmic patterns of your soul's blueprint</p>
+</div>
+</div>
+<!-- Slide 2 -->
+<div class="modality-slide absolute inset-0 opacity-0 z-0" id="slide-1">
+<img alt="Abundance &amp; Inner Transformation Coaching" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNPS8kkdhykPiGpyQA61cqL5GssSOZ7ntq6_s0LTvNGsdJRdA_Yu_7H2Q7nAa-6M4xb8LmrDUVAu4iAqpfGDrdoaU8pCeBFHdXh2WNq58jog_O_tzEbGFfDP5Yk2WuPJ_mOTsrBTnFXku4BQkOIVEXUwm4outqads4G0K775lsc9G_N_ZxFjYvNn_fe3pQMd6NBN3u8WnuSAD7PNjDfE6R3lD8CZk2q6Bn9cnGTx-rnZZFPKniEpp1Rz3a4QIoCNrPUbu5rGzlO9-A"/>
+<div class="absolute inset-0 bg-black/30 flex flex-col items-center justify-center text-center p-6">
+<h3 class="font-headline text-3xl md:text-5xl text-white mb-4 drop-shadow-lg italic">Inner Transformation Coaching</h3>
+<p class="text-white/90 font-label tracking-widest uppercase text-xs md:text-sm max-w-lg">Cultivating abundance from within through conscious alignment</p>
+</div>
+</div>
+<!-- Slide 3 -->
+<div class="modality-slide absolute inset-0 opacity-0 z-0" id="slide-2">
+<img alt="Sound &amp; Energy Healing" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCuD99wG2qQvQ4HGNgIDkAYV_eRvzJO-JO4d4RQ6ee4VGoA4gTwgkm_EsMlG5BXpky1ySmDlsb2pmxNLszDWCeYg88oMtTdIuuHVJEf1t7iUplE24GtYXlzJaJy-2fp8Eh1tdpF-EOiPcg7MGmTE4YsVr2tYyFjAqPCajwQ3jqVS_oS8VJEgyQMNkjxL5TICrFa74yHw3fddwa2ZBB9P_quFt9ZmBnzJPNvS4khjWlG-naBF9q7b6nJIeDsRSKwBLbc5_kzjTa1k3wr"/>
+<div class="absolute inset-0 bg-black/30 flex flex-col items-center justify-center text-center p-6">
+<h3 class="font-headline text-3xl md:text-5xl text-white mb-4 drop-shadow-lg italic">Sound &amp; Energy Healing</h3>
+<p class="text-white/90 font-label tracking-widest uppercase text-xs md:text-sm max-w-lg">Vibrational medicine to harmonize your bio-energetic field</p>
+</div>
+</div>
+<!-- Slide 4 -->
+<div class="modality-slide absolute inset-0 opacity-0 z-0" id="slide-3">
+<img alt="Dance Movement Therapy" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3Fkwg7OdH8nvARs6scxmfMS7YFFmGEvMGeMbjht-4yFHlDI4wHiPUQX7xPZgoS4UyjOu9s0Bzy5ZI8DSSOTQ5s_TQ-THPrRC19tyVssUPe5Ke6VQxFLQ8M4szoDM2wQ1h0v9w5Z8UFTa7omrUSB8Uzb7uGWSlghPEw1yN4Woq0GGeOgIw7T7WYcINNKG--w6zaC3lfeOlaLiG5XI1QPLx3OhMCf1rHN72e-w7RlJZEg3a7fXVrZEPn8XIPJcAvTCAzgz5RtCyvmWi"/>
+<div class="absolute inset-0 bg-black/30 flex flex-col items-center justify-center text-center p-6">
+<h3 class="font-headline text-3xl md:text-5xl text-white mb-4 drop-shadow-lg italic">Dance Movement Therapy</h3>
+<p class="text-white/90 font-label tracking-widest uppercase text-xs md:text-sm max-w-lg">Embodied expression as a gateway to emotional liberation</p>
+</div>
+</div>
+<!-- Slide 5 -->
+<div class="modality-slide absolute inset-0 opacity-0 z-0" id="slide-4">
+<img alt="Breathwork &amp; Awareness Practices" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPNBmeR4CkN8rGOBZpy51tEs9xSyvrtnfs5-_93k1ryiaxT7J32UaU16djuH0ay534xvYi0Oyid4dF7GUw4i3OYBOrfD7uafp-BoOUFlGuOGDPT39gqJaB81h2pSyD6-xcrc1kiDRz59_tGMWwC3TCha3M91FbD-kzo95uQfRltnP5X6AyBJf-23XUocN8pvxa2ukxMUE2r3Mj9e_qLyxMhQID-xuT9CjH_NlFHfbKfUFOiaK6suKGobjmB5PnTPzMFFIF_1byEBBg"/>
+<div class="absolute inset-0 bg-black/30 flex flex-col items-center justify-center text-center p-6">
+<h3 class="font-headline text-3xl md:text-5xl text-white mb-4 drop-shadow-lg italic">Breathwork &amp; Awareness</h3>
+<p class="text-white/90 font-label tracking-widest uppercase text-xs md:text-sm max-w-lg">Mastering the life force to expand conscious presence</p>
+</div>
+</div>
+<!-- Slide 6 -->
+<div class="modality-slide absolute inset-0 opacity-0 z-0" id="slide-5">
+<img alt="Sacred Body Work" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRP16e6S1AykU5Ra8OT5gBN6pFZYsQOJCAL1s9SovVwSl3ARuOKKBpyJrNvKMtyvTAHTk6RJo_4ISgy5SGQfLexsSmkNGf3fNUo-J1Fkys0ARh96ED3QrtX67lh1d-FS8i8SWMgRTNHK-zWLJijgw97qlC73fUaAaE-DnxLgQVb5MZ2C05ppfcd79_rcQR4gwf8lZbTIhI58x6Wa6Vw7jFOWHI727qZIYRLH7_uKUmgoTA6DEqhit7tNkx0nkmIN3qxn5sTA2yNe76"/>
+<div class="absolute inset-0 bg-black/30 flex flex-col items-center justify-center text-center p-6">
+<h3 class="font-headline text-3xl md:text-5xl text-white mb-4 drop-shadow-lg italic">Sacred Body Work</h3>
+<p class="text-white/90 font-label tracking-widest uppercase text-xs md:text-sm max-w-lg">Restorative touch to honor and heal the temple of your soul</p>
+</div>
+</div>
+</div>
+<!-- Navigation Arrows -->
+<button class="absolute left-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white hover:bg-white/40 transition-all opacity-0 group-hover:opacity-100" onclick="prevSlide()">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white hover:bg-white/40 transition-all opacity-0 group-hover:opacity-100" onclick="nextSlide()">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+<!-- Indicators -->
+<div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 flex gap-3">
+<button class="slider-dot w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-all scale-125 bg-white" id="dot-0" onclick="goToSlide(0)"></button>
+<button class="slider-dot w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-all" id="dot-1" onclick="goToSlide(1)"></button>
+<button class="slider-dot w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-all" id="dot-2" onclick="goToSlide(2)"></button>
+<button class="slider-dot w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-all" id="dot-3" onclick="goToSlide(3)"></button>
+<button class="slider-dot w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-all" id="dot-4" onclick="goToSlide(4)"></button>
+<button class="slider-dot w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-all" id="dot-5" onclick="goToSlide(5)"></button>
+</div>
+</div>
+</div>
+<script>
+                let currentSlide = 0;
+                const totalSlides = 6;
+                const slides = [];
+                const dots = [];
+
+                window.addEventListener('DOMContentLoaded', () => {
+                    for(let i=0; i<totalSlides; i++) {
+                        slides.push(document.getElementById(`slide-${i}`));
+                        dots.push(document.getElementById(`dot-${i}`));
+                    }
+                    setInterval(nextSlide, 6000);
+                });
+
+                function updateSlider() {
+                    slides.forEach((slide, index) => {
+                        if (index === currentSlide) {
+                            slide.classList.replace('opacity-0', 'opacity-100');
+                            slide.classList.replace('z-0', 'z-10');
+                            dots[index].classList.add('bg-white', 'scale-125');
+                            dots[index].classList.remove('bg-white/50');
+                        } else {
+                            slide.classList.replace('opacity-100', 'opacity-0');
+                            slide.classList.replace('z-10', 'z-0');
+                            dots[index].classList.remove('bg-white', 'scale-125');
+                            dots[index].classList.add('bg-white/50');
+                        }
+                    });
+                }
+
+                function nextSlide() {
+                    currentSlide = (currentSlide + 1) % totalSlides;
+                    updateSlider();
+                }
+
+                function prevSlide() {
+                    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                    updateSlider();
+                }
+
+                function goToSlide(index) {
+                    currentSlide = index;
+                    updateSlider();
+                }
+            </script>
+</section>
+<!-- What Touch and Move Means -->
+<section class="py-24 bg-surface-container-low px-6 md:px-20">
+<div class="max-w-screen-xl mx-auto">
+<div class="grid md:grid-cols-2 gap-16 items-center">
+<div class="order-2 md:order-1">
+<h2 class="font-headline text-4xl mb-8 leading-snug">What <span class="italic text-primary">"Touch and Move"</span> Means to Us</h2>
+<div class="space-y-6 text-on-surface-variant leading-relaxed">
+<p>To <strong class="text-primary">Touch</strong> is to acknowledge. It's the first point of contact with your inner self—the shadows, the unvoiced desires, and the physical manifestations of suppressed emotions.</p>
+<p>To <strong class="text-primary">Move</strong> is to transform. Once we touch the truth, we allow it to flow, shifting energy from stagnant blocks into fluid, vital life force. We guide you through this transition with compassion and professional expertise.</p>
+</div>
+<div class="mt-12 flex items-center space-x-4">
+<div class="h-[1px] w-12 bg-primary/40"></div>
+<p class="font-label italic text-primary">A philosophy of conscious evolution.</p>
+</div>
+</div>
+<div class="order-1 md:order-2 relative">
+<div class="aspect-[4/5] bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="close-up of hands gently resting on warm beige linen fabric, soft focused light creating a peaceful atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvpAos0ck1ZQXddjsMGbnTeu79ubbxMQyr7y70ZyKWoh_IYl-or9oEaMA3mPWnyPN3tWTqlRFWqsGJHp9i5hHMsbcj6gwD7me-xoIihykwI3XT6OJAsQxORMz4kc7LJlAkY_AEwHdnkiXhRqyEHxi1C6f22tJzTLFk0l4HQZ0iAulnt_IIaF_F6-7bwuDANkT5Di3suq82m4MW0EDv3RHxY1ioBXHFYoCOJ9tiQ2xi_uX54Pm20cfBs0xAZeHtmsVqMAYAyzABWMlq"/>
+</div>
+<div class="absolute -bottom-8 -left-8 bg-surface-container-lowest p-8 hidden lg:block max-w-xs shadow-sm">
+<p class="italic font-headline text-primary-container text-lg">"Healing is not a destination, but a continuous movement toward home."</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Core Services Grid -->
+<section class="py-32 px-6 md:px-20 bg-background">
+<div class="max-w-screen-xl mx-auto">
+<div class="text-center mb-20">
+<h2 class="font-headline text-4xl md:text-5xl mb-4">Our Core Modalities</h2>
+<p class="font-label text-outline tracking-wider uppercase text-sm">Crafting pathways for your transformation</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Service Card 1 -->
+<div class="bg-surface-container-lowest p-10 hover:translate-y-[-8px] transition-transform duration-500 flex flex-col items-center text-center shadow-[0_20px_40px_rgba(28,28,25,0.03)]">
+<span class="material-symbols-outlined text-primary text-4xl mb-6">psychology_alt</span>
+<h3 class="font-headline text-2xl mb-4">Inner Work Counseling</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-8">Deep psychological exploration to uncover and integrate the hidden parts of your psyche.</p>
+<button class="mt-auto text-primary font-label text-xs tracking-widest uppercase border-b border-primary/20 pb-1 hover:border-primary transition-all">Learn More</button>
+</div>
+<!-- Service Card 2 -->
+<div class="bg-surface-container-lowest p-10 hover:translate-y-[-8px] transition-transform duration-500 flex flex-col items-center text-center shadow-[0_20px_40px_rgba(28,28,25,0.03)]">
+<span class="material-symbols-outlined text-primary text-4xl mb-6">style</span>
+<h3 class="font-headline text-2xl mb-4">Intuitive Tarot Guidance</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-8">More than prediction, our tarot sessions offer mirror-like clarity for your current soul path.</p>
+<button class="mt-auto text-primary font-label text-xs tracking-widest uppercase border-b border-primary/20 pb-1 hover:border-primary transition-all">Learn More</button>
+</div>
+<!-- Service Card 3 -->
+<div class="bg-surface-container-lowest p-10 hover:translate-y-[-8px] transition-transform duration-500 flex flex-col items-center text-center shadow-[0_20px_40px_rgba(28,28,25,0.03)]">
+<span class="material-symbols-outlined text-primary text-4xl mb-6">air</span>
+<h3 class="font-headline text-2xl mb-4">Somatic Breathwork</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-8">Using the power of breath to release cellular trauma and recalibrate your nervous system.</p>
+<button class="mt-auto text-primary font-label text-xs tracking-widest uppercase border-b border-primary/20 pb-1 hover:border-primary transition-all">Learn More</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Our Journey (Founder Profiles) -->
+<section class="py-32 bg-surface-container-low px-6 md:px-20 overflow-hidden">
+<div class="max-w-screen-xl mx-auto">
+<div class="mb-20">
+<h2 class="font-headline text-4xl md:text-5xl">The Hands Behind the Work</h2>
+</div>
+<div class="space-y-32">
+<!-- Sarvesh -->
+<div class="flex flex-col md:flex-row gap-16 items-center">
+<div class="w-full md:w-5/12 aspect-square">
+<img class="w-full h-full object-cover filter grayscale-[0.2]" data-alt="portrait of a calm professional man in a beige linen shirt against a soft neutral background, gentle and wise expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7sKeU-0Dsfa6mkTIfdUOsjbR4CyjsEFnjU79EQXvbrmbHA98pluwjf2N_KjSYavQXY4prgPgdimfI6VcYQz8MJ-TlMv-N4bQBAowzdo5vPl7b6u32tEbMKS1WWr8uVNB4_RDeGGFvDDG2UtT68DghxaufYjObHXgvjBufYiG4EWAsbzGGI2d7ZI01aHoIqEGZ4N5lQyr-pFNMI7BDUz-qQQe5XlS43i2YO7R2P926DPWekQ11Ai7OGs2boO17Lm9TOLmTQZn2ZQEL"/>
+</div>
+<div class="w-full md:w-7/12">
+<h3 class="font-headline text-3xl mb-2">Sarvesh</h3>
+<p class="font-label text-primary italic text-lg mb-6">Holistic Therapist &amp; Movement Coach</p>
+<p class="text-on-surface-variant leading-relaxed mb-8 text-lg">With over a decade of experience in somatic therapy and psychological coaching, Sarvesh focuses on the bridge between physical tension and emotional blockage. His approach is grounded, practical, and deeply transformative.</p>
+<a class="text-primary font-bold text-xs tracking-widest flex items-center gap-2 hover:gap-4 transition-all" href="#">
+                                VIEW PROFILE <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Harshaa -->
+<div class="flex flex-col md:flex-row-reverse gap-16 items-center">
+<div class="w-full md:w-5/12 aspect-square">
+<img class="w-full h-full object-cover filter grayscale-[0.2]" data-alt="portrait of a serene woman with an intuitive gaze, soft natural lighting, wearing earthy tones in a minimalist setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgWy8v6IBf8HuJz8Vs422TgCu8Y9m19aZfVm2sw-cLpq7MK3WgX3sPG8ov4P57WP7tXqujR5RSh2JYzMqLp-LWGx4dlg8J05bcBojUo93IvQ9-HuCokS6wT1JHWfPRrVTrC8Gy_9oGoawUNGQ4yAIpWbCBczodqnjcDxUmh05H44VgXCEtDk2iT3nAljGcZ3VfcQ7R7SCXwiFTjH1KtOA7ijGaGTrFa_UgiYxCxLewLhLpv_ZCQgr8hH7dx73YQH2yQVE64QRI_Ast"/>
+</div>
+<div class="w-full md:w-7/12">
+<h3 class="font-headline text-3xl mb-2">Harshaa</h3>
+<p class="font-label text-primary italic text-lg mb-6">Master Tarot Reader &amp; Intuitive Guide</p>
+<p class="text-on-surface-variant leading-relaxed mb-8 text-lg">Harshaa brings the ethereal into the tangible. Her tarot readings are not just insights into the future, but deep analytical dives into the 'now,' helping clients navigate complex life transitions with grace and clarity.</p>
+<a class="text-primary font-bold text-xs tracking-widest flex items-center gap-2 hover:gap-4 transition-all" href="#">
+                                VIEW PROFILE <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonials -->
+<section class="py-24 bg-background overflow-hidden">
+<div class="px-6 md:px-20 mb-16 max-w-screen-xl mx-auto flex justify-between items-end">
+<div>
+<h2 class="font-headline text-4xl mb-4 italic">Shared Experiences</h2>
+<p class="text-outline">Voices from our growing community</p>
+</div>
+<div class="hidden md:flex gap-4">
+<button class="w-12 h-12 rounded-full border border-outline/20 flex items-center justify-center hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-12 h-12 rounded-full border border-outline/20 flex items-center justify-center hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="flex space-x-8 overflow-x-auto no-scrollbar px-6 md:px-20 pb-12">
+<!-- Testimonial 1 -->
+<div class="min-w-[320px] md:min-w-[450px] bg-surface-container-lowest p-8 md:p-12 shadow-[0_15px_30px_rgba(28,28,25,0.02)] border border-surface-container">
+<p class="font-headline text-xl md:text-2xl mb-10 leading-relaxed italic">"The session with Sarvesh completely changed how I perceive my anxiety. It's no longer a burden, but a signal I've learned to read."</p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="profile portrait of a happy client" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1rKhmoWNMJi7au19TQYBY-_NM9a2iqCP_x0PBmX-T0KG-mDHoUaGbPH4v7nSeA7kF_mCMmLEqhNlpiBrUVq-NfFe_XCdygvey-KmnlWrEp5iBeSGwPZ1cDRdz448kjwXRqlhWaMiKGB1XqNJ7xECqmN3qljpBcFfrnQd7KLz0jOOLrWXpThfoqR51nPBsEQATGo-u4KOa_R-HFih0Bn6JdYi7z99UYvnrRaaVHcnLfvNnDwsJAq8Pt-cYIRvhcRlcPNa0tBH_Fdpj"/>
+</div>
+<div>
+<h4 class="font-bold text-sm">Ananya Sharma</h4>
+<p class="text-xs text-outline">@ananya_sh</p>
+</div>
+</div>
+</div>
+<!-- Testimonial 2 -->
+<div class="min-w-[320px] md:min-w-[450px] bg-surface-container-lowest p-8 md:p-12 shadow-[0_15px_30px_rgba(28,28,25,0.02)] border border-surface-container">
+<p class="font-headline text-xl md:text-2xl mb-10 leading-relaxed italic">"Harshaa has a gift. Her reading felt like a long-overdue conversation with my own soul. I left feeling lighter and significantly more focused."</p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="profile portrait of a serene man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBk0fS7tb0T5I7RQPSpmVtzY1UjPCjxDfE0qg_IplAG93Gm-cSIsdVp8aXOiWRuI-Ex4RBStd4JbFIswys2bIWqH5CHykG-ZFAcMa38LhdLM0cKc0RkpVdBkTPIJ3wDVUibR4aumJQuJP3h3_EaOCmXnordpA_8MxpMQs3JRO9_pj4p__PNzrIWtz3sqZ2kpgGyOlnq23TusdlonQ4eEkflbq9c6pJ-EhuELmxgm3bN4SkDUKnRe4cobXJosTzA6R8mRwWYgLeZXyS3"/>
+</div>
+<div>
+<h4 class="font-bold text-sm">Vikram Malhotra</h4>
+<p class="text-xs text-outline">@v_malhotra</p>
+</div>
+</div>
+</div>
+<!-- Testimonial 3 -->
+<div class="min-w-[320px] md:min-w-[450px] bg-surface-container-lowest p-8 md:p-12 shadow-[0_15px_30px_rgba(28,28,25,0.02)] border border-surface-container">
+<p class="font-headline text-xl md:text-2xl mb-10 leading-relaxed italic">"A truly professional yet intimate space. You feel seen from the moment you walk in. Highly recommend the somatic breathwork."</p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="profile portrait of a professional woman" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHniCWutFwQq1A6uFHfTgNWvicRzzqo5nVS3HbJN6XPl3Zbot5t5Im9gJapL_gFtTYH0-1d8ZQP4jRvopS_Z2cczt6yMZIuKz1jhkQWL_5zfPQSrkw9RW_vpwuwC0e7Ba7Z9i-Jfx4OtI6efe9KkVymUcFtQRwoSXPutrdFFquTr-4k6hvYzDjBu5e6LQ19bhZuNt_QS8lgfyWHGdt-sbogpsA7-1InlSYe8wrU2I8UWLmQG5ZUt5RVu9cZY2c36E3AhSgXioN4fTs"/>
+</div>
+<div>
+<h4 class="font-bold text-sm">Priya Gupta</h4>
+<p class="text-xs text-outline">@priya_g</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Map Section -->
+<section class="py-24 px-6 md:px-20 bg-surface-container-low">
+<div class="max-w-screen-xl mx-auto flex flex-col md:flex-row gap-16">
+<div class="md:w-1/3">
+<h2 class="font-headline text-4xl mb-6">Visit Our Studio</h2>
+<p class="text-on-surface-variant mb-8">A physical extension of our philosophy—quiet, warm, and designed for deep introspection.</p>
+<div class="space-y-4">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary mt-1">location_on</span>
+<div>
+<p class="font-bold text-sm">Touch and Move Sanctuary</p>
+<p class="text-sm text-outline">102, Serenity Heights, Road No. 7<br/>Bandra West, Mumbai 400050</p>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary mt-1">call</span>
+<p class="text-sm text-outline">+91 98765 43210</p>
+</div>
+</div>
+<button class="mt-10 bg-primary text-on-primary px-8 py-3 text-[0.7rem] font-bold tracking-widest hover:bg-on-primary-fixed-variant transition-all">GET DIRECTIONS</button>
+</div>
+<div class="md:w-2/3 aspect-[21/9] bg-surface-dim relative overflow-hidden">
+<img class="w-full h-full object-cover opacity-80 grayscale" data-alt="stylized architectural map view of a city neighborhood with a prominent location pin marker" data-location="Mumbai" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDi7AtWrYs5330KB34YyL0qDpqUCV6wX8P4eShfeWrrDQDb6cAS7MC1YxeEr-cRjo1AMhbTmNR9SoiGqngZ0g0VcLUnHpzix5fgz_aRZjFR4YN9B2s9OG4xy9bVhn81fV0MHi53tJqeoe2aSs2XWEWSqxZZ9wDJYwWc4xN-Hwrkj0UHPBNmvqJVPuftu-3khlvTXlU3a7skSSt2MjpGkXMtMJi4dnP1FBeZaBVBBKfNPOysE5mevuN9zhvlPZuE8Tir81aQ_n-6Q1Yx"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center shadow-lg animate-pulse">
+<div class="w-2 h-2 bg-on-primary rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- FAQ Section -->
+<section class="py-32 bg-background px-6 md:px-20">
+<div class="max-w-3xl mx-auto">
+<div class="text-center mb-16">
+<h2 class="font-headline text-4xl mb-4">Your Questions, <span class="italic">Clearly Answered</span></h2>
+<p class="text-outline">Transparency is the foundation of our connection</p>
+</div>
+<div class="space-y-4">
+<!-- FAQ 1 -->
+<div class="border-b border-outline-variant/30 py-6">
+<button class="w-full flex justify-between items-center text-left group">
+<span class="font-headline text-xl">How do I know which modality is right for me?</span>
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">expand_more</span>
+</button>
+</div>
+<!-- FAQ 2 -->
+<div class="border-b border-outline-variant/30 py-6">
+<button class="w-full flex justify-between items-center text-left group">
+<span class="font-headline text-xl">Is the Tarot reading predictive or guidance-based?</span>
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">expand_more</span>
+</button>
+<div class="mt-4 text-on-surface-variant leading-relaxed">
+<p>We focus exclusively on intuitive guidance. While patterns of the future may emerge, our primary goal is to empower your present-day decisions and spiritual clarity.</p>
+</div>
+</div>
+<!-- FAQ 3 -->
+<div class="border-b border-outline-variant/30 py-6">
+<button class="w-full flex justify-between items-center text-left group">
+<span class="font-headline text-xl">Do you offer online sessions?</span>
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">expand_more</span>
+</button>
+</div>
+<!-- FAQ 4 -->
+<div class="border-b border-outline-variant/30 py-6">
+<button class="w-full flex justify-between items-center text-left group">
+<span class="font-headline text-xl">What should I expect during somatic breathwork?</span>
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">expand_more</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-low py-20 px-6 md:px-20">
+<div class="max-w-screen-2xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+<div class="col-span-1 md:col-span-1">
+<div class="text-xl font-serif text-[#6f5b44] dark:text-[#f6f3ee] mb-6">TOUCH &amp; MOVE</div>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-8">Guided pathways for the intentional soul. Discover movement, find peace, and touch the essence of your being.</p>
+<div class="flex space-x-4">
+<a class="text-primary hover:opacity-70 transition-opacity" href="#"><span class="material-symbols-outlined">public</span></a>
+<a class="text-primary hover:opacity-70 transition-opacity" href="#"><span class="material-symbols-outlined">alternate_email</span></a>
+</div>
+</div>
+<div>
+<h4 class="font-headline text-sm font-bold uppercase tracking-widest text-primary mb-6">Navigation</h4>
+<ul class="space-y-4 text-sm text-[#7f756c]">
+<li><a class="hover:text-[#6f5b44] underline-offset-4 hover:underline transition-all" href="#">Our Journey</a></li>
+<li><a class="hover:text-[#6f5b44] underline-offset-4 hover:underline transition-all" href="#">Guidance &amp; Services</a></li>
+<li><a class="hover:text-[#6f5b44] underline-offset-4 hover:underline transition-all" href="#">Our Approach</a></li>
+<li><a class="hover:text-[#6f5b44] underline-offset-4 hover:underline transition-all" href="#">Tarot with Harshaa</a></li>
+<li><a class="hover:text-[#6f5b44] underline-offset-4 hover:underline transition-all" href="#">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-headline text-sm font-bold uppercase tracking-widest text-primary mb-6">Connect</h4>
+<p class="text-sm text-on-surface-variant mb-4">Subscribe for lunar updates and workshops.</p>
+<div class="relative">
+<input class="w-full bg-transparent border-b border-outline/30 py-2 focus:outline-none focus:border-primary text-sm" placeholder="Email Address" type="email"/>
+<button class="absolute right-0 bottom-2 text-primary uppercase text-[0.6rem] font-bold tracking-widest">JOIN</button>
+</div>
+</div>
+<div>
+<h4 class="font-headline text-sm font-bold uppercase tracking-widest text-primary mb-6">Studio Hours</h4>
+<ul class="space-y-2 text-sm text-on-surface-variant">
+<li class="flex justify-between"><span>Mon - Fri</span> <span>09:00 - 19:00</span></li>
+<li class="flex justify-between"><span>Saturday</span> <span>10:00 - 16:00</span></li>
+<li class="flex justify-between"><span>Sunday</span> <span>Closed</span></li>
+</ul>
+</div>
+</div>
+<div class="max-w-screen-2xl mx-auto mt-20 pt-8 border-t border-outline/10 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-xs text-outline font-body">© 2024 Touch and Move | codesunny.in</p>
+<div class="flex gap-8 text-[0.6rem] font-bold tracking-widest text-outline">
+<a class="hover:text-primary" href="#">PRIVACY POLICY</a>
+<a class="hover:text-primary" href="#">TERMS OF SERVICE</a>
+</div>
+</div>
+</footer>
+</body></html>
