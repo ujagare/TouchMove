@@ -86,6 +86,7 @@ body {
       }
       body.tm-warm-theme #homeHero h1,
       body.tm-warm-theme #homeHero h2,
+      body.tm-warm-theme #homeHero h3,
       body.tm-warm-theme #homeHero .text-5xl,
       body.tm-warm-theme #homeHero .text-7xl,
       body.tm-warm-theme #homeHero .text-8xl {
@@ -412,6 +413,14 @@ body {
       body.tm-warm-theme #homeModalities .tm-home-modality-card a {
         color: #9e8976 !important;
       }
+      body.tm-warm-theme #homeModalities .text-stone-400,
+      body.tm-warm-theme #homeModalities .text-stone-600,
+      body.tm-warm-theme #homeModalities .text-primary\/60 {
+        color: #9e8976 !important;
+      }
+      body.tm-warm-theme #homeModalities .font-light.italic {
+        color: #716a61 !important;
+      }
       body.tm-warm-theme #homeDimensions .bg-stone-100,
       body.tm-warm-theme #homeDimensions .bg-stone-200 {
         background: rgba(255, 255, 255, 0.72) !important;
@@ -438,6 +447,15 @@ body {
           rgba(251, 248, 241, 1),
           rgba(245, 241, 235, 0.92)
         ) !important;
+      }
+      body.tm-warm-theme #homePath h2 {
+        color: #9e8976 !important;
+      }
+      body.tm-warm-theme #homePath p,
+      body.tm-warm-theme #homePath span,
+      body.tm-warm-theme #homePath .text-stone-600,
+      body.tm-warm-theme #homePath .text-stone-800 {
+        color: #716a61 !important;
       }
       body.tm-warm-theme #homePath .rounded-lg {
         background: rgba(255, 255, 255, 0.68) !important;
@@ -854,6 +872,7 @@ body {
   line-height: 1.02 !important;
   max-width: 14ch;
   margin-bottom: 1rem !important;
+  color: #3f3b34 !important;
   opacity: 0;
   transform: translate3d(0, 52px, 0);
   will-change: transform, opacity;
@@ -869,7 +888,7 @@ body {
 }
 
 #homeHero .home-hero-swiper .swiper-slide > .absolute.inset-0 > p {
-  color: #ffffff !important;
+  color: #716a61 !important;
   font-size: clamp(0.95rem, 1.45vw, 1.2rem) !important;
   line-height: 1.75 !important;
   letter-spacing: 0.14em !important;
