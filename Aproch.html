@@ -391,28 +391,46 @@
           </section>
           <section class="approach-philosophy px-6 lg:px-20 py-28 lg:py-32">
             <div class="max-w-7xl mx-auto space-y-16">
-              <div class="max-w-4xl">
-                <p
-                  class="text-primary font-bold text-xs tracking-[0.4em] uppercase mb-6"
-                >
-                  Tab 04
-                </p>
-                <h2
-                  class="text-4xl md:text-6xl font-light leading-tight mb-8 italic"
-                  style="color: #9E8976 !important"
-                >
-                  Our Approach &amp; Philosophy
-                </h2>
-                <p class="text-stone-300 text-lg md:text-xl leading-loose font-light">
-                  We believe that meaningful transformation happens when we work
-                  across three interconnected dimensions of human experience.
-                </p>
+              <div class="approach-philosophy-intro">
+                <div class="approach-philosophy-copy-shell max-w-4xl">
+                  <p
+                    class="text-primary font-bold text-xs tracking-[0.4em] uppercase mb-6"
+                  >
+                    Tab 04
+                  </p>
+                  <h2
+                    class="text-4xl md:text-6xl font-light leading-tight mb-8 italic"
+                    style="color: #9E8976 !important"
+                  >
+                    Our Approach &amp; Philosophy
+                  </h2>
+                  <p class="text-stone-300 text-lg md:text-xl leading-loose font-light">
+                    We believe that meaningful transformation happens when we
+                    work across three interconnected dimensions of human
+                    experience.
+                  </p>
+                </div>
+                <div class="approach-philosophy-visual" aria-hidden="true">
+                  <div class="approach-philosophy-visual-frame">
+                    <img
+                      decoding="async"
+                      loading="lazy"
+                      src="assets/images/inner transformation.jpg"
+                      alt=""
+                      class="approach-philosophy-visual-image"
+                    />
+                    <div class="approach-philosophy-visual-chip">
+                      Mind, body, energy
+                    </div>
+                  </div>
+                </div>
               </div>
 
               <div class="grid gap-8 lg:grid-cols-3">
                 <article
-                  class="rounded-3xl border border-white/10 bg-white/5 p-8 md:p-10 backdrop-blur-sm"
+                  class="approach-dimension-card rounded-3xl border border-white/10 bg-white/5 p-8 md:p-10 backdrop-blur-sm"
                 >
+                  <div class="approach-dimension-orb"></div>
                   <p class="text-primary text-xs font-bold tracking-[0.3em] uppercase mb-4">
                     1. Conscious Awareness
                   </p>
@@ -439,8 +457,9 @@
                 </article>
 
                 <article
-                  class="rounded-3xl border border-white/10 bg-white/5 p-8 md:p-10 backdrop-blur-sm"
+                  class="approach-dimension-card rounded-3xl border border-white/10 bg-white/5 p-8 md:p-10 backdrop-blur-sm"
                 >
+                  <div class="approach-dimension-orb"></div>
                   <p class="text-primary text-xs font-bold tracking-[0.3em] uppercase mb-4">
                     2. Subconscious &amp; Emotional Patterns
                   </p>
@@ -480,8 +499,9 @@
                 </article>
 
                 <article
-                  class="rounded-3xl border border-white/10 bg-white/5 p-8 md:p-10 backdrop-blur-sm"
+                  class="approach-dimension-card rounded-3xl border border-white/10 bg-white/5 p-8 md:p-10 backdrop-blur-sm"
                 >
+                  <div class="approach-dimension-orb"></div>
                   <p class="text-primary text-xs font-bold tracking-[0.3em] uppercase mb-4">
                     3. Energetic &amp; Embodied Healing
                   </p>
@@ -522,46 +542,93 @@
               </div>
 
               <div
-                class="rounded-3xl border border-white/10 bg-linear-to-br from-white/8 to-white/4 p-8 md:p-10 lg:p-12"
+                class="approach-philosophy-panel rounded-3xl border border-white/10 bg-linear-to-br from-white/8 to-white/4 p-8 md:p-10 lg:p-12"
               >
-                <div class="max-w-4xl space-y-6">
-                  <h3
-                    class="text-4xl md:text-5xl font-light italic"
-                    style="color: #9E8976 !important"
-                  >
-                    Our Philosophy
-                  </h3>
-                  <div class="space-y-4 text-stone-300 text-lg leading-loose font-light">
-                    <p>
-                      We do not believe in creating dependency on a healer or
-                      guide.
-                    </p>
-                    <p>
-                      Our intention is to help individuals reconnect with their
-                      own inner intelligence and power.
-                    </p>
-                    <p>Every session is approached with:</p>
+                <div class="approach-philosophy-panel-grid">
+                  <div class="approach-philosophy-panel-media">
+                    <img
+                      decoding="async"
+                      loading="lazy"
+                      src="assets/images/Sacred Body Work.jpg"
+                      alt="Touch and Move philosophy visual"
+                      class="approach-philosophy-panel-image"
+                    />
+                    <div class="approach-philosophy-panel-note">
+                      Gentle guidance. Deep listening. Sustainable change.
+                    </div>
                   </div>
-                  <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                    <div
-                      class="rounded-2xl border border-white/10 bg-black/20 px-5 py-4 text-center text-stone-200 uppercase tracking-[0.22em] text-xs font-semibold"
+                  <div class="max-w-4xl space-y-6">
+                    <h3
+                      class="text-4xl md:text-5xl font-light italic"
+                      style="color: #9E8976 !important"
                     >
-                      respect
+                      Our Philosophy
+                    </h3>
+                    <div class="space-y-4 text-stone-300 text-lg leading-loose font-light">
+                      <p>
+                        We do not believe in creating dependency on a healer or
+                        guide.
+                      </p>
+                      <p>
+                        Our intention is to help individuals reconnect with
+                        their own inner intelligence and power.
+                      </p>
+                      <p>Every session is approached with:</p>
+                    </div>
+                    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                      <div
+                        class="approach-value-pill rounded-2xl border border-white/10 bg-black/20 px-5 py-4 text-center text-stone-200 uppercase tracking-[0.22em] text-xs font-semibold"
+                      >
+                        <span class="approach-value-pill-dot" aria-hidden="true"></span>
+                        <span class="approach-value-pill-label">respect</span>
+                      </div>
+                      <div
+                        class="approach-value-pill rounded-2xl border border-white/10 bg-black/20 px-5 py-4 text-center text-stone-200 uppercase tracking-[0.22em] text-xs font-semibold"
+                      >
+                        <span class="approach-value-pill-dot" aria-hidden="true"></span>
+                        <span class="approach-value-pill-label">confidentiality</span>
+                      </div>
+                      <div
+                        class="approach-value-pill rounded-2xl border border-white/10 bg-black/20 px-5 py-4 text-center text-stone-200 uppercase tracking-[0.22em] text-xs font-semibold"
+                      >
+                        <span class="approach-value-pill-dot" aria-hidden="true"></span>
+                        <span class="approach-value-pill-label">compassion</span>
+                      </div>
+                      <div
+                        class="approach-value-pill rounded-2xl border border-white/10 bg-black/20 px-5 py-4 text-center text-stone-200 uppercase tracking-[0.22em] text-xs font-semibold"
+                      >
+                        <span class="approach-value-pill-dot" aria-hidden="true"></span>
+                        <span class="approach-value-pill-label">non-judgment</span>
+                      </div>
                     </div>
                     <div
-                      class="rounded-2xl border border-white/10 bg-black/20 px-5 py-4 text-center text-stone-200 uppercase tracking-[0.22em] text-xs font-semibold"
+                      class="approach-philosophy-highlight rounded-3xl border border-white/10 bg-black/10 p-6 md:p-8"
                     >
-                      confidentiality
-                    </div>
-                    <div
-                      class="rounded-2xl border border-white/10 bg-black/20 px-5 py-4 text-center text-stone-200 uppercase tracking-[0.22em] text-xs font-semibold"
-                    >
-                      compassion
-                    </div>
-                    <div
-                      class="rounded-2xl border border-white/10 bg-black/20 px-5 py-4 text-center text-stone-200 uppercase tracking-[0.22em] text-xs font-semibold"
-                    >
-                      non-judgment
+                      <p
+                        class="text-primary text-xs font-bold tracking-[0.3em] uppercase mb-4"
+                      >
+                        Integrated Transformation
+                      </p>
+                      <div
+                        class="space-y-4 text-stone-300 text-base md:text-lg leading-loose font-light"
+                      >
+                        <p>
+                          When these three dimensions are approached together,
+                          transformation becomes more grounded, compassionate,
+                          and sustainable.
+                        </p>
+                        <p>
+                          Awareness brings clarity. Subconscious work creates
+                          space. Embodied healing helps that shift settle into
+                          the body, the nervous system, and everyday life.
+                        </p>
+                        <p>
+                          The intention is not only to feel better for a
+                          moment, but to support a deeper return to inner
+                          balance, vitality, self-connection, and a natural
+                          sense of flow.
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -592,27 +659,8 @@
                 </button>
               </div>
               <div
-                class="approach-modalities-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-white/5 border border-white/5"
+                class="approach-modalities-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-px bg-white/5 border border-white/5"
               >
-                <div
-                  class="approach-modality-card bg-stone-950 p-12 transition-all hover:bg-primary/5 group"
-                >
-                  <div class="text-primary mb-10">
-                    <span
-                      class="material-symbols-outlined text-4xl font-extralight group-hover:scale-110 transition-transform duration-500"
-                      >playing_cards</span
-                    >
-                  </div>
-                  <h4
-                    class="text-xl font-medium text-white mb-5 uppercase tracking-widest"
-                  >
-                    Tarot Archetypes
-                  </h4>
-                  <p class="text-stone-500 text-sm leading-relaxed font-light">
-                    A symbolic mirror for the subconscious. Navigating the
-                    shadows of the psyche with ancient wisdom.
-                  </p>
-                </div>
                 <div
                   class="approach-modality-card bg-stone-950 p-12 transition-all hover:bg-primary/5 group"
                 >
@@ -666,25 +714,6 @@
                     nervous system with harmonic resonance.
                   </p>
                 </div>
-                <div
-                  class="approach-modality-card bg-stone-950 p-12 transition-all hover:bg-primary/5 group"
-                >
-                  <div class="text-primary mb-10">
-                    <span
-                      class="material-symbols-outlined text-4xl font-extralight group-hover:scale-110 transition-transform duration-500"
-                      >local_florist</span
-                    >
-                  </div>
-                  <h4
-                    class="text-xl font-medium text-white mb-5 uppercase tracking-widest"
-                  >
-                    Trauma Release
-                  </h4>
-                  <p class="text-stone-500 text-sm leading-relaxed font-light">
-                    Body-centered dissolution of stored history. Reclaiming
-                    autonomy through somatic unwinding.
-                  </p>
-                </div>
               </div>
               <div
                 class="approach-quote-panel mt-32 text-center rounded-3xl border border-white/10 px-6 py-14 md:px-12 md:py-20 w-full max-w-6xl mx-auto flex items-center justify-center"
@@ -699,6 +728,47 @@
                   "The body is the sacred vessel of your becoming. To refine it
                   is to awaken to the vastness within."
                 </p>
+              </div>
+            </div>
+          </section>
+          <section class="tm-campaign-section">
+            <div class="tm-campaign-shell">
+              <div class="tm-campaign-grid">
+                <div>
+                  <span class="tm-campaign-kicker">Personalized Abundance Workshop</span>
+                  <h2 class="tm-campaign-title">
+                    Work with Kuber Energy
+                    in a guided 7-day immersion
+                  </h2>
+                  <p class="tm-campaign-copy">
+                    For those who feel called to abundance work with deeper
+                    spiritual and practical integration, this WhatsApp workshop
+                    offers horoscope-based remedies, tarot insight, and daily
+                    support from April 11, 2026 to April 18, 2026.
+                  </p>
+                  <div class="tm-campaign-actions">
+                    <a class="tm-campaign-cta" href="kuber-energy-activation.html"
+                      >View Workshop Page</a
+                    >
+                    <a
+                      class="tm-campaign-secondary"
+                      href="https://wa.me/918698304955?text=Hi%20Harshaa%2C%20I%20feel%20called%20to%20know%20more%20about%20the%20Kuber%20Energy%20Activation%20workshop."
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >Connect on WhatsApp</a
+                    >
+                  </div>
+                </div>
+                <div class="tm-campaign-side">
+                  <div class="tm-campaign-card">
+                    <p class="tm-campaign-card-label">Dates</p>
+                    <p class="tm-campaign-card-value">April 11 to 18, 2026</p>
+                  </div>
+                  <div class="tm-campaign-card">
+                    <p class="tm-campaign-card-label">Includes</p>
+                    <p class="tm-campaign-card-value">Tarot, mantras, rituals, feedback</p>
+                  </div>
+                </div>
               </div>
             </div>
           </section>

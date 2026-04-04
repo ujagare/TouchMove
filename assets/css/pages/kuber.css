@@ -1,0 +1,645 @@
+body.tm-warm-theme {
+  background: #f5f1eb;
+  color: #3f3b34;
+}
+
+body.tm-warm-theme #navbar {
+  background: rgba(251, 249, 246, 0.82) !important;
+  border-color: rgba(158, 137, 118, 0.18) !important;
+  box-shadow: 0 10px 30px rgba(158, 137, 118, 0.08);
+}
+
+body.tm-warm-theme #navbar .brand-wordmark {
+  color: #7d6b5d !important;
+  display: inline-block;
+  opacity: 1 !important;
+  text-shadow: none;
+  line-height: 1;
+  letter-spacing: 0.18em;
+  font-size: 1rem !important;
+  font-weight: 700;
+  white-space: nowrap;
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+body.tm-warm-theme #line1,
+body.tm-warm-theme #line2 {
+  color: #3f3b34 !important;
+  background-color: #3f3b34 !important;
+}
+
+body.tm-warm-theme #navbar .book-now-btn,
+body.tm-warm-theme .mobile-contact-link,
+.kuber-sticky-cta a {
+  background: #9e8976 !important;
+  border-color: #9e8976 !important;
+  color: #fff !important;
+}
+
+body.tm-warm-theme #navbar .book-now-btn:hover,
+body.tm-warm-theme .mobile-contact-link:hover,
+.kuber-sticky-cta a:hover {
+  background: #7d6b5d !important;
+}
+
+.kuber-whatsapp-button {
+  background: #25d366 !important;
+  border-color: #25d366 !important;
+  color: #ffffff !important;
+}
+
+.kuber-whatsapp-button:hover {
+  background: #1ebe5b !important;
+  border-color: #1ebe5b !important;
+  color: #ffffff !important;
+}
+
+body.tm-warm-theme #mobileMenu {
+  background: rgba(245, 241, 232, 0.96) !important;
+}
+
+body.tm-warm-theme #mobileMenu a {
+  color: #3f3b34 !important;
+}
+
+body.tm-warm-theme #mobileMenu a:hover {
+  color: #9e8976 !important;
+}
+
+.kuber-page {
+  color: #4d433b;
+}
+
+.kuber-page h1,
+.kuber-page h2,
+.kuber-page h3,
+.kuber-page h4,
+.kuber-page h5,
+.kuber-page h6 {
+  color: #806e5f !important;
+}
+
+.kuber-hero {
+  position: relative;
+  min-height: auto;
+  padding: 6.2rem 1.25rem 1.5rem;
+  display: grid;
+  align-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at top left, rgba(255, 245, 230, 0.9), transparent 28%),
+    linear-gradient(180deg, rgba(255, 251, 246, 0.98), rgba(244, 236, 226, 0.88));
+}
+
+.kuber-hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 1320px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.kuber-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(300px, 0.95fr);
+  gap: clamp(1rem, 3vw, 2rem);
+  align-items: center;
+}
+
+.kuber-hero-panel {
+  padding: clamp(1.1rem, 2.2vw, 1.8rem);
+  border-radius: 2rem;
+  border: 1px solid rgba(158, 137, 118, 0.18);
+  background:
+    linear-gradient(180deg, rgba(252, 248, 243, 0.9), rgba(246, 239, 231, 0.82));
+  box-shadow: 0 24px 60px rgba(49, 38, 27, 0.18);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.kuber-hero-image-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 24rem;
+  border-radius: 2rem;
+  border: 1px solid rgba(158, 137, 118, 0.18);
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 26px 54px rgba(125, 107, 93, 0.16);
+}
+
+.kuber-hero-image-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(26, 18, 10, 0.02), rgba(26, 18, 10, 0.12));
+  pointer-events: none;
+}
+
+.kuber-hero-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}
+
+.kuber-kicker,
+.kuber-section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.55rem 0.95rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(158, 137, 118, 0.16);
+  color: #8d7663;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.kuber-kicker::before,
+.kuber-section-label::before {
+  content: "";
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #d9b08b 0%, #9e8976 100%);
+  box-shadow: 0 0 0 0.35rem rgba(158, 137, 118, 0.12);
+}
+
+.kuber-title {
+  margin-top: 0.85rem;
+  color: #433830;
+  font-family: "Newsreader", serif;
+  font-size: clamp(2.2rem, 5vw, 4.3rem);
+  line-height: 0.98;
+  letter-spacing: -0.05em;
+}
+
+.kuber-title span {
+  display: block;
+  margin-top: 0.45rem;
+  color: #9e8976;
+  font-style: italic;
+}
+
+.kuber-copy,
+.kuber-story-copy p,
+.kuber-invite-copy {
+  margin-top: 0.9rem;
+  color: #63584f;
+  font-size: 0.98rem;
+  line-height: 1.75;
+}
+
+.kuber-meta {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.kuber-meta-card,
+.kuber-story-card,
+.kuber-detail-box {
+  padding: 0.85rem 0.85rem 0.95rem;
+  border-radius: 1.4rem;
+  background: rgba(255, 255, 255, 0.76);
+  border: 1px solid rgba(158, 137, 118, 0.16);
+  box-shadow: 0 14px 28px rgba(125, 107, 93, 0.08);
+}
+
+.kuber-meta-label,
+.kuber-card-kicker {
+  color: #8b7564;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.kuber-meta-value,
+.kuber-card-text,
+.kuber-detail-text,
+.kuber-detail-note {
+  margin-top: 0.4rem;
+  color: #4c4138;
+  line-height: 1.7;
+}
+
+.kuber-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.1rem;
+}
+
+.kuber-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.2rem;
+  padding: 1rem 1.35rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.kuber-btn-primary {
+  background: linear-gradient(135deg, #9e8976 0%, #7d6b5d 100%);
+  color: #fff;
+  box-shadow: 0 16px 30px rgba(125, 107, 93, 0.2);
+}
+
+.kuber-btn-secondary {
+  background: rgba(255, 255, 255, 0.64);
+  border: 1px solid rgba(158, 137, 118, 0.18);
+  color: #6b5d50;
+}
+
+.kuber-btn:hover {
+  transform: translateY(-2px);
+}
+
+.kuber-proof {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 0.95rem;
+}
+
+.kuber-proof span {
+  padding: 0.55rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid rgba(158, 137, 118, 0.14);
+  background: rgba(255, 255, 255, 0.58);
+  color: #735f4f;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.kuber-section {
+  padding: 4.5rem 1.25rem;
+}
+
+.kuber-section-soft {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.36), rgba(255, 255, 255, 0.12));
+}
+
+.kuber-container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.kuber-story-grid,
+.kuber-process-grid,
+.kuber-invite-shell {
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: start;
+}
+
+.kuber-story-grid,
+.kuber-process-grid {
+  grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+}
+
+.kuber-story-panel,
+.kuber-details-panel {
+  display: grid;
+  gap: 1rem;
+}
+
+.kuber-section-title {
+  margin-top: 1rem;
+  color: #443931;
+  font-family: "Newsreader", serif;
+  font-size: clamp(2rem, 4.4vw, 3.5rem);
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+}
+
+.kuber-section-heading {
+  max-width: 760px;
+  margin-bottom: 2rem;
+}
+
+.kuber-form-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(320px, 1.08fr);
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: start;
+}
+
+.kuber-form-panel {
+  position: relative;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  border-radius: 2rem;
+  border: 1px solid rgba(158, 137, 118, 0.18);
+  background:
+    radial-gradient(circle at top right, rgba(255, 255, 255, 0.52), transparent 34%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.7));
+  box-shadow: 0 18px 40px rgba(125, 107, 93, 0.1);
+}
+
+.kuber-lead-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.kuber-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.kuber-field {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.kuber-field label {
+  color: #8c7664;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.kuber-field input,
+.kuber-field textarea {
+  width: 100%;
+  border: 1px solid rgba(158, 137, 118, 0.18);
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.82);
+  color: #4a4038;
+  padding: 0.95rem 1rem;
+  font-size: 0.98rem;
+  line-height: 1.6;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.kuber-field textarea {
+  resize: vertical;
+  min-height: 8rem;
+}
+
+.kuber-field input:focus,
+.kuber-field textarea:focus {
+  outline: none;
+  border-color: rgba(158, 137, 118, 0.48);
+  box-shadow: 0 0 0 4px rgba(158, 137, 118, 0.08);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.kuber-field input::placeholder,
+.kuber-field textarea::placeholder {
+  color: #8f8378;
+}
+
+.kuber-submit {
+  width: 100%;
+  margin-top: 0.35rem;
+}
+
+.kuber-benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.kuber-benefit-card {
+  position: relative;
+  overflow: hidden;
+  padding: 1.5rem;
+  border-radius: 1.7rem;
+  border: 1px solid rgba(158, 137, 118, 0.18);
+  background:
+    radial-gradient(circle at top right, rgba(255, 255, 255, 0.48), transparent 36%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.84), rgba(255, 255, 255, 0.6));
+  box-shadow: 0 18px 36px rgba(125, 107, 93, 0.08);
+}
+
+.kuber-benefit-card .material-symbols-outlined {
+  color: #9e8976;
+  font-size: 2rem;
+}
+
+.kuber-benefit-icon {
+  width: 2rem;
+  height: 2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #9e8976;
+}
+
+.kuber-benefit-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.kuber-benefit-card h3 {
+  margin-top: 1rem;
+  color: #4c4138;
+  font-family: "Newsreader", serif;
+  font-size: 1.55rem;
+  line-height: 1.15;
+}
+
+.kuber-benefit-card p {
+  margin-top: 0.75rem;
+  color: #665a50;
+  line-height: 1.8;
+}
+
+.kuber-steps {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.kuber-steps li {
+  padding: 1rem 1rem 1.1rem;
+  border-radius: 1.25rem;
+  border: 1px solid rgba(158, 137, 118, 0.16);
+  background: rgba(255, 255, 255, 0.68);
+  color: #5f544b;
+  line-height: 1.8;
+}
+
+.kuber-actions-stack {
+  align-content: start;
+}
+
+.kuber-invite-shell {
+  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  border-radius: 2rem;
+  border: 1px solid rgba(158, 137, 118, 0.18);
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.44), transparent 35%),
+    linear-gradient(135deg, rgba(255, 249, 244, 0.92), rgba(249, 239, 230, 0.8));
+  box-shadow: 0 20px 46px rgba(125, 107, 93, 0.1);
+}
+
+.kuber-sticky-cta {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 9999;
+}
+
+.kuber-sticky-cta a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.6rem;
+  height: 3.6rem;
+  min-height: 3.6rem;
+  padding: 0;
+  border-radius: 999px;
+  box-shadow: 0 16px 34px rgba(125, 107, 93, 0.28);
+}
+
+.kuber-sticky-whatsapp-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  display: block;
+}
+
+@keyframes slideNavDown {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 1024px) {
+  .kuber-meta,
+  .kuber-benefits-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .kuber-story-grid,
+  .kuber-process-grid,
+  .kuber-invite-shell,
+  .kuber-form-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .kuber-hero-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 767px) {
+  body.tm-warm-theme .brand-wordmark {
+    font-size: 0.82rem !important;
+    letter-spacing: 0.12em;
+  }
+
+  .kuber-hero {
+    min-height: auto;
+    padding-top: 5.8rem;
+    padding-bottom: 1rem;
+  }
+
+  .kuber-hero-panel {
+    border-radius: 1.5rem;
+    padding: 1rem;
+  }
+
+  .kuber-hero-image-card {
+    min-height: 15rem;
+    border-radius: 1.5rem;
+  }
+
+  .kuber-title {
+    font-size: 1.95rem;
+  }
+
+  .kuber-copy,
+  .kuber-story-copy p,
+  .kuber-invite-copy,
+  .kuber-benefit-card p,
+  .kuber-steps li,
+  .kuber-card-text,
+  .kuber-detail-text,
+  .kuber-detail-note {
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  .kuber-meta,
+  .kuber-benefits-grid,
+  .kuber-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .kuber-actions {
+    flex-direction: column;
+  }
+
+  .kuber-btn {
+    width: 100%;
+  }
+
+  .kuber-proof span {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .kuber-section {
+    padding: 3rem 1rem;
+  }
+
+  .kuber-benefit-card,
+  .kuber-meta-card,
+  .kuber-story-card,
+  .kuber-detail-box {
+    border-radius: 1.25rem;
+  }
+
+  .kuber-invite-shell {
+    border-radius: 1.5rem;
+    padding: 1.25rem;
+  }
+
+  .kuber-form-panel {
+    border-radius: 1.5rem;
+    padding: 1.25rem;
+  }
+
+  .kuber-field input,
+  .kuber-field textarea {
+    font-size: 16px;
+  }
+
+  .kuber-sticky-cta {
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+  }
+
+  .kuber-sticky-cta a {
+    width: 3.4rem;
+    height: 3.4rem;
+    min-height: 3.4rem;
+  }
+}

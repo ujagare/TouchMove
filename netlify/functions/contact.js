@@ -84,6 +84,12 @@ function validMessage(value) {
   return value.length >= 10 && value.length <= 5000;
 }
 
+function formLabel(formType) {
+  if (formType === "intake") return "Client Intake Form";
+  if (formType === "kuber-workshop") return "Kuber Workshop Inquiry";
+  return "Contact Form";
+}
+
 function htmlEscape(value) {
   return String(value)
     .replace(/&/g, "&amp;")
@@ -400,6 +406,11 @@ exports.handler = async (event) => {
   const location = sanitize(payload.location, 120);
   const service = sanitize(payload.service, 160);
   const message = sanitize(payload.message, 5000);
+  const birthDate = sanitize(payload.birthDate, 40);
+  const birthTime = sanitize(payload.birthTime, 80);
+  const birthPlace = sanitize(payload.birthPlace, 180);
+  const workshopName = sanitize(payload.workshopName, 200);
+  const sourcePage = sanitize(payload.sourcePage, 120);
   const honeypot = sanitize(payload.website || payload.botField, 200);
   const startedAt = sanitize(payload.formStartedAt, 40);
   const recaptchaToken = sanitize(payload.recaptchaToken, 2000);
@@ -445,7 +456,7 @@ exports.handler = async (event) => {
     return response(400, { ok: false, message: "Please enter a valid name." });
   }
 
-  if (!validEmail(email)) {
+  if (email && !validEmail(email)) {
     logSecurityEvent("INVALID_EMAIL", { ip: clientIP, email });
     return response(400, { ok: false, message: "Please enter a valid email." });
   }
@@ -466,19 +477,23 @@ exports.handler = async (event) => {
     });
   }
 
-  const subjectPrefix =
-    formType === "intake" ? "Client Intake Form" : "Contact Form";
+  const subjectPrefix = formLabel(formType);
   const subject = `[Touch and Move] ${subjectPrefix} from ${name}`;
 
   const html = `
     <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #111827;">
       <h2 style="margin-bottom: 16px;">New ${htmlEscape(subjectPrefix)} Submission</h2>
       <p><strong>Name:</strong> ${htmlEscape(name)}</p>
-      <p><strong>Email:</strong> ${htmlEscape(email)}</p>
+      <p><strong>Email:</strong> ${htmlEscape(email || "Not provided")}</p>
       <p><strong>Phone:</strong> ${htmlEscape(phone)}</p>
       <p><strong>Location:</strong> ${htmlEscape(location || "Not provided")}</p>
       <p><strong>Preferred Service:</strong> ${htmlEscape(service || "Not provided")}</p>
       <p><strong>Form Type:</strong> ${htmlEscape(formType)}</p>
+      <p><strong>Workshop:</strong> ${htmlEscape(workshopName || "Not provided")}</p>
+      <p><strong>Birth Date:</strong> ${htmlEscape(birthDate || "Not provided")}</p>
+      <p><strong>Birth Time:</strong> ${htmlEscape(birthTime || "Not provided")}</p>
+      <p><strong>Birth Place:</strong> ${htmlEscape(birthPlace || "Not provided")}</p>
+      <p><strong>Source Page:</strong> ${htmlEscape(sourcePage || "Not provided")}</p>
       <p><strong>Message:</strong></p>
       <div style="padding: 12px 14px; background: #f3f4f6; border-radius: 8px; white-space: pre-wrap;">${htmlEscape(message)}</div>
       <p style="margin-top: 16px;"><strong>Submitted At:</strong> ${htmlEscape(new Date().toISOString())}</p>
@@ -499,9 +514,9 @@ exports.handler = async (event) => {
       body: JSON.stringify({
         from: fromEmail,
         to: [toEmail],
-        reply_to: email,
         subject,
         html,
+        ...(email ? { reply_to: email } : {}),
       }),
       signal: controller.signal,
     });
@@ -559,7 +574,10 @@ exports.handler = async (event) => {
   });
 
   // Send auto-reply to user
-  const autoReplySubject = "Thank you for contacting Touch and Move";
+  const autoReplySubject =
+    formType === "kuber-workshop"
+      ? "Your Kuber Workshop Inquiry Has Been Received"
+      : "Thank you for contacting Touch and Move";
   const autoReplyHtml = `
     <div style="font-family: Arial, sans-serif; line-height: 1.8; color: #111827; max-width: 600px; margin: 0 auto;">
       <div style="background: linear-gradient(135deg, #9E8976 0%, #8B7355 100%); padding: 30px; text-align: center; border-radius: 12px 12px 0 0;">
@@ -570,7 +588,13 @@ exports.handler = async (event) => {
         <h2 style="color: #9E8976; margin-top: 0; font-size: 24px;">Thank You, ${htmlEscape(name)}!</h2>
         
         <p style="color: #374151; font-size: 16px; margin: 20px 0;">
-          We have received your ${formType === "intake" ? "intake form" : "message"} and truly appreciate you reaching out to us.
+          We have received your ${
+            formType === "intake"
+              ? "intake form"
+              : formType === "kuber-workshop"
+                ? "workshop inquiry"
+                : "message"
+          } and truly appreciate you reaching out to us.
         </p>
         
         <p style="color: #374151; font-size: 16px; margin: 20px 0;">
@@ -580,7 +604,7 @@ exports.handler = async (event) => {
         <div style="background: #f9fafb; padding: 20px; border-left: 4px solid #9E8976; margin: 30px 0; border-radius: 4px;">
           <p style="margin: 0; color: #6b7280; font-size: 14px;"><strong>Your Details:</strong></p>
           <p style="margin: 10px 0 0 0; color: #374151; font-size: 14px;">
-            <strong>Email:</strong> ${htmlEscape(email)}<br>
+            <strong>Email:</strong> ${htmlEscape(email || "Not provided")}<br>
             <strong>Phone:</strong> ${htmlEscape(phone)}
           </p>
         </div>
@@ -612,7 +636,8 @@ exports.handler = async (event) => {
   `;
 
   // Send auto-reply email to user
-  try {
+  if (email) {
+    try {
     const autoReplyResponse = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
@@ -640,12 +665,15 @@ exports.handler = async (event) => {
     });
     // Don't fail the main request if auto-reply fails
   }
+  }
 
   return response(200, {
     ok: true,
     message:
       formType === "intake"
         ? "Your intake form has been submitted successfully."
-        : "Your message has been sent successfully.",
+        : formType === "kuber-workshop"
+          ? "Your workshop inquiry has been submitted successfully."
+          : "Your message has been sent successfully.",
   });
 };

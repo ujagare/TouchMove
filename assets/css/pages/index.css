@@ -677,7 +677,7 @@ body {
         align-items: stretch;
         gap: 1rem;
         width: max-content;
-        animation: tm-marquee-scroll 20s linear infinite;
+        animation: tm-marquee-scroll 32s linear infinite;
         padding: 0.5rem 0.25rem;
         will-change: transform;
       }
@@ -750,8 +750,7 @@ body {
         opacity: 1;
       }
       .tm-format-card img,
-      .tm-explore-card .tm-explore-icon,
-      .tm-review-card .tm-review-avatar {
+      .tm-explore-card .tm-explore-icon {
         transition:
           transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
           box-shadow 0.45s ease,
@@ -763,14 +762,6 @@ body {
       .tm-explore-card:hover .tm-explore-icon {
         transform: translate3d(0, -4px, 0) scale(1.08);
         box-shadow: 0 20px 36px rgba(158, 137, 118, 0.22);
-      }
-      .tm-review-card:hover .tm-review-avatar {
-        transform: scale(1.08);
-      }
-      .tm-review-avatar {
-        width: 32px;
-        height: 32px;
-        border-radius: 9999px;
       }
       .tm-marquee-fade {
         pointer-events: none;
@@ -824,6 +815,30 @@ body {
 @media (max-width: 768px) {
   .tm-explore-icon {
     animation: none !important;
+  }
+
+  .tm-review-card {
+    width: 12.5rem;
+    padding: 0.85rem;
+  }
+
+  .tm-review-card .mb-3 {
+    margin-bottom: 0.5rem;
+  }
+
+  .tm-review-card .text-sm.font-semibold {
+    font-size: 0.8rem;
+    line-height: 1.15rem;
+  }
+
+  .tm-review-card .text-xs {
+    font-size: 0.65rem;
+    line-height: 0.9rem;
+  }
+
+  .tm-review-card .text-sm.text-slate-300 {
+    font-size: 0.8rem;
+    line-height: 1.2rem;
   }
 }
 

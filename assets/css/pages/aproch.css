@@ -26,6 +26,236 @@ body {
         padding-bottom: clamp(5rem, 10vw, 8rem);
       }
 
+      .approach-philosophy-intro {
+        display: grid;
+        grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+        gap: clamp(2rem, 5vw, 4rem);
+        align-items: end;
+      }
+
+      .approach-philosophy-copy-shell {
+        position: relative;
+        padding: clamp(1.5rem, 3vw, 2rem);
+        border-radius: 2rem;
+        border: 1px solid rgba(158, 137, 118, 0.16);
+        background:
+          radial-gradient(circle at top left, rgba(212, 199, 184, 0.35), transparent 38%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.4));
+        box-shadow: 0 28px 60px rgba(125, 107, 93, 0.08);
+        overflow: hidden;
+      }
+
+      .approach-philosophy-copy-shell::after {
+        content: "";
+        position: absolute;
+        right: -3rem;
+        top: -3rem;
+        width: 10rem;
+        height: 10rem;
+        border-radius: 999px;
+        background: radial-gradient(circle, rgba(158, 137, 118, 0.22), transparent 72%);
+        pointer-events: none;
+      }
+
+      .approach-philosophy-visual {
+        position: relative;
+      }
+
+      .approach-philosophy-visual-frame {
+        position: relative;
+        border-radius: 2rem;
+        overflow: hidden;
+        min-height: 26rem;
+        box-shadow: 0 30px 60px rgba(125, 107, 93, 0.18);
+      }
+
+      .approach-philosophy-visual-frame::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(18, 16, 14, 0.05), rgba(18, 16, 14, 0.5));
+      }
+
+      .approach-philosophy-visual-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        position: absolute;
+        inset: 0;
+      }
+
+      .approach-philosophy-visual-chip {
+        position: absolute;
+        left: 1.25rem;
+        bottom: 1.25rem;
+        z-index: 2;
+        padding: 0.9rem 1.1rem;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.78);
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        color: #6b5d50;
+        font-size: 0.72rem;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+        box-shadow: 0 16px 30px rgba(55, 45, 36, 0.16);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+      }
+
+      .approach-dimension-card {
+        position: relative;
+        overflow: hidden;
+        min-height: 100%;
+        transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+      }
+
+      .approach-dimension-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 24px 48px rgba(125, 107, 93, 0.14);
+        border-color: rgba(158, 137, 118, 0.26) !important;
+      }
+
+      .approach-dimension-orb {
+        position: absolute;
+        top: -3.5rem;
+        right: -2rem;
+        width: 9rem;
+        height: 9rem;
+        border-radius: 999px;
+        background: radial-gradient(circle, rgba(158, 137, 118, 0.2), transparent 70%);
+        pointer-events: none;
+      }
+
+      .approach-philosophy-panel {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .approach-philosophy-panel::before {
+        content: "";
+        position: absolute;
+        left: -8%;
+        top: -15%;
+        width: 18rem;
+        height: 18rem;
+        border-radius: 999px;
+        background: radial-gradient(circle, rgba(158, 137, 118, 0.16), transparent 72%);
+        pointer-events: none;
+      }
+
+      .approach-philosophy-panel-grid {
+        display: grid;
+        grid-template-columns: minmax(260px, 0.78fr) minmax(0, 1.22fr);
+        gap: clamp(1.5rem, 4vw, 3rem);
+        align-items: stretch;
+      }
+
+      .approach-philosophy-panel-media {
+        position: relative;
+        min-height: 100%;
+      }
+
+      .approach-philosophy-panel-image {
+        width: 100%;
+        height: 100%;
+        min-height: 30rem;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 2rem;
+        box-shadow: 0 26px 50px rgba(125, 107, 93, 0.16);
+      }
+
+      .approach-philosophy-panel-note {
+        position: absolute;
+        right: 1.25rem;
+        bottom: 1.25rem;
+        max-width: 16rem;
+        padding: 1rem 1.1rem;
+        border-radius: 1.25rem;
+        background: rgba(255, 255, 255, 0.8);
+        color: #67584b;
+        font-size: 0.78rem;
+        line-height: 1.6;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        border: 1px solid rgba(255, 255, 255, 0.7);
+        box-shadow: 0 16px 28px rgba(55, 45, 36, 0.14);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+      }
+
+      .approach-value-pill {
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.8rem;
+        min-height: 7.25rem;
+        padding: 1.2rem 1rem !important;
+        border-color: rgba(158, 137, 118, 0.22) !important;
+        background:
+          radial-gradient(circle at top, rgba(255, 255, 255, 0.45), transparent 55%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.74), rgba(255, 255, 255, 0.45)) !important;
+        color: #6f6257 !important;
+        letter-spacing: 0.24em !important;
+        box-shadow: 0 16px 30px rgba(125, 107, 93, 0.08);
+        transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+      }
+
+      .approach-value-pill::before {
+        content: "";
+        position: absolute;
+        inset: auto -2.5rem -2.5rem auto;
+        width: 7rem;
+        height: 7rem;
+        border-radius: 999px;
+        background: radial-gradient(circle, rgba(158, 137, 118, 0.12), transparent 72%);
+        pointer-events: none;
+      }
+
+      .approach-value-pill:hover {
+        transform: translateY(-3px);
+        border-color: rgba(158, 137, 118, 0.34) !important;
+        box-shadow: 0 20px 36px rgba(125, 107, 93, 0.12);
+      }
+
+      .approach-value-pill-dot {
+        width: 0.8rem;
+        height: 0.8rem;
+        border-radius: 999px;
+        background: linear-gradient(180deg, #cbb29e 0%, #9e8976 100%);
+        box-shadow: 0 0 0 0.42rem rgba(158, 137, 118, 0.14);
+        flex-shrink: 0;
+      }
+
+      .approach-value-pill-label {
+        position: relative;
+        z-index: 1;
+        display: block;
+        max-width: 100%;
+        line-height: 1.6;
+        text-wrap: balance;
+      }
+
+      .approach-philosophy-highlight {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .approach-philosophy-highlight::after {
+        content: "";
+        position: absolute;
+        inset: auto -4rem -4rem auto;
+        width: 10rem;
+        height: 10rem;
+        border-radius: 999px;
+        background: radial-gradient(circle, rgba(158, 137, 118, 0.12), transparent 72%);
+        pointer-events: none;
+      }
+
       .approach-philosophy-grid {
         display: grid;
         grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
@@ -90,6 +320,15 @@ body {
       }
 
       @media (max-width: 1023px) {
+        .approach-philosophy-intro,
+        .approach-philosophy-panel-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .approach-philosophy-visual {
+          max-width: 34rem;
+        }
+
         .approach-philosophy-grid {
           grid-template-columns: 1fr;
         }
@@ -105,6 +344,10 @@ body {
 
         .approach-philosophy-image {
           min-height: 420px;
+        }
+
+        .approach-philosophy-panel-media {
+          order: -1;
         }
       }
 
@@ -164,6 +407,29 @@ body {
           padding-right: 1.25rem;
         }
 
+        .approach-philosophy-intro {
+          gap: 1.25rem;
+        }
+
+        .approach-philosophy-copy-shell {
+          border-radius: 1.5rem;
+          padding: 1.25rem;
+        }
+
+        .approach-philosophy-visual-frame {
+          min-height: 18rem;
+          border-radius: 1.5rem;
+        }
+
+        .approach-philosophy-visual-chip {
+          left: 0.9rem;
+          right: 0.9rem;
+          bottom: 0.9rem;
+          padding: 0.8rem 0.9rem;
+          font-size: 0.62rem;
+          text-align: center;
+        }
+
         .approach-philosophy-grid {
           gap: 2rem;
         }
@@ -196,6 +462,47 @@ body {
 
         .approach-philosophy-image {
           min-height: 320px;
+        }
+
+        .approach-dimension-card {
+          border-radius: 1.5rem !important;
+        }
+
+        .approach-philosophy-panel {
+          border-radius: 1.5rem !important;
+          padding: 1.25rem !important;
+        }
+
+        .approach-philosophy-panel-image {
+          min-height: 20rem;
+          border-radius: 1.5rem;
+        }
+
+        .approach-philosophy-panel-note {
+          right: 0.9rem;
+          left: 0.9rem;
+          bottom: 0.9rem;
+          max-width: none;
+          font-size: 0.68rem;
+          letter-spacing: 0.1em;
+          text-align: center;
+        }
+
+        .approach-value-pill {
+          border-radius: 1rem !important;
+          min-height: 6.4rem;
+          gap: 0.65rem;
+          padding: 1rem 0.85rem !important;
+        }
+
+        .approach-value-pill-label {
+          font-size: 0.68rem;
+          letter-spacing: 0.18em;
+        }
+
+        .approach-philosophy-highlight {
+          border-radius: 1.25rem !important;
+          padding: 1.15rem !important;
         }
       }
       body.tm-warm-theme {
