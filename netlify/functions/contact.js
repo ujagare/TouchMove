@@ -372,19 +372,35 @@ exports.handler = async (event) => {
   }
 
   const resendApiKey = firstEnv("RESEND_API_KEY", "API_KEY", "RESEND_KEY");
-  const toEmailRaw =
-    firstEnv(
-      "CONTACT_TO_EMAIL",
-      "CONTACT_RECIPIENT_EMAIL",
-      "TO_EMAIL",
-      "RESEND_TO_EMAIL",
-    ) || "touchandmove.69@gmail.com";
   const fromEmailRaw =
     firstEnv("CONTACT_FROM_EMAIL", "FROM_EMAIL", "RESEND_FROM_EMAIL") ||
     "Touch and Move <onboarding@resend.dev>";
-  const toEmail = extractEmailAddress(toEmailRaw);
   const fromEmail = extractEmailAddress(fromEmailRaw);
 
+  let payload;
+  try {
+    payload = JSON.parse(event.body || "{}");
+  } catch {
+    logSecurityEvent("INVALID_JSON", { ip: clientIP });
+    return response(400, { ok: false, message: GENERIC_ERROR_MESSAGE });
+  }
+
+  const formType = sanitize(payload.formType, 40) || "contact";
+  const toEmailRaw =
+    formType === "kuber-workshop"
+      ? firstEnv(
+          "WORKSHOP_TO_EMAIL",
+          "KUBER_TO_EMAIL",
+          "KUBER_WORKSHOP_TO_EMAIL",
+          "WORKSHOP_RECIPIENT_EMAIL",
+        ) || "touchandmove.69+workshop@gmail.com"
+      : firstEnv(
+          "CONTACT_TO_EMAIL",
+          "CONTACT_RECIPIENT_EMAIL",
+          "TO_EMAIL",
+          "RESEND_TO_EMAIL",
+        ) || "touchandmove.69+contact@gmail.com";
+  const toEmail = extractEmailAddress(toEmailRaw);
   if (!resendApiKey || !fromEmail || !toEmail) {
     console.error("Missing email configuration", {
       hasResendApiKey: Boolean(resendApiKey),
@@ -400,16 +416,6 @@ exports.handler = async (event) => {
       message: "Email service is not configured correctly on the server.",
     });
   }
-
-  let payload;
-  try {
-    payload = JSON.parse(event.body || "{}");
-  } catch {
-    logSecurityEvent("INVALID_JSON", { ip: clientIP });
-    return response(400, { ok: false, message: GENERIC_ERROR_MESSAGE });
-  }
-
-  const formType = sanitize(payload.formType, 40) || "contact";
   const adminFromName =
     formType === "kuber-workshop"
       ? "Workshop se mail mila"
