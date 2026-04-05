@@ -188,3 +188,8 @@ body {
         }
       }
 
+      #contactSuccessMessage,
+      #contactErrorMessage {
+        z-index: 100001 !important;
+      }
+
