@@ -1238,6 +1238,37 @@
           startedAtField.value = String(Date.now());
         }
 
+        const getUnavailableHandlerMessage = () => {
+          const { hostname } = window.location;
+          const normalizedHostname = hostname.toLowerCase();
+
+          if (
+            normalizedHostname === "127.0.0.1" ||
+            normalizedHostname === "localhost"
+          ) {
+            return "Local Live Server email send support nahi karta. Netlify deploy, `netlify dev`, ya PHP server par form test kijiye.";
+          }
+
+          return "We could not find a working form handler on this website.";
+        };
+
+        const getContactEndpoints = () => {
+          const { hostname, origin, pathname } = window.location;
+          const normalizedHostname = hostname.toLowerCase();
+          const currentDirectory =
+            pathname.slice(0, pathname.lastIndexOf("/") + 1) || "/";
+
+          if (normalizedHostname.endsWith(".github.io")) {
+            return [];
+          }
+
+          return [
+            `${origin}/api/contact`,
+            `${origin}/.netlify/functions/contact`,
+            `${origin}${currentDirectory}contact.php`,
+          ];
+        };
+
         contactForm.addEventListener("submit", async (event) => {
           event.preventDefault();
 
@@ -1257,6 +1288,23 @@
           }
 
           try {
+            const contactEndpoints = getContactEndpoints();
+
+            if (!contactEndpoints.length) {
+              throw new Error(
+                "This contact form cannot send email from GitHub Pages. Deploy it on Netlify or a PHP-capable server first.",
+              );
+            }
+
+            if (
+              typeof window.grecaptcha === "undefined" ||
+              typeof window.grecaptcha.ready !== "function"
+            ) {
+              throw new Error(
+                "Security verification could not load. Please refresh the page and try again.",
+              );
+            }
+
             // Get reCAPTCHA token
             const recaptchaToken = await new Promise((resolve, reject) => {
               grecaptcha.ready(() => {
@@ -1272,16 +1320,50 @@
             // Add reCAPTCHA token to payload
             payload.recaptchaToken = recaptchaToken;
 
-            const response = await fetch("/.netlify/functions/contact", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(payload),
-            });
+            let response;
+            let result;
+            let lastErrorMessage = "";
 
-            const result = await response.json();
+            for (const endpoint of contactEndpoints) {
+              response = await fetch(endpoint, {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                  Accept: "application/json",
+                },
+                body: JSON.stringify(payload),
+              });
 
-            if (!response.ok || !result.ok) {
-              throw new Error(result.message || "Unable to send message.");
+              try {
+                result = await response.json();
+              } catch {
+                result = null;
+              }
+
+              if (response.ok && result?.ok) {
+                break;
+              }
+
+              if (
+                response.status === 404 ||
+                response.status === 405 ||
+                response.status === 502
+              ) {
+                lastErrorMessage =
+                  result?.message || `Endpoint failed with status ${response.status}.`;
+                continue;
+              }
+
+              throw new Error(
+                result?.message ||
+                  `Unable to send message. Server responded with status ${response.status}.`,
+              );
+            }
+
+            if (!response || !response.ok || !result?.ok) {
+              throw new Error(
+                lastErrorMessage || getUnavailableHandlerMessage(),
+              );
             }
 
             contactForm.reset();

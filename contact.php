@@ -1,16 +1,67 @@
 <?php
 declare(strict_types=1);
 
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    http_response_code(405);
-    header('Allow: POST');
-    echo 'Method Not Allowed';
-    exit;
-}
-
 header('X-Content-Type-Options: nosniff');
 header('X-Frame-Options: SAMEORIGIN');
 header('Referrer-Policy: strict-origin-when-cross-origin');
+
+function requestBody(): array
+{
+    static $body = null;
+
+    if ($body !== null) {
+        return $body;
+    }
+
+    $body = $_POST;
+
+    $contentType = isset($_SERVER['CONTENT_TYPE']) ? strtolower(trim((string) $_SERVER['CONTENT_TYPE'])) : '';
+    if ($body !== [] || strpos($contentType, 'application/json') === false) {
+        return $body;
+    }
+
+    $rawInput = file_get_contents('php://input');
+    if (!is_string($rawInput) || trim($rawInput) === '') {
+        return $body;
+    }
+
+    $decoded = json_decode($rawInput, true);
+    if (is_array($decoded)) {
+        $body = $decoded;
+    }
+
+    return $body;
+}
+
+function expectsJson(): bool
+{
+    $contentType = isset($_SERVER['CONTENT_TYPE']) ? strtolower(trim((string) $_SERVER['CONTENT_TYPE'])) : '';
+    $accept = isset($_SERVER['HTTP_ACCEPT']) ? strtolower(trim((string) $_SERVER['HTTP_ACCEPT'])) : '';
+
+    return strpos($contentType, 'application/json') !== false || strpos($accept, 'application/json') !== false;
+}
+
+function respond(int $statusCode, string $message, array $extra = []): void
+{
+    http_response_code($statusCode);
+
+    if (expectsJson()) {
+        header('Content-Type: application/json; charset=UTF-8');
+        echo json_encode(array_merge([
+            'ok' => $statusCode >= 200 && $statusCode < 300,
+            'message' => $message,
+        ], $extra), JSON_UNESCAPED_SLASHES);
+        exit;
+    }
+
+    echo $message;
+    exit;
+}
+
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    header('Allow: POST');
+    respond(405, 'Method Not Allowed');
+}
 
 function serverValue(string $key, int $maxLength = 2000): string
 {
@@ -23,7 +74,8 @@ function serverValue(string $key, int $maxLength = 2000): string
 
 function field(string $key, int $maxLength = 2000): string
 {
-    $value = isset($_POST[$key]) ? trim((string) $_POST[$key]) : '';
+    $payload = requestBody();
+    $value = isset($payload[$key]) ? trim((string) $payload[$key]) : '';
     $value = preg_replace('/[\x00-\x1F\x7F]+/u', ' ', $value) ?? '';
     $value = preg_replace('/\s+/u', ' ', $value) ?? '';
 
@@ -75,9 +127,7 @@ function mailHeaderValue(string $value, int $maxLength = 255): string
 
 $honeypot = field('website', 200);
 if ($honeypot !== '') {
-    http_response_code(400);
-    echo 'Invalid form data';
-    exit;
+    respond(400, 'Invalid form data');
 }
 
 $name = field('name', 120);
@@ -87,6 +137,9 @@ $location = field('location', 120);
 $service = field('service', 160);
 $message = field('message', 5000);
 $formType = field('form_type', 40);
+if ($formType === '') {
+    $formType = field('formType', 40);
+}
 $redirectTo = allowedRedirect(field('redirect_to', 255));
 
 if (
@@ -97,9 +150,7 @@ if (
     mb_strlen($message) < 10 ||
     !filter_var($email, FILTER_VALIDATE_EMAIL)
 ) {
-    http_response_code(400);
-    echo 'Invalid form data';
-    exit;
+    respond(400, 'Invalid form data');
 }
 
 $storagePath = getenv('CONTACT_STORAGE_PATH') ?: (__DIR__ . '/data/contact-submissions.csv');
@@ -124,9 +175,7 @@ $line = [
 
 $fp = fopen($storagePath, 'ab');
 if ($fp === false) {
-    http_response_code(500);
-    echo 'Unable to process form';
-    exit;
+    respond(500, 'Unable to process form');
 }
 
 if (flock($fp, LOCK_EX)) {
@@ -178,9 +227,11 @@ $mailSent = mail(
 );
 
 if (!$mailSent) {
-    http_response_code(500);
-    echo 'Unable to send email notification';
-    exit;
+    respond(500, 'Unable to send email notification');
+}
+
+if (expectsJson()) {
+    respond(200, 'Your message has been sent successfully.');
 }
 
 header('Location: ' . $successUrl, true, 303);
