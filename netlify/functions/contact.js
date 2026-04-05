@@ -99,6 +99,11 @@ function htmlEscape(value) {
     .replace(/'/g, "&#39;");
 }
 
+function optionalHtmlField(label, value) {
+  if (!value) return "";
+  return `<p><strong>${htmlEscape(label)}:</strong> ${htmlEscape(value)}</p>`;
+}
+
 function response(statusCode, body) {
   return {
     statusCode,
@@ -484,16 +489,16 @@ exports.handler = async (event) => {
     <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #111827;">
       <h2 style="margin-bottom: 16px;">New ${htmlEscape(subjectPrefix)} Submission</h2>
       <p><strong>Name:</strong> ${htmlEscape(name)}</p>
-      <p><strong>Email:</strong> ${htmlEscape(email || "Not provided")}</p>
+      ${optionalHtmlField("Email", email)}
       <p><strong>Phone:</strong> ${htmlEscape(phone)}</p>
-      <p><strong>Location:</strong> ${htmlEscape(location || "Not provided")}</p>
-      <p><strong>Preferred Service:</strong> ${htmlEscape(service || "Not provided")}</p>
+      ${optionalHtmlField("Location", location)}
+      ${optionalHtmlField("Preferred Service", service)}
       <p><strong>Form Type:</strong> ${htmlEscape(formType)}</p>
-      <p><strong>Workshop:</strong> ${htmlEscape(workshopName || "Not provided")}</p>
-      <p><strong>Birth Date:</strong> ${htmlEscape(birthDate || "Not provided")}</p>
-      <p><strong>Birth Time:</strong> ${htmlEscape(birthTime || "Not provided")}</p>
-      <p><strong>Birth Place:</strong> ${htmlEscape(birthPlace || "Not provided")}</p>
-      <p><strong>Source Page:</strong> ${htmlEscape(sourcePage || "Not provided")}</p>
+      ${optionalHtmlField("Workshop", workshopName)}
+      ${optionalHtmlField("Birth Date", birthDate)}
+      ${optionalHtmlField("Birth Time", birthTime)}
+      ${optionalHtmlField("Birth Place", birthPlace)}
+      ${optionalHtmlField("Source Page", sourcePage)}
       <p><strong>Message:</strong></p>
       <div style="padding: 12px 14px; background: #f3f4f6; border-radius: 8px; white-space: pre-wrap;">${htmlEscape(message)}</div>
       <p style="margin-top: 16px;"><strong>Submitted At:</strong> ${htmlEscape(new Date().toISOString())}</p>

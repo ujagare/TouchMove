@@ -200,9 +200,7 @@ $mailLines = [
     'Form: ' . formLabel($formType),
     'Name: ' . $name,
     'Email: ' . strtolower($email),
-    'Phone: ' . ($phone !== '' ? $phone : 'Not provided'),
-    'Location: ' . ($location !== '' ? $location : 'Not provided'),
-    'Preferred Service: ' . ($service !== '' ? $service : 'Not provided'),
+    'Phone: ' . $phone,
     '',
     'Message:',
     $message,
@@ -211,6 +209,14 @@ $mailLines = [
     'IP Address: ' . serverValue('REMOTE_ADDR', 100),
     'User Agent: ' . serverValue('HTTP_USER_AGENT', 500),
 ];
+
+if ($location !== '') {
+    array_splice($mailLines, 6, 0, 'Location: ' . $location);
+}
+
+if ($service !== '') {
+    array_splice($mailLines, $location !== '' ? 7 : 6, 0, 'Preferred Service: ' . $service);
+}
 
 $mailHeaders = [
     'MIME-Version: 1.0',
