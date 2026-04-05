@@ -60,6 +60,11 @@ function extractEmailAddress(value) {
   return raw;
 }
 
+function composeFromAddress(displayName, emailAddress) {
+  const safeName = sanitize(displayName, 120).replace(/"/g, "");
+  return `${safeName} <${emailAddress}>`;
+}
+
 function sanitize(value, maxLength = 2000) {
   return String(value ?? "")
     .replace(/[\x00-\x1F\x7F]+/g, " ")
@@ -405,6 +410,12 @@ exports.handler = async (event) => {
   }
 
   const formType = sanitize(payload.formType, 40) || "contact";
+  const adminFromName =
+    formType === "kuber-workshop"
+      ? "Workshop se mail mila"
+      : "Contact se mail mila";
+  const adminFromEmail = composeFromAddress(adminFromName, fromEmail);
+  const autoReplyFromEmail = composeFromAddress("Touch and Move", fromEmail);
   const name = sanitize(payload.name, 120);
   const email = sanitize(payload.email, 180).toLowerCase();
   const phone = sanitize(payload.phone, 40);
@@ -483,7 +494,10 @@ exports.handler = async (event) => {
   }
 
   const subjectPrefix = formLabel(formType);
-  const subject = `[Touch and Move] ${subjectPrefix} from ${name}`;
+  const subject =
+    formType === "kuber-workshop"
+      ? `[Workshop Form] ${name}`
+      : `[Contact Form] ${name}`;
 
   const html = `
     <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #111827;">
@@ -517,7 +531,7 @@ exports.handler = async (event) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: fromEmail,
+        from: adminFromEmail,
         to: [toEmail],
         subject,
         html,
@@ -650,7 +664,7 @@ exports.handler = async (event) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: fromEmail,
+        from: autoReplyFromEmail,
         to: [email],
         subject: autoReplySubject,
         html: autoReplyHtml,
