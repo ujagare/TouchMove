@@ -30,9 +30,9 @@ const GENERIC_ERROR_MESSAGE =
   "We could not process your request right now. Please try again.";
 
 // Rate limiting configuration
-const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000; // 1 hour
-const MAX_REQUESTS_PER_WINDOW = 5;
-const BLOCK_DURATION_MS = 60 * 60 * 1000; // 1 hour block
+const RATE_LIMIT_WINDOW_MS = 15 * 60 * 1000; // 15 minutes
+const MAX_REQUESTS_PER_WINDOW = 20;
+const BLOCK_DURATION_MS = 15 * 60 * 1000; // 15 minute block
 
 // In-memory storage for rate limiting (use Redis/KV in production for multi-instance)
 const requestLog = new Map();
