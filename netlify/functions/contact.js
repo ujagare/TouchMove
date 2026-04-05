@@ -490,8 +490,18 @@ exports.handler = async (event) => {
     formType === "kuber-workshop"
       ? "Workshop se mail mila"
       : "Contact se mail mila";
+  const autoReplyFromEmailRaw =
+    firstEnv(
+      "AUTO_REPLY_FROM_EMAIL",
+      "AUTOREPLY_FROM_EMAIL",
+      "CONTACT_AUTO_REPLY_FROM_EMAIL",
+    ) || fromEmailRaw;
+  const autoReplyFromAddress = extractEmailAddress(autoReplyFromEmailRaw);
   const adminFromEmail = composeFromAddress(adminFromName, fromEmail);
-  const autoReplyFromEmail = composeFromAddress("Touch and Move", fromEmail);
+  const autoReplyFromEmail = composeFromAddress(
+    "Touch and Move",
+    autoReplyFromAddress,
+  );
   const name = sanitize(payload.name, 120);
   const email = sanitize(payload.email, 180).toLowerCase();
   const phone = sanitize(payload.phone, 40);
@@ -695,9 +705,18 @@ exports.handler = async (event) => {
     });
 
     if (!autoReplyResponse.ok) {
+      let autoReplyBody = "";
+      try {
+        autoReplyBody = await autoReplyResponse.text();
+      } catch {
+        autoReplyBody = "";
+      }
+
       console.error("Auto-reply email failed", {
         status: autoReplyResponse.status,
         userEmail: email,
+        fromEmail: autoReplyFromEmail,
+        body: autoReplyBody.slice(0, 500),
       });
     }
   } catch (error) {
