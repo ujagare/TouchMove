@@ -92,7 +92,6 @@
     <link rel="stylesheet" href="./assets/css/style.css?v=3" />
     <link rel="stylesheet" href="./assets/css/shared.css?v=3" />
     <link rel="stylesheet" href="./assets/css/pages/kuber.css?v=1" />
-    <script src="https://www.google.com/recaptcha/api.js?render=6LfVYKsqAAAAAMipetra7sFhN_wXqVvJqLhKKqxXy"></script>
   </head>
   <body
     class="tm-warm-theme bg-background-dark text-slate-200 antialiased selection:bg-primary/30"
@@ -574,7 +573,6 @@
                         placeholder="+91 98765 43210"
                         autocomplete="tel"
                         inputmode="tel"
-                        pattern="[0-9+\-\s()]{7,20}"
                         title="Please enter a valid phone number."
                         maxlength="40"
                         required
@@ -589,18 +587,6 @@
                         autocomplete="email"
                         maxlength="180"
                       />
-                    </div>
-                    <div class="kuber-field">
-                      <label>Date of Birth</label>
-                      <input type="date" name="birthDate" />
-                    </div>
-                    <div class="kuber-field">
-                      <label>Birth Time</label>
-                      <input type="text" name="birthTime" placeholder="For example, 06:45 AM" maxlength="80" />
-                    </div>
-                    <div class="kuber-field">
-                      <label>Birth Place</label>
-                      <input type="text" name="birthPlace" placeholder="City, State, Country" maxlength="180" />
                     </div>
                   </div>
                   <div class="kuber-field">
@@ -892,6 +878,8 @@
           ];
         };
 
+        const getRecaptchaToken = async () => "";
+
         kuberForm.addEventListener("submit", async (event) => {
           event.preventDefault();
 
@@ -919,27 +907,7 @@
               );
             }
 
-            if (
-              typeof window.grecaptcha === "undefined" ||
-              typeof window.grecaptcha.ready !== "function"
-            ) {
-              throw new Error(
-                "Security verification could not load. Please refresh the page and try again.",
-              );
-            }
-
-            const recaptchaToken = await new Promise((resolve, reject) => {
-              grecaptcha.ready(() => {
-                grecaptcha
-                  .execute("6LfVYKsqAAAAAMipetra7sFhN_wXqVvJqLhKKqxXy", {
-                    action: "submit",
-                  })
-                  .then(resolve)
-                  .catch(reject);
-              });
-            });
-
-            payload.recaptchaToken = recaptchaToken;
+            payload.recaptchaToken = await getRecaptchaToken();
 
             let response;
             let result;
