@@ -459,13 +459,17 @@ exports.handler = async (event) => {
           "KUBER_TO_EMAIL",
           "KUBER_WORKSHOP_TO_EMAIL",
           "WORKSHOP_RECIPIENT_EMAIL",
-        ) || "touchandmove.69+workshop@gmail.com"
+          "CONTACT_TO_EMAIL",
+          "CONTACT_RECIPIENT_EMAIL",
+          "TO_EMAIL",
+          "RESEND_TO_EMAIL",
+        ) || "touchandmove.69@gmail.com"
       : firstEnv(
           "CONTACT_TO_EMAIL",
           "CONTACT_RECIPIENT_EMAIL",
           "TO_EMAIL",
           "RESEND_TO_EMAIL",
-        ) || "touchandmove.69+contact@gmail.com";
+        ) || "touchandmove.69@gmail.com";
   const toEmail = extractEmailAddress(toEmailRaw);
   if (!resendApiKey || !fromEmail || !toEmail) {
     console.error("Missing email configuration", {
