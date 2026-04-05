@@ -109,6 +109,72 @@ function optionalHtmlField(label, value) {
   return `<p><strong>${htmlEscape(label)}:</strong> ${htmlEscape(value)}</p>`;
 }
 
+function buildContactAutoReplyHtml(name, email, phone) {
+  return `
+    <div style="font-family: Arial, sans-serif; line-height: 1.8; color: #111827; max-width: 600px; margin: 0 auto;">
+      <div style="background: linear-gradient(135deg, #9E8976 0%, #8B7355 100%); padding: 30px; text-align: center; border-radius: 12px 12px 0 0;">
+        <h1 style="color: #ffffff; margin: 0; font-size: 28px; font-weight: 300;">Touch and Move</h1>
+      </div>
+      <div style="background: #ffffff; padding: 40px 30px; border: 1px solid #e5e7eb; border-top: none; border-radius: 0 0 12px 12px;">
+        <h2 style="color: #9E8976; margin-top: 0; font-size: 24px;">Thank You, ${htmlEscape(name)}!</h2>
+        <p style="color: #374151; font-size: 16px; margin: 20px 0;">
+          We have received your message and truly appreciate you reaching out to Touch and Move.
+        </p>
+        <p style="color: #374151; font-size: 16px; margin: 20px 0;">
+          Our team will review your inquiry and get back to you within 24-48 hours.
+        </p>
+        <div style="background: #f9fafb; padding: 20px; border-left: 4px solid #9E8976; margin: 30px 0; border-radius: 4px;">
+          <p style="margin: 0; color: #6b7280; font-size: 14px;"><strong>Your Details:</strong></p>
+          <p style="margin: 10px 0 0 0; color: #374151; font-size: 14px;">
+            <strong>Email:</strong> ${htmlEscape(email)}<br>
+            <strong>Phone:</strong> ${htmlEscape(phone)}
+          </p>
+        </div>
+        <div style="text-align: center; margin: 30px 0;">
+          <a href="https://touchandmove.in/contact.html" style="display: inline-block; background: #9E8976; color: #ffffff; padding: 14px 32px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 16px;">Visit Contact Page</a>
+        </div>
+        <p style="color: #6b7280; font-size: 14px; margin: 20px 0;">
+          With gratitude,<br>
+          <strong style="color: #9E8976;">The Touch and Move Team</strong>
+        </p>
+      </div>
+    </div>
+  `;
+}
+
+function buildWorkshopAutoReplyHtml(name, email, phone, workshopName) {
+  return `
+    <div style="font-family: Arial, sans-serif; line-height: 1.8; color: #111827; max-width: 600px; margin: 0 auto;">
+      <div style="background: linear-gradient(135deg, #9E8976 0%, #8B7355 100%); padding: 30px; text-align: center; border-radius: 12px 12px 0 0;">
+        <h1 style="color: #ffffff; margin: 0; font-size: 28px; font-weight: 300;">Touch and Move</h1>
+      </div>
+      <div style="background: #ffffff; padding: 40px 30px; border: 1px solid #e5e7eb; border-top: none; border-radius: 0 0 12px 12px;">
+        <h2 style="color: #9E8976; margin-top: 0; font-size: 24px;">Workshop Inquiry Received, ${htmlEscape(name)}!</h2>
+        <p style="color: #374151; font-size: 16px; margin: 20px 0;">
+          Thank you for your interest in <strong>${htmlEscape(workshopName || "our workshop")}</strong>.
+        </p>
+        <p style="color: #374151; font-size: 16px; margin: 20px 0;">
+          We have received your workshop inquiry and will personally guide you with the next steps very soon.
+        </p>
+        <div style="background: #f9fafb; padding: 20px; border-left: 4px solid #9E8976; margin: 30px 0; border-radius: 4px;">
+          <p style="margin: 0; color: #6b7280; font-size: 14px;"><strong>Your Details:</strong></p>
+          <p style="margin: 10px 0 0 0; color: #374151; font-size: 14px;">
+            <strong>Email:</strong> ${htmlEscape(email)}<br>
+            <strong>Phone:</strong> ${htmlEscape(phone)}
+          </p>
+        </div>
+        <div style="text-align: center; margin: 30px 0;">
+          <a href="https://touchandmove.in/kuber-energy-activation.html" style="display: inline-block; background: #9E8976; color: #ffffff; padding: 14px 32px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 16px;">View Workshop Details</a>
+        </div>
+        <p style="color: #6b7280; font-size: 14px; margin: 20px 0;">
+          With gratitude,<br>
+          <strong style="color: #9E8976;">The Touch and Move Team</strong>
+        </p>
+      </div>
+    </div>
+  `;
+}
+
 function response(statusCode, body) {
   return {
     statusCode,
@@ -478,7 +544,7 @@ exports.handler = async (event) => {
     return response(400, { ok: false, message: "Please enter a valid name." });
   }
 
-  if (email && !validEmail(email)) {
+  if (!email || !validEmail(email)) {
     logSecurityEvent("INVALID_EMAIL", { ip: clientIP, email });
     return response(400, { ok: false, message: "Please enter a valid email." });
   }
@@ -601,68 +667,15 @@ exports.handler = async (event) => {
   // Send auto-reply to user
   const autoReplySubject =
     formType === "kuber-workshop"
-      ? "Your Kuber Workshop Inquiry Has Been Received"
-      : "Thank you for contacting Touch and Move";
-  const autoReplyHtml = `
-    <div style="font-family: Arial, sans-serif; line-height: 1.8; color: #111827; max-width: 600px; margin: 0 auto;">
-      <div style="background: linear-gradient(135deg, #9E8976 0%, #8B7355 100%); padding: 30px; text-align: center; border-radius: 12px 12px 0 0;">
-        <h1 style="color: #ffffff; margin: 0; font-size: 28px; font-weight: 300;">Touch and Move</h1>
-      </div>
-      
-      <div style="background: #ffffff; padding: 40px 30px; border: 1px solid #e5e7eb; border-top: none; border-radius: 0 0 12px 12px;">
-        <h2 style="color: #9E8976; margin-top: 0; font-size: 24px;">Thank You, ${htmlEscape(name)}!</h2>
-        
-        <p style="color: #374151; font-size: 16px; margin: 20px 0;">
-          We have received your ${
-            formType === "intake"
-              ? "intake form"
-              : formType === "kuber-workshop"
-                ? "workshop inquiry"
-                : "message"
-          } and truly appreciate you reaching out to us.
-        </p>
-        
-        <p style="color: #374151; font-size: 16px; margin: 20px 0;">
-          Our team will carefully review your submission and get back to you within 24-48 hours. We're excited to connect with you and support you on your journey.
-        </p>
-        
-        <div style="background: #f9fafb; padding: 20px; border-left: 4px solid #9E8976; margin: 30px 0; border-radius: 4px;">
-          <p style="margin: 0; color: #6b7280; font-size: 14px;"><strong>Your Details:</strong></p>
-          <p style="margin: 10px 0 0 0; color: #374151; font-size: 14px;">
-            <strong>Email:</strong> ${htmlEscape(email || "Not provided")}<br>
-            <strong>Phone:</strong> ${htmlEscape(phone)}
-          </p>
-        </div>
-        
-        <p style="color: #374151; font-size: 16px; margin: 20px 0;">
-          In the meantime, feel free to explore our website or follow us on social media to learn more about our services and approach.
-        </p>
-        
-        <div style="text-align: center; margin: 30px 0;">
-          <a href="https://touchandmove.in" style="display: inline-block; background: #9E8976; color: #ffffff; padding: 14px 32px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 16px;">Visit Our Website</a>
-        </div>
-        
-        <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 30px 0;">
-        
-        <p style="color: #6b7280; font-size: 14px; margin: 20px 0;">
-          With gratitude,<br>
-          <strong style="color: #9E8976;">The Touch and Move Team</strong>
-        </p>
-        
-        <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e5e7eb; text-align: center;">
-          <p style="color: #9ca3af; font-size: 12px; margin: 5px 0;">
-            Touch and Move | Holistic Wellness & Guidance<br>
-            <a href="https://touchandmove.in" style="color: #9E8976; text-decoration: none;">touchandmove.in</a> | 
-            <a href="mailto:touchandmove.69@gmail.com" style="color: #9E8976; text-decoration: none;">touchandmove.69@gmail.com</a>
-          </p>
-        </div>
-      </div>
-    </div>
-  `;
+      ? "Your Workshop Inquiry Has Been Received"
+      : "We Received Your Contact Message";
+  const autoReplyHtml =
+    formType === "kuber-workshop"
+      ? buildWorkshopAutoReplyHtml(name, email, phone, workshopName)
+      : buildContactAutoReplyHtml(name, email, phone);
 
   // Send auto-reply email to user
-  if (email) {
-    try {
+  try {
     const autoReplyResponse = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
@@ -682,14 +695,11 @@ exports.handler = async (event) => {
         status: autoReplyResponse.status,
         userEmail: email,
       });
-      // Don't fail the main request if auto-reply fails
     }
   } catch (error) {
     console.error("Auto-reply request failed", {
       message: error && error.message ? error.message : "unknown error",
     });
-    // Don't fail the main request if auto-reply fails
-  }
   }
 
   return response(200, {
