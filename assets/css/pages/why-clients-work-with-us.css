@@ -51,11 +51,17 @@
           margin-right: 1rem !important;
           padding: 1.5rem 1.25rem !important;
           border-radius: 1.5rem !important;
-          background: rgba(18, 16, 13, 0.5) !important;
-          border: 1px solid rgba(255, 255, 255, 0.16) !important;
-          box-shadow: 0 24px 60px rgba(0, 0, 0, 0.3) !important;
-          backdrop-filter: blur(14px);
-          -webkit-backdrop-filter: blur(14px);
+          background: linear-gradient(
+            180deg,
+            rgba(18, 15, 13, 0.72),
+            rgba(34, 28, 24, 0.56)
+          ) !important;
+          border: 1px solid rgba(255, 255, 255, 0.14) !important;
+          box-shadow:
+            0 18px 40px rgba(0, 0, 0, 0.24),
+            inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
+          backdrop-filter: blur(18px) saturate(135%);
+          -webkit-backdrop-filter: blur(18px) saturate(135%);
         }
         .why-hero-title {
           font-size: clamp(2.8rem, 14vw, 4rem) !important;
@@ -185,11 +191,24 @@
       }
       @media (max-width: 767px) {
         body.tm-warm-theme .why-hero-glass {
-          background: rgba(245, 241, 235, 0.74) !important;
-          border-color: rgba(158, 137, 118, 0.18) !important;
+          background: linear-gradient(
+            180deg,
+            rgba(10, 9, 8, 0.74),
+            rgba(28, 23, 20, 0.6)
+          ) !important;
+          border-color: rgba(255, 255, 255, 0.12) !important;
           box-shadow:
-            0 24px 60px rgba(86, 72, 60, 0.14),
-            inset 0 1px 0 rgba(255, 255, 255, 0.38) !important;
+            0 24px 60px rgba(0, 0, 0, 0.26),
+            inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+          backdrop-filter: blur(20px) saturate(140%) !important;
+          -webkit-backdrop-filter: blur(20px) saturate(140%) !important;
+        }
+        body.tm-warm-theme main .why-hero .why-hero-glass .why-hero-title,
+        body.tm-warm-theme main .why-hero .why-hero-glass .why-hero-copy,
+        body.tm-warm-theme main .why-hero .why-hero-glass .text-white,
+        body.tm-warm-theme main .why-hero .why-hero-glass h1,
+        body.tm-warm-theme main .why-hero .why-hero-glass p {
+          color: #9e8976 !important;
         }
       }
       body.tm-warm-theme main section.bg-charcoal,
