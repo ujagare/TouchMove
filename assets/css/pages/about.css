@@ -336,6 +336,17 @@ body {
         backdrop-filter: blur(14px);
         -webkit-backdrop-filter: blur(14px);
       }
+      body.tm-warm-theme #vision .vision-signature {
+        background: transparent !important;
+        border: 0 !important;
+        box-shadow: none !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+      }
+      body.tm-warm-theme #vision h2,
+      body.tm-warm-theme #vision .text-primary {
+        color: #ffffff !important;
+      }
       body.tm-warm-theme .tm-review-card {
         border: 2px solid #9e8976;
         background: transparent;

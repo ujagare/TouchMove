@@ -163,6 +163,19 @@
     return path === "/" || path.endsWith("/index.html") || path === "/index";
   }
 
+  function prefersNativeTouchScroll() {
+    if (typeof window === "undefined") return false;
+
+    var hasTouchPoints =
+      typeof navigator !== "undefined" && navigator.maxTouchPoints > 0;
+    var coarsePointer =
+      typeof window.matchMedia === "function" &&
+      window.matchMedia("(hover: none) and (pointer: coarse)").matches;
+    var isSmallViewport = window.innerWidth <= 991;
+
+    return isSmallViewport && (hasTouchPoints || coarsePointer);
+  }
+
   function initPageLoader() {
     if (document.body.dataset.loaderReady === "true") return;
     if (!isHomePage()) return;
@@ -297,6 +310,85 @@
     ].join("\n");
 
     document.head.appendChild(style);
+  }
+
+  function initSeoLinkHub() {
+    if (document.querySelector("[data-seo-link-hub='true']")) return;
+
+    var footer = document.querySelector("footer");
+    if (!footer) return;
+
+    var footerContainer =
+      footer.querySelector(".max-w-7xl") ||
+      footer.querySelector(".max-w-6xl") ||
+      footer.querySelector(".mx-auto");
+    var footerBottom = footer.querySelector(".mt-8.flex");
+
+    if (!footerContainer) return;
+
+    if (!document.head.querySelector("[data-seo-link-hub-style='true']")) {
+      var style = document.createElement("style");
+      style.setAttribute("data-seo-link-hub-style", "true");
+      style.textContent = [
+        ".tm-seo-link-hub { margin-top: 2rem; padding: 1.25rem 1.5rem; border: 1px solid rgba(158, 137, 118, 0.18); border-radius: 1.25rem; background: rgba(255, 255, 255, 0.5); }",
+        ".tm-seo-link-hub__title { margin: 0 0 0.75rem; font-size: 0.95rem; letter-spacing: 0.16em; text-transform: uppercase; color: #7d6b5d; }",
+        ".tm-seo-link-hub__text { margin: 0 0 0.9rem; font-size: 0.98rem; line-height: 1.7; color: #5f564f; }",
+        ".tm-seo-link-hub__links { display: flex; flex-wrap: wrap; gap: 0.75rem 1rem; }",
+        ".tm-seo-link-hub__links a { color: #7d6b5d; text-decoration: none; border-bottom: 1px solid rgba(158, 137, 118, 0.26); padding-bottom: 0.1rem; transition: color 0.2s ease, border-color 0.2s ease; }",
+        ".tm-seo-link-hub__links a:hover { color: #3f3b34; border-color: rgba(63, 59, 52, 0.45); }",
+        "@media (max-width: 767px) { .tm-seo-link-hub { padding: 1rem; } .tm-seo-link-hub__links { gap: 0.65rem 0.85rem; } }",
+      ].join("\n");
+      document.head.appendChild(style);
+    }
+
+    var currentPath = (window.location.pathname || "").toLowerCase();
+    var links = [
+      { href: "index.html", text: "Embodied healing home" },
+      { href: "about.html", text: "About Touch and Move" },
+      { href: "services.html", text: "Healing services and sessions" },
+      { href: "why-clients-work-with-us.html", text: "Tarot guidance with Harshaa" },
+      { href: "Aproch.html", text: "Our approach and philosophy" },
+      { href: "our-Aproch.html", text: "Our healing process" },
+      { href: "blog.html", text: "Wellness blog and insights" },
+      { href: "contact.html", text: "Book a consultation" },
+    ].filter(function (link) {
+      return !currentPath.endsWith("/" + link.href.toLowerCase()) &&
+        !currentPath.endsWith(link.href.toLowerCase());
+    });
+
+    var hub = document.createElement("section");
+    hub.setAttribute("data-seo-link-hub", "true");
+    hub.setAttribute("aria-label", "Helpful site links");
+    hub.className = "tm-seo-link-hub";
+
+    var title = document.createElement("h2");
+    title.className = "tm-seo-link-hub__title";
+    title.textContent = "Explore More";
+
+    var text = document.createElement("p");
+    text.className = "tm-seo-link-hub__text";
+    text.textContent =
+      "Browse key Touch and Move pages for embodied healing, intuitive guidance, tarot sessions, wellness insights, and consultation support.";
+
+    var linksWrap = document.createElement("div");
+    linksWrap.className = "tm-seo-link-hub__links";
+
+    links.forEach(function (link) {
+      var anchor = document.createElement("a");
+      anchor.href = link.href;
+      anchor.textContent = link.text;
+      linksWrap.appendChild(anchor);
+    });
+
+    hub.appendChild(title);
+    hub.appendChild(text);
+    hub.appendChild(linksWrap);
+
+    if (footerBottom && footerBottom.parentNode) {
+      footerBottom.parentNode.insertBefore(hub, footerBottom);
+    } else {
+      footerContainer.appendChild(hub);
+    }
   }
 
   function initButtonRouting() {
@@ -831,6 +923,7 @@
 
     initResponsivePolish();
     initPageLoader();
+    initSeoLinkHub();
 
     if (
       typeof window !== "undefined" &&
@@ -840,18 +933,16 @@
       var prefersReducedMotion = window.matchMedia(
         "(prefers-reduced-motion: reduce)",
       ).matches;
+      var useNativeTouchScroll = prefersNativeTouchScroll();
 
-      if (!prefersReducedMotion) {
+      if (!prefersReducedMotion && !useNativeTouchScroll) {
         var lenis = new window.Lenis({
           duration: 1.05,
           easing: function (t) {
             return Math.min(1, 1.001 - Math.pow(2, -9 * t));
           },
           smoothWheel: true,
-          smoothTouch: true,
-          syncTouch: true,
           wheelMultiplier: 0.9,
-          touchMultiplier: 1,
           autoRaf: true,
         });
         window.lenis = lenis;

@@ -128,6 +128,176 @@
     ].join("");
   }
 
+  function contextualLinksForPost(slug) {
+    var linksBySlug = {
+      "tarot-mirror-to-your-soul": [
+        {
+          href: "why-clients-work-with-us.html",
+          label: "Explore tarot guidance",
+          copy: "Understand how tarot sessions support clarity, reflection, and intuitive decision-making.",
+        },
+        {
+          href: "services.html",
+          label: "Browse healing services",
+          copy: "See how tarot, sound healing, movement, and distance support are offered together.",
+        },
+        {
+          href: "contact.html",
+          label: "Book a session",
+          copy: "Reach out when you are ready for personal guidance or a deeper reading.",
+        },
+      ],
+      "power-of-sound-healing": [
+        {
+          href: "services.html",
+          label: "View sound healing support",
+          copy: "Explore healing sessions designed around regulation, energetic balance, and inner harmony.",
+        },
+        {
+          href: "blogdetail.html?slug=somatic-awareness",
+          label: "Read about somatic awareness",
+          copy: "Continue with body-based listening and nervous-system awareness practices.",
+        },
+        {
+          href: "contact.html",
+          label: "Ask about a session",
+          copy: "Connect directly if you want personalized support through sound and energy work.",
+        },
+      ],
+      "numerology-for-success": [
+        {
+          href: "services.html",
+          label: "Explore astro-numerology sessions",
+          copy: "See how timing, numbers, and intuitive guidance are integrated in practice.",
+        },
+        {
+          href: "why-clients-work-with-us.html",
+          label: "Pair numbers with tarot insight",
+          copy: "Discover how symbolic guidance can deepen clarity around choices and timing.",
+        },
+        {
+          href: "contact.html",
+          label: "Book aligned guidance",
+          copy: "Reach out if you want support with your current cycle, direction, or decision-making.",
+        },
+      ],
+      "movement-as-meditation": [
+        {
+          href: "services.html",
+          label: "Explore movement therapy",
+          copy: "See how movement sessions support emotional release, expression, and embodiment.",
+        },
+        {
+          href: "blogdetail.html?slug=somatic-awareness",
+          label: "Continue with somatic awareness",
+          copy: "Read the companion reflection on listening to the body with more trust.",
+        },
+        {
+          href: "Aproch.html",
+          label: "Read the Touch and Move approach",
+          copy: "Understand the philosophy behind embodied practice, presence, and transformation.",
+        },
+      ],
+      "unlocking-your-sacred-journey": [
+        {
+          href: "our-Aproch.html",
+          label: "See who this work is for",
+          copy: "Explore how the work supports seekers moving through transition, tenderness, and growth.",
+        },
+        {
+          href: "services.html",
+          label: "Browse your next support option",
+          copy: "Find sessions that match where you are on your healing or spiritual path.",
+        },
+        {
+          href: "contact.html",
+          label: "Begin the conversation",
+          copy: "Connect when you are ready to take the next step with guidance and support.",
+        },
+      ],
+      "rituals-for-the-modern-home": [
+        {
+          href: "kuber-energy-activation.html",
+          label: "Explore Kuber energy rituals",
+          copy: "Discover a guided abundance practice rooted in ritual, tarot, and daily integration.",
+        },
+        {
+          href: "services.html",
+          label: "Find supportive healing sessions",
+          copy: "Pair your personal rituals with one-to-one sessions for deeper transformation.",
+        },
+        {
+          href: "blogdetail.html?slug=unlocking-your-sacred-journey",
+          label: "Read the sacred journey reflection",
+          copy: "Continue with a companion article on trust, thresholds, and intentional growth.",
+        },
+      ],
+      "somatic-awareness": [
+        {
+          href: "services.html",
+          label: "Explore embodiment sessions",
+          copy: "Browse movement, consciousness, and healing support rooted in body awareness.",
+        },
+        {
+          href: "blogdetail.html?slug=movement-as-meditation",
+          label: "Read movement as meditation",
+          copy: "Continue with a related reflection on rhythm, presence, and embodied stillness.",
+        },
+        {
+          href: "contact.html",
+          label: "Book embodied support",
+          copy: "Reach out for guidance if you want help reconnecting with the body and its signals.",
+        },
+      ],
+    };
+
+    return (
+      linksBySlug[slug] || [
+        {
+          href: "services.html",
+          label: "Explore healing services",
+          copy: "Find sessions related to embodiment, guidance, and personal transformation.",
+        },
+        {
+          href: "blog.html",
+          label: "Return to the journal",
+          copy: "Keep reading related reflections on ritual, sound healing, tarot, and somatics.",
+        },
+        {
+          href: "contact.html",
+          label: "Book a session",
+          copy: "Reach out for one-to-one support when you feel ready to begin.",
+        },
+      ]
+    );
+  }
+
+  function contextualLinksMarkup(post) {
+    var links = contextualLinksForPost(post.slug);
+
+    return [
+      '<section class="blog-detail-resources" aria-label="Related guidance and internal links">',
+      '<div class="blog-detail-section-head">',
+      "<span></span>",
+      "<h2>Related guidance for this topic</h2>",
+      "</div>",
+      '<div class="blog-detail-resources-grid">',
+      links
+        .map(function (link) {
+          return [
+            '<article class="blog-detail-resource-card">',
+            "<h3>" + escapeHtml(link.label) + "</h3>",
+            "<p>" + escapeHtml(link.copy) + "</p>",
+            '<a href="' + escapeHtml(link.href) + '">Open page</a>',
+            "</article>",
+          ].join("");
+        })
+        .join(""),
+      "</div>",
+      "</section>",
+    ].join("");
+  }
+
   function render(post, posts) {
     syncSeo(post);
 
@@ -138,7 +308,8 @@
     $("blogDetailHeroImage").alt = post.title;
     $("blogDetailIntro").textContent = post.intro;
     $("blogDetailQuote").textContent = post.quote;
-    $("blogDetailSections").innerHTML = post.sections.map(sectionMarkup).join("");
+    $("blogDetailSections").innerHTML =
+      post.sections.map(sectionMarkup).join("") + contextualLinksMarkup(post);
 
     var related = posts
       .filter(function (item) {

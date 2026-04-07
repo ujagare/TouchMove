@@ -184,3 +184,13 @@
             }
           }
 
+@media (max-width: 767px) {
+      body.tm-warm-theme main {
+        padding-top: 4.25rem !important;
+      }
+
+      .our-approach-hero {
+        padding-top: 2rem !important;
+      }
+    }
+

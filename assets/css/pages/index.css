@@ -965,6 +965,42 @@ body {
   letter-spacing: 0.04em !important;
 }
 
+#homeHero .home-hero-prev,
+#homeHero .home-hero-next {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-top: 0;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+#homeHero .home-hero-prev::after,
+#homeHero .home-hero-next::after {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+#homeHero .home-hero-prev:hover,
+#homeHero .home-hero-next:hover {
+  background: rgba(255, 255, 255, 0.26);
+  border-color: rgba(255, 255, 255, 0.42);
+  transform: translateY(-1px);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.22);
+}
+
 @media (max-width: 768px) {
   #homeHero {
     min-height: 100svh !important;
@@ -1013,6 +1049,17 @@ body {
     font-size: 0.8rem !important;
     letter-spacing: 0.03em !important;
     border-radius: 9999px;
+  }
+
+  #homeHero .home-hero-prev,
+  #homeHero .home-hero-next {
+    width: 2.15rem;
+    height: 2.15rem;
+  }
+
+  #homeHero .home-hero-prev::after,
+  #homeHero .home-hero-next::after {
+    font-size: 0.9rem;
   }
 }
 
