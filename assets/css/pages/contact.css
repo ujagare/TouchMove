@@ -193,3 +193,11 @@ body {
         z-index: 100000 !important;
       }
 
+      body.tm-warm-theme main section:first-of-type h1,
+      body.tm-warm-theme main section:first-of-type .text-primary,
+      body.tm-warm-theme main section:first-of-type .text-white,
+      body.tm-warm-theme main section:first-of-type .text-white\/85,
+      body.tm-warm-theme main section:first-of-type .text-white\/80 {
+        color: #ffffff !important;
+      }
+
