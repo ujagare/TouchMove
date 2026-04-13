@@ -1,12 +1,4 @@
 User-agent: *
 Allow: /
 
-# Keep non-content project files out of search results
-Disallow: /.gitignore
-Disallow: /.env.example
-Disallow: /README.md
-Disallow: /package.json
-Disallow: /package-lock.json
-Disallow: /netlify.toml
-
 Sitemap: https://ujagare.github.io/TouchMove/sitemap.xml

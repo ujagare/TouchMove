@@ -42,8 +42,9 @@
 
   function productionPostUrl(slug) {
     return (
-      "https://ujagare.github.io/TouchMove/blogdetail.html?slug=" +
-      encodeURIComponent(slug || "")
+      "https://ujagare.github.io/TouchMove/blog/" +
+      encodeURIComponent(slug || "") +
+      ".html"
     );
   }
 
@@ -154,7 +155,7 @@
           copy: "Explore healing sessions designed around regulation, energetic balance, and inner harmony.",
         },
         {
-          href: "blogdetail.html?slug=somatic-awareness",
+          href: "blog/somatic-awareness.html",
           label: "Read about somatic awareness",
           copy: "Continue with body-based listening and nervous-system awareness practices.",
         },
@@ -188,7 +189,7 @@
           copy: "See how movement sessions support emotional release, expression, and embodiment.",
         },
         {
-          href: "blogdetail.html?slug=somatic-awareness",
+          href: "blog/somatic-awareness.html",
           label: "Continue with somatic awareness",
           copy: "Read the companion reflection on listening to the body with more trust.",
         },
@@ -227,7 +228,7 @@
           copy: "Pair your personal rituals with one-to-one sessions for deeper transformation.",
         },
         {
-          href: "blogdetail.html?slug=unlocking-your-sacred-journey",
+          href: "blog/unlocking-your-sacred-journey.html",
           label: "Read the sacred journey reflection",
           copy: "Continue with a companion article on trust, thresholds, and intentional growth.",
         },
@@ -239,7 +240,7 @@
           copy: "Browse movement, consciousness, and healing support rooted in body awareness.",
         },
         {
-          href: "blogdetail.html?slug=movement-as-meditation",
+          href: "blog/movement-as-meditation.html",
           label: "Read movement as meditation",
           copy: "Continue with a related reflection on rhythm, presence, and embodied stillness.",
         },
@@ -326,8 +327,7 @@
         if (!slug) return;
         card.style.cursor = "pointer";
         card.addEventListener("click", function () {
-          window.location.href =
-            "blogdetail.html?slug=" + encodeURIComponent(slug);
+          window.location.href = "blog/" + encodeURIComponent(slug) + ".html";
         });
       });
   }
@@ -383,28 +383,13 @@
   }
 
   function init() {
-    fetch("./data/blog-posts.json")
-      .then(function (response) {
-        if (!response.ok) throw new Error("Failed to load blog posts.");
-        return response.json();
-      })
-      .then(function (data) {
-        var posts = Array.isArray(data.posts) ? data.posts : [];
-        var slug = getSlug();
-        var post = posts.find(function (item) {
-          return item.slug === slug;
-        }) || posts[0];
+    var slug = getSlug();
 
-        if (!post) {
-          renderNotFound();
-          return;
-        }
-
-        render(post, posts);
-      })
-      .catch(function () {
-        renderNotFound();
-      });
+    if (slug) {
+      window.location.replace("blog/" + encodeURIComponent(slug) + ".html");
+      return;
+    }
+    window.location.replace("blog.html");
   }
 
   if (document.readyState === "loading") {

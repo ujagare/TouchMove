@@ -38,12 +38,14 @@ if (!isValidProductionUrl(baseUrl)) {
   process.exit(1);
 }
 
-const pageUrls = pages.map((page) => `${baseUrl}/${page.href}`);
+const pageUrls = pages.map((page) => {
+  const href = String(page?.href || "").trim();
+  return href === "index.html" ? `${baseUrl}/` : `${baseUrl}/${href}`;
+});
 const blogUrls = blogPosts
   .filter((post) => typeof post?.slug === "string" && post.slug.trim())
   .map(
-    (post) =>
-      `${baseUrl}/blogdetail.html?slug=${encodeURIComponent(post.slug.trim())}`,
+    (post) => `${baseUrl}/blog/${encodeURIComponent(post.slug.trim())}.html`,
   );
 
 const uniqueUrls = Array.from(new Set([...pageUrls, ...blogUrls]));

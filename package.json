@@ -4,8 +4,9 @@
   "private": true,
   "scripts": {
     "build:css": "node ./node_modules/@tailwindcss/cli/dist/index.mjs -i assets/css/tailwind.css -o assets/css/style.css --minify",
+    "build:blog": "node ./scripts/generate-blog-pages.mjs",
     "build:seo": "node ./scripts/generate-seo.mjs",
-    "build": "npm run build:css && npm run build:seo"
+    "build": "npm run build:css && npm run build:blog && npm run build:seo"
   },
   "dependencies": {
     "@sentry/node": "^7.100.0"

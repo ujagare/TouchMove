@@ -3,7 +3,7 @@
 
   function goToPost(slug) {
     if (!slug) return;
-    window.location.href = "blogdetail.html?slug=" + encodeURIComponent(slug);
+    window.location.href = "blog/" + encodeURIComponent(slug) + ".html";
   }
 
   function bindCard(card) {
