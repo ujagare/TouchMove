@@ -42,7 +42,7 @@
 
   function productionPostUrl(slug) {
     return (
-      "https://ujagare.github.io/TouchMove/blog/" +
+      "https://touchandmove.in/blog/" +
       encodeURIComponent(slug || "") +
       ".html"
     );
@@ -353,11 +353,11 @@
     );
     setMetaContent(
       'meta[property="og:url"]',
-      "https://ujagare.github.io/TouchMove/blogdetail.html",
+      "https://touchandmove.in/blogdetail.html",
     );
     setLinkHref(
       'link[rel="canonical"]',
-      "https://ujagare.github.io/TouchMove/blogdetail.html",
+      "https://touchandmove.in/blogdetail.html",
     );
     $("blogDetailTitle").textContent = "Journal entry not found";
     $("blogDetailMeta").textContent = "Please return to the journal and choose another article.";
@@ -373,12 +373,12 @@
         title: "Journal | Touch and Move",
         excerpt: "The requested journal entry could not be found on Touch and Move.",
         image:
-          "https://ujagare.github.io/TouchMove/assets/webp%20images/site-image-28.webp",
+          "https://touchandmove.in/assets/webp%20images/site-image-28.webp",
         date: "",
         category: "Journal",
       },
-      "https://ujagare.github.io/TouchMove/assets/webp%20images/site-image-28.webp",
-      "https://ujagare.github.io/TouchMove/blogdetail.html",
+      "https://touchandmove.in/assets/webp%20images/site-image-28.webp",
+      "https://touchandmove.in/blogdetail.html",
     );
   }
 

@@ -5,14 +5,15 @@
 - Shared styles compile into `assets/css/style.css`.
 - Page-specific styles live in `assets/css/pages/`.
 - Shared interactions live in `assets/js/main.js`.
-- `contact.php` handles form submissions and stores them in `data/contact-submissions.csv`.
+- `api/contact.js` handles contact and workshop form submissions on Vercel.
+- `vercel.json` contains the Vercel build, function, cache, and security-header settings.
 
-## Production Setup
+## Vercel Production Setup
 1. Set the live domain in `assets/data/site.json` under `baseUrl`.
-2. Configure optional server environment variables from `.env.example`.
-3. Build production assets with `npm run build`.
-4. Deploy all files to Apache or another PHP-capable host.
-5. Ensure the `data/` directory is writable by PHP.
+2. Add the environment variables from `.env.example` in Vercel Project Settings.
+3. Import this folder in Vercel and use the default config from `vercel.json`.
+4. Vercel build command: `npm run build`.
+5. Vercel output directory: `.`.
 
 ## Build Commands
 - `npm run build:css`
@@ -20,6 +21,6 @@
 - `npm run build`
 
 ## Notes
-- `.htaccess` adds basic cache headers and security headers for Apache deployments.
+- Contact form email uses Resend through `api/contact.js`.
 - `scripts/generate-seo.mjs` regenerates `robots.txt` and `sitemap.xml` from `assets/data/site.json`.
 - UI and functionality are intended to remain unchanged while shipping safer production defaults.

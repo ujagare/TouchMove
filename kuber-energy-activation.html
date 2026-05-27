@@ -51,11 +51,11 @@
     />
     <meta
       property="og:image"
-      content="https://ujagare.github.io/TouchMove/assets/webp%20images/site-image-29.webp"
+      content="https://touchandmove.in/assets/webp%20images/site-image-29.webp"
     />
     <meta
       property="og:url"
-      content="https://ujagare.github.io/TouchMove/kuber-energy-activation.html"
+      content="https://touchandmove.in/kuber-energy-activation.html"
     />
     <meta name="twitter:card" content="summary_large_image" />
     <meta
@@ -68,12 +68,12 @@
     />
     <meta
       name="twitter:image"
-      content="https://ujagare.github.io/TouchMove/assets/webp%20images/site-image-29.webp"
+      content="https://touchandmove.in/assets/webp%20images/site-image-29.webp"
     />
     <meta name="author" content="Touch and Move" />
     <link
       rel="canonical"
-      href="https://ujagare.github.io/TouchMove/kuber-energy-activation.html"
+      href="https://touchandmove.in/kuber-energy-activation.html"
     />
     <link
       href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;display=swap"
@@ -895,27 +895,21 @@
             normalizedHostname === "127.0.0.1" ||
             normalizedHostname === "localhost"
           ) {
-            return "Local Live Server email send support nahi karta. Netlify deploy, `netlify dev`, ya PHP server par form test kijiye.";
+            return "Local Live Server email send support nahi karta. Vercel deploy ya `vercel dev` par form test kijiye.";
           }
 
           return "We could not find a working form handler on this website.";
         };
 
         const getContactEndpoints = () => {
-          const { hostname, origin, pathname } = window.location;
+          const { hostname, origin } = window.location;
           const normalizedHostname = hostname.toLowerCase();
-          const currentDirectory =
-            pathname.slice(0, pathname.lastIndexOf("/") + 1) || "/";
 
           if (normalizedHostname.endsWith(".github.io")) {
             return [];
           }
 
-          return [
-            `${origin}/api/contact`,
-            `${origin}/.netlify/functions/contact`,
-            `${origin}${currentDirectory}contact.php`,
-          ];
+          return [`${origin}/api/contact`];
         };
 
         const getRecaptchaToken = async () => "";
@@ -944,7 +938,7 @@
 
             if (!contactEndpoints.length) {
               throw new Error(
-                "This form cannot send email from GitHub Pages. Deploy it on Netlify or a PHP-capable server first.",
+                "This form cannot send email from GitHub Pages. Deploy it on Vercel first.",
               );
             }
 

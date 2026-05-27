@@ -5,7 +5,7 @@ try {
     Sentry = require("@sentry/node");
     Sentry.init({
       dsn: process.env.SENTRY_DSN,
-      environment: process.env.CONTEXT || "production",
+      environment: process.env.VERCEL_ENV || process.env.NODE_ENV || "production",
       tracesSampleRate: 1.0,
     });
   }
@@ -183,6 +183,31 @@ function response(statusCode, body) {
   };
 }
 
+function sendVercelResponse(res, serverlessResponse) {
+  const statusCode = serverlessResponse.statusCode || 500;
+  const headers = serverlessResponse.headers || {};
+
+  Object.entries(headers).forEach(([key, value]) => {
+    res.setHeader(key, value);
+  });
+
+  res.status(statusCode).send(serverlessResponse.body || "");
+}
+
+function toVercelEvent(req) {
+  const headers = req.headers || {};
+  const body =
+    typeof req.body === "string"
+      ? req.body
+      : JSON.stringify(req.body || {});
+
+  return {
+    httpMethod: req.method,
+    headers,
+    body,
+  };
+}
+
 function normalizeOrigin(value) {
   return String(value || "")
     .trim()
@@ -243,9 +268,9 @@ function validStartedAt(value) {
 }
 
 function getClientIP(event) {
-  // Try multiple headers to get real IP (Netlify specific)
+  // Try multiple headers to get the real client IP behind Vercel/proxies.
   const ip =
-    event.headers["x-nf-client-connection-ip"] ||
+    event.headers["x-vercel-forwarded-for"]?.split(",")[0]?.trim() ||
     event.headers["x-forwarded-for"]?.split(",")[0]?.trim() ||
     event.headers["x-real-ip"] ||
     "unknown";
@@ -383,7 +408,7 @@ async function verifyRecaptcha(token) {
   }
 }
 
-exports.handler = async (event) => {
+async function contactHandler(event) {
   const clientIP = getClientIP(event);
 
   // Check if IP is blocked
@@ -734,4 +759,22 @@ exports.handler = async (event) => {
           ? "Your workshop inquiry has been submitted successfully."
           : "Your message has been sent successfully.",
   });
+}
+
+module.exports = async function handler(req, res) {
+  try {
+    const serverlessResponse = await contactHandler(toVercelEvent(req));
+    sendVercelResponse(res, serverlessResponse);
+  } catch (error) {
+    console.error("Unhandled contact API error", {
+      message: error && error.message ? error.message : "unknown error",
+    });
+    sendVercelResponse(
+      res,
+      response(500, {
+        ok: false,
+        message: GENERIC_ERROR_MESSAGE,
+      }),
+    );
+  }
 };

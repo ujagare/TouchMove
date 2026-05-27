@@ -51,7 +51,7 @@
     />
     <meta
       property="og:image"
-      content="https://ujagare.github.io/TouchMove/assets/images/site-image-25.png"
+      content="https://touchandmove.in/assets/images/site-image-25.png"
     />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Contact Us - Touch and Move" />
@@ -61,16 +61,16 @@
     />
     <meta
       name="twitter:image"
-      content="https://ujagare.github.io/TouchMove/assets/images/site-image-25.png"
+      content="https://touchandmove.in/assets/images/site-image-25.png"
     />
     <meta name="author" content="Touch and Move" />
     <meta
       property="og:url"
-      content="https://ujagare.github.io/TouchMove/contact.html"
+      content="https://touchandmove.in/contact.html"
     />
     <link
       rel="canonical"
-      href="https://ujagare.github.io/TouchMove/contact.html"
+      href="https://touchandmove.in/contact.html"
     />
     <link
       href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap"
@@ -1243,27 +1243,21 @@
             normalizedHostname === "127.0.0.1" ||
             normalizedHostname === "localhost"
           ) {
-            return "Local Live Server email send support nahi karta. Netlify deploy, `netlify dev`, ya PHP server par form test kijiye.";
+            return "Local Live Server email send support nahi karta. Vercel deploy ya `vercel dev` par form test kijiye.";
           }
 
           return "We could not find a working form handler on this website.";
         };
 
         const getContactEndpoints = () => {
-          const { hostname, origin, pathname } = window.location;
+          const { hostname, origin } = window.location;
           const normalizedHostname = hostname.toLowerCase();
-          const currentDirectory =
-            pathname.slice(0, pathname.lastIndexOf("/") + 1) || "/";
 
           if (normalizedHostname.endsWith(".github.io")) {
             return [];
           }
 
-          return [
-            `${origin}/api/contact`,
-            `${origin}/.netlify/functions/contact`,
-            `${origin}${currentDirectory}contact.php`,
-          ];
+          return [`${origin}/api/contact`];
         };
 
         const getRecaptchaToken = async () => "";
@@ -1291,7 +1285,7 @@
 
             if (!contactEndpoints.length) {
               throw new Error(
-                "This contact form cannot send email from GitHub Pages. Deploy it on Netlify or a PHP-capable server first.",
+                "This contact form cannot send email from GitHub Pages. Deploy it on Vercel first.",
               );
             }
 
